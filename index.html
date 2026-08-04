@@ -293,5 +293,8 @@ if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
   });
 }
 </script>
+
+<!-- Cloudflare Web Analytics — deferred module; fails silently offline -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0dd1af3680924dc9ac9babc0431706f3"}'></script>
 </body>
 </html>
