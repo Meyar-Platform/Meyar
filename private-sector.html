@@ -446,6 +446,10 @@ html[dir="ltr"] .wd-item .wd-by{direction:ltr}
     transform:translateX(100%); transition:transform .22s; box-shadow:var(--shadow-2);
   }
   .sidebar.open{transform:translateX(0)}
+  /* translateX is physical, not logical: LTR anchors the drawer to the left edge,
+     so it must slide out to -100% instead of +100% */
+  html[dir="ltr"] .sidebar{transform:translateX(-100%)}
+  html[dir="ltr"] .sidebar.open{transform:translateX(0)}
   .scrim.open{display:block}
   .stage{padding:18px 16px 80px}
   .cover-card{padding:30px 22px}
