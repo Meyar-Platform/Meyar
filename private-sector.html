@@ -202,6 +202,19 @@ button{font-family:inherit}
 .view{display:none; width:100%; max-width:min(1560px, 100%); margin:0 auto}
 .view.is-active{display:block}
 
+/* ---------- page footer (contact) ---------- */
+.page-foot{
+  width:100%; max-width:min(1560px, 100%); margin:44px auto 0;
+  border-top:1px solid var(--border); padding:20px 12px 6px;
+  text-align:center; font-size:13px; color:var(--ink-muted); line-height:1.9;
+}
+.page-foot a{
+  color:var(--primary); font-weight:500; text-decoration:none;
+  border-bottom:1px solid var(--gold-on-primary); padding-bottom:2px;
+  overflow-wrap:anywhere;
+}
+.page-foot a:hover{color:var(--gold-on-primary)}
+
 /* ---------- cover ---------- */
 .cover-card{
   background:linear-gradient(135deg, var(--primary) 0%, var(--grad-2) 58%, var(--grad-3) 100%);
@@ -446,10 +459,6 @@ html[dir="ltr"] .wd-item .wd-by{direction:ltr}
     transform:translateX(100%); transition:transform .22s; box-shadow:var(--shadow-2);
   }
   .sidebar.open{transform:translateX(0)}
-  /* translateX is physical, not logical: LTR anchors the drawer to the left edge,
-     so it must slide out to -100% instead of +100% */
-  html[dir="ltr"] .sidebar{transform:translateX(-100%)}
-  html[dir="ltr"] .sidebar.open{transform:translateX(0)}
   .scrim.open{display:block}
   .stage{padding:18px 16px 80px}
   .cover-card{padding:30px 22px}
@@ -519,7 +528,7 @@ html[dir="ltr"] .wd-item .wd-by{direction:ltr}
     <nav class="side-list" id="sideList"></nav>
   </aside>
 
-  <main class="stage" id="stage"></main>
+  <main class="stage" id="stage"><footer class="page-foot" id="pageFoot"><a href="mailto:info@meyarplatform.com">info@meyarplatform.com</a></footer></main>
 </div>
 <div class="scrim" id="scrim"></div>
 
@@ -1721,7 +1730,8 @@ let current = 'cover';
 function ensureView(id){
   if (cache[id]) return cache[id];
   const v = id === 'cover' ? buildCover() : id === 'withdrawn' ? buildWithdrawn() : buildStandard(BY_ID[id]);
-  cache[id] = v; stage.appendChild(v);
+  /* insert before the page footer so it always renders last in the stage */
+  cache[id] = v; stage.insertBefore(v, document.getElementById('pageFoot'));
   return v;
 }
 function go(id, fromHash){
@@ -1942,8 +1952,5 @@ if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
   });
 }
 </script>
-
-<!-- Cloudflare Web Analytics — deferred module; fails silently offline -->
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0dd1af3680924dc9ac9babc0431706f3"}'></script>
 </body>
 </html>
