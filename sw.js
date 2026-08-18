@@ -1,4 +1,4 @@
-const CACHE = 'ifrs-guide-v34';
+const CACHE = 'ifrs-guide-v36';
 
 const ASSETS = [
   './',
@@ -55,13 +55,15 @@ self.addEventListener('fetch', function (e) {
         }),
         new Promise(function (resolve) {
           setTimeout(function () {
-            resolve(caches.match(req).then(function (hit) {
+            resolve(caches.match(req, { ignoreSearch: true }).then(function (hit) {
               return hit || caches.match('./index.html');
             }));
           }, 3000);
         })
       ]).catch(function () {
-        return caches.match(req).then(function (hit) {
+        // the installed app launches with ?source=pwa while the precached page
+        // has no query, so navigation lookups must ignore the query string
+        return caches.match(req, { ignoreSearch: true }).then(function (hit) {
           return hit || caches.match('./index.html');
         });
       })
