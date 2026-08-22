@@ -1,4 +1,4 @@
-const CACHE = 'ifrs-guide-v36';
+const CACHE = 'ifrs-guide-v37';
 
 const ASSETS = [
   './',
