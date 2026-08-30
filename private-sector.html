@@ -210,6 +210,7 @@ button{font-family:inherit}
   border-top:1px solid var(--border); padding:20px 12px 6px;
   text-align:center; font-size:13px; color:var(--ink-muted); line-height:1.9;
 }
+.page-foot .disclaimer{margin:0 auto 10px; max-width:70ch; font-size:12.5px; color:var(--ink-muted)}
 .page-foot a{
   color:var(--primary); font-weight:500; text-decoration:none;
   border-bottom:1px solid var(--gold-on-primary); padding-bottom:2px;
@@ -542,7 +543,7 @@ html[dir="ltr"] .wd-item .wd-by{direction:ltr}
     <nav class="side-list" id="sideList"></nav>
   </aside>
 
-  <main class="stage" id="stage"><footer class="page-foot" id="pageFoot"><a href="mailto:info@meyarplatform.com">info@meyarplatform.com</a></footer></main>
+  <main class="stage" id="stage"><footer class="page-foot" id="pageFoot"><p class="disclaimer" id="footDisc"></p><a href="mailto:info@meyarplatform.com">info@meyarplatform.com</a></footer></main>
 </div>
 <div class="scrim" id="scrim"></div>
 
@@ -603,7 +604,7 @@ const UI = {
   ar: {brandTitle:'منصة معيار للقطاع الخاص', brandSub:'مرجع المحاسب الشامل',
        frameworkLabel:'IFRS الكامل:',
        frameworkText:'معايير IAS/IFRS كما تصدرها IASB وتفسيرات IFRIC/SIC ذات الصلة',
-       standards:'المعايير', inText:'في النص', searchPh:'ابحث عن معيار…', clearSearch:'مسح البحث', all:'الكل',
+       standards:'المعايير', inText:'في النص', disclaimer:'هذا المحتوى استرشادي فقط ولا يُغني عن الرجوع إلى النصوص الرسمية للمعايير والأنظمة.', searchPh:'ابحث عن معيار…', clearSearch:'مسح البحث', all:'الكل',
        shown:'عدد المعايير المعروضة: ', noResults:'لا توجد نتائج مطابقة',
        groupIFRS:'معايير IFRS', groupIAS:'معايير IAS', reference:'مرجع',
        withdrawnNav:'معايير مسحوبة', withdrawnChip:'مسحوبة', withdrawnTitle:'معايير مسحوبة',
@@ -621,7 +622,7 @@ const UI = {
   en: {brandTitle:'Meyar Platform — Private Sector', brandSub:'The Accountant’s Complete Reference',
        frameworkLabel:'Full IFRS:',
        frameworkText:'IAS/IFRS Accounting Standards as issued by the IASB and related IFRIC/SIC Interpretations',
-       standards:'Standards', inText:'in text', searchPh:'Search for a standard…', clearSearch:'Clear search', all:'All',
+       standards:'Standards', inText:'in text', disclaimer:'This content is for guidance only and is not a substitute for referring to the official texts of the standards and regulations.', searchPh:'Search for a standard…', clearSearch:'Clear search', all:'All',
        shown:'Standards shown: ', noResults:'No matching results',
        groupIFRS:'IFRS Standards', groupIAS:'IAS Standards', reference:'Reference',
        withdrawnNav:'Withdrawn standards', withdrawnChip:'Withdrawn', withdrawnTitle:'Withdrawn standards',
@@ -2694,6 +2695,7 @@ function applyChrome(){
   hb.href = 'index.html' + (LANG === 'en' ? '?lang=en' : '');
   hb.title = t('home');
   hb.setAttribute('aria-label', t('home'));
+  document.getElementById('footDisc').textContent = t('disclaimer');
   qInput.placeholder = t('searchPh');
   document.getElementById('qClear').setAttribute('aria-label', t('clearSearch'));
   document.querySelector('#filters button[data-f="all"]').textContent = t('all');
