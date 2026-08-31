@@ -119,6 +119,11 @@ button{font-family:inherit}
   border-radius:999px; padding:4px 13px; font-size:12.5px; white-space:nowrap;
 }
 .count-chip b{font-weight:700}
+.cf-chip{
+  color:var(--btn-ink); font-family:inherit; font-weight:700; cursor:pointer;
+  border-color:var(--gold-on-primary); transition:.13s;
+}
+.cf-chip:hover{background:var(--btn-ink-22)}
 .drawer-btn{
   display:none; background:var(--btn-ink-14); border:1px solid var(--btn-ink-25);
   color:var(--btn-ink); border-radius:12px; padding:8px 13px; font-size:14px; cursor:pointer;
@@ -2470,12 +2475,15 @@ function buildSidebar(){
     const items = STD.filter(s => s.type === type).map(navItem).join('');
     return '<div class="nav-group" data-group="' + type + '"><h4>' + esc(title) + '</h4>' + items + '</div>';
   };
-  const extra = '<div class="nav-group" data-group="other"><h4>' + esc(t('reference')) + '</h4>'
+  /* the Framework underlies every Standard, so it leads the list rather than
+     sitting in the reference group at the foot of it */
+  const lead = '<div class="nav-group" data-group="framework">'
     + '<button class="nav-item" data-goto="framework"><span class="nid">' + esc(t('frameworkChip')) + '</span>'
-    + '<span class="nname">' + esc(t('frameworkNav')) + '</span></button>'
+    + '<span class="nname">' + esc(t('frameworkNav')) + '</span></button></div>';
+  const extra = '<div class="nav-group" data-group="other"><h4>' + esc(t('reference')) + '</h4>'
     + '<button class="nav-item" data-goto="withdrawn"><span class="nid">' + esc(t('withdrawnChip')) + '</span>'
     + '<span class="nname">' + esc(t('withdrawnNav')) + '</span></button></div>';
-  document.getElementById('sideList').innerHTML = g('IFRS', t('groupIFRS')) + g('IAS', t('groupIAS')) + extra
+  document.getElementById('sideList').innerHTML = lead + g('IFRS', t('groupIFRS')) + g('IAS', t('groupIAS')) + extra
     + '<div class="side-empty" id="sideEmpty" style="display:none">' + esc(t('noResults')) + '</div>';
 }
 
@@ -2734,7 +2742,8 @@ function applyChrome(){
   document.querySelector('.brand b').textContent = t('brandTitle');
   document.querySelector('.brand span').textContent = t('brandSub');
   document.getElementById('counts').innerHTML =
-      '<span class="count-chip"><b>' + esc(c.effective) + '</b> ' + esc(t('effective')) + '</span>'
+      '<button class="count-chip cf-chip" data-goto="framework">' + esc(t('frameworkNav')) + '</button>'
+    + '<span class="count-chip"><b>' + esc(c.effective) + '</b> ' + esc(t('effective')) + '</span>'
     + '<span class="count-chip"><b>' + esc(c.upcoming) + '</b> ' + esc(t('upcoming')) + '</span>'
     + '<span class="count-chip"><b>' + esc(c.withdrawn_reference) + '</b> ' + esc(t('withdrawn')) + '</span>';
   document.getElementById('drawerBtn').innerHTML = '☰ <span class="dlabel">' + esc(t('standards')) + '</span>';
@@ -2784,6 +2793,10 @@ document.getElementById('brandHome').addEventListener('keydown', e => { if (e.ke
 
 buildSidebar();
 document.getElementById('sideList').addEventListener('click', e => {
+  const b = e.target.closest('[data-goto]'); if (b) go(b.dataset.goto);
+});
+/* the topbar chip sits outside the sidebar, so it needs its own handler */
+document.getElementById('counts').addEventListener('click', e => {
   const b = e.target.closest('[data-goto]'); if (b) go(b.dataset.goto);
 });
 document.getElementById('filters').addEventListener('click', e => {
