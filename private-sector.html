@@ -216,11 +216,17 @@ button{font-family:inherit}
 /* the entry notice blocks the page until "Agree"; session-scoped, never printed */
 .notice-back{
   position:fixed; inset:0; z-index:120; background:var(--overlay-soft);
-  display:flex; align-items:center; justify-content:center; padding:18px;
+  display:flex; padding:18px; overflow-y:auto;
 }
+/* the hidden attribute must beat the display:flex above, or Agree closes the
+   dialog in the DOM while it stays painted on screen */
+.notice-back[hidden]{display:none}
 .notice-box{
   background:var(--surface); border:1.5px solid var(--primary); border-radius:16px;
-  max-width:680px; width:100%; max-height:86vh; display:flex; flex-direction:column;
+  max-width:680px; width:100%; margin:auto; display:flex; flex-direction:column;
+  /* dvh tracks the height that is really visible on phones, where the browser
+     bars make 100vh taller than the screen and push the button out of reach */
+  max-height:86vh; max-height:calc(100dvh - 36px);
   box-shadow:var(--shadow-2);
 }
 .notice-body{padding:22px 24px 6px; overflow-y:auto; font-size:13.5px; line-height:2.05; color:var(--ink)}
@@ -229,7 +235,10 @@ button{font-family:inherit}
 .notice-body p{margin:0 0 8px}
 .notice-body ul{margin:0 0 8px; padding-inline-start:20px}
 .notice-body li{margin-bottom:3px}
-.notice-actions{padding:12px 24px 18px; text-align:center; border-top:1px solid var(--border)}
+.notice-actions{
+  padding:12px 24px 18px; padding-bottom:calc(18px + env(safe-area-inset-bottom, 0px));
+  text-align:center; border-top:1px solid var(--border);
+}
 .notice-agree{
   background:var(--primary); color:var(--btn-ink); border:none; border-radius:12px;
   padding:10px 44px; font-size:15px; font-weight:700; font-family:inherit; cursor:pointer;
