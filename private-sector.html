@@ -255,6 +255,10 @@ button{font-family:inherit}
 .std-chip:hover{border-color:var(--primary); transform:translateY(-2px); box-shadow:var(--shadow-2)}
 .std-chip .cid{font-size:12px; font-weight:700; color:var(--primary); letter-spacing:.3px}
 .std-chip .cname{font-size:13.5px; color:var(--ink); margin-top:3px; line-height:1.6}
+.cf-cover{
+  display:block; width:100%; border-inline-start:4px solid var(--gold-on-primary);
+}
+.cf-cover .cname{font-weight:700; font-size:14.5px; color:var(--heading)}
 
 /* ---------- standard header ---------- */
 .std-head{
@@ -2455,7 +2459,11 @@ function buildCover(){
     +   '</div>'
     +   (has(m.as_of_date) ? '<div class="cover-asof">' + esc(t('updatedAs')) + '<span dir="ltr">' + esc(m.as_of_date) + '</span></div>' : '')
     + '</div>'
-    + '<div class="cover-groups">' + group('IFRS', t('groupIFRS')) + group('IAS', t('groupIAS')) + '</div>';
+    + '<div class="cover-groups">'
+    +   '<button class="std-chip cf-cover" data-goto="framework">'
+    +     '<div class="cid">' + esc(t('frameworkChip')) + '</div>'
+    +     '<div class="cname">' + esc(t('frameworkNav')) + '</div></button>'
+    +   group('IFRS', t('groupIFRS')) + group('IAS', t('groupIAS')) + '</div>';
   view.addEventListener('click', e => {
     const b = e.target.closest('[data-goto]'); if (b) go(b.dataset.goto);
   });
