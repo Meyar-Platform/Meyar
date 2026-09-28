@@ -66,7 +66,7 @@ const norm = s => (s || '').replace(/\s+/g, ' ').trim();
         };
       });
       const ok = r.paused.length === 2 && r.paused.every(c => c.tag === 'DIV' && !c.href && c.dis === 'true' && c.badge.includes('متوقفة مؤقتاً') && c.badge.includes('Temporarily paused') && +c.op < 1)
-        && r.door === 'التحضير لزمالة SOCPA' && r.doorEn === 'SOCPA fellowship preparation' && /630/.test(r.counters);
+        && r.door === 'التحضير لزمالة SOCPA' && r.doorEn === 'SOCPA fellowship preparation' && r.counters.includes(String(OUTL.totals.visible));
       rec('A3', 'بطاقتا القطاعين معطلتان والباب الثالث يعمل', ok, r);
       await p.click('a.h-card[href="fellowship.html"]'); await p.waitForLoadState();
       rec('A3b', 'الباب الثالث يفتح fellowship.html', p.url().endsWith('fellowship.html'), p.url());

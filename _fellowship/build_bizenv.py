@@ -25,6 +25,10 @@ from common import (DATA_OUT, INPUTS, OUT, SRC, SW_REGISTER, TEMPLATES, brand_ba
 # fix_note, owner_question, dup_with, note, fixed, axis, kind, ...) stays internal.
 PUBLIC_EXAM_FIELDS = ("q", "o", "a", "e", "why")
 
+# Owner decision (28 Sep 2026): drop every item whose explanation says the option or
+# data "ورد / غير وارد في المصدر". Removed from the build only; the input file is untouched.
+OWNER_EXCLUDED = ["P1-14", "P1-42", "P1-44", "P1-45", "P2-28", "P2-51"]
+
 SUMMARIES = [
     # Reserved, content not provided yet. Never invent it.
     OrderedDict([("id", "S-FA-FORMULAS"), ("chapter", None), ("title", "ملخص معادلات التحليل المالي"),
@@ -151,6 +155,7 @@ def build():
     # ---- questions ----
     out_q = []
     excluded = []
+    owner_dropped = []
     for q in bank:
         t = topics[q["t"]]
         assert len(q["o"]) == 4 and 0 <= q["a"] < 4
@@ -159,6 +164,9 @@ def build():
     for q in exams:
         if q.get("needs_owner") is True:
             excluded.append(q["id"])
+            continue
+        if q["id"] in OWNER_EXCLUDED:
+            owner_dropped.append(q["id"])
             continue
         assert q["chapter"] in chapters and q["section"] in chapters[q["chapter"]]["sections"], q["id"]
         rec = OrderedDict([("id", q["id"]), ("src", "exam"), ("ch", q["chapter"]), ("sec", q["section"]), ("t", None)])
@@ -176,6 +184,8 @@ def build():
             rec["dup"] = q["duplicate_of"]
         out_q.append(rec)
     report["excluded_needs_owner"] = excluded
+    report["excluded_by_owner"] = owner_dropped
+    assert sorted(owner_dropped) == sorted(OWNER_EXCLUDED), owner_dropped
 
     # ---- outline with derived counters ----
     vis_by_ch = Counter(q["ch"] for q in out_q)
@@ -227,6 +237,7 @@ def build():
         ("bank", sum(1 for q in out_q if q["src"] == "bank")),
         ("exam", sum(1 for q in out_q if q["src"] == "exam")),
         ("excluded", len(excluded)),
+        ("excluded_by_owner", len(owner_dropped)),
     ])
     outline = OrderedDict([("section", "business-environment"), ("title", S["title"]), ("parts", parts), ("totals", totals)])
 

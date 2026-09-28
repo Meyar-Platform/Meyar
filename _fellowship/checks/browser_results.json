@@ -22,7 +22,7 @@
    ],
    "door": "التحضير لزمالة SOCPA",
    "doorEn": "SOCPA fellowship preparation",
-   "counters": "مادة واحدة · 630 سؤالاً",
+   "counters": "مادة واحدة · 624 سؤالاً",
    "noindex": false
   }
  },
@@ -79,7 +79,7 @@
     {
      "href": "business-environment.html",
      "t": "بيئة الأعمال",
-     "c": "3 أجزاء · 32 فصلاً · 630 سؤالاً"
+     "c": "3 أجزاء · 32 فصلاً · 624 سؤالاً"
     }
    ],
    "hasL": false,
@@ -96,13 +96,13 @@
     {
      "href": "business-environment.html",
      "t": "بيئة الأعمال",
-     "c": "3 أجزاء · 32 فصلاً · 630 سؤالاً"
+     "c": "3 أجزاء · 32 فصلاً · 624 سؤالاً"
     }
    ],
    "counters": {
     "parts": 3,
     "chapters": 32,
-    "questions": 630
+    "questions": 624
    }
   }
  },
@@ -135,9 +135,9 @@
   "pass": true,
   "detail": {
    "v": 1,
-   "subject_id": "e87fcff7-241e-4a7e-b31b-37572680c50f",
+   "subject_id": "12044b81-a389-42cc-b02e-a25b70d7f1a8",
    "email": "tester@example.com",
-   "ts": "2026-09-28T10:32:08.725Z",
+   "ts": "2026-09-28T11:19:55.434Z",
    "section": "business-environment",
    "entry": "business-environment",
    "consent": true,
@@ -149,7 +149,7 @@
   "name": "التقدم يُحفظ ويُستعاد تحت bizenv-progress-<subject_id>",
   "pass": true,
   "detail": {
-   "key": "bizenv-progress-e87fcff7-241e-4a7e-b31b-37572680c50f",
+   "key": "bizenv-progress-12044b81-a389-42cc-b02e-a25b70d7f1a8",
    "answered": 2,
    "idx": 1,
    "pos": "السؤال 2 من 6"
@@ -176,23 +176,23 @@
   "pass": true,
   "detail": {
    "orders": [
-    "0123",
-    "2103",
-    "3012",
-    "1230",
-    "1023",
+    "0132",
+    "0231",
     "1320",
-    "1230",
-    "3210"
+    "2103",
+    "0213",
+    "3210",
+    "2130",
+    "2301"
    ],
    "judged": [
     {
-     "pos": 3,
+     "pos": 2,
      "ok": true,
      "msg": "صحيح."
     },
     {
-     "pos": 1,
+     "pos": 3,
      "ok": true,
      "msg": "صحيح."
     }
@@ -594,7 +594,7 @@
      "flip": true,
      "quiz": {
       "done": true,
-      "text": "5/20",
+      "text": "7/20",
       "answered": 20
      },
      "dock": {

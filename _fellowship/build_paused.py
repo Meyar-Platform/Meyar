@@ -91,6 +91,22 @@ def paused_html(t, title):
 """
 
 
+def notfound_html(t):
+    return head("الصفحة غير موجودة | منصة معيار", t, PAUSED_CSS, noindex=True) + """<body>
+<div class="m-wrap">
+""" + brand_bar() + """
+<main class="p-box">
+  <h1>الصفحة غير موجودة</h1>
+  <p>الرابط الذي فتحته غير موجود في المنصة.</p>
+  <a class="m-btn" href="/index.html">العودة إلى الصفحة الرئيسية</a>
+</main>
+""" + footer() + """
+</div>
+</body>
+</html>
+"""
+
+
 def prepare():
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
@@ -105,6 +121,14 @@ def prepare():
     write(os.path.join(OUT, "index.html"), home_html(t))
     write(os.path.join(OUT, "private-sector.html"), paused_html(t, "القطاع الخاص"))
     write(os.path.join(OUT, "public-sector.html"), paused_html(t, "القطاع العام"))
+    # 404 is served for any path, so its asset links must be absolute
+    nf = notfound_html(t).replace('url("fonts/', 'url("/fonts/').replace('"assets/', '"/assets/').replace('"icons/', '"/icons/').replace('href="index.html"', 'href="/index.html"').replace('"manifest.webmanifest"', '"/manifest.webmanifest"')
+    write(os.path.join(OUT, "404.html"), nf)
+    # installed app opens on the new home instead of the paused private-sector page (owner decision)
+    mpath = os.path.join(OUT, "manifest.webmanifest")
+    man = read(mpath)
+    assert '"start_url": "./private-sector.html?source=pwa"' in man
+    write(mpath, man.replace('"start_url": "./private-sector.html?source=pwa"', '"start_url": "./index.html?source=pwa"'))
     return {"base_files": copied}
 
 

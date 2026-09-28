@@ -68,8 +68,9 @@ rec("5", "لا سؤال بلا أربعة خيارات داخل محرك الا�
 # ---- 6 needs_owner excluded ----
 no_ids = {q["id"] for q in ex if q.get("needs_owner") is True}
 shown = {q["id"] for q in Q}
-cnt_ok = O["totals"]["visible"] == len(Q) == 647 - len(no_ids)
-rec("6", "17 سؤالاً needs_owner خارج الاختبار والبطاقات والعدّادات", len(no_ids) == 17 and not (no_ids & shown) and cnt_ok,
+owner_ids = {"P1-14", "P1-42", "P1-44", "P1-45", "P2-28", "P2-51"}
+cnt_ok = O["totals"]["visible"] == len(Q) == 647 - len(no_ids) - len(owner_ids) and not (owner_ids & shown)
+rec("6", "17 سؤالاً needs_owner و6 أسئلة حذفتها المالكة خارج الاختبار والبطاقات والعدّادات", len(no_ids) == 17 and not (no_ids & shown) and cnt_ok,
     {"needs_owner": sorted(no_ids), "visible": O["totals"]["visible"]})
 
 # ---- 7 empty chapters in data ----
@@ -79,7 +80,7 @@ rec("7s", "الفصول الفارغة الأربعة في البيانات بع
 
 # ---- D7 MF.C13 counter ----
 c13 = [c for p in O["parts"] for c in p["chapters"] if c["id"] == "MF.C13"][0]
-rec("D7", "عدّاد MF.C13 من ملفات البيانات وحدها (4 أسئلة دورات، بلا أسئلة الرحلتين وبطاقاتهما)", c13["counts"]["visible"] == 4 and c13["counts"]["exam"] == 4 and c13["summary"]["href"] == "capital-structure.html", c13["counts"])
+rec("D7", "عدّاد MF.C13 من ملفات البيانات وحدها (أسئلة الدورات وحدها، بلا أسئلة الرحلتين وبطاقاتهما)", c13["counts"]["visible"] == c13["counts"]["exam"] == sum(1 for q in Q if q["ch"] == "MF.C13") and c13["summary"]["href"] == "capital-structure.html", c13["counts"])
 
 # ---- summaries ----
 rec("S", "الملخصات: S-FA-FORMULAS فارغ من نوع text، و S-MF-C13 صفحة", SUM[0]["id"] == "S-FA-FORMULAS" and SUM[0]["kind"] == "text" and SUM[0]["body"] == ""
@@ -102,6 +103,13 @@ need = ["./fellowship.html", "./business-environment.html", "./capital-structure
 num = lambda s: int(re.search(r"(\d+)$", s).group(1))  # noqa: E731
 rec("A5", "CACHE مرفوع إصداراً واحداً، و ASSETS تشمل الصفحات الجديدة وبياناتها وصفحتي الإيقاف",
     num(new) == num(live) + 1 and all("'%s'" % a in sw for a in need), {"live": live, "new": new})
+
+# ---- 404 and manifest (owner decisions) ----
+nf = read(os.path.join(OUT, "404.html"))
+man = load_json(os.path.join(OUT, "manifest.webmanifest"))
+rec("NF", "صفحة 404 تقول \"الصفحة غير موجودة\" بروابط مطلقة، والتطبيق المثبّت يفتح على الرئيسية",
+    "الصفحة غير موجودة" in nf and "الوصول مقيد" not in nf and 'url("/fonts/tajawal-arabic-500-normal.woff2")' in nf and man["start_url"] == "./index.html?source=pwa",
+    {"start_url": man["start_url"]})
 
 # ---- sitemap ----
 sm = read(os.path.join(OUT, "sitemap.xml"))
@@ -128,8 +136,7 @@ rec("14", "لا رقم صفحة ولا إحالة لملف مصدر ولا حق�
 # informational: the word "المصدر" used in displayed explanations to mean the original exam paper
 word_src = sorted({q["id"] for q in Q for f in ("e",) if re.search(r"(ورد|وارد|واردة)\s+في\s+المصدر", q[f])}
                   | {q["id"] for q in Q if any(re.search(r"(ورد|وارد|واردة)\s+في\s+المصدر", w) for w in q.get("why") or [])})
-results.append({"id": "14i", "name": "بنود تعليلها يقول \"ورد في المصدر\" بمعنى ورقة الاختبار الأصلية (للقرار)", "pass": True, "detail": word_src, "info": True})
-print("INFO 14i", word_src)
+rec("14i", "لا بند معروض يقول تعليله \"ورد في المصدر\" (حذفتها المالكة)", not word_src, word_src)
 
 # ---- 15 counters derived, no hand-written count in templates ----
 tpl = "".join(read(os.path.join(FH, "templates", f)) for f in os.listdir(os.path.join(FH, "templates")))
