@@ -5,7 +5,7 @@
   "lang": "ar",
   "dir": "rtl",
   "description": "مرجع المحاسب الشامل لمعايير IFRS و IAS للقطاع الخاص: النطاق والتعريفات والاعتراف والقياس وطرق الحساب والإفصاحات وتواريخ السريان.",
-  "start_url": "./private-sector.html?source=pwa",
+  "start_url": "./index.html?source=pwa",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",

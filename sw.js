@@ -1,4 +1,4 @@
-const CACHE = 'ifrs-guide-v46';
+const CACHE = 'ifrs-guide-v47';
 
 const ASSETS = [
   './',
@@ -16,7 +16,17 @@ const ASSETS = [
   './fonts/tajawal-arabic-700-normal.woff2',
   './fonts/tajawal-latin-400-normal.woff2',
   './fonts/tajawal-latin-500-normal.woff2',
-  './fonts/tajawal-latin-700-normal.woff2'
+  './fonts/tajawal-latin-700-normal.woff2',
+  './public-sector.html',
+  './fellowship.html',
+  './business-environment.html',
+  './capital-structure.html',
+  './access.js',
+  './data/fellowship-subjects.json',
+  './data/bizenv-outline.json',
+  './data/bizenv-questions.json',
+  './data/bizenv-summaries.json',
+  './assets/logo-white.svg'
 ];
 
 self.addEventListener('install', function (e) {

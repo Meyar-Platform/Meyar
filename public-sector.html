@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
 <meta name="theme-color" content="#364C63">
-<title>منصة معيار</title>
+<title>القطاع العام | منصة معيار</title>
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -73,47 +74,22 @@ a{color:var(--primary)}
 @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
 
 
-.h-hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:28px 0 18px}
-.h-hero img{width:64px;height:64px}
-.h-hero .ar{font-size:30px;font-weight:700;color:var(--primary);line-height:1.3}
-.h-hero .en{font-size:15px;color:var(--muted);direction:ltr}
-.h-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin-top:8px}
-.h-card{position:relative;display:flex;flex-direction:column;gap:4px;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:18px 18px 16px;text-decoration:none;color:var(--ink);min-height:132px}
-a.h-card:hover{border-color:var(--primary)}
-a.h-card{border-color:var(--primary)}
-.h-card .t{font-size:19px;font-weight:700;color:var(--heading);line-height:1.45}
-.h-card .e{font-size:13.5px;color:var(--muted);direction:ltr;text-align:right}
-.h-card .c{margin-top:auto;padding-top:10px;font-size:14px;color:var(--primary);font-weight:700}
-.h-card.paused{opacity:.55;border-style:dashed;cursor:default}
-.h-card.paused .stats{display:none}
-.h-badge{align-self:flex-start;display:inline-flex;gap:6px;flex-wrap:wrap;font-size:12px;font-weight:700;color:var(--muted);background:var(--line);border-radius:999px;padding:2px 10px;margin-bottom:6px}
-.h-badge .en{direction:ltr}
+.p-box{background:var(--card);border:1.5px solid var(--primary);border-radius:16px;max-width:520px;margin:40px auto 0;padding:36px 26px;text-align:center}
+.p-box h1{margin:0 0 10px;font-size:25px;color:var(--heading)}
+.p-box p{margin:0 0 20px;color:var(--muted);line-height:1.9}
 
 </style>
 </head>
 <body>
 <div class="m-wrap">
-<header class="h-hero">
-  <picture><source srcset="assets/logo-white.svg" media="(prefers-color-scheme: dark)"><img src="assets/logo.svg" alt="" width="64" height="64"></picture>
-  <div class="ar">منصة معيار</div>
-  <div class="en" lang="en">Meyar Platform</div>
+<header class="m-top">
+  <a class="m-brand" href="index.html"><picture><source srcset="assets/logo-white.svg" media="(prefers-color-scheme: dark)"><img src="assets/logo.svg" alt="" width="30" height="30"></picture><span>منصة معيار</span></a>
+  
 </header>
-<main class="h-grid">
-  <div class="h-card paused" role="link" aria-disabled="true">
-    <span class="h-badge"><span>متوقفة مؤقتاً</span><span class="en" lang="en">Temporarily paused</span></span>
-    <span class="t">القطاع الخاص</span>
-    <span class="e" lang="en">Private sector</span>
-  </div>
-  <div class="h-card paused" role="link" aria-disabled="true">
-    <span class="h-badge"><span>متوقفة مؤقتاً</span><span class="en" lang="en">Temporarily paused</span></span>
-    <span class="t">القطاع العام</span>
-    <span class="e" lang="en">Public sector</span>
-  </div>
-  <a class="h-card" href="fellowship.html" id="doorFellowship">
-    <span class="t">التحضير لزمالة SOCPA</span>
-    <span class="e" lang="en">SOCPA fellowship preparation</span>
-    <span class="c" id="fellowshipCounters">مادة واحدة · 624 سؤالاً</span>
-  </a>
+<main class="p-box">
+  <h1>هذا القسم متوقف مؤقتاً</h1>
+  <p>نعمل على تحديثه، وسيعود للعمل قريباً.</p>
+  <a class="m-btn" href="index.html">العودة إلى الصفحة الرئيسية</a>
 </main>
 <footer class="m-foot">هذه المنصة عمل شخصي مستقل لا يمثل اي جهة رسمية او تعليمية، والمحتوى فيها اعد لأغراض التحضير الذاتي وقد يتضمن اخطاء او تبسيطا في الصياغة، فلا يعتمد عليه كمرجع نهائي ويرجع دائما الى المصادر المعتمدة.<strong>جميع الحقوق محفوظة لمنصة معيار</strong></footer>
 </div>
