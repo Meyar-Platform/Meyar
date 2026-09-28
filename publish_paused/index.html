@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#364C63">
+<title>منصة معيار</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+@font-face{font-family:"Tajawal Latin";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/tajawal-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Tajawal Latin";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/tajawal-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Tajawal Latin";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/tajawal-latin-700-normal.woff2") format("woff2")}
+@font-face{font-family:"Tajawal Arabic";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/tajawal-arabic-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Tajawal Arabic";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/tajawal-arabic-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Tajawal Arabic";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/tajawal-arabic-700-normal.woff2") format("woff2")}
+:root{
+  --primary:#364C63; --gold:#F0AE14; --paper:#EDF1F5;
+  --heading:#1C2733; --line:#E3E8EE;
+  --card:#FFFFFF; --ink:#1C2733; --muted:#56636F; --on-primary:#FFFFFF;
+  --primary-soft:#E4EAF1; --gold-soft:#FDF1D2;
+  --ok:#2F7D5B; --ok-soft:#DDEFE5; --bad:#B4433A; --bad-soft:#F8E6E3;
+  --m-font:"Tajawal Latin","Tajawal Arabic","Segoe UI",Tahoma,Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --primary:#A9C0D8; --paper:#12181F; --heading:#E8EDF2; --line:#2C3744;
+    --card:#1A222C; --ink:#E8EDF2; --muted:#9AA7B4; --on-primary:#12181F;
+    --primary-soft:#22303F; --gold-soft:#3A3121;
+    --ok:#6FC29A; --ok-soft:#1F3A2E; --bad:#E58A8A; --bad-soft:#442222;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --primary:#A9C0D8; --paper:#12181F; --heading:#E8EDF2; --line:#2C3744;
+  --card:#1A222C; --ink:#E8EDF2; --muted:#9AA7B4; --on-primary:#12181F;
+  --primary-soft:#22303F; --gold-soft:#3A3121;
+  --ok:#6FC29A; --ok-soft:#1F3A2E; --bad:#E58A8A; --bad-soft:#442222;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--m-font);font-weight:500;font-size:17px;line-height:1.75;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:hidden}
+h1,h2,h3,h4,strong,b,button{font-weight:700}
+a{color:var(--primary)}
+[hidden]{display:none!important}
+.m-wrap{max-width:760px;margin:0 auto;padding:0 16px 40px}
+.m-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0 10px}
+.m-brand{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--primary);font-weight:700;font-size:19px}
+.m-brand img{width:30px;height:30px;display:block}
+.m-crumb{font-size:14px;color:var(--muted);text-decoration:none}
+.m-crumb:hover{color:var(--primary)}
+.m-title{font-size:clamp(24px,5vw,32px);line-height:1.35;margin:8px 0 18px;color:var(--heading)}
+.m-foot{margin-top:32px;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;font-size:13px;line-height:1.85;color:var(--muted);background:var(--card)}
+.m-foot strong{display:block;margin-top:6px;color:var(--ink);font-weight:500}
+.m-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:none;border-radius:10px;padding:11px 16px;font:inherit;font-weight:700;font-size:16px;cursor:pointer;background:var(--primary);color:var(--on-primary);text-decoration:none;min-height:44px}
+.m-btn.m-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.m-btn:disabled{opacity:.45;cursor:default}
+.m-btn:focus-visible,.m-card:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+/* gate */
+.m-gate{position:fixed;inset:0;z-index:100;background:rgba(18,24,31,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+.m-gate-box{background:var(--card);color:var(--ink);border:1.5px solid var(--primary);border-radius:16px;max-width:440px;width:100%;padding:24px 20px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.m-gate-box h2{margin:0 0 8px;font-size:20px;color:var(--heading)}
+.m-gate-box p{margin:0 0 14px;font-size:15px;color:var(--muted);line-height:1.8}
+.m-gate-row{display:flex;gap:8px;flex-wrap:wrap}
+.m-gate-row input{flex:1 1 200px;min-width:0;font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);direction:ltr;text-align:left;min-height:44px}
+.m-gate-row input:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.m-gate-err{color:var(--bad);font-size:14px;min-height:1.6em;margin-top:6px}
+.m-gate-free{font-size:14px;margin-top:10px;color:var(--muted)}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+
+
+.h-hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:28px 0 18px}
+.h-hero img{width:64px;height:64px}
+.h-hero .ar{font-size:30px;font-weight:700;color:var(--primary);line-height:1.3}
+.h-hero .en{font-size:15px;color:var(--muted);direction:ltr}
+.h-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin-top:8px}
+.h-card{position:relative;display:flex;flex-direction:column;gap:4px;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:18px 18px 16px;text-decoration:none;color:var(--ink);min-height:132px}
+a.h-card:hover{border-color:var(--primary)}
+a.h-card{border-color:var(--primary)}
+.h-card .t{font-size:19px;font-weight:700;color:var(--heading);line-height:1.45}
+.h-card .e{font-size:13.5px;color:var(--muted);direction:ltr;text-align:right}
+.h-card .c{margin-top:auto;padding-top:10px;font-size:14px;color:var(--primary);font-weight:700}
+.h-card.paused{opacity:.55;border-style:dashed;cursor:default}
+.h-card.paused .stats{display:none}
+.h-badge{align-self:flex-start;display:inline-flex;gap:6px;flex-wrap:wrap;font-size:12px;font-weight:700;color:var(--muted);background:var(--line);border-radius:999px;padding:2px 10px;margin-bottom:6px}
+.h-badge .en{direction:ltr}
+
+</style>
+</head>
+<body>
+<div class="m-wrap">
+<header class="h-hero">
+  <picture><source srcset="assets/logo-white.svg" media="(prefers-color-scheme: dark)"><img src="assets/logo.svg" alt="" width="64" height="64"></picture>
+  <div class="ar">منصة معيار</div>
+  <div class="en" lang="en">Meyar Platform</div>
+</header>
+<main class="h-grid">
+  <div class="h-card paused" role="link" aria-disabled="true">
+    <span class="h-badge"><span>متوقفة مؤقتاً</span><span class="en" lang="en">Temporarily paused</span></span>
+    <span class="t">القطاع الخاص</span>
+    <span class="e" lang="en">Private sector</span>
+  </div>
+  <div class="h-card paused" role="link" aria-disabled="true">
+    <span class="h-badge"><span>متوقفة مؤقتاً</span><span class="en" lang="en">Temporarily paused</span></span>
+    <span class="t">القطاع العام</span>
+    <span class="e" lang="en">Public sector</span>
+  </div>
+  <a class="h-card" href="fellowship.html" id="doorFellowship">
+    <span class="t">التحضير لزمالة SOCPA</span>
+    <span class="e" lang="en">SOCPA fellowship preparation</span>
+    <span class="c" id="fellowshipCounters">مادة واحدة · 630 سؤالاً</span>
+  </a>
+</main>
+<footer class="m-foot">هذه المنصة عمل شخصي مستقل لا يمثل اي جهة رسمية او تعليمية، والمحتوى فيها اعد لأغراض التحضير الذاتي وقد يتضمن اخطاء او تبسيطا في الصياغة، فلا يعتمد عليه كمرجع نهائي ويرجع دائما الى المصادر المعتمدة.<strong>جميع الحقوق محفوظة لمنصة معيار</strong></footer>
+</div>
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
+</script>
+</body>
+</html>

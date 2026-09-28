@@ -1,0 +1,1192 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>رحلة مخاطر الاستثمار والرافعتين</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-ui:"Tajawal","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --bg:#F6F3EC; --surface:#FFFDF8; --surface-2:#EFEADF; --line:#DCD4C3; --paper:#FFFEFA;
+  --ink:#1F2733; --ink-2:#4E5766; --muted:#7A8290;
+  --gold:#9A7426; --gold-soft:#F1E7CF;
+  --sys:#3D6FA6; --sys-soft:#DCE7F4;
+  --uns:#B4494B; --uns-soft:#F3DCDC;
+  --dark:#2E3B4A;
+  --ok:#2F7D5B; --ok-soft:#DDEFE5; --bad:#A63D3D; --bad-soft:#F4DADA;
+  --shadow:0 1px 2px rgba(31,39,51,.06),0 6px 20px rgba(31,39,51,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#15181D; --surface:#1D2128; --surface-2:#252A33; --line:#343B47; --paper:#22272F;
+    --ink:#ECE7DC; --ink-2:#C2BBAE; --muted:#8A9099;
+    --gold:#D6B466; --gold-soft:#3A3121;
+    --sys:#7FA8DA; --sys-soft:#23344A;
+    --uns:#E08284; --uns-soft:#442527;
+    --dark:#D9DEE6;
+    --ok:#6FC29A; --ok-soft:#1F3A2E; --bad:#E58A8A; --bad-soft:#442222;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#15181D; --surface:#1D2128; --surface-2:#252A33; --line:#343B47; --paper:#22272F;
+  --ink:#ECE7DC; --ink-2:#C2BBAE; --muted:#8A9099;
+  --gold:#D6B466; --gold-soft:#3A3121;
+  --sys:#7FA8DA; --sys-soft:#23344A;
+  --uns:#E08284; --uns-soft:#442527;
+  --dark:#D9DEE6;
+  --ok:#6FC29A; --ok-soft:#1F3A2E; --bad:#E58A8A; --bad-soft:#442222;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-ui);font-weight:500;font-size:17px;line-height:1.75;direction:rtl}
+.wrap{width:100%;max-width:1400px;margin:0 auto;padding-inline:clamp(16px,3vw,40px);padding-block:0 120px}
+h1,h2,h3,h4,strong,th,.b{font-weight:700}
+h1{font-size:clamp(28px,3.4vw,40px);line-height:1.3;margin:0 0 6px;text-wrap:balance;color:var(--gold)}
+h2{font-size:clamp(22px,2.2vw,28px);line-height:1.35;margin:0 0 10px;text-wrap:balance}
+h3{font-size:18px;margin:0 0 6px}
+h4{font-size:16px;margin:0 0 4px}
+p{margin:0 0 12px}
+.lead{max-width:70ch}
+.header{padding-block:28px 10px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.header p{color:var(--ink-2)}
+.header .crowd{display:flex;flex-wrap:wrap;gap:4px;align-items:flex-end;max-width:100%;min-width:0}
+.header .crowd .ch{width:clamp(34px,9vw,46px)!important}
+@media (max-width:700px){.header{grid-template-columns:1fr}.header .crowd{justify-content:center}}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:8px;margin-inline:calc(-1 * clamp(16px,3vw,40px));padding-inline:clamp(16px,3vw,40px);display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:0 0 auto;font-size:14px;font-weight:700;color:var(--ink-2);text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 12px;white-space:nowrap}
+.nav a:hover,.nav a:focus-visible{border-color:var(--gold);color:var(--gold);outline:none}
+section{padding-block:32px 8px;scroll-margin-top:64px}
+.stop{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.stop .n{width:34px;height:34px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex:0 0 auto}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:relative}
+.stack{display:flex;flex-direction:column;gap:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.side{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:820px){.side{grid-template-columns:1fr}}
+.callout{border-radius:12px;padding:12px 14px;background:var(--gold-soft);border-right:4px solid var(--gold)}
+.callout.sys{background:var(--sys-soft);border-color:var(--sys)}
+.callout.uns{background:var(--uns-soft);border-color:var(--uns)}
+.callout.ok{background:var(--ok-soft);border-color:var(--ok)}
+.callout.bad{background:var(--bad-soft);border-color:var(--bad)}
+.tag{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--surface-2);color:var(--ink-2);vertical-align:middle}
+.tag.sy{background:var(--sys-soft);color:var(--sys)}
+.tag.un{background:var(--uns-soft);color:var(--uns)}
+.tag.gd{background:var(--gold-soft);color:var(--gold)}
+ol.steps{padding-inline-start:22px;margin:0}
+ol.steps li{margin-bottom:8px}
+ul.clean{padding-inline-start:20px;margin:0}
+ul.clean li{margin-bottom:6px}
+.num{font-variant-numeric:tabular-nums}
+.small{font-size:14px;color:var(--muted)}
+.split{height:38px;border-radius:10px;overflow:hidden;display:flex;border:1px solid var(--line)}
+.split .eq{background:var(--sys);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;transition:flex-basis .15s}
+.split .dt{background:var(--uns);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;transition:flex-basis .15s}
+input[type=range]{width:100%;accent-color:var(--gold);margin:10px 0 4px}
+label{font-weight:700;font-size:15px}
+input[type=number]{font:inherit;font-weight:500;width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=number]:focus-visible,button:focus-visible,.tabs button:focus-visible,.fc:focus-visible,.walker:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.det{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.det{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}}
+.det .card{padding:12px}
+.det .ic{font-size:26px;line-height:1;margin-bottom:6px;color:var(--gold)}
+.det h4{margin:0 0 4px;font-size:15.5px}
+.det p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.55}
+.theories{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:12px}
+.theory{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:start}
+@media (max-width:480px){.theory{grid-template-columns:1fr}.theory>.ch{width:70px}}
+.theory .who{font-size:13px;color:var(--muted)}
+.theory.sel{outline:2px solid var(--gold)}
+/* stage */
+.stage{position:relative;height:190px;background:linear-gradient(to top,var(--surface-2) 0 26%,transparent 26%);border:1px solid var(--line);border-radius:14px;overflow:hidden;direction:ltr;margin-top:10px}
+.stage .floor{position:absolute;left:0;right:0;bottom:26%;height:2px;background:var(--line)}
+.walker{position:absolute;bottom:14px;width:64px;left:var(--x);animation:stroll var(--dur) ease-in-out infinite alternate;animation-delay:var(--delay);cursor:pointer;text-align:center;background:none;border:none;padding:0;font:inherit;color:var(--ink-2)}
+.walker .waddle{animation:waddle 1.1s ease-in-out infinite;transform-origin:50% 100%}
+.walker .nm{font-size:11px;font-weight:700;display:block;margin-top:-2px;direction:rtl;white-space:nowrap}
+.walker.sel .nm{color:var(--gold)}
+.walker.sel::after{content:"";position:absolute;inset:-6px -4px 14px;border:2px solid var(--gold);border-radius:14px;pointer-events:none}
+@media (max-width:600px){.walker{width:46px}.walker .nm{font-size:9.5px}}
+@keyframes stroll{from{transform:translateX(0)}to{transform:translateX(var(--dist))}}
+@keyframes waddle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.ch{display:inline-block;vertical-align:bottom;line-height:0}
+.ch svg{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 4px rgba(0,0,0,.18))}
+.ch.m-happy svg{animation:hop 1.6s ease-in-out infinite}
+.ch.m-sad svg{animation:droop 2.4s ease-in-out infinite}
+.ch.m-angry svg{animation:shake .7s ease-in-out infinite}
+.ch.m-neutral svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes hop{0%,100%{transform:translateY(0) scale(1)}30%{transform:translateY(-14px) scale(1.04,.96)}55%{transform:translateY(0) scale(.97,1.03)}70%{transform:translateY(0) scale(1)}}
+@keyframes droop{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(6px) rotate(-5deg)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px) rotate(-3deg)}40%{transform:translateX(4px) rotate(3deg)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+.reacts{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:-4px 0 10px}
+.react{display:flex;align-items:center;gap:6px}
+.react .ch{width:46px;flex:0 0 auto}
+.bubble{display:inline-block;font-size:12.5px;font-weight:700;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:3px 8px;color:var(--ink-2);line-height:1.4}
+@media (prefers-reduced-motion:reduce){.ch svg,.walker,.walker .waddle,.fc .in,.split .eq,.split .dt{animation:none!important;transition:none}}
+/* mini statements */
+.stmt{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px 12px;box-shadow:2px 3px 0 var(--line),var(--shadow);font-size:14px;position:relative;transform:rotate(-.6deg);max-width:100%}
+.stmt.r{transform:rotate(.6deg)}
+.stmt::before{content:"";position:absolute;top:-1px;left:-1px;width:18px;height:18px;background:linear-gradient(135deg,var(--bg) 50%,var(--surface-2) 50%);border-bottom-right-radius:4px;border:1px solid var(--line);border-top:none;border-left:none}
+.stmt .sh{font-weight:700;text-align:center;border-bottom:2px solid var(--ink);padding-bottom:4px;margin-bottom:6px;font-size:14px}
+.stmt .sr{display:grid;grid-template-columns:1fr auto minmax(22px,auto);gap:6px;align-items:center;padding:3px 0;border-bottom:1px dashed var(--line)}
+.stmt .sr:last-child{border-bottom:none}
+.stmt .sr.total{font-weight:700;border-top:2px solid var(--ink);border-bottom:none;margin-top:3px;padding-top:5px}
+.stmt .sr.sub{color:var(--ink-2)}
+.stmt .v{font-variant-numeric:tabular-nums;font-weight:700;direction:ltr;text-align:right}
+.stmt .ar{font-weight:700;font-size:15px;text-align:center}
+.stmt .ar.up{color:var(--ok)}.stmt .ar.dn{color:var(--bad)}.stmt .ar.up.bad{color:var(--bad)}.stmt .ar.dn.good{color:var(--ok)}
+.stmt .hi{background:var(--gold-soft);border-radius:4px;padding-inline:4px}
+.stmt .hi-sy{background:var(--sys-soft);border-radius:4px;padding-inline:4px}
+.stmt .hi-un{background:var(--uns-soft);border-radius:4px;padding-inline:4px}
+.stmt .cols{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stmt .cols>div{border:1px solid var(--line);border-radius:6px;padding:6px}
+.stmt .cols .ch-t{font-weight:700;text-align:center;font-size:13px;margin-bottom:4px;color:var(--ink-2)}
+.stmt-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.stmt-pair{grid-template-columns:1fr}}
+.stmt-note{font-size:13px;color:var(--muted);margin-top:8px}
+/* tabs + chart */
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;font:inherit;font-weight:700;font-size:14px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:#fff}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:10px;direction:ltr;margin-top:10px}
+@media (max-width:560px){.charts{grid-template-columns:1fr}}
+.charts figure{margin:0;background:var(--surface-2);border-radius:10px;padding:8px}
+.charts figcaption{direction:rtl;font-size:13px;font-weight:700;color:var(--ink-2);text-align:right;margin-bottom:4px}
+.charts svg{width:100%;height:auto;display:block;max-width:100%}
+.readout{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+@media (max-width:560px){.readout{grid-template-columns:repeat(2,1fr)}}
+.readout div{background:var(--surface-2);border-radius:10px;padding:8px 6px;text-align:center}
+.readout .k{font-size:12px;color:var(--muted);font-weight:700}
+.readout .v{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin-top:8px}
+.legend span::before{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;margin-inline-end:5px;vertical-align:middle;background:var(--c)}
+.thnote{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center}
+/* formulas */
+.formula{direction:ltr;text-align:center;font-size:20px;font-weight:700;background:var(--surface-2);border-radius:10px;padding:10px;font-variant-numeric:tabular-nums}
+.formula.ar{direction:rtl;font-family:var(--font-ui);font-size:16px;text-align:right;line-height:1.7;padding:10px 12px}
+.eqlist{display:flex;flex-direction:column;gap:8px;margin:8px 0 4px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 5px;line-height:1.3;font-variant-numeric:tabular-nums}
+.frac .fn{padding:0 6px 1px;border-bottom:2px solid currentColor}
+.frac .fd{padding:1px 6px 0}
+bdi{unicode-bidi:isolate}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}
+th{background:var(--surface-2);font-size:14px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+td .ch{width:40px;margin-inline-start:6px;vertical-align:middle}
+td.n,th.n{direction:ltr;text-align:center;font-variant-numeric:tabular-nums}
+/* kv */
+.kv{margin:6px 0 0;display:flex;flex-direction:column;gap:10px}
+.kv>div{display:grid;grid-template-columns:118px minmax(0,1fr);gap:10px;align-items:start;border-top:1px solid var(--line);padding-top:8px}
+.kv>div:first-child{border-top:none;padding-top:0}
+.kv dt{font-weight:700;color:var(--gold);font-size:14.5px;line-height:1.5;padding-top:2px}
+.kv dd{margin:0;font-size:15.5px}
+.kv .crit dt{color:var(--bad)}
+.kv .crit dd{background:var(--bad-soft);border-radius:10px;padding:8px 10px}
+.kv ul.clean li{margin-bottom:5px}
+@media (max-width:480px){.kv>div{grid-template-columns:1fr;gap:4px}}
+/* flashcards */
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.fc{perspective:900px;cursor:pointer;min-height:140px}
+.fc .in{position:relative;width:100%;height:100%;min-height:140px;transition:transform .45s;transform-style:preserve-3d}
+.fc.flip .in{transform:rotateY(180deg)}
+.fc .f,.fc .bk{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:14px;display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.fc .f{background:var(--surface);font-weight:700;font-size:16px}
+.fc .bk{background:var(--gold-soft);transform:rotateY(180deg);font-size:14px;line-height:1.55;overflow:auto}
+/* quiz */
+.q-opts{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.q-opts button{font:inherit;font-weight:500;text-align:right;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;line-height:1.55}
+.q-opts button:hover{border-color:var(--gold)}
+.q-opts button.correct{background:var(--ok-soft);border-color:var(--ok)}
+.q-opts button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.q-opts button:disabled{cursor:default}
+.explain{display:none;border-radius:12px;padding:12px 14px;background:var(--surface-2);font-size:15px}
+.explain.show{display:block}
+.explain ul{margin:6px 0 0;padding-inline-start:18px}
+.btn{font:inherit;font-weight:700;padding:10px 18px;border-radius:999px;border:none;background:var(--gold);color:#fff;cursor:pointer;font-size:15px}
+.q-head{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted);font-weight:700}
+.bar{height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden;margin:6px 0 12px}
+.bar i{display:block;height:100%;background:var(--gold);width:0}
+.result{text-align:center}
+.result .big{font-size:44px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
+.quizwrap{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:12px;align-items:end}
+@media (max-width:560px){.quizwrap{grid-template-columns:1fr}.quizwrap .qchar{display:none}}
+/* dock */
+#dock{position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:9;display:flex;align-items:flex-end;gap:8px;direction:rtl;pointer-events:none}
+#dock .ch{width:72px;pointer-events:auto}
+#dock .say{pointer-events:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 10px;font-size:13.5px;font-weight:700;max-width:220px;box-shadow:var(--shadow);position:relative}
+#dock .say::after{content:"";position:absolute;bottom:8px;left:-7px;border:7px solid transparent;border-right-color:var(--surface);border-left:none}
+#dock .x{position:absolute;top:-8px;right:-8px;width:20px;height:20px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:12px;line-height:1;cursor:pointer;color:var(--muted)}
+/* static characters: expressions change, no motion */
+.walker,.walker .waddle,.ch svg,.ch.m-happy svg,.ch.m-sad svg,.ch.m-angry svg,.ch.m-neutral svg{animation:none!important;transform:none!important}
+/* character names everywhere */
+.ch{display:inline-flex;flex-direction:column;align-items:center}
+.ch[data-name]::after{content:attr(data-name);display:block;font-size:11px;font-weight:700;line-height:1.3;color:var(--ink-2);white-space:nowrap;margin-top:3px;font-family:var(--font-ui)}
+.walker .ch::after{display:none}
+td .ch::after{font-size:10.5px}
+.header .crowd{gap:10px 14px}
+.header .crowd .ch::after{font-size:10px}
+/* systematic sources side by side, character on top */
+.theories.sys3{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
+@media (max-width:1050px){.theories.sys3{grid-template-columns:1fr}}
+.theories.sys3 .theory{grid-template-columns:1fr;gap:6px}
+.theories.sys3 .theory>.ch{width:92px;justify-self:center}
+.theories.sys3 .theory h3{text-align:center}
+.theories.sys3 .theory .who{text-align:center;margin-bottom:6px}
+.theories.sys3 .stmt-pair{grid-template-columns:1fr}
+.theories.sys3 .kv>div{grid-template-columns:96px minmax(0,1fr)}
+/* flashcards grow to fit their text */
+.fc{min-height:0}
+.fc .in{display:grid;height:auto;min-height:140px}
+.fc .f,.fc .bk{position:relative;inset:auto;grid-area:1/1;min-height:140px;overflow:visible}
+</style>
+<div class="wrap">
+<header class="header">
+  <div>
+    <h1>رحلة مخاطر الاستثمار والرافعتين</h1>
+    <p class="lead">سؤال واحد يحرك هذه الصفحة: <strong>من أين تأتي المخاطر التي تجعل العائد الفعلي على الاستثمار يختلف عن العائد المتوقع، وأيها يمكن التخلص منه، ولماذا تضاعف الرافعة التشغيلية والرافعة المالية هذه المخاطر؟</strong> تسع شخصيات سترافقك في الصفحة، كل واحدة تمثل نوعاً أو مصدراً من المخاطر أو رافعة.</p>
+  </div>
+  <div class="crowd" id="crowd"></div>
+</header>
+
+<nav class="nav" aria-label="المحطات">
+  <a href="#s0">القصة</a><a href="#s1">القسمان</a><a href="#s3">مصادر المخاطر</a><a href="#s4">الرافعة التشغيلية</a><a href="#s5">الرافعة المالية</a><a href="#s6">الرافعتان والمخاطر</a><a href="#s8">المعادلات</a><a href="#s9">بطاقات</a><a href="#s10">اختبار</a>
+</nav>
+
+<!-- ============ 0 القصة ============ -->
+<section id="s0">
+  <div class="stop"><div class="n">٠</div><h2>القصة التي تحمل الموضوع كله</h2></div>
+  <div class="side">
+    <div class="card">
+      <p>تخيّل مستثمراً يملك شيئين: <strong>سند خزينة</strong> يعطيه ٩٪، و<strong>أسهماً في مصنع صغير</strong> يعتمد على العمالة اليدوية، يبيع الوحدة بريالين، تكلفتها المتغيرة ريال واحد، وتكاليفه الثابتة ٢٠,٠٠٠ ريال، ويبيع ٣٠,٠٠٠ وحدة في السنة.</p>
+      <p>في صباح واحد وصلت ثلاثة أخبار:</p>
+      <ol class="steps">
+        <li><span class="tag sy">خبر يصيب السوق كله</span> الدولة أصدرت سندات جديدة بفائدة أعلى. سند المستثمر أصبح يعطي أقل من السوق، فلا بدّ أن ينخفض سعره.</li>
+        <li><span class="tag un">خبر يصيب المصنع وحده</span> حريق في مستودع غير مؤمّن عليه. هذا لا يهم بقية السوق، لكنه يهم أسهم هذا المصنع.</li>
+        <li><span class="tag gd">تغير في المبيعات</span> مبيعات المصنع تغيرت بنسبة صغيرة، لكن ربحه تغير بنسبة أكبر بكثير. لماذا؟</li>
+      </ol>
+      <p style="margin-top:10px">حرّك الشريط وشاهد كيف يتحرك صافي دخل المصنع مع كل تغير في مبيعاته. هذا التضخيم هو ما يسميه الموضوع <strong>الرفع التشغيلي</strong>، وسنفهم قبله من أين تأتي المخاطر أصلاً.</p>
+      <label for="mix">تغير المبيعات: <span id="mixv" class="num">+10%</span></label>
+      <input type="range" id="mix" min="-30" max="30" value="10" step="5">
+      <div class="split" aria-hidden="true"><div class="eq" id="mixEq" style="flex-basis:50%">تغير المبيعات</div><div class="dt" id="mixDt" style="flex-basis:50%">تغير صافي الدخل</div></div>
+      <p class="small" style="margin-top:8px" id="mixNote"></p>
+    </div>
+    <div class="stack">
+      <div class="callout">
+        <strong>الفكرة التي تتكرر في كل محطة:</strong> بعض المخاطر تصيب <span class="tag sy">كل السوق</span> ولا ينفع معها التنويع، وبعضها يصيب <span class="tag un">شركة أو قطاعاً بعينه</span> ويمكن تخفيفها بالتنويع. وفوق ذلك كله، الرافعتان تجعلان أي تغير صغير في المبيعات أو الأرباح تغيراً أكبر في النتيجة النهائية.
+      </div>
+      <div class="stmt">
+        <div class="sh">قائمة دخل المصنع (مصغرة)</div>
+        <div class="sr sub"><span>الحالة الحالية ← بعد التغير</span><span></span><span></span></div>
+        <div class="sr"><span>الإيرادات</span><span class="v" id="stRev">60,000 → 66,000</span><span class="ar" id="stRevA">↑</span></div>
+        <div class="sr"><span>(−) التكاليف المتغيرة</span><span class="v" id="stVc">(30,000) → (33,000)</span><span class="ar" id="stVcA">↑</span></div>
+        <div class="sr"><span>هامش المساهمة الإجمالي</span><span class="v" id="stCm">30,000 → 33,000</span><span class="ar" id="stCmA">↑</span></div>
+        <div class="sr"><span class="hi">(−) التكاليف الثابتة</span><span class="v" id="stFc">(20,000) → (20,000)</span><span class="ar">=</span></div>
+        <div class="sr total"><span>صافي الدخل قبل الفوائد والضرائب</span><span class="v" id="stEbit">10,000 → 13,000</span><span class="ar" id="stEbitA">↑</span></div>
+        <div class="stmt-note">التكاليف الثابتة لا تتحرك، لذلك يتحمل صافي الدخل التغير كله. الأرقام من المثال نفسه في المحطة ٣.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1 القسمان ============ -->
+<section id="s1">
+  <div class="stop"><div class="n">١</div><h2>مخاطر الاستثمار قسمان</h2></div>
+  <p class="lead">المخاطرة هي التباين بين العوائد المحققة والعوائد المتوقعة. الموضوع يقسم هذا التباين إلى جزأين حسب سبب حدوثه، ثم يعرض مصادر كل جزء، ثم الرافعتين اللتين تضخمان أثرها.</p>
+  <p class="small">شخصيات الصفحة كلها على المسرح. اضغط أي شخصية لترى ردة فعل البقية وتنتقل إلى بطاقتها.</p>
+  <div class="stage" id="stage" aria-label="مسرح الشخصيات"><div class="floor"></div></div>
+  <div class="callout thnote" style="margin:10px 0 14px"><div class="ch" id="stChar"></div><div id="stNote">اضغط على شخصية في المسرح.</div></div>
+  <div class="theories">
+    <div class="card theory" data-th="SYS"><div class="ch" data-char="SYS" data-mood="neutral"></div><div><h3>١. المخاطر النظامية (أو السوقية أو العادية)</h3><div class="who">الموجة، تصيب الجميع. Systematic Risk</div><dl class="kv">
+      <div><dt>الأساس</dt><dd>الجزء من التباين بين العوائد المحققة والمتوقعة الذي يحدث بسبب عوامل تؤثر على أسعار جميع الأوراق المالية بوجه عام، ولا يقتصر تأثيرها على شركة معينة أو قطاع معين.</dd></div>
+      <div><dt>المسببات</dt><dd><ul class="clean"><li>التغيرات الاقتصادية والسياسية والاجتماعية.</li><li>تحرك أسعار معظم الأوراق المالية في البورصة بالاتجاه نفسه، لكن بدرجات متفاوتة حسب طبيعة نشاط الشركة ومدى تأثر مبيعاتها وأرباحها وأسعار أسهمها بالتغيرات، ومدى تأثر أسعار أسهمها بمستوى النشاط في سوق الأوراق المالية.</li></ul></dd></div>
+      <div><dt>النتيجة</dt><dd><ul class="clean"><li>لا يمكن التخلص منها بالتنويع لأنها تصيب جميع الاستثمارات في السوق.</li><li>تسمى المخاطر <strong>غير القابلة للتنويع</strong>.</li></ul></dd></div>
+      <div><dt>القياس</dt><dd>تقاس بمعامل <strong>(بيتا)</strong>: معامل خط الانحدار في معادلة خطية تربط بين عائد السوق كمتغير مستقل وعائد السهم المعني كمتغير تابع.<div class="eqlist"><div class="formula ar">عائد السهم المعني = الثابت + (بيتا × عائد السوق)</div></div></dd></div>
+    </dl></div></div>
+    <div class="card theory" data-th="UNS"><div class="ch" data-char="UNS" data-mood="neutral"></div><div><h3>٢. المخاطر غير النظامية</h3><div class="who">المنفرد، يصيب شركة أو قطاعاً بعينه. Unsystematic Risk</div><dl class="kv">
+      <div><dt>الأساس</dt><dd>الجزء من المخاطرة الكلية الناتج عن عوامل تتعلق بشركة معينة أو قطاع معين، وتكون مستقلة عن العوامل المؤثرة في النشاط الاقتصادي ككل.</dd></div>
+      <div><dt>المسببات</dt><dd>أحداث إدارية أو مالية أو تسويقية أو إنتاجية أو فنية لشركة معينة، تؤثر على مبيعات الشركة وأرباحها وبالتالي على أسعار أسهمها.</dd></div>
+      <div><dt>النتيجة</dt><dd><ul class="clean"><li>لأنها تؤثر على أدوات بعينها، يمكن تجنبها أو على الأقل تخفيض آثارها عن طريق تنويع الاستثمارات.</li><li>تسمى المخاطر <strong>الممكن تنويعها</strong>.</li></ul></dd></div>
+    </dl></div></div>
+  </div>
+  <div style="max-width:520px;margin-top:12px">
+      <div class="stmt r">
+        <div class="sh">لوحة المحفظة: ماذا يفعل التنويع؟</div>
+        <div class="sr"><span class="hi-un">المخاطر غير النظامية</span><span class="v">مع التنويع</span><span class="ar dn good">↓</span></div>
+        <div class="sr"><span class="hi-sy">المخاطر النظامية</span><span class="v">مع التنويع</span><span class="ar">=</span></div>
+        <div class="stmt-note">التنويع يخفض جزءاً واحداً فقط من المخاطرة الكلية.</div>
+      </div>
+  </div>
+</section>
+
+<!-- ============ 2 مصادر المخاطر ============ -->
+<section id="s3">
+  <div class="stop"><div class="n">٢</div><h2>مصادر المخاطر، خمسة مصادر</h2></div>
+  <p class="lead">المصادر تُقسّم حسب نوع المخاطرة التي تسببها: عوامل تسبب المخاطر المنتظمة (النظامية)، وعوامل تسبب المخاطر غير المنتظمة (غير النظامية).</p>
+
+  <h3 style="margin-top:22px">أولاً: مصادر المخاطر النظامية <span class="tag sy">تصيب السوق كله</span></h3>
+  <p class="lead">العديد من التغيرات الاقتصادية والسياسية والاجتماعية تشكل مصدراً للمخاطر النظامية، وأهمها ثلاثة:</p>
+  <div class="theories sys3">
+    <div class="card theory" data-th="MKT"><div class="ch" data-char="MKT" data-mood="neutral"></div><div><h3>أ. مخاطر السوق</h3><div class="who">المزاج، يقرأ الأخبار ويبالغ</div><dl class="kv">
+      <div><dt>الأساس</dt><dd>المخاطر التي تصاحب وقوع أحداث غير متوقعة، وكيفية إدراك المستثمرين واستيعابهم لهذه الأحداث. الأحداث التي تصل معلوماتها للسوق تؤثر على توقعات المستثمرين، ثم على حجم العرض والطلب على الأسهم، ثم على أسعارها.</dd></div>
+      <div><dt>من يتعرض أكثر</dt><dd>حملة الأسهم العادية أكثر من غيرهم من المستثمرين.</dd></div>
+      <div><dt>أحداث ملموسة</dt><dd>أحداث منطقية مثل: توقع انخفاض مستوى الأرباح للشركات ككل، توقع ارتفاع أسعار الفائدة، توقع حدوث كساد، وغيرها من العوامل السياسية والاجتماعية والاقتصادية. وأهمها تغير أسعار الفوائد وتغير القوة الشرائية للنقود، لذلك يُدرسان بشكل منفصل.</dd></div>
+      <div><dt>أحداث غير ملموسة</dt><dd><ul class="clean"><li>تتعلق بسيكولوجية السوق: ردود فعل غير مبنية على أساس منطقي، أو ردود فعل مبالغ فيها لحوادث معينة.</li><li>مثال: انخفاض الأسعار على فترتين متتاليتين قد يحفز المستثمرين على البيع خوفاً من مزيد من الانخفاض، فتنخفض الأسعار إلى مستويات قد لا تكون حقيقية.</li><li>مثال: عام ١٩٦٣ عند وصول أنباء اغتيال الرئيس الأمريكي كندي حدثت عمليات بيع هستيرية اضطرت المسؤولين إلى إغلاق البورصة، وبيعت الأسهم بأسعار منخفضة جداً، وبعد يومين من فتحها عادت الأسهم إلى أسعارها الطبيعية.</li></ul></dd></div>
+    </dl></div></div>
+
+    <div class="card theory" data-th="INT"><div class="ch" data-char="INT" data-mood="neutral"></div><div><h3>ب. مخاطر سعر الفائدة</h3><div class="who">الفائدة، كل ما ترتفع ينخفض غيرها</div><dl class="kv">
+      <div><dt>الأساس</dt><dd>ارتفاع أو انخفاض سعر الفائدة السوقي له تأثير <strong>معاكس</strong> على أسعار الأوراق المالية والاستثمارات الأخرى: ارتفاع الفوائد السوقية يؤدي إلى انخفاض أسعار الأسهم والسندات، والعكس صحيح.</dd></div>
+      <div><dt>درجة التأثر</dt><dd><ul class="clean"><li>الأوراق ذات الدخل الثابت (الأسهم الممتازة والسندات) أكثر تأثراً من الأوراق ذات الدخل المتغير (الأسهم العادية).</li><li>أسعار السندات طويلة الأجل تتقلب بدرجة أكبر من السندات قصيرة الأجل عند تغير معين في معدل الفائدة السوقي.</li></ul></dd></div>
+      <div><dt>لماذا تنخفض الأوراق المالية</dt><dd>توفر بدائل جديدة تعطي عائداً أعلى نسبياً (مقارنة بمخاطرتها) من الاستثمارات القديمة، فيبيع بعض المستثمرين استثماراتهم القديمة، فتنخفض أسعارها إلى المستوى الذي تصبح فيه منافسة للبدائل الجديدة. مثال: سند خزينة يعطي ٩٪ ثم تصدر الدولة سندات جديدة بفائدة أعلى، فلا بدّ من تخفيض سعر السند الأول حتى يصبح عائده مساوياً للسندات الجديدة. ويمتد الانخفاض إلى سندات منشآت الأعمال لأن العائد المطلوب عليها يصبح أعلى.</dd></div>
+      <div><dt>لماذا تنخفض الأسهم</dt><dd><ol class="steps"><li>ارتفاع الفائدة والعائد على السندات والودائع المصرفية يغري جزءاً من المستثمرين ببيع جزء من أسهمهم، فيزيد المعروض من الأسهم.</li><li>كثير من المتعاملين يقترضون من البنوك أو شركات الوساطة لتمويل مشترياتهم من الأسهم، وعند ارتفاع الفوائد ترتفع تكلفة الاقتراض، فينخفض الطلب على القروض وتنخفض الأموال المتوفرة لشراء الأسهم.</li><li>كثير من الشركات تمول جزءاً من عملياتها بأموال مقترضة، فيذهب جزء أكبر من أموالها لتغطية الفوائد، فتنخفض الأرباح والتوزيعات ثم أسعار الأسهم.</li></ol></dd></div>
+      <div class="crit"><dt>النقد</dt><dd>يعتقد بعض المستثمرين أن الأدوات قصيرة الأجل تجنبهم هذه المخاطر لأنها أقل عرضة لتقلبات الأسعار، لكنهم سيضطرون إلى سلسلة من عمليات إعادة الاستثمار، وإذا انخفضت الفوائد السوقية أعادوا استثمار أموالهم بسعر فائدة منخفض. هذا ما يسمى <strong>مخاطر إعادة الاستثمار</strong>، لذلك ليس من السهل التخلص من مخاطر تقلب سعر الفائدة.</dd></div>
+    </dl>
+    <div class="stmt" style="margin-top:8px">
+      <div class="sh">قائمة دخل شركة تمول جزءاً من عملياتها بالقروض، عند ارتفاع الفائدة</div>
+      <div class="sr"><span>الأرباح قبل الفوائد</span><span class="v">كما هي</span><span class="ar">=</span></div>
+      <div class="sr"><span class="hi-un">(−) الفوائد على القروض</span><span class="v">جزء أكبر</span><span class="ar up bad">↑</span></div>
+      <div class="sr"><span>الأرباح</span><span class="v">أقل</span><span class="ar dn">↓</span></div>
+      <div class="sr"><span>التوزيعات</span><span class="v">أقل</span><span class="ar dn">↓</span></div>
+      <div class="sr total"><span>سعر السهم في السوق</span><span class="v">أقل</span><span class="ar dn">↓</span></div>
+      <div class="stmt-note">هذا هو السبب الثالث من الأسباب الثلاثة.</div>
+    </div>
+    </div></div>
+
+    <div class="card theory" data-th="PPR"><div class="ch" data-char="PPR" data-mood="neutral"></div><div><h3>جـ. مخاطر القوة الشرائية للنقود</h3><div class="who">التضخم، يأكل ما تشتريه النقود</div><dl class="kv">
+      <div><dt>الأساس</dt><dd>حالة عدم التأكد من مستقبل القوة الشرائية للمبالغ التي نتوقع استلامها من استثمار معين، نتيجة الارتفاع العام أو الانخفاض العام في أسعار السلع والخدمات.</dd></div>
+      <div><dt>الفكرة</dt><dd>الاستثمار تأجيل لاستهلاك حالي على أمل استهلاك أكبر في المستقبل. من يشتري سنداً يتخلى عن سلع وخدمات كان يمكنه الحصول عليها بهذا المبلغ. فإذا ارتفعت أسعار السلع والخدمات خلال فترة الاستثمار تآكلت قدرته على الاستهلاك بمقدار الارتفاع، وهذه هي مخاطرة تغير القوة الشرائية.</dd></div>
+      <div><dt>التضخم</dt><dd>الارتفاع العام في الأسعار، وسببه إما ارتفاع تكاليف الإنتاج، أو زيادة الطلب على السلع والخدمات عن المعروض منها.</dd></div>
+      <div><dt>النتيجة</dt><dd><ul class="clean"><li>الاستثمارات ذات الدخل الثابت (السندات والودائع المصرفية) أكثر تأثراً.</li><li>إذا ارتفعت معدلات التضخم انخفضت القيمة الحقيقية لعوائد الاستثمار، فينخفض المعدل الحقيقي للعائد عن المعدل الاسمي.</li></ul></dd></div>
+      <div><dt>الأسهم العادية</dt><dd>تشكل في معظم الأحيان حماية من مخاطر القوة الشرائية، لأن أسعار الأسهم تستجيب غالباً للظروف التضخمية فترتفع هي الأخرى، لسببين: الأسهم ملكية لجزء من أصول الشركة الحقيقية التي ترتفع قيمتها في التضخم، والشركات ترفع عادة أسعار مبيعاتها في التضخم، فلا يكون أثر التضخم سلبياً على أرباحها وتوزيعاتها وأسعار أسهمها.</dd></div>
+    </dl>
+    <div class="stmt-pair" style="margin-top:8px">
+      <div class="stmt"><div class="sh">حامل السند في التضخم</div>
+        <div class="sr"><span>العائد الاسمي</span><span class="v">ثابت</span><span class="ar">=</span></div>
+        <div class="sr"><span class="hi-un">القيمة الحقيقية للعائد</span><span class="v">تنخفض</span><span class="ar dn">↓</span></div>
+        <div class="sr total"><span>المعدل الحقيقي للعائد</span><span class="v">أقل من الاسمي</span><span class="ar dn">↓</span></div>
+      </div>
+      <div class="stmt r"><div class="sh">حامل السهم العادي في التضخم</div>
+        <div class="sr"><span class="hi-sy">قيمة الأصول الحقيقية للشركة</span><span class="v">ترتفع</span><span class="ar up">↑</span></div>
+        <div class="sr"><span>أسعار المبيعات</span><span class="v">ترتفع</span><span class="ar up">↑</span></div>
+        <div class="sr"><span>الأرباح والتوزيعات</span><span class="v">لا تتأثر سلباً</span><span class="ar up">↑</span></div>
+        <div class="sr total"><span>سعر السهم</span><span class="v">يرتفع</span><span class="ar up">↑</span></div>
+      </div>
+    </div>
+    </div></div>
+  </div>
+
+  <h3 style="margin-top:22px">ثانياً: مصادر المخاطر غير النظامية <span class="tag un">تصيب شركة أو قطاعاً</span></h3>
+  <div class="theories">
+    <div class="card theory" data-th="MGT"><div class="ch" data-char="MGT" data-mood="neutral"></div><div><h3>أ. مخاطر الإدارة</h3><div class="who">المدير، قراراته تصنع الفرق</div><dl class="kv">
+      <div><dt>الأساس</dt><dd>الأخطاء الإدارية في شركة معينة قد تتسبب بآثار سلبية على نتائج أعمالها، وبالتالي على العائد على الاستثمار.</dd></div>
+      <div><dt>كيف تحدث</dt><dd>اتخاذ قرارات خاطئة نتيجة معلومات غير مكتملة أو غير دقيقة، أو نتيجة التقدير الخاطئ للموقف، فيتأثر ربح الشركة ثم سعر سهمها.</dd></div>
+      <div><dt>أخطاء شائعة</dt><dd><ul class="clean"><li>سوء التصرف وعدم اتخاذ التدابير المناسبة في الحوادث الطارئة، كإضرابات العمال.</li><li>خسارة مصنع أو حريق بعض محتوياته دون التأمين عليها.</li><li>عدم تأمين حراسة كافية.</li><li>عدم التعامل بحكمة مع جمعيات حماية المستهلك.</li></ul></dd></div>
+    </dl></div></div>
+
+    <div class="card theory" data-th="IND"><div class="ch" data-char="IND" data-mood="neutral"></div><div><h3>ب. مخاطر الصناعة</h3><div class="who">القطاع، ما يصيبه لا يتعداه</div><dl class="kv">
+      <div><dt>الأساس</dt><dd>مخاطر تنتج عن ظروف وعوامل خاصة بقطاع معين أو صناعة معينة دون أن يكون لها تأثير هام خارج هذا القطاع.</dd></div>
+      <div><dt>الأمثلة</dt><dd><ul class="clean"><li>الإضرابات العمالية التي تؤثر على الشركات التي يشملها الإضراب، وعلى زبائنها وممولها وموردي المواد الخام لها.</li><li>ظهور قوانين تمس صناعات معينة، مثل قوانين حماية البيئة من التلوث التي تؤثر على الصناعات التي ينتج عنها مخلفات ملوثة (مثل مصافي البترول)، أو زيادة الضريبة على صناعة معينة، أو إلغاء إعفاءات ضريبية أو جمركية كانت ممنوحة لها.</li><li>تغير أذواق المستهلكين أو ظهور اختراعات أحدث تحول المستهلكين عن منتجات الشركة، فبعد ظهور السيارات كسدت صناعة العربات.</li><li>إزالة الحماية الجمركية التي تحد من استيراد السلع المنافسة للصناعات المحلية، فإذا خفضت الدولة الجمارك أو ألغتها على سلع معينة أصبحت السلع المستوردة أكثر منافسة لمثيلاتها المحلية.</li></ul></dd></div>
+    </dl>
+    <div class="stmt" style="margin-top:8px">
+      <div class="sh">قائمة دخل مصنع محلي بعد إلغاء الحماية الجمركية</div>
+      <div class="sr"><span class="hi-un">المبيعات (منافسة أكبر من المستورد)</span><span class="v">أقل</span><span class="ar dn">↓</span></div>
+      <div class="sr"><span>الأرباح</span><span class="v">أقل</span><span class="ar dn">↓</span></div>
+      <div class="sr total"><span>سعر السهم</span><span class="v">أقل</span><span class="ar dn">↓</span></div>
+      <div class="stmt-note">الاتجاهات فقط، بلا أرقام.</div>
+    </div>
+    </div></div>
+  </div>
+
+</section>
+
+<!-- ============ 3 الرافعة التشغيلية ============ -->
+<section id="s4">
+  <div class="stop"><div class="n">٣</div><h2>الرافعة التشغيلية</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="OPL" data-mood="happy"></div><span class="bubble">التكاليف الثابتة هي سرّي</span></div></div>
+      <h3>أولاً: نوعان من التكاليف</h3>
+      <div class="grid2">
+        <div class="callout sys"><strong>التكاليف المتغيرة</strong><br>يتغير مجموعها طردياً مع التغير في حجم النشاط، فتزيد بزيادته وتنقص بنقصانه. متغيرة بمجموعها، لكنها <strong>ثابتة للوحدة الواحدة</strong> من الإنتاج.</div>
+        <div class="callout uns"><strong>التكاليف الثابتة</strong><br>لا يتغير مجموعها مع التغير في حجم النشاط ما دام التغير ضمن مدى معين. ثابتة بمجموعها، لكن <strong>نصيب الوحدة منها يتناقص</strong> مع زيادة الإنتاج.</div>
+      </div>
+      <h3 style="margin-top:14px">ثانياً: البدائل أمام الشركة</h3>
+      <dl class="kv">
+        <div><dt>الأساس</dt><dd>الشركة تواجه بدائل في نوع التكاليف التي تستخدمها: درجة عالية من الميكنة (تكاليف ثابتة عالية وتكاليف متغيرة منخفضة)، أو مستوى محدود من الميكنة (تكاليف ثابتة منخفضة وتكاليف متغيرة مرتفعة).</dd></div>
+        <div><dt>على ماذا يعتمد القرار</dt><dd>على توقعات الشركة لحجم المبيعات ومدى استقرارها.</dd></div>
+        <div><dt>مثال الآلة</dt><dd><ul class="clean"><li>آلة حديثة يعمل عليها شخص واحد وتنتج كميات كبيرة دون زيادة العمالة: تزيد الإنتاج والمبيعات دون أن تزيد التكاليف المتغيرة للوحدة.</li><li>لكن شراء الآلة يزيد مصاريف الاستهلاك والصيانة، وهي تكاليف ثابتة تُخصم من المبيعات بغض النظر عن مستوى الإنتاج والمبيعات.</li><li>لذلك قد تتسبب هذه التكاليف في وقوع خسارة إذا كانت المبيعات منخفضة.</li></ul></dd></div>
+        <div><dt>التعريف</dt><dd>زيادة توظيف الأموال في الأصول الثابتة كالآلات الإنتاجية بهدف خفض التكاليف المتغيرة للوحدة تسمى <strong>الرفع التشغيلي</strong>.</dd></div>
+        <div><dt>النتيجة</dt><dd>كلما ارتفعت نسبة التكاليف الثابتة إلى التكاليف الكلية ارتفعت درجة الرفع التشغيلي، وعندها تحقق نسبة تغير صغيرة في المبيعات تغيراً أكبر في صافي الدخل التشغيلي، سواء كان التغير سلبياً أم إيجابياً.</dd></div>
+      </dl>
+    </div>
+    <div class="card">
+      <h3>ثالثاً: المثال التطبيقي، غيّر الأرقام وشاهد كل الخطوات</h3>
+      <p class="small">القيم الافتراضية هي أرقام المثال: شركة تعتمد على العمالة اليدوية.</p>
+      <div class="grid2">
+        <div><label for="exP">سعر بيع الوحدة (ريال)</label><input type="number" id="exP" value="2" min="0" step="0.5"></div>
+        <div><label for="exV">التكلفة المتغيرة للوحدة (ريال)</label><input type="number" id="exV" value="1" min="0" step="0.5"></div>
+        <div><label for="exF">التكاليف الثابتة (ريال)</label><input type="number" id="exF" value="20000" min="0" step="500"></div>
+        <div><label for="exU">الوحدات المنتجة والمباعة حالياً</label><input type="number" id="exU" value="30000" min="0" step="1000"></div>
+        <div><label for="exC">نسبة تغير المبيعات (%)</label><input type="number" id="exC" value="10" min="0" max="100" step="5"></div>
+      </div>
+      <ol class="steps" style="margin-top:14px" id="exSteps"></ol>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3>الحالات الثلاث جنباً إلى جنب، ثم القرار</h3>
+    <div class="grid3">
+      <div class="stmt"><div class="sh">الحالة الحالية</div>
+        <div class="sr"><span>الإيرادات</span><span class="v" id="c0R">60,000</span><span></span></div>
+        <div class="sr"><span>(−) التكاليف المتغيرة</span><span class="v" id="c0V">(30,000)</span><span></span></div>
+        <div class="sr"><span>هامش المساهمة الإجمالي</span><span class="v" id="c0M">30,000</span><span></span></div>
+        <div class="sr"><span>(−) التكاليف الثابتة</span><span class="v" id="c0F">(20,000)</span><span></span></div>
+        <div class="sr total"><span>صافي الدخل قبل الفوائد والضرائب</span><span class="v" id="c0E">10,000</span><span></span></div>
+      </div>
+      <div class="stmt r"><div class="sh">حالة ارتفاع المبيعات</div>
+        <div class="sr"><span>الإيرادات</span><span class="v" id="c1R">66,000</span><span class="ar up">↑</span></div>
+        <div class="sr"><span>(−) التكاليف المتغيرة</span><span class="v" id="c1V">(33,000)</span><span class="ar up bad">↑</span></div>
+        <div class="sr"><span>هامش المساهمة</span><span class="v" id="c1M">33,000</span><span class="ar up">↑</span></div>
+        <div class="sr"><span class="hi">(−) التكاليف الثابتة</span><span class="v" id="c1F">(20,000)</span><span class="ar">=</span></div>
+        <div class="sr total"><span>صافي الدخل قبل الفوائد والضرائب</span><span class="v" id="c1E">13,000</span><span class="ar up" id="c1EA">↑</span></div>
+      </div>
+      <div class="stmt"><div class="sh">حالة انخفاض المبيعات</div>
+        <div class="sr"><span>الإيرادات</span><span class="v" id="c2R">54,000</span><span class="ar dn">↓</span></div>
+        <div class="sr"><span>(−) التكاليف المتغيرة</span><span class="v" id="c2V">(27,000)</span><span class="ar dn good">↓</span></div>
+        <div class="sr"><span>هامش المساهمة</span><span class="v" id="c2M">27,000</span><span class="ar dn">↓</span></div>
+        <div class="sr"><span class="hi">(−) التكاليف الثابتة</span><span class="v" id="c2F">(20,000)</span><span class="ar">=</span></div>
+        <div class="sr total"><span>صافي الدخل قبل الفوائد والضرائب</span><span class="v" id="c2E">7,000</span><span class="ar dn" id="c2EA">↓</span></div>
+      </div>
+    </div>
+    <div class="callout ok" style="margin-top:12px" id="exDecision"></div>
+  </div>
+
+  <div class="grid2" style="margin-top:14px">
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="OPL" data-mood="neutral"></div><span class="bubble">أين يتساوى الإيراد مع التكلفة؟</span></div></div>
+      <h3>رابعاً: نقطة التعادل</h3>
+      <dl class="kv">
+        <div><dt>الأساس</dt><dd>كمية المبيعات التي يجب تحقيقها حتى يتساوى الإيراد الكلي مع التكلفة الكلية.</dd></div>
+        <div><dt>النتيجة</dt><dd>تكون نقطة التعادل عند مستوى مرتفع نسبياً من الإنتاج والبيع إذا اختارت الشركة رافعة تشغيل بدرجة عالية، والعكس صحيح.</dd></div>
+        <div><dt>الاشتقاق</dt><dd>ع = عدد الوحدات المنتجة والمباعة لتحقيق التعادل، س = سعر بيع الوحدة، م = التكلفة المتغيرة للوحدة.</dd></div>
+      </dl>
+      <div class="eqlist">
+        <div class="formula ar">الإيرادات الكلية = التكاليف الكلية</div>
+        <div class="formula ar">الإيرادات الكلية = التكاليف الثابتة + التكاليف المتغيرة</div>
+        <div class="formula ar">س × ع = التكاليف الثابتة + م × ع</div>
+        <div class="formula ar">ع = <span class="frac"><span class="fn">التكاليف الثابتة</span><span class="fd">س − م</span></span></div>
+      </div>
+      <div class="callout" style="margin-top:8px">مقام المعادلة (سعر بيع الوحدة − التكلفة المتغيرة للوحدة) يسمى <strong>هامش المساهمة للوحدة</strong>: مدى مساهمة كل وحدة في تغطية التكاليف الثابتة.</div>
+      <h3 style="margin-top:14px">خامساً: نسبة هامش الأمان</h3>
+      <p>نسبة خفض المبيعات دون أن تحقق الشركة خسائر.</p>
+      <div class="eqlist">
+        <div class="formula ar">نسبة هامش الأمان = <span class="frac"><span class="fn">المبيعات المتوقعة − المبيعات عند التعادل</span><span class="fd">المبيعات المتوقعة</span></span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>الشركة نفسها قبل الميكنة وبعدها</h3>
+      <p class="small">البيانات بعد إدخال الآلات بدرجة أكبر، بحسب المثال: السعر ٢، التكلفة المتغيرة ٠.٥٠، التكاليف الثابتة ٣٧,٥٠٠. غيّر الأرقام إن أردت.</p>
+      <div class="grid2">
+        <div><label for="mV">التكلفة المتغيرة للوحدة بعد الميكنة</label><input type="number" id="mV" value="0.5" min="0" step="0.1"></div>
+        <div><label for="mF">التكاليف الثابتة بعد الميكنة</label><input type="number" id="mF" value="37500" min="0" step="500"></div>
+      </div>
+      <ol class="steps" style="margin-top:12px" id="beSteps"></ol>
+      <div class="stmt r" style="margin-top:10px">
+        <div class="sh">لوحة المخاطرة: قبل الميكنة ← بعدها</div>
+        <div class="sr"><span>التكاليف الثابتة</span><span class="v" id="bF">20,000 → 37,500</span><span class="ar up bad" id="bFA">↑</span></div>
+        <div class="sr"><span>التكلفة المتغيرة للوحدة</span><span class="v" id="bV">1 → 0.5</span><span class="ar dn good" id="bVA">↓</span></div>
+        <div class="sr"><span class="hi">وحدات التعادل</span><span class="v" id="bBE">20,000 → 25,000</span><span class="ar up bad" id="bBEA">↑</span></div>
+        <div class="sr"><span class="hi">نسبة هامش الأمان</span><span class="v" id="bMS">33% → 16.7%</span><span class="ar dn" id="bMSA">↓</span></div>
+        <div class="sr total"><span>مخاطرة الشركة</span><span class="v" id="bRisk">ارتفعت</span><span class="ar up bad" id="bRiskA">↑</span></div>
+      </div>
+      <div class="callout bad" style="margin-top:10px" id="beNote"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 الرافعة المالية ============ -->
+<section id="s5">
+  <div class="stop"><div class="n">٤</div><h2>الرافعة التمويلية (الرفع المالي)</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="FNL" data-mood="happy"></div><span class="bubble">تكلفة الدين ثابتة، والفرق لي</span></div><div class="react"><div class="ch" data-char="OPL" data-mood="happy"></div><span class="bubble">نفس فكرتي، بتكلفة ثابتة أخرى</span></div></div>
+      <h3>أولاً: من أين ينتج الرفع المالي</h3>
+      <dl class="kv">
+        <div><dt>الأساس</dt><dd>ينتج من الأسلوب الذي تتبعه الشركة في تمويل أصولها. هناك مصدران أساسيان للتمويل: التمويل بالملكية، والتمويل بالدين.</dd></div>
+        <div><dt>الافتراض</dt><dd>تكلفة التمويل بالدين <strong>ثابتة</strong> بغض النظر عن مستوى الأرباح التي تحققها الشركة.</dd></div>
+        <div><dt>الهدف</dt><dd>تستخدم الشركات التمويل بالدين لمحاولة رفع معدل العائد الذي يحصل عليه ملاك (أصحاب) الشركة.</dd></div>
+        <div><dt>شرط النجاح</dt><dd>قدرة الشركة على استثمار الأموال المقترضة وتحقيق عائد يفوق تكلفتها. مثال: عائد على الاستثمارات ١٤٪ وتكلفة الأموال المقترضة ١٢٪، فالفرق بين ١٤٪ و١٢٪ يعود إلى حملة الأسهم ويحسّن معدل عائدهم.</dd></div>
+        <div><dt>النتيجة</dt><dd>أثر الرفع المالي على الأرباح الصافية مشابه لأثر الرفع التشغيلي: أي زيادة في الأرباح قبل الفوائد والضرائب تؤدي إلى نسبة زيادة أكبر في صافي الربح، وأي نقص يؤدي إلى انخفاض أكبر، فالرفع المالي <strong>يزيد مخاطرة</strong> الشركة التي تستعمله.</dd></div>
+        <div><dt>نقطة التعادل</dt><dd>الفوائد المدفوعة على الأموال المقترضة تكلفة ثابتة على الشركة، فزيادتها ترفع نقطة التعادل ومن ثم تخفض هامش الأمان.</dd></div>
+      </dl>
+      <div class="stmt" style="margin-top:8px">
+        <div class="sh">قائمتا مركز مالي مصغرتان: من أين جاء المليون؟</div>
+        <div class="cols">
+          <div><div class="ch-t">الشركة أ</div><div class="sr"><span class="hi-sy">أموال الملاك</span><span class="v" id="bsAE">1,000,000</span><span></span></div><div class="sr"><span class="hi-un">أموال مقترضة</span><span class="v" id="bsAD">0</span><span></span></div></div>
+          <div><div class="ch-t">الشركة ب</div><div class="sr"><span class="hi-sy">أموال الملاك</span><span class="v" id="bsBE">500,000</span><span></span></div><div class="sr"><span class="hi-un">أموال مقترضة</span><span class="v" id="bsBD">500,000</span><span class="ar up bad">↑</span></div></div>
+        </div>
+        <div class="stmt-note">الاستثمارات متساوية، والفرق كله في جانب التمويل.</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>ثانياً: مثال (١)، شركتان بالاستثمارات نفسها</h3>
+      <p class="small">القيم الافتراضية من المثال: استثمارات ١,٠٠٠,٠٠٠ ريال لكل شركة، الشركة ب تمول النصف بأموال مقترضة بفائدة ١٠٪، العائد قبل الفوائد والضرائب ١٥٪، الضريبة ٥٠٪. غيّر أي رقم.</p>
+      <div class="grid2">
+        <div><label for="fI">الاستثمارات لكل شركة (ريال)</label><input type="number" id="fI" value="1000000" min="0" step="50000"></div>
+        <div><label for="fD">نسبة الأموال المقترضة في الشركة ب (%)</label><input type="number" id="fD" value="50" min="0" max="100" step="5"></div>
+        <div><label for="fR">سعر الفائدة (%)</label><input type="number" id="fR" value="10" min="0" step="1"></div>
+        <div><label for="fE">العائد قبل الفوائد والضرائب (%)</label><input type="number" id="fE" value="15" min="0" step="1"></div>
+        <div><label for="fT">معدل الضريبة (%)</label><input type="number" id="fT" value="50" min="0" max="100" step="5"></div>
+      </div>
+      <div class="stmt-pair" style="margin-top:12px">
+        <div class="stmt"><div class="sh">قائمة الدخل، الشركة أ (ملكية فقط)</div>
+          <div class="sr"><span>الأرباح قبل الفوائد والضرائب</span><span class="v" id="aE">150,000</span><span></span></div>
+          <div class="sr"><span>(−) الفوائد</span><span class="v" id="aI">------</span><span></span></div>
+          <div class="sr"><span>الأرباح قبل الضرائب</span><span class="v" id="aB">150,000</span><span></span></div>
+          <div class="sr"><span>(−) الضرائب</span><span class="v" id="aX">(75,000)</span><span></span></div>
+          <div class="sr total"><span>صافي الدخل</span><span class="v" id="aN">75,000</span><span></span></div>
+          <div class="sr sub"><span>عائد حملة الأسهم</span><span class="v" id="aROE">7.5%</span><span></span></div>
+        </div>
+        <div class="stmt r"><div class="sh">قائمة الدخل، الشركة ب (نصف دين)</div>
+          <div class="sr"><span>الأرباح قبل الفوائد والضرائب</span><span class="v" id="bE">150,000</span><span class="ar">=</span></div>
+          <div class="sr"><span class="hi-un">(−) الفوائد</span><span class="v" id="bI">(50,000)</span><span class="ar up bad">↑</span></div>
+          <div class="sr"><span>الأرباح قبل الضرائب</span><span class="v" id="bB">100,000</span><span class="ar dn">↓</span></div>
+          <div class="sr"><span class="hi">(−) الضرائب</span><span class="v" id="bX">(50,000)</span><span class="ar dn good">↓</span></div>
+          <div class="sr total"><span>صافي الدخل</span><span class="v" id="bN">50,000</span><span class="ar dn">↓</span></div>
+          <div class="sr sub"><span class="hi-sy">عائد حملة الأسهم</span><span class="v" id="bROE">10%</span><span class="ar up" id="bROEA">↑</span></div>
+        </div>
+      </div>
+      <ol class="steps" style="margin-top:12px" id="fSteps"></ol>
+      <div class="callout" style="margin-top:10px" id="fDecision"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="reacts"><div class="react"><div class="ch" data-char="FNL" data-mood="neutral"></div><span class="bubble">فوائدي تكلفة ثابتة أيضاً</span></div><div class="react"><div class="ch" data-char="OPL" data-mood="sad"></div><span class="bubble">ارتفعت نقطة تعادلي بسببك</span></div></div>
+    <h3>ثالثاً: مثال (٢)، الفوائد ترفع نقطة التعادل</h3>
+    <div class="side">
+      <div>
+        <p class="small">شركة تمول بحقوق الملكية فقط فلا فوائد ثابتة عليها. القيم الافتراضية من المثال: السعر ٥، التكلفة المتغيرة ٣، التكاليف الثابتة ٥٠,٠٠٠، ثم فوائد سندات ٢٠,٠٠٠.</p>
+        <div class="grid2">
+          <div><label for="gP">سعر بيع الوحدة</label><input type="number" id="gP" value="5" min="0" step="0.5"></div>
+          <div><label for="gV">التكلفة المتغيرة للوحدة</label><input type="number" id="gV" value="3" min="0" step="0.5"></div>
+          <div><label for="gF">التكاليف الثابتة</label><input type="number" id="gF" value="50000" min="0" step="1000"></div>
+          <div><label for="gI">الفوائد على السندات</label><input type="number" id="gI" value="20000" min="0" step="1000"></div>
+        </div>
+        <ol class="steps" style="margin-top:12px" id="gSteps"></ol>
+      </div>
+      <div class="stmt">
+        <div class="sh">قائمة الدخل عند نقطة التعادل الجديدة</div>
+        <div class="sr"><span>الإيرادات</span><span class="v" id="gR">175,000</span><span></span></div>
+        <div class="sr"><span>(−) التكاليف المتغيرة</span><span class="v" id="gVc">(105,000)</span><span></span></div>
+        <div class="sr"><span>هامش المساهمة</span><span class="v" id="gM">70,000</span><span></span></div>
+        <div class="sr"><span>(−) التكاليف الثابتة</span><span class="v" id="gFc">(50,000)</span><span></span></div>
+        <div class="sr"><span class="hi-un">(−) الفوائد (تكلفة ثابتة جديدة)</span><span class="v" id="gIc">(20,000)</span><span class="ar up bad">↑</span></div>
+        <div class="sr total"><span>الربح</span><span class="v">0</span><span class="ar">=</span></div>
+        <div class="sr sub"><span class="hi">وحدات التعادل</span><span class="v" id="gBE">25,000 → 35,000</span><span class="ar up bad">↑</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 الرافعتان والمخاطر ============ -->
+<section id="s6">
+  <div class="stop"><div class="n">٥</div><h2>الرافعتان معاً ومصادر المخاطر</h2></div>
+  <p class="lead">الرافعة تضخّم أثر أي مصدر من مصادر المخاطر على الأرباح. البطاقات الثلاث تربط الفكرة، والمخطط تحتها يعرض الأمثلة كلها في مكان واحد.</p>
+  <div class="grid3">
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="SYS" data-mood="happy"></div><span class="bubble">دورات الاقتصاد من عندي</span></div><div class="react"><div class="ch" data-char="UNS" data-mood="happy"></div><span class="bubble">والحريق والإضراب من عندي</span></div></div>
+      <h3>١. ما الذي يحرّك المبيعات والتكاليف؟</h3>
+      <ol class="steps">
+        <li>انخفاض المبيعات أو ارتفاع تكلفة المدخلات يمكن أن ينتج عن عوامل المخاطر المنتظمة أو غير المنتظمة.</li>
+        <li><span class="tag sy">منتظم</span> دورات النشاط الاقتصادي تؤثر على المبيعات بدرجات متفاوتة حسب طبيعة السلعة.</li>
+        <li><span class="tag un">غير منتظم</span> فقدان عميل مهم، أو حدوث حريق أو إضراب أو ما شابه.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="OPL" data-mood="angry"></div><span class="bubble">أنا أضخّم الأثر</span></div><div class="react"><div class="ch" data-char="FNL" data-mood="angry"></div><span class="bubble">وأنا أيضاً</span></div></div>
+      <h3>٢. ماذا تفعل الرافعة بهذا التحريك؟</h3>
+      <ol class="steps">
+        <li>أي انخفاض في حجم المبيعات، أو ارتفاع في أسعار المدخلات التي تمثل تكاليف متغيرة، يسبب للشركات التي تستخدم أحد شكلي الرفع أو كليهما انخفاضاً أكبر في الأرباح الصافية.</li>
+        <li>قد يؤدي هذا الانخفاض إلى تحقيق الشركة لخسائر إذا تجاوز الانخفاض نسبة هامش الأمان.</li>
+        <li>زيادة الرفع التشغيلي أو المالي أو كليهما معاً ترفع نقطة التعادل وتخفض نسبة هامش الأمان، وبالتالي تزيد المخاطرة.</li>
+      </ol>
+      <div class="stmt" style="margin-top:10px">
+        <div class="sh">سلسلة الأثر</div>
+        <div class="sr"><span>المبيعات (بسبب مخاطر منتظمة أو غير منتظمة)</span><span class="v">تنخفض</span><span class="ar dn">↓</span></div>
+        <div class="sr"><span class="hi">الأرباح الصافية مع رافعة</span><span class="v">تنخفض أكثر</span><span class="ar dn">↓↓</span></div>
+        <div class="sr total"><span>إذا تجاوز الانخفاض هامش الأمان</span><span class="v">خسارة</span><span class="ar dn">↓</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="MKT" data-mood="neutral"></div><span class="bubble">وأنا أنقلها إلى سعر السهم</span></div></div>
+      <h3>٣. لماذا يهتم المستثمر؟</h3>
+      <ol class="steps">
+        <li>أي تغير في الأرباح سيؤثر على سعر السهم في السوق بالتبعية.</li>
+        <li>لذلك يهتم المستثمرون بمعرفة مدى الرفع المالي والرفع التشغيلي الذي تستخدمه الشركة، لأجل تقرير مستوى المخاطرة المرتبطة بهذا السهم.</li>
+      </ol>
+      <div class="stmt r" style="margin-top:10px">
+        <div class="sh">لوحة المستثمر</div>
+        <div class="sr"><span>درجة الرفع التشغيلي</span><span class="v">أعلى</span><span class="ar up bad">↑</span></div>
+        <div class="sr"><span>درجة الرفع المالي</span><span class="v">أعلى</span><span class="ar up bad">↑</span></div>
+        <div class="sr"><span>نقطة التعادل</span><span class="v">أعلى</span><span class="ar up bad">↑</span></div>
+        <div class="sr"><span>هامش الأمان</span><span class="v">أقل</span><span class="ar dn">↓</span></div>
+        <div class="sr total"><span>المخاطرة المرتبطة بالسهم</span><span class="v">أعلى</span><span class="ar up bad">↑</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>المخطط الحي: حرّك الشريط وشاهد شكل المنحنيات</h3>
+    <p class="small">الأرقام مأخوذة من أمثلة الموضوع نفسها. المهم أن تحفظ <strong>شكل</strong> كل خط: أين يتقاطع الإيراد مع التكلفة الكلية (نقطة التعادل)، وكيف يصبح خط صافي الدخل أشد ميلاً مع الرافعة الأعلى.</p>
+    <div class="tabs" role="tablist" id="thTabs">
+      <button role="tab" aria-selected="true" data-t="OPL_M">رفع تشغيلي منخفض (يدوية)</button>
+      <button role="tab" aria-selected="false" data-t="OPL_A">رفع تشغيلي مرتفع (مميكنة)</button>
+      <button role="tab" aria-selected="false" data-t="EX2">مثال ٢ بلا فوائد</button>
+      <button role="tab" aria-selected="false" data-t="EX2F">مثال ٢ مع الفوائد</button>
+      <button role="tab" aria-selected="false" data-t="FNL">الرفع المالي (مثال ١)</button>
+    </div>
+    <label for="lev" style="display:block;margin-top:10px"><span id="levLabel">الوحدات المباعة</span>: <span id="levv" class="num">30,000</span></label>
+    <input type="range" id="lev" min="0" max="60000" value="30000" step="1000">
+    <div class="charts">
+      <figure><figcaption id="capL">الإيرادات والتكاليف</figcaption><svg id="svgCost" viewBox="0 0 340 210" role="img" aria-label="المحور الأفقي الوحدات المباعة والمحور الرأسي الريال"></svg></figure>
+      <figure><figcaption id="capR">صافي الدخل قبل الفوائد والضرائب</figcaption><svg id="svgVal" viewBox="0 0 340 210" role="img" aria-label="المحور الأفقي الوحدات المباعة والمحور الرأسي صافي الدخل"></svg></figure>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div class="readout">
+      <div><div class="k" id="k1">الإيرادات</div><div class="v" id="r1">–</div></div>
+      <div><div class="k" id="k2">التكاليف الكلية</div><div class="v" id="r2">–</div></div>
+      <div><div class="k" id="k3">صافي الدخل</div><div class="v" id="r3">–</div></div>
+      <div><div class="k" id="k4">نقطة التعادل</div><div class="v" id="r4">–</div></div>
+    </div>
+    <div class="callout thnote" style="margin-top:12px"><div class="ch" id="thChar"></div><div id="thNote"></div></div>
+  </div>
+</section>
+
+<!-- ============ 6 المعادلات والمقارنة ============ -->
+<section id="s8">
+  <div class="stop"><div class="n">٦</div><h2>ملخص المعادلات وجدول المقارنة</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>المعادلات، كل معادلة في سطر</h3>
+      <h4 style="margin:10px 0 4px">المخاطر النظامية (بيتا)</h4>
+      <div class="eqlist">
+        <div class="formula ar">عائد السهم المعني = الثابت + (بيتا × عائد السوق)</div>
+      </div>
+      <h4 style="margin:14px 0 4px">الرافعة التشغيلية</h4>
+      <div class="eqlist">
+        <div class="formula ar">هامش المساهمة الإجمالي = الإيرادات − التكاليف المتغيرة</div>
+        <div class="formula ar">صافي الدخل قبل الفوائد والضرائب = هامش المساهمة الإجمالي − التكاليف الثابتة</div>
+        <div class="formula ar">نسبة التغير في المبيعات = <span class="frac"><span class="fn">المبيعات الجديدة − المبيعات الحالية</span><span class="fd">المبيعات الحالية</span></span></div>
+        <div class="formula ar">نسبة التغير في الأرباح = <span class="frac"><span class="fn">الأرباح الجديدة − الأرباح الحالية</span><span class="fd">الأرباح الحالية</span></span></div>
+      </div>
+      <h4 style="margin:14px 0 4px">نقطة التعادل</h4>
+      <div class="eqlist">
+        <div class="formula ar">الإيرادات الكلية = التكاليف الثابتة + التكاليف المتغيرة</div>
+        <div class="formula ar">س × ع = التكاليف الثابتة + م × ع</div>
+        <div class="formula ar">ع (وحدات التعادل) = <span class="frac"><span class="fn">التكاليف الثابتة</span><span class="fd">س − م</span></span></div>
+        <div class="formula ar">هامش المساهمة للوحدة = س − م</div>
+      </div>
+      <h4 style="margin:14px 0 4px">هامش الأمان</h4>
+      <div class="eqlist">
+        <div class="formula ar">نسبة هامش الأمان = <span class="frac"><span class="fn">المبيعات المتوقعة − المبيعات عند التعادل</span><span class="fd">المبيعات المتوقعة</span></span></div>
+      </div>
+      <h4 style="margin:14px 0 4px">الرافعة المالية</h4>
+      <div class="eqlist">
+        <div class="formula ar">الأرباح قبل الضرائب = الأرباح قبل الفوائد والضرائب − الفوائد</div>
+        <div class="formula ar">صافي الدخل = الأرباح قبل الضرائب − الضرائب</div>
+        <div class="formula ar">عائد حملة الأسهم = <span class="frac"><span class="fn">صافي الدخل</span><span class="fd">أموال الملاك</span></span></div>
+        <div class="formula ar">وحدات التعادل مع الفوائد = <span class="frac"><span class="fn">التكاليف الثابتة + الفوائد</span><span class="fd">س − م</span></span></div>
+      </div>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>المصدر أو المفهوم</th><th>نوعه</th><th>ما يفعله</th><th>هل يخففه التنويع؟</th></tr></thead>
+      <tbody>
+        <tr><td><span class="ch" data-char="SYS" data-mood="neutral"></span>المخاطر النظامية</td><td>قسم رئيسي</td><td>تحرك معظم الأسعار بالاتجاه نفسه، تقاس ببيتا</td><td>لا</td></tr>
+        <tr><td><span class="ch" data-char="MKT" data-mood="neutral"></span>مخاطر السوق</td><td>نظامية</td><td>أحداث غير متوقعة، ملموسة أو غير ملموسة، تغير التوقعات والعرض والطلب</td><td>لا</td></tr>
+        <tr><td><span class="ch" data-char="INT" data-mood="neutral"></span>مخاطر سعر الفائدة</td><td>نظامية</td><td>ارتفاع الفائدة يخفض أسعار الأسهم والسندات، والدخل الثابت أكثر تأثراً</td><td>لا</td></tr>
+        <tr><td><span class="ch" data-char="PPR" data-mood="neutral"></span>مخاطر القوة الشرائية</td><td>نظامية</td><td>التضخم يخفض القيمة الحقيقية للعوائد، والأسهم العادية حماية غالباً</td><td>لا</td></tr>
+        <tr><td><span class="ch" data-char="UNS" data-mood="neutral"></span>المخاطر غير النظامية</td><td>قسم رئيسي</td><td>أحداث تخص شركة أو قطاعاً بعينه</td><td>نعم</td></tr>
+        <tr><td><span class="ch" data-char="MGT" data-mood="neutral"></span>مخاطر الإدارة</td><td>غير نظامية</td><td>قرارات خاطئة وسوء تصرف في الطوارئ تخفض الأرباح</td><td>نعم</td></tr>
+        <tr><td><span class="ch" data-char="IND" data-mood="neutral"></span>مخاطر الصناعة</td><td>غير نظامية</td><td>إضرابات، قوانين، ضرائب، أذواق، جمارك تخص قطاعاً</td><td>نعم</td></tr>
+        <tr><td><span class="ch" data-char="OPL" data-mood="neutral"></span>الرافعة التشغيلية</td><td>مضخّم</td><td>تكاليف ثابتة أعلى، تغير صغير في المبيعات يصبح تغيراً أكبر في صافي الدخل التشغيلي</td><td>ترفع نقطة التعادل وتخفض هامش الأمان</td></tr>
+        <tr><td><span class="ch" data-char="FNL" data-mood="neutral"></span>الرافعة المالية</td><td>مضخّم</td><td>فوائد ثابتة، تغير في الأرباح قبل الفوائد والضرائب يصبح تغيراً أكبر في صافي الربح</td><td>ترفع نقطة التعادل وتخفض هامش الأمان</td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<!-- ============ 7 بطاقات ============ -->
+<section id="s9">
+  <div class="stop"><div class="n">٧</div><h2>بطاقات الحفظ السريع</h2></div>
+  <p class="small">اضغط البطاقة لقلبها. أجب في رأسك قبل القلب.</p>
+  <div class="fc-grid" id="fcGrid"></div>
+</section>
+
+<!-- ============ 8 اختبار ============ -->
+<section id="s10">
+  <div class="stop"><div class="n">٨</div><h2>اختبار المحطة الأخيرة</h2></div>
+  <div class="quizwrap">
+    <div class="card" id="quiz">
+      <div class="q-head"><span id="qCount">سؤال 1 من 20</span><span id="qScore">النتيجة: 0</span></div>
+      <div class="bar"><i id="qBar"></i></div>
+      <div id="qBody"></div>
+    </div>
+    <div class="qchar"><div class="ch" id="quizChar"></div><div class="bubble" id="quizSay" style="display:block;text-align:center;margin-top:4px">جاهز؟</div></div>
+  </div>
+</section>
+
+<footer style="margin-top:36px;border-top:1px solid var(--line);padding-top:16px;font-size:13.5px;color:var(--muted);line-height:1.8">
+  <p style="text-align:center;font-weight:700;color:var(--ink-2);margin-bottom:6px">جميع الحقوق محفوظة لمنصة معيار © 2026</p>
+  <p><strong>إخلاء مسؤولية:</strong> هذا المحتوى تعليمي أُعد لأغراض المذاكرة والمراجعة فقط، ولا يغني عن الرجوع إلى المصادر العلمية المعتمدة. لا يُعد استشارة مالية أو استثمارية أو محاسبية أو مهنية من أي نوع. الأرقام الواردة في المخططات الحية والقوائم المصغرة توضيحية لغرض الشرح ولا تمثل بيانات فعلية. الشخصيات والأسماء المستخدمة رمزية للمساعدة على الحفظ. لا تتحمل منصة معيار أي مسؤولية عن أي قرار يُتخذ أو نتيجة تترتب على استخدام هذا المحتوى.</p>
+</footer>
+</div>
+
+<div id="dock" hidden><div class="ch" id="dockChar"></div><div class="say"><span id="dockSay"></span><button class="x" id="dockX" aria-label="إخفاء">×</button></div></div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const fm=n=>Number(n).toLocaleString('en-US',{maximumFractionDigits:1});
+  const pc=n=>{const v=Math.round(n*10)/10;return (Number.isInteger(v)?String(v):v.toFixed(1))+'%';};
+  const L=v=>`<bdi dir="ltr">${v}</bdi>`;
+  const wl=x=>/\d/.test(String(x).replace(/<[^>]+>/g,''))?`<bdi dir="ltr">${x}</bdi>`:x;
+  const fr=(n,d)=>`<span class="frac"><span class="fn">${wl(n)}</span><span class="fd">${wl(d)}</span></span>`;
+  const sub=(a,b)=>L(fm(a)+' − '+fm(b));
+  const par=n=>'('+fm(n)+')';
+
+  /* ================= characters ================= */
+  const CH={
+    SYS:{name:'الموجة',th:'المخاطر النظامية',c:'#2F86A8',d:'#175A78',l:'#8FD3EC',shape:'wave',fy:94},
+    MKT:{name:'المزاج',th:'مخاطر السوق',c:'#C4557E',d:'#8A2F55',l:'#F0A6C3',shape:'cloud',fy:96},
+    INT:{name:'الفائدة',th:'مخاطر سعر الفائدة',c:'#D08F1F',d:'#8F5E0A',l:'#F6D27E',shape:'coin',fy:84},
+    PPR:{name:'التضخم',th:'مخاطر القوة الشرائية',c:'#DB4F2E',d:'#9A2E16',l:'#FFA285',shape:'balloon',fy:70},
+    UNS:{name:'المنفرد',th:'المخاطر غير النظامية',c:'#8E3B3B',d:'#5E2222',l:'#D68C8C',shape:'diamond',fy:80},
+    MGT:{name:'المدير',th:'مخاطر الإدارة',c:'#4B5F8C',d:'#2C3A5C',l:'#9DB0D8',shape:'tower',fy:80},
+    IND:{name:'القطاع',th:'مخاطر الصناعة',c:'#6F7B4B',d:'#46512A',l:'#B8C48A',shape:'factory',fy:100},
+    OPL:{name:'الآلة',th:'الرافعة التشغيلية',c:'#3F8F60',d:'#23603C',l:'#93D6AE',shape:'gear',fy:84},
+    FNL:{name:'المقترض',th:'الرافعة المالية',c:'#5C4B9F',d:'#3A2C6E',l:'#B3A3E0',shape:'sack',fy:92}
+  };
+  function gearPath(cx,cy,r1,r2,n){let d='';for(let i=0;i<n*2;i++){const a=Math.PI*i/n-Math.PI/2;const r=i%2?r1:r2;const a2=a+Math.PI/n*0.45;const rr=i%2?r1:r2;d+=(i?'L':'M')+(cx+r*Math.cos(a)).toFixed(1)+' '+(cy+r*Math.sin(a)).toFixed(1)+' L'+(cx+rr*Math.cos(a2)).toFixed(1)+' '+(cy+rr*Math.sin(a2)).toFixed(1)+' ';}return d+'Z';}
+  const SHAPES={
+    wave:'M16 62 Q28 40 42 58 Q52 70 62 54 Q74 36 86 56 Q94 68 104 58 V110 Q104 128 86 128 H34 Q16 128 16 110 Z',
+    cloud:'M32 128 C14 128 10 104 26 98 C14 82 30 62 48 70 C50 44 82 40 88 64 C106 58 116 84 100 96 C114 104 110 128 92 128 Z',
+    coin:'M60 34 A48 48 0 1 1 59.9 34 Z',
+    balloon:'M60 14 C90 14 102 46 102 72 C102 100 82 116 60 116 C38 116 18 100 18 72 C18 46 30 14 60 14 Z',
+    diamond:'M60 18 L106 78 L60 128 L14 78 Z',
+    tower:'M36 40 H84 Q96 40 96 52 V116 Q96 128 84 128 H36 Q24 128 24 116 V52 Q24 40 36 40 Z',
+    factory:'M14 128 V72 L38 58 V72 L62 58 V72 L86 58 V72 H94 V28 H108 V128 Z',
+    gear:gearPath(60,84,38,47,10),
+    sack:'M44 32 H76 L82 46 C102 58 108 86 106 106 C104 122 86 128 60 128 C34 128 16 122 14 106 C12 86 18 58 38 46 Z'
+  };
+  let gid=0;
+  function face(fy,mood,k){
+    const dk='#2A2320';let s='';
+    [48,72].forEach((x,i)=>{
+      s+=`<ellipse cx="${x}" cy="${fy}" rx="9" ry="${mood==='angry'?7:10}" fill="#fff"/>`;
+      const px=x+(mood==='sad'?(i?-1:1):0), py=fy+(mood==='sad'?2:mood==='happy'?-1:0);
+      s+=`<circle cx="${px}" cy="${py}" r="${mood==='angry'?3.4:4.6}" fill="${dk}"/><circle cx="${px-1.6}" cy="${py-1.8}" r="1.5" fill="#fff"/>`;
+    });
+    if(mood==='happy') s+=`<path d="M39 ${fy-17} q9 -7 18 0 M63 ${fy-17} q9 -7 18 0" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round"/>`;
+    else if(mood==='sad') s+=`<path d="M40 ${fy-14} l16 -6 M64 ${fy-20} l16 6" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round"/>`;
+    else if(mood==='angry') s+=`<path d="M40 ${fy-22} l17 8 M63 ${fy-14} l17 -8" fill="none" stroke="${dk}" stroke-width="3.6" stroke-linecap="round"/>`;
+    else s+=`<path d="M40 ${fy-16} h16 M64 ${fy-16} h16" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round"/>`;
+    if(mood==='happy') s+=`<path d="M45 ${fy+12} Q60 ${fy+34} 75 ${fy+12} Z" fill="#6B2A2A"/><path d="M52 ${fy+22} Q60 ${fy+30} 68 ${fy+22} Q60 ${fy+26} 52 ${fy+22} Z" fill="#E88A8A"/><circle cx="36" cy="${fy+9}" r="5" fill="#F08A80" opacity=".55"/><circle cx="84" cy="${fy+9}" r="5" fill="#F08A80" opacity=".55"/>`;
+    else if(mood==='sad') s+=`<path d="M47 ${fy+24} q13 -13 26 0" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round"/><path d="M78 ${fy+10} c0 6 -5 10 -5 15 a5 5 0 0 0 10 0 c0 -5 -5 -9 -5 -15z" fill="#5DA9E9"/>`;
+    else if(mood==='angry') s+=`<path d="M46 ${fy+20} l7 -5 l7 5 l7 -5 l7 5" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="60" cy="${fy-30}" rx="22" ry="9" fill="#E0392B" opacity=".28"/><path d="M96 ${fy-40} q4 -6 0 -12 M104 ${fy-36} q4 -6 0 -12" fill="none" stroke="#9B9B9B" stroke-width="2.5" stroke-linecap="round"/>`;
+    else s+=`<path d="M50 ${fy+17} h20" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round"/>`;
+    return s;
+  }
+  function acc(k,fy){
+    const dk='#2A2320',c=CH[k];
+    switch(k){
+      case 'SYS': return `<path d="M22 70 Q34 52 46 66 Q56 78 66 62 Q78 46 90 64" fill="none" stroke="#fff" stroke-width="3" opacity=".55" stroke-linecap="round"/><path d="M8 40 q6 -8 12 0 M100 26 q6 -8 12 0" fill="none" stroke="${c.c}" stroke-width="3" stroke-linecap="round"/>`;
+      case 'MKT': return `<text x="22" y="46" font-size="22" font-weight="700" fill="${c.d}" font-family="Tajawal,sans-serif">!</text><text x="88" y="40" font-size="22" font-weight="700" fill="${c.d}" font-family="Tajawal,sans-serif">?</text><path d="M30 118 h10 M44 118 h30" stroke="#fff" stroke-width="2.5" opacity=".6" stroke-linecap="round"/>`;
+      case 'INT': return `<circle cx="60" cy="82" r="40" fill="none" stroke="${c.d}" stroke-width="3" stroke-dasharray="6 5" opacity=".8"/><text x="60" y="122" font-size="18" font-weight="700" text-anchor="middle" fill="${c.d}" font-family="Tajawal,sans-serif">٪</text><path d="M14 30 l0 -16 l-5 5 M14 14 l5 5" fill="none" stroke="${dk}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M106 14 l0 16 l-5 -5 M106 30 l5 -5" fill="none" stroke="${dk}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+      case 'PPR': return `<path d="M54 116 l6 8 l6 -8 z" fill="${c.d}"/><path d="M60 124 q-6 5 0 10" fill="none" stroke="${dk}" stroke-width="2" stroke-linecap="round"/><path d="M40 30 q-8 12 -6 28" fill="none" stroke="#fff" stroke-width="3" opacity=".5" stroke-linecap="round"/>`;
+      case 'UNS': return `<circle cx="60" cy="42" r="9" fill="none" stroke="#fff" stroke-width="3" opacity=".7"/><circle cx="60" cy="42" r="3" fill="#fff" opacity=".8"/><path d="M60 120 v6" stroke="#fff" stroke-width="2.5" opacity=".7" stroke-linecap="round"/>`;
+      case 'MGT': return `<rect x="18" y="34" width="84" height="8" rx="4" fill="${dk}"/><path d="M34 34 V16 Q34 12 38 12 H82 Q86 12 86 16 V34 Z" fill="${dk}"/><rect x="34" y="26" width="52" height="5" fill="#C9A24A"/><path d="M60 ${fy+26} l-5 5 l5 18 l5 -18 z" fill="#B23A3A"/>`;
+      case 'IND': return `<path d="M96 24 q-3 -8 3 -12 M101 18 q-4 -10 4 -14" fill="none" stroke="#9B9B9B" stroke-width="3" stroke-linecap="round" opacity=".8"/><rect x="24" y="80" width="10" height="10" rx="2" fill="#fff" opacity=".55"/><rect x="42" y="80" width="10" height="10" rx="2" fill="#fff" opacity=".55"/>`;
+      case 'OPL': return `<circle cx="60" cy="84" r="30" fill="none" stroke="${c.d}" stroke-width="3" opacity=".6"/><circle cx="60" cy="${fy+26}" r="7" fill="${c.d}"/><circle cx="60" cy="${fy+26}" r="3" fill="#fff"/>`;
+      case 'FNL': return `<rect x="42" y="40" width="36" height="8" rx="4" fill="${c.d}"/><path d="M74 26 h22 l6 6 l-6 6 h-22 z" fill="#E3B44C" stroke="#8A6410" stroke-width="1.5"/><text x="85" y="36" font-size="8.5" font-weight="700" text-anchor="middle" fill="#5B3F05" font-family="Tajawal,sans-serif">دين</text><text x="60" y="126" font-size="14" font-weight="700" text-anchor="middle" fill="#fff" opacity=".8" font-family="Tajawal,sans-serif">٪</text>`;
+      default: return '';
+    }
+  }
+  function charSVG(k,mood){
+    const c=CH[k];const id='g'+(++gid);const fy=c.fy;
+    return `<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-label="${c.name}، شخصية ${c.th}"><defs><radialGradient id="${id}" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="${c.l}"/><stop offset=".45" stop-color="${c.c}"/><stop offset="1" stop-color="${c.d}"/></radialGradient></defs>
+      <ellipse cx="60" cy="134" rx="30" ry="5" fill="rgba(0,0,0,.18)"/>
+      <ellipse cx="46" cy="128" rx="9" ry="5" fill="${c.d}"/><ellipse cx="74" cy="128" rx="9" ry="5" fill="${c.d}"/>
+      <path d="${SHAPES[c.shape]}" fill="url(#${id})"/>
+      <ellipse cx="44" cy="${fy-30}" rx="11" ry="6" fill="#fff" opacity=".28" transform="rotate(-25 44 ${fy-30})"/>
+      ${acc(k,fy)}${face(fy,mood,k)}</svg>`;
+  }
+  function setChar(el,k,mood){
+    el.innerHTML=charSVG(k,mood);el.dataset.char=k;el.dataset.mood=mood;el.dataset.name=CH[k].name;
+    el.className=el.className.replace(/\bm-\w+/g,'').trim()+' m-'+mood;
+    if(!/\bch\b/.test(el.className))el.className+=' ch';
+  }
+  document.querySelectorAll('.ch[data-char]').forEach(el=>setChar(el,el.dataset.char,el.dataset.mood||'neutral'));
+  $('crowd').innerHTML=Object.keys(CH).map(k=>`<div class="ch m-neutral" data-name="${CH[k].name}" style="width:46px;animation-delay:${Math.random()*2}s">${charSVG(k,'neutral')}</div>`).join('');
+  setInterval(()=>{const els=$('crowd').children;const i=Math.floor(Math.random()*els.length);const el=els[i];const k=Object.keys(CH)[i];const m=['happy','happy','neutral','sad','angry'][Math.floor(Math.random()*5)];setChar(el,k,m);setTimeout(()=>setChar(el,k,'neutral'),2200);},2600);
+
+  /* ================= 0: story ================= */
+  const mix=$('mix');
+  function drawMix(){
+    const c=+mix.value/100; const P=2,V=1,F=20000,U=30000;
+    const R0=P*U,V0=V*U,E0=R0-V0-F; const U1=U*(1+c),R1=P*U1,V1=V*U1,E1=R1-V1-F;
+    const pe=E0?((E1-E0)/E0*100):0;
+    $('mixv').textContent=(c>=0?'+':'')+Math.round(c*100)+'%';
+    const a=Math.abs(c*100),b=Math.abs(pe),tot=a+b||1;
+    $('mixEq').style.flexBasis=(a/tot*100)+'%';$('mixEq').textContent='المبيعات '+(c>=0?'+':'')+Math.round(c*100)+'%';
+    $('mixDt').style.flexBasis=(b/tot*100)+'%';$('mixDt').textContent='صافي الدخل '+(pe>=0?'+':'')+pc(pe).replace('%','')+'%';
+    const arr=(x,y)=>x>y?'↑':x<y?'↓':'=';
+    $('stRev').textContent=fm(R0)+' → '+fm(R1);$('stRevA').textContent=arr(R1,R0);
+    $('stVc').textContent=par(V0)+' → '+par(V1);$('stVcA').textContent=arr(V1,V0);
+    $('stCm').textContent=fm(R0-V0)+' → '+fm(R1-V1);$('stCmA').textContent=arr(R1-V1,R0-V0);
+    $('stEbit').textContent=fm(E0)+' → '+fm(E1);$('stEbitA').textContent=arr(E1,E0);
+    ['stRevA','stCmA','stEbitA'].forEach(id=>{$(id).className='ar '+(c>0?'up':c<0?'dn':'')});
+    $('stVcA').className='ar '+(c>0?'up bad':c<0?'dn good':'');
+    let note;
+    if(c===0) note='لا تغير في المبيعات، فلا تغير في صافي الدخل.';
+    else note=`المبيعات تغيرت بـ ${pc(Math.abs(c*100))} فقط، لكن صافي الدخل تغير بـ ${pc(Math.abs(pe))}. السبب أن التكاليف الثابتة (${fm(F)}) لا تتحرك مع المبيعات، فيتحمل صافي الدخل التغير كله. ${c<0&&E1<0?'انتبه، صافي الدخل أصبح خسارة لأن الانخفاض تجاوز هامش الأمان.':''}`;
+    $('mixNote').textContent=note;
+  }
+  mix.addEventListener('input',drawMix); drawMix();
+
+  /* ================= 2: stage ================= */
+  const STG={
+    SYS:{note:'<strong>'+CH.SYS.name+'</strong> تمثل '+CH.SYS.th+'، قسم رئيسي من قسمي المخاطر. <a href="#card-SYS" style="color:var(--gold);font-weight:700">انتقل إلى بطاقتها</a>',react:{SYS:'happy',MKT:'happy',INT:'happy',PPR:'happy',UNS:'sad'}},
+    UNS:{note:'<strong>'+CH.UNS.name+'</strong> تمثل '+CH.UNS.th+'، قسم رئيسي من قسمي المخاطر. <a href="#card-UNS" style="color:var(--gold);font-weight:700">انتقل إلى بطاقتها</a>',react:{UNS:'happy',MGT:'happy',IND:'happy',SYS:'sad'}},
+    MKT:{note:'<strong>'+CH.MKT.name+'</strong> تمثل '+CH.MKT.th+'، مصدر من مصادر المخاطر النظامية. <a href="#card-MKT" style="color:var(--gold);font-weight:700">انتقل إلى بطاقتها</a>',react:{MKT:'happy',SYS:'happy',INT:'neutral',PPR:'neutral',UNS:'sad'}},
+    INT:{note:'<strong>'+CH.INT.name+'</strong> تمثل '+CH.INT.th+'، مصدر من مصادر المخاطر النظامية. <a href="#card-INT" style="color:var(--gold);font-weight:700">انتقل إلى بطاقتها</a>',react:{INT:'happy',SYS:'happy',MKT:'happy',FNL:'angry',UNS:'sad'}},
+    PPR:{note:'<strong>'+CH.PPR.name+'</strong> تمثل '+CH.PPR.th+'، مصدر من مصادر المخاطر النظامية. <a href="#card-PPR" style="color:var(--gold);font-weight:700">انتقل إلى بطاقتها</a>',react:{PPR:'happy',SYS:'happy',INT:'neutral',UNS:'sad'}},
+    MGT:{note:'<strong>'+CH.MGT.name+'</strong> تمثل '+CH.MGT.th+'، مصدر من مصادر المخاطر غير النظامية. <a href="#card-MGT" style="color:var(--gold);font-weight:700">انتقل إلى بطاقتها</a>',react:{MGT:'happy',UNS:'happy',SYS:'sad',IND:'neutral'}},
+    IND:{note:'<strong>'+CH.IND.name+'</strong> تمثل '+CH.IND.th+'، مصدر من مصادر المخاطر غير النظامية. <a href="#card-IND" style="color:var(--gold);font-weight:700">انتقل إلى بطاقتها</a>',react:{IND:'happy',UNS:'happy',SYS:'sad',MGT:'neutral'}},
+    OPL:{note:'<strong>'+CH.OPL.name+'</strong> تمثل '+CH.OPL.th+'، رافعة تضخّم أثر المخاطر. <a href="#s4" style="color:var(--gold);font-weight:700">انتقل إلى بطاقتها</a>',react:{OPL:'happy',FNL:'happy',SYS:'neutral',UNS:'neutral'}},
+    FNL:{note:'<strong>'+CH.FNL.name+'</strong> تمثل '+CH.FNL.th+'، رافعة تضخّم أثر المخاطر. <a href="#s5" style="color:var(--gold);font-weight:700">انتقل إلى بطاقتها</a>',react:{FNL:'happy',OPL:'happy',INT:'angry',SYS:'neutral'}}
+  };
+  const stage=$('stage');
+  const order=['SYS','MKT','INT','PPR','UNS','MGT','IND','OPL','FNL'];
+  order.forEach((k,i)=>{
+    const b=document.createElement('button');b.className='walker';b.dataset.k=k;
+    b.style.setProperty('--x',(2+i*10.6)+'%');b.style.setProperty('--dist',(14+((i*37)%30))+'px');b.style.setProperty('--dur',(3.5+i*.5)+'s');b.style.setProperty('--delay',(-i*1.3)+'s');
+    b.innerHTML=`<div class="waddle"><div class="ch m-neutral" data-char="${k}">${charSVG(k,'neutral')}</div></div><span class="nm">${CH[k].name}</span>`;
+    b.title=CH[k].th;
+    b.addEventListener('click',()=>selectStage(k));
+    stage.appendChild(b);
+  });
+  function selectStage(k){
+    const r=STG[k].react||{};
+    stage.querySelectorAll('.walker').forEach(w=>{const kk=w.dataset.k;setChar(w.querySelector('.ch'),kk,r[kk]||'neutral');w.classList.toggle('sel',kk===k);});
+    document.querySelectorAll('.theory[data-th]').forEach(t=>{const m=t.dataset.th===k;t.classList.toggle('sel',m);const c=t.querySelector('.ch');if(c)setChar(c,c.dataset.char,m?'happy':(r[c.dataset.char]||'neutral'));});
+    setChar($('stChar'),k,'happy');$('stNote').innerHTML=STG[k].note;
+  }
+  document.querySelectorAll('.theory[data-th]').forEach(t=>{t.id='card-'+t.dataset.th;});
+  document.querySelectorAll('.theory[data-th]').forEach(t=>t.addEventListener('click',e=>{if(e.target.closest('input,button,a'))return;selectStage(t.dataset.th);}));
+
+  /* ================= 2: charts ================= */
+  const TH={
+    OPL_M:{P:2,V:1,F:20000,I:0,ch:'OPL',note:'<strong>رفع تشغيلي منخفض (عمالة يدوية):</strong> تكاليف ثابتة ٢٠,٠٠٠ وتكلفة متغيرة ريال للوحدة. خط التكاليف الكلية يبدأ منخفضاً ويصعد بميل كبير، فيلتقي بخط الإيرادات مبكراً عند ٢٠,٠٠٠ وحدة. خط صافي الدخل مائل قليلاً، فالتغير في المبيعات لا يتضخم كثيراً.'},
+    OPL_A:{P:2,V:.5,F:37500,I:0,ch:'OPL',note:'<strong>رفع تشغيلي مرتفع (ميكنة):</strong> تكاليف ثابتة ٣٧,٥٠٠ وتكلفة متغيرة ٠.٥٠ للوحدة. خط التكاليف الكلية يبدأ أعلى لكنه أقل ميلاً، فيلتقي بالإيرادات متأخراً عند ٢٥,٠٠٠ وحدة. خط صافي الدخل أشد ميلاً، فأي تغير في المبيعات يصبح تغيراً أكبر في الدخل، وهامش الأمان أضيق.'},
+    EX2:{P:5,V:3,F:50000,I:0,ch:'OPL',note:'<strong>مثال ٢ بلا فوائد:</strong> السعر ٥ والتكلفة المتغيرة ٣ والثابتة ٥٠,٠٠٠. هامش المساهمة للوحدة ريالان، فالتعادل عند ٢٥,٠٠٠ وحدة.'},
+    EX2F:{P:5,V:3,F:50000,I:20000,ch:'FNL',note:'<strong>مثال ٢ مع الفوائد:</strong> الفوائد ٢٠,٠٠٠ على السندات تكلفة ثابتة جديدة، فارتفع خط التكاليف الكلية إلى الأعلى بالمقدار نفسه، وانتقلت نقطة التعادل من ٢٥,٠٠٠ إلى ٣٥,٠٠٠ وحدة، وانخفض هامش الأمان.'},
+    FNL:{fin:true,ch:'FNL',note:'<strong>الرفع المالي (مثال ١):</strong> الشركة أ ممولة بالملكية كلها، والشركة ب نصفها دين بفائدة ١٠٪ والضريبة ٥٠٪. خط عائد حملة أسهم ب أشد ميلاً: فوق ١٠٪ عائد على الاستثمار يتفوق على أ، وتحته يتراجع دونها، وقد يصبح سالباً. الفوائد الثابتة تضخم الأثر في الاتجاهين.'}
+  };
+  let cur='OPL_M';
+  const lev=$('lev');
+  const W=340,H=210,P={l:60,r:14,t:12,b:40};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const short=v=>Math.abs(v)>=1000?(Math.round(v/100)/10)+' ألف':String(Math.round(v));
+  function axes(xmin,xmax,ymin,ymax,xname,yname,xfmt,yfmt){
+    const ink=css('--muted'),line=css('--line'),txt=css('--ink-2');
+    const sx=x=>P.l+(W-P.l-P.r)*(x-xmin)/(xmax-xmin), sy=y=>H-P.b-(H-P.t-P.b)*(y-ymin)/(ymax-ymin);
+    let s=`<line x1="${P.l}" y1="${P.t}" x2="${P.l}" y2="${H-P.b}" stroke="${line}"/><line x1="${P.l}" y1="${H-P.b}" x2="${W-P.r}" y2="${H-P.b}" stroke="${line}"/>`;
+    for(let k=0;k<=4;k++){const xv=xmin+(xmax-xmin)*k/4;s+=`<text x="${sx(xv)}" y="${H-P.b+13}" font-size="9.5" text-anchor="${k===0?'start':k===4?'end':'middle'}" fill="${ink}" font-family="Tajawal,sans-serif">${xfmt(xv)}</text>`;}
+    for(let k=0;k<=4;k++){const yv=ymin+(ymax-ymin)*k/4;const yy=sy(yv);s+=`<line x1="${P.l}" y1="${yy}" x2="${W-P.r}" y2="${yy}" stroke="${line}" stroke-dasharray="2 4"/><text x="${P.l-4}" y="${yy+3}" font-size="9.5" text-anchor="end" fill="${ink}" font-family="Tajawal,sans-serif">${yfmt(yv)}</text>`;}
+    if(ymin<0&&ymax>0){s+=`<line x1="${P.l}" y1="${sy(0)}" x2="${W-P.r}" y2="${sy(0)}" stroke="${ink}" stroke-width="1"/>`;}
+    s+=`<text x="${(P.l+W-P.r)/2}" y="${H-6}" font-size="11.5" font-weight="700" text-anchor="middle" fill="${txt}" font-family="Tajawal,sans-serif" direction="rtl">${xname}</text>`;
+    s+=`<text transform="translate(10 ${(P.t+H-P.b)/2}) rotate(-90)" font-size="11.5" font-weight="700" text-anchor="middle" fill="${txt}" font-family="Tajawal,sans-serif" direction="rtl">${yname}</text>`;
+    return {s,sx,sy};
+  }
+  function line(fn,xmin,xmax,sx,sy,ymin,ymax){let d='';for(let i=0;i<=60;i++){const x=xmin+(xmax-xmin)*i/60;const y=Math.min(ymax,Math.max(ymin,fn(x)));d+=(i?'L':'M')+sx(x).toFixed(1)+' '+sy(y).toFixed(1)+' ';}return d;}
+  const FIN={I:1000000,d:.5,r:.10,t:.5};
+  function finCalc(e){const ebit=FIN.I*e;const intr=FIN.I*FIN.d*FIN.r;const nA=ebit*(1-FIN.t);const nB=(ebit-intr)*(1-FIN.t);return{nA,nB,rA:nA/FIN.I*100,rB:nB/(FIN.I*(1-FIN.d))*100};}
+  function draw(){
+    const t=TH[cur];const sysC=css('--sys'),unsC=css('--uns'),gd=css('--gold'),dk=css('--dark');
+    if(t.fin){
+      const e=+lev.value/100;$('levv').textContent=pc(e*100);
+      const xmin=0,xmax=.30;
+      let a=axes(xmin,xmax,-60000,160000,'x: العائد على الاستثمار قبل الفوائد والضرائب','y: صافي الدخل (ريال)',v=>pc(v*100),short);
+      let s=a.s;
+      s+=`<path d="${line(x=>finCalc(x).nA,xmin,xmax,a.sx,a.sy,-60000,160000)}" fill="none" stroke="${sysC}" stroke-width="2.5"/>`;
+      s+=`<path d="${line(x=>finCalc(x).nB,xmin,xmax,a.sx,a.sy,-60000,160000)}" fill="none" stroke="${unsC}" stroke-width="2.5"/>`;
+      s+=`<line x1="${a.sx(e)}" y1="${P.t}" x2="${a.sx(e)}" y2="${H-P.b}" stroke="${gd}" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+      $('svgCost').innerHTML=s;
+      let b=axes(xmin,xmax,-10,30,'x: العائد على الاستثمار قبل الفوائد والضرائب','y: عائد حملة الأسهم %',v=>pc(v*100),v=>pc(v));
+      let s2=b.s;
+      s2+=`<path d="${line(x=>finCalc(x).rA,xmin,xmax,b.sx,b.sy,-10,30)}" fill="none" stroke="${sysC}" stroke-width="2.5"/>`;
+      s2+=`<path d="${line(x=>finCalc(x).rB,xmin,xmax,b.sx,b.sy,-10,30)}" fill="none" stroke="${unsC}" stroke-width="2.5"/>`;
+      s2+=`<line x1="${b.sx(e)}" y1="${P.t}" x2="${b.sx(e)}" y2="${H-P.b}" stroke="${gd}" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+      const r=finCalc(e);
+      s2+=`<circle cx="${b.sx(e)}" cy="${b.sy(Math.min(30,Math.max(-10,r.rB)))}" r="5" fill="${unsC}"/><circle cx="${b.sx(e)}" cy="${b.sy(Math.min(30,Math.max(-10,r.rA)))}" r="5" fill="${sysC}"/>`;
+      $('svgVal').innerHTML=s2;
+      $('capL').textContent='صافي الدخل للشركتين';$('capR').textContent='عائد حملة الأسهم للشركتين';
+      $('legend').innerHTML=`<span style="--c:${sysC}">الشركة أ (ملكية فقط)</span><span style="--c:${unsC}">الشركة ب (نصف دين)</span><span style="--c:${gd}">الموضع الحالي</span>`;
+      $('k1').textContent='صافي دخل أ';$('r1').textContent=fm(r.nA);$('k2').textContent='صافي دخل ب';$('r2').textContent=fm(r.nB);
+      $('k3').textContent='عائد أسهم أ';$('r3').textContent=pc(r.rA);$('k4').textContent='عائد أسهم ب';$('r4').textContent=pc(r.rB);
+    }else{
+      const u=+lev.value;$('levv').textContent=fm(u);
+      const xmin=0,xmax=60000;const FT=t.F+t.I;
+      const ymax=Math.max(t.P*xmax,FT+t.V*xmax);
+      let a=axes(xmin,xmax,0,ymax,'x: الوحدات المباعة','y: الريال',short,short);
+      let s=a.s;
+      s+=`<path d="${line(x=>FT,xmin,xmax,a.sx,a.sy,0,ymax)}" fill="none" stroke="${gd}" stroke-width="2" stroke-dasharray="5 4"/>`;
+      s+=`<path d="${line(x=>FT+t.V*x,xmin,xmax,a.sx,a.sy,0,ymax)}" fill="none" stroke="${unsC}" stroke-width="2.5"/>`;
+      s+=`<path d="${line(x=>t.P*x,xmin,xmax,a.sx,a.sy,0,ymax)}" fill="none" stroke="${sysC}" stroke-width="2.5"/>`;
+      const be=FT/(t.P-t.V);
+      if(be<=xmax) s+=`<circle cx="${a.sx(be)}" cy="${a.sy(t.P*be)}" r="5" fill="${gd}"/><text x="${a.sx(be)}" y="${a.sy(t.P*be)-9}" font-size="10" font-weight="700" text-anchor="middle" fill="${gd}" font-family="Tajawal,sans-serif">نقطة التعادل</text>`;
+      s+=`<line x1="${a.sx(u)}" y1="${P.t}" x2="${a.sx(u)}" y2="${H-P.b}" stroke="${gd}" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+      $('svgCost').innerHTML=s;
+      const emin=-FT,emax=(t.P-t.V)*xmax-FT;
+      let b=axes(xmin,xmax,emin,emax,'x: الوحدات المباعة','y: الربح (ريال)',short,short);
+      let s2=b.s;
+      s2+=`<path d="${line(x=>(t.P-t.V)*x-FT,xmin,xmax,b.sx,b.sy,emin,emax)}" fill="none" stroke="${dk}" stroke-width="3"/>`;
+      const ev=(t.P-t.V)*u-FT;
+      s2+=`<line x1="${b.sx(u)}" y1="${P.t}" x2="${b.sx(u)}" y2="${H-P.b}" stroke="${gd}" stroke-width="1.5" stroke-dasharray="4 3"/><circle cx="${b.sx(u)}" cy="${b.sy(ev)}" r="5" fill="${gd}"/>`;
+      $('svgVal').innerHTML=s2;
+      $('capL').textContent='الإيرادات والتكاليف';$('capR').textContent=t.I?'الربح بعد الفوائد':'صافي الدخل قبل الفوائد والضرائب';
+      $('legend').innerHTML=`<span style="--c:${sysC}">الإيرادات الكلية</span><span style="--c:${unsC}">التكاليف الكلية${t.I?' مع الفوائد':''}</span><span style="--c:${gd}">التكاليف الثابتة${t.I?' + الفوائد':''}</span><span style="--c:${dk}">الربح</span>`;
+      $('k1').textContent='الإيرادات';$('r1').textContent=fm(t.P*u);$('k2').textContent='التكاليف الكلية';$('r2').textContent=fm(FT+t.V*u);
+      $('k3').textContent=t.I?'الربح بعد الفوائد':'صافي الدخل';$('r3').textContent=fm(ev);$('k4').textContent='نقطة التعادل';$('r4').textContent=fm(be)+' وحدة';
+    }
+    $('thNote').innerHTML=t.note;setChar($('thChar'),t.ch,'happy');
+  }
+  function selectTab(k){
+    const was=TH[cur].fin,now=TH[k].fin;cur=k;
+    [...$('thTabs').children].forEach(x=>x.setAttribute('aria-selected',x.dataset.t===k));
+    if(now){lev.min=0;lev.max=30;lev.step=1;if(!was)lev.value=15;$('levLabel').textContent='العائد على الاستثمار قبل الفوائد والضرائب';}
+    else{lev.min=0;lev.max=60000;lev.step=1000;if(was)lev.value=30000;$('levLabel').textContent='الوحدات المباعة';}
+    draw();
+  }
+  lev.addEventListener('input',draw);
+  $('thTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;selectTab(b.dataset.t);});
+  selectTab('OPL_M');
+  if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);}
+
+  /* ================= 3: operating leverage example ================= */
+  function calcEx(){
+    const Pp=+$('exP').value||0,Vv=+$('exV').value||0,F=+$('exF').value||0,U=+$('exU').value||0,c=(+$('exC').value||0)/100;
+    const R0=Pp*U,V0=Vv*U,M0=R0-V0,E0=M0-F;
+    const U1=U*(1+c),R1=Pp*U1,V1=Vv*U1,M1=R1-V1,E1=M1-F;
+    const U2=U*(1-c),R2=Pp*U2,V2=Vv*U2,M2=R2-V2,E2=M2-F;
+    const pe1=E0?(E1-E0)/E0*100:0,pe2=E0?(E2-E0)/E0*100:0;
+    $('exSteps').innerHTML=`<li><strong>أرباح الشركة حالياً</strong><div class="formula ar">الإيرادات = ${L(fm(Pp))} × ${L(fm(U))} = ${L(fm(R0))}<br>التكاليف المتغيرة = ${L(fm(Vv))} × ${L(fm(U))} = ${L(fm(V0))}<br>هامش المساهمة الإجمالي = ${sub(R0,V0)} = ${L(fm(M0))}<br>صافي الدخل قبل الفوائد والضرائب = ${sub(M0,F)} = <span style="color:var(--gold)">${L(fm(E0))}</span></div></li>
+      <li><strong>نسبة التغير في المبيعات مقابل نسبة التغير في الأرباح</strong> (أرقام الحالتين في القوائم تحت)<div class="formula ar">نسبة الزيادة في المبيعات = ${fr(L(fm(R1))+' − '+L(fm(R0)),L(fm(R0)))} = ${L(pc(c*100))}<br>نسبة الزيادة في الأرباح = ${fr(L(fm(E1))+' − '+L(fm(E0)),L(fm(E0)))} = <span style="color:var(--ok)">${L(pc(pe1))}</span><br>نسبة الانخفاض في الأرباح عند انخفاض المبيعات بـ ${L(pc(c*100))} = <span style="color:var(--bad)">${L(pc(Math.abs(pe2)))}</span></div></li>`;
+    $('exDecision').innerHTML=`<strong>القرار:</strong> تغير المبيعات بـ ${pc(c*100)} قابله تغير في الأرباح بـ ${pc(Math.abs(pe1))}، لأن الإيرادات والتكاليف المتغيرة تحركتا بالنسبة نفسها بينما بقيت التكاليف الثابتة (${fm(F)}) كما هي، فتحمل صافي الدخل الفرق كله. هذه طبيعة المخاطرة المرتبطة بالرفع التشغيلي: زيادة المبيعات تعني زيادة أكبر في الأرباح، وانخفاض المبيعات يعني انخفاضاً أكبر في الأرباح كذلك.${E2<0?' وفي حالة الانخفاض تحولت الأرباح إلى خسارة.':''}`;
+    $('c0R').textContent=fm(R0);$('c0V').textContent=par(V0);$('c0M').textContent=fm(M0);$('c0F').textContent=par(F);$('c0E').textContent=fm(E0);
+    $('c1R').textContent=fm(R1);$('c1V').textContent=par(V1);$('c1M').textContent=fm(M1);$('c1F').textContent=par(F);$('c1E').textContent=fm(E1);$('c1EA').textContent='↑ '+pc(pe1);
+    $('c2R').textContent=fm(R2);$('c2V').textContent=par(V2);$('c2M').textContent=fm(M2);$('c2F').textContent=par(F);$('c2E').textContent=fm(E2);$('c2EA').textContent='↓ '+pc(Math.abs(pe2));
+    calcBE();
+  }
+  function calcBE(){
+    const Pp=+$('exP').value||0,Vv=+$('exV').value||0,F=+$('exF').value||0,U=+$('exU').value||0;
+    const mV=+$('mV').value||0,mF=+$('mF').value||0;
+    const cm0=Pp-Vv,cm1=Pp-mV;
+    const be0=cm0>0?F/cm0:0,be1=cm1>0?mF/cm1:0;
+    const R0=Pp*U;const ms0=R0?(R0-be0*Pp)/R0*100:0,ms1=R0?(R0-be1*Pp)/R0*100:0;
+    $('beSteps').innerHTML=`<li><strong>نقطة التعادل قبل الميكنة</strong><div class="formula ar">ع = ${fr(L(fm(F)),L(fm(Pp))+' − '+L(fm(Vv)))} = ${fr(L(fm(F)),L(fm(cm0)))} = <span style="color:var(--gold)">${L(fm(be0))} وحدة</span></div></li>
+      <li><strong>نسبة هامش الأمان قبل الميكنة</strong> (المبيعات المتوقعة ${L(fm(U))} وحدة × ${L(fm(Pp))} = ${L(fm(R0))})<div class="formula ar">${fr(L(fm(R0))+' − '+L(fm(be0*Pp)),L(fm(R0)))} = <span style="color:var(--gold)">${L(pc(ms0))}</span></div></li>
+      <li><strong>نقطة التعادل بعد الميكنة</strong><div class="formula ar">ع = ${fr(L(fm(mF)),L(fm(Pp))+' − '+L(fm(mV)))} = ${fr(L(fm(mF)),L(fm(cm1)))} = <span style="color:var(--bad)">${L(fm(be1))} وحدة</span></div></li>
+      <li><strong>نسبة هامش الأمان بعد الميكنة</strong><div class="formula ar">${fr(L(fm(R0))+' − '+L(fm(be1*Pp)),L(fm(R0)))} = <span style="color:var(--bad)">${L(pc(ms1))}</span></div></li>`;
+    const arrUp=(a,b)=>a<b?'↑':a>b?'↓':'=';
+    $('bF').textContent=fm(F)+' → '+fm(mF);$('bFA').textContent=arrUp(F,mF);$('bFA').className='ar '+(mF>F?'up bad':'dn good');
+    $('bV').textContent=fm(Vv)+' → '+fm(mV);$('bVA').textContent=arrUp(Vv,mV);$('bVA').className='ar '+(mV<Vv?'dn good':'up bad');
+    $('bBE').textContent=fm(be0)+' → '+fm(be1);$('bBEA').textContent=arrUp(be0,be1);$('bBEA').className='ar '+(be1>be0?'up bad':'dn good');
+    $('bMS').textContent=pc(ms0)+' → '+pc(ms1);$('bMSA').textContent=arrUp(ms0,ms1);$('bMSA').className='ar '+(ms1<ms0?'dn':'up');
+    const riskUp=be1>be0;$('bRisk').textContent=riskUp?'ارتفعت':(be1<be0?'انخفضت':'كما هي');$('bRiskA').textContent=riskUp?'↑':(be1<be0?'↓':'=');$('bRiskA').className='ar '+(riskUp?'up bad':'dn good');
+    $('beNote').innerHTML=riskUp?`<strong>نلاحظ</strong> أن عدد الوحدات اللازمة لتحقيق التعادل ارتفع من ${fm(be0)} إلى ${fm(be1)}، وفي الوقت نفسه انخفض هامش الأمان من ${pc(ms0)} إلى ${pc(ms1)}، أي أن مخاطرة الشركة ارتفعت.`:`<strong>نلاحظ</strong> أن نقطة التعادل لم ترتفع بهذه الأرقام، فالميكنة هنا لم تزد المخاطرة. جرّب أرقام المثال (٠.٥٠ و٣٧,٥٠٠) لترى الحالة المشروحة.`;
+  }
+  ['exP','exV','exF','exU','exC'].forEach(id=>$(id).addEventListener('input',calcEx));
+  ['mV','mF'].forEach(id=>$(id).addEventListener('input',calcBE));
+  calcEx();
+
+  /* ================= 4: financial leverage ================= */
+  function calcFin(){
+    const I=+$('fI').value||0,d=(+$('fD').value||0)/100,r=(+$('fR').value||0)/100,e=(+$('fE').value||0)/100,t=(+$('fT').value||0)/100;
+    FIN.I=I;FIN.d=d;FIN.r=r;FIN.t=t;
+    const ebit=I*e,intr=I*d*r;
+    const aX=ebit*t,aN=ebit-aX,aROE=I?aN/I*100:0;
+    const bB=ebit-intr,bX=bB*t,bN=bB-bX,eqB=I*(1-d),bROE=eqB?bN/eqB*100:0;
+    $('bsAE').textContent=fm(I);$('bsAD').textContent='0';$('bsBE').textContent=fm(eqB);$('bsBD').textContent=fm(I*d);
+    $('aE').textContent=fm(ebit);$('aI').textContent='------';$('aB').textContent=fm(ebit);$('aX').textContent=par(aX);$('aN').textContent=fm(aN);$('aROE').textContent=pc(aROE);
+    $('bE').textContent=fm(ebit);$('bI').textContent=par(intr);$('bB').textContent=fm(bB);$('bX').textContent=par(bX);$('bN').textContent=fm(bN);$('bROE').textContent=pc(bROE);
+    $('bROEA').textContent=bROE>aROE?'↑':bROE<aROE?'↓':'=';$('bROEA').className='ar '+(bROE>aROE?'up':'dn');
+    $('fSteps').innerHTML=`<li><strong>الأرباح قبل الفوائد والضرائب لكل شركة</strong><div class="formula ar">${L(fm(I))} × ${L(pc(e*100))} = ${L(fm(ebit))}</div></li>
+      <li><strong>فوائد الشركة ب</strong><div class="formula ar">${L(fm(I))} × ${L(pc(d*100))} × ${L(pc(r*100))} = ${L(fm(intr))}</div></li>
+      <li><strong>عائد حملة الأسهم في الشركة أ</strong><div class="formula ar">${fr(L(fm(aN)),L(fm(I)))} = <span style="color:var(--sys)">${L(pc(aROE))}</span></div></li>
+      <li><strong>عائد حملة الأسهم في الشركة ب</strong><div class="formula ar">${fr(L(fm(bN)),L(fm(eqB)))} = <span style="color:var(--uns)">${L(pc(bROE))}</span></div></li>`;
+    $('fDecision').innerHTML=bROE>aROE?`<strong>القرار:</strong> استخدام الشركة ب لأموال الغير ذات التكلفة الثابتة حسّن معدل العائد الذي حصل عليه ملاكها (${pc(bROE)} مقابل ${pc(aROE)})، وهذا هو ما يسمى بالرفع المالي. السبب أن عائد الاستثمار ${pc(e*100)} يفوق تكلفة الأموال المقترضة ${pc(r*100)}، فالفرق يعود إلى حملة الأسهم.`:`<strong>القرار:</strong> الرفع المالي لم يحسّن عائد ملاك الشركة ب (${pc(bROE)} مقابل ${pc(aROE)})، لأن نجاحه يعتمد على تحقيق عائد من استثمار الأموال المقترضة يفوق تكلفتها، وهنا العائد ${pc(e*100)} لا يفوق تكلفة الاقتراض ${pc(r*100)}. الرفع المالي يضخم الأثر في الاتجاهين، لذلك يزيد مخاطرة الشركة.`;
+    if(TH[cur].fin)draw();
+  }
+  ['fI','fD','fR','fE','fT'].forEach(id=>$(id).addEventListener('input',calcFin));calcFin();
+
+  /* ================= 4: example 2 ================= */
+  function calcG(){
+    const Pp=+$('gP').value||0,Vv=+$('gV').value||0,F=+$('gF').value||0,I=+$('gI').value||0;const cm=Pp-Vv;
+    const be0=cm>0?F/cm:0,be1=cm>0?(F+I)/cm:0;
+    $('gSteps').innerHTML=`<li><strong>نقطة التعادل بحقوق الملكية فقط (لا فوائد ثابتة)</strong><div class="formula ar">${fr(L(fm(F)),L(fm(Pp))+' − '+L(fm(Vv)))} = <span style="color:var(--gold)">${L(fm(be0))} وحدة</span></div></li>
+      <li><strong>بعد تمويل جزء من الأصول بالسندات ودفع فوائد ${L(fm(I))}</strong><div class="formula ar">${fr(L(fm(F))+' + '+L(fm(I)),L(fm(Pp))+' − '+L(fm(Vv)))} = <span style="color:var(--bad)">${L(fm(be1))} وحدة</span></div></li>
+      <li><strong>النتيجة:</strong> الفوائد تكلفة ثابتة على الشركة، فزيادتها رفعت نقطة التعادل بمقدار ${L(fm(be1-be0))} وحدة، ومن ثم انخفض هامش الأمان.</li>`;
+    $('gR').textContent=fm(Pp*be1);$('gVc').textContent=par(Vv*be1);$('gM').textContent=fm(cm*be1);$('gFc').textContent=par(F);$('gIc').textContent=par(I);$('gBE').textContent=fm(be0)+' → '+fm(be1);
+  }
+  ['gP','gV','gF','gI'].forEach(id=>$(id).addEventListener('input',calcG));calcG();
+
+  /* ================= 7: flashcards ================= */
+  const cards=[
+    ['قسما مخاطر الاستثمار؟','١. المخاطر النظامية (أو السوقية أو العادية). ٢. المخاطر غير النظامية.'],
+    ['ما المخاطر النظامية وما مسبباتها؟','الجزء من التباين بين العوائد المحققة والمتوقعة الذي تسببه عوامل تؤثر على أسعار جميع الأوراق المالية بوجه عام. مسبباتها التغيرات الاقتصادية والسياسية والاجتماعية، وتحرك معظم الأسعار بالاتجاه نفسه بدرجات متفاوتة.'],
+    ['لماذا لا يتخلص التنويع من المخاطر النظامية، وماذا تسمى؟','لأنها تصيب جميع الاستثمارات في السوق. تسمى المخاطر غير القابلة للتنويع.'],
+    ['ما معامل بيتا؟','مقياس المخاطر النظامية: معامل خط الانحدار في معادلة خطية تربط بين عائد السوق (متغير مستقل) وعائد السهم المعني (متغير تابع).'],
+    ['المخاطر غير النظامية: بم ترتبط وماذا تسمى؟','الجزء من المخاطرة الكلية الناتج عن عوامل تخص شركة أو قطاعاً معيناً، مستقلة عن النشاط الاقتصادي ككل. ترتبط بأحداث إدارية أو مالية أو تسويقية أو إنتاجية أو فنية. يمكن تجنبها أو تخفيضها بالتنويع، وتسمى المخاطر الممكن تنويعها.'],
+    ['مصادر المخاطر النظامية الثلاثة؟','أ. مخاطر السوق. ب. مخاطر سعر الفائدة. جـ. مخاطر القوة الشرائية للنقود.'],
+    ['مصادر المخاطر غير النظامية؟','أ. مخاطر الإدارة. ب. مخاطر الصناعة.'],
+    ['الأحداث الملموسة وغير الملموسة في مخاطر السوق؟','ملموسة ومنطقية: توقع انخفاض الأرباح للشركات ككل، توقع ارتفاع الفائدة، توقع كساد. غير ملموسة: سيكولوجية السوق وردود الفعل غير المنطقية أو المبالغ فيها، مثل البيع الهستيري عام ١٩٦٣ بعد أنباء اغتيال الرئيس الأمريكي كندي ثم عودة الأسعار بعد يومين.'],
+    ['من الأكثر تعرضاً لمخاطر السوق؟ ومن الأكثر تأثراً بتغير الفائدة؟','مخاطر السوق: حملة الأسهم العادية أكثر من غيرهم. سعر الفائدة: الأوراق ذات الدخل الثابت (الأسهم الممتازة والسندات) أكثر من ذات الدخل المتغير، والسندات طويلة الأجل أكثر تقلباً من قصيرة الأجل.'],
+    ['لماذا تنخفض أسعار الأسهم عند ارتفاع الفائدة؟ (ثلاثة أسباب)','١. عائد السندات والودائع يغري ببيع جزء من الأسهم فيزيد المعروض. ٢. ترتفع تكلفة اقتراض المتعاملين فتقل الأموال المتوفرة لشراء الأسهم. ٣. الشركات الممولة بالقروض يذهب جزء أكبر من أموالها للفوائد فتنخفض الأرباح والتوزيعات ثم الأسعار.'],
+    ['ما مخاطر إعادة الاستثمار؟','من يستثمر في أدوات قصيرة الأجل ليتجنب تقلب الأسعار يضطر إلى سلسلة من عمليات إعادة الاستثمار، وإذا انخفضت الفوائد السوقية أعاد استثمار أمواله بسعر فائدة منخفض. لذلك ليس من السهل التخلص من مخاطر تقلب سعر الفائدة.'],
+    ['ما مخاطر القوة الشرائية، وما سببا التضخم؟','عدم التأكد من مستقبل القوة الشرائية للمبالغ المتوقع استلامها من استثمار معين نتيجة الارتفاع أو الانخفاض العام في الأسعار. التضخم هو الارتفاع العام في الأسعار وسببه ارتفاع تكاليف الإنتاج أو زيادة الطلب عن المعروض.'],
+    ['لماذا تحمي الأسهم العادية من التضخم؟ (سببان)','١. الأسهم ملكية لجزء من أصول الشركة الحقيقية التي ترتفع قيمتها في التضخم. ٢. الشركات ترفع أسعار مبيعاتها في التضخم فلا يكون أثره سلبياً على أرباحها وتوزيعاتها.'],
+    ['الأخطاء الإدارية الشائعة؟','سوء التصرف وعدم اتخاذ التدابير المناسبة في الحوادث الطارئة كإضرابات العمال، خسارة مصنع أو حريق محتوياته دون تأمين، عدم تأمين حراسة كافية، عدم التعامل بحكمة مع جمعيات حماية المستهلك.'],
+    ['أمثلة مخاطر الصناعة؟','الإضرابات العمالية (وأثرها على الزبائن والممولين والموردين)، قوانين تمس صناعات معينة (حماية البيئة، زيادة ضريبة، إلغاء إعفاءات)، تغير أذواق المستهلكين أو اختراعات أحدث (السيارات كسدت صناعة العربات)، إزالة الحماية الجمركية.'],
+    ['نوعا التكاليف؟','المتغيرة: يتغير مجموعها طردياً مع حجم النشاط، وثابتة للوحدة. الثابتة: لا يتغير مجموعها ضمن مدى معين، ونصيب الوحدة منها يتناقص مع زيادة الإنتاج.'],
+    ['الرفع التشغيلي: تعريفه ونتيجته؟','زيادة توظيف الأموال في الأصول الثابتة كالآلات لخفض التكاليف المتغيرة للوحدة. كلما ارتفعت نسبة التكاليف الثابتة إلى الكلية ارتفعت درجته، فتحقق نسبة تغير صغيرة في المبيعات تغيراً أكبر في صافي الدخل التشغيلي، سلباً أو إيجاباً.'],
+    ['نقطة التعادل وهامش المساهمة للوحدة؟','كمية المبيعات التي يتساوى عندها الإيراد الكلي مع التكلفة الكلية. ع = <span class="frac"><span class="fn">التكاليف الثابتة</span><span class="fd">س − م</span></span>. المقام (سعر بيع الوحدة − التكلفة المتغيرة للوحدة) هو هامش المساهمة للوحدة، أي مساهمة كل وحدة في تغطية التكاليف الثابتة.'],
+    ['نسبة هامش الأمان؟','نسبة خفض المبيعات دون أن تحقق الشركة خسائر = <span class="frac"><span class="fn">المبيعات المتوقعة − المبيعات عند التعادل</span><span class="fd">المبيعات المتوقعة</span></span>.'],
+    ['الرفع المالي: أساسه وشرطه ونتيجته؟','ينتج من تمويل الأصول بالدين ذي التكلفة الثابتة لرفع عائد الملاك. شرطه تحقيق عائد من الأموال المقترضة يفوق تكلفتها (١٤٪ مقابل ١٢٪ فالفرق للملاك). نتيجته أن أي تغير في الأرباح قبل الفوائد والضرائب يصبح تغيراً أكبر في صافي الربح، فيزيد المخاطرة.'],
+    ['أثر زيادة الرفع التشغيلي أو المالي أو كليهما؟','ارتفاع نقطة التعادل، وانخفاض نسبة هامش الأمان، وبالتالي زيادة المخاطرة. وقد يتحول انخفاض المبيعات أو ارتفاع تكلفة المدخلات إلى خسائر إذا تجاوز هامش الأمان.'],
+    ['لماذا يهتم المستثمر بمعرفة الرفع التشغيلي والمالي للشركة؟','لأن أي تغير في الأرباح يؤثر على سعر السهم بالتبعية، فمعرفة مدى الرفع تعين على تقرير مستوى المخاطرة المرتبطة بالسهم.']
+  ];
+  $('fcGrid').innerHTML=cards.map((c,i)=>`<div class="fc" tabindex="0" role="button" aria-label="بطاقة ${i+1}"><div class="in"><div class="f">${c[0]}</div><div class="bk">${c[1]}</div></div></div>`).join('');
+  $('fcGrid').addEventListener('click',e=>{const f=e.target.closest('.fc');if(f)f.classList.toggle('flip');});
+  $('fcGrid').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const f=e.target.closest('.fc');if(f){e.preventDefault();f.classList.toggle('flip');}}});
+
+  /* ================= 8: quiz ================= */
+  const Q=[
+    {ch:'SYS',q:'تقسم مخاطر الاستثمار إلى قسمين، هما:',o:['المخاطر النظامية والمخاطر غير النظامية','المخاطر المباشرة والمخاطر غير المباشرة','المخاطر التشغيلية والمخاطر المالية','المخاطر الملموسة والمخاطر غير الملموسة'],a:0,
+     why:'القسمان هما المخاطر النظامية (أو السوقية أو العادية) والمخاطر غير النظامية.',
+     bad:['لم يرد هذا التقسيم.','الرافعتان التشغيلية والمالية مضخّمات للمخاطر لا قسمان لها.','الملموسة وغير الملموسة تصنيف للأحداث داخل مخاطر السوق فقط.']},
+    {ch:'SYS',q:'لماذا تسمى المخاطر النظامية "المخاطر غير القابلة للتنويع"؟',o:['لأنها تصيب جميع الاستثمارات في السوق فلا يمكن التخلص منها بالتنويع','لأنها تخص شركة واحدة فلا يوجد ما يُنوَّع','لأنها تقاس بمعامل بيتا','لأن حملة الأسهم العادية هم الأكثر تعرضاً لها'],a:0,
+     why:'التنويع يخفف ما يصيب أدوات بعينها، أما ما يصيب السوق كله فلا ينفع معه التنويع.',
+     bad:['ما يخص شركة واحدة هو المخاطر غير النظامية وهي الممكن تنويعها.','بيتا مقياسها لا سبب التسمية.','هذه صفة مخاطر السوق ولا تفسر التسمية.']},
+    {ch:'SYS',q:'معامل (بيتا) هو:',o:['معامل خط الانحدار في معادلة خطية تربط بين عائد السوق كمتغير مستقل وعائد السهم كمتغير تابع','معامل خط الانحدار بين عائد السهم كمتغير مستقل وعائد السوق كمتغير تابع','نسبة التكاليف الثابتة إلى التكاليف الكلية','نسبة المبيعات عند التعادل إلى المبيعات المتوقعة'],a:0,
+     why:'عائد السوق هو المستقل وعائد السهم المعني هو التابع، ومعامل الانحدار بينهما هو بيتا.',
+     bad:['المتغيران معكوسان.','هذه علاقة الرفع التشغيلي.','هذه من حساب هامش الأمان.']},
+    {ch:'UNS',q:'ترتبط المخاطر غير النظامية بـ:',o:['أحداث إدارية أو مالية أو تسويقية أو إنتاجية أو فنية لشركة معينة','التغيرات الاقتصادية والسياسية والاجتماعية التي تصيب السوق كله','تغير أسعار الفائدة السوقية','تغير القوة الشرائية للنقود'],a:0,
+     why:'هي الجزء من المخاطرة الكلية الناتج عن عوامل تخص شركة أو قطاعاً معيناً، مستقلة عن النشاط الاقتصادي ككل.',
+     bad:['هذه مسببات المخاطر النظامية.','مخاطر سعر الفائدة مصدر نظامي.','مخاطر القوة الشرائية مصدر نظامي.']},
+    {ch:'MKT',q:'مصادر المخاطر النظامية الثلاثة الواردة في الموضوع هي:',o:['مخاطر السوق، مخاطر سعر الفائدة، مخاطر القوة الشرائية للنقود','مخاطر الإدارة، مخاطر الصناعة، مخاطر السوق','مخاطر السوق، مخاطر الإدارة، مخاطر سعر الفائدة','مخاطر الصناعة، مخاطر القوة الشرائية، مخاطر الإدارة'],a:0,
+     why:'الثلاثة هي السوق، سعر الفائدة، القوة الشرائية. أما الإدارة والصناعة فمصادر غير نظامية.',
+     bad:['الإدارة والصناعة مصادر غير نظامية.','الإدارة مصدر غير نظامي.','الصناعة والإدارة مصدران غير نظاميين.']},
+    {ch:'MKT',q:'أي مما يلي مثال على الأحداث غير الملموسة في مخاطر السوق؟',o:['عمليات البيع الهستيرية عام ١٩٦٣ بعد أنباء اغتيال الرئيس الأمريكي كندي ثم عودة الأسعار بعد يومين','توقع حدوث كساد','توقع ارتفاع أسعار الفائدة','إلغاء إعفاء جمركي كان ممنوحاً لصناعة معينة'],a:0,
+     why:'ردود فعل غير مبنية على أساس منطقي أو مبالغ فيها تتعلق بسيكولوجية السوق، والأسعار عادت إلى طبيعتها بعد يومين.',
+     bad:['توقع الكساد حدث ملموس ومنطقي.','توقع ارتفاع الفائدة حدث ملموس ومنطقي.','هذا من مخاطر الصناعة (غير نظامية).']},
+    {ch:'INT',q:'إذا ارتفع سعر الفائدة السوقي فإن:',o:['أسعار الأسهم والسندات تنخفض','أسعار السندات تنخفض وأسعار الأسهم ترتفع','أسعار الأسهم والسندات ترتفع','أسعار السندات ترتفع وأسعار الأسهم تنخفض'],a:0,
+     why:'لارتفاع أو انخفاض سعر الفائدة تأثير معاكس على أسعار الأوراق المالية، فالارتفاع يخفض الأسهم والسندات معاً، والعكس صحيح.',
+     bad:['الأسهم أيضاً تنخفض، لأسباب ثلاثة وردت في الموضوع.','التأثير معاكس لا موافق.','السندات تنخفض لتوفر بدائل بعائد أعلى.']},
+    {ch:'INT',q:'أي الأوراق المالية أكثر تأثراً بتغير سعر الفائدة؟',o:['الأوراق ذات الدخل الثابت كالأسهم الممتازة والسندات، والسندات طويلة الأجل أكثر من قصيرة الأجل','الأسهم العادية لأن دخلها متغير','السندات قصيرة الأجل أكثر من طويلة الأجل','جميع الأوراق تتأثر بالدرجة نفسها'],a:0,
+     why:'درجة التأثر تختلف باختلاف أداة الاستثمار وتواريخ الاستحقاق.',
+     bad:['الدخل المتغير أقل تأثراً من الدخل الثابت.','العكس، طويلة الأجل تتقلب بدرجة أكبر.','الدرجة تختلف باختلاف الأداة والاستحقاق.']},
+    {ch:'INT',q:'أي مما يلي ليس من الأسباب الثلاثة التي ذكرها الموضوع لانخفاض أسعار الأسهم عند ارتفاع الفائدة؟',o:['ارتفاع القيمة الحقيقية لعوائد الأسهم','إغراء جزء من المستثمرين ببيع أسهمهم والاتجاه إلى السندات والودائع فيزيد المعروض','ارتفاع تكلفة اقتراض المتعاملين بالأسهم فتنخفض الأموال المتوفرة لشرائها','ذهاب جزء أكبر من أموال الشركات المقترضة لتغطية الفوائد فتنخفض الأرباح والتوزيعات'],a:0,
+     why:'القيمة الحقيقية للعوائد موضوع مخاطر القوة الشرائية لا مخاطر الفائدة، ولا ترتفع أصلاً.',
+     bad:['هذا هو السبب الأول.','هذا هو السبب الثاني.','هذا هو السبب الثالث.']},
+    {ch:'INT',q:'ما مخاطر إعادة الاستثمار؟',o:['اضطرار المستثمر في الأدوات قصيرة الأجل إلى إعادة استثمار أمواله بسعر فائدة منخفض إذا انخفضت الفوائد السوقية','انخفاض سعر السند طويل الأجل عند ارتفاع الفائدة','تآكل القوة الشرائية للعوائد بسبب التضخم','خسارة المستثمر عند إفلاس الشركة'],a:0,
+     why:'من يظن أن الأدوات قصيرة الأجل تجنبه مخاطر الفائدة سيضطر إلى سلسلة من عمليات إعادة الاستثمار، وقد تكون بسعر منخفض.',
+     bad:['هذا الأثر المباشر لمخاطر سعر الفائدة لا إعادة الاستثمار.','هذه مخاطر القوة الشرائية.','لم يرد.']},
+    {ch:'PPR',q:'لماذا يشكل الاستثمار في الأسهم العادية في معظم الأحيان حماية من مخاطر القوة الشرائية؟',o:['لأن الأسهم ملكية لأصول حقيقية ترتفع قيمتها في التضخم، ولأن الشركات ترفع أسعار مبيعاتها فلا تتأثر أرباحها سلباً','لأن الأسهم العادية ذات دخل ثابت','لأن أسعار الأسهم لا تتأثر بأي أحداث','لأن التضخم يخفض أسعار الفائدة'],a:0,
+     why:'السببان الواردان: ملكية جزء من الأصول الحقيقية، ورفع الشركات لأسعار مبيعاتها في ظروف التضخم.',
+     bad:['الأسهم العادية دخلها متغير، والدخل الثابت هو الأكثر تأثراً بالتضخم.','الأسهم تتأثر بمخاطر السوق وغيرها.','لم يرد.']},
+    {ch:'MGT',q:'أي مما يلي من الأخطاء الإدارية الشائعة (مخاطر الإدارة)؟',o:['حريق بعض محتويات المصنع دون التأمين عليها','ظهور قوانين حماية البيئة من التلوث','ارتفاع سعر الفائدة السوقي','عمليات بيع هستيرية بعد حادثة اغتيال سياسي'],a:0,
+     why:'مخاطر الإدارة تشمل سوء التصرف في الحوادث الطارئة، وخسارة مصنع أو حريق محتوياته دون تأمين، وعدم تأمين حراسة كافية، وسوء التعامل مع جمعيات حماية المستهلك.',
+     bad:['هذا من مخاطر الصناعة.','هذا مصدر نظامي (سعر الفائدة).','هذا من مخاطر السوق (أحداث غير ملموسة).']},
+    {ch:'IND',q:'كساد صناعة العربات بعد ظهور السيارات مثال على:',o:['مخاطر الصناعة: تغير أذواق المستهلكين أو ظهور اختراعات أحدث','مخاطر الإدارة: قرارات خاطئة بمعلومات غير مكتملة','مخاطر السوق: أحداث غير ملموسة','مخاطر القوة الشرائية: ارتفاع تكاليف الإنتاج'],a:0,
+     why:'من مخاطر الصناعة تغير أذواق المستهلكين أو ظهور اختراعات أحدث تحولهم عن منتجات الشركة.',
+     bad:['لا علاقة له بقرار إداري في شركة بعينها.','الاختراع حدث حقيقي يخص قطاعاً لا سيكولوجية السوق.','ليس تضخماً.']},
+    {ch:'OPL',q:'أي عبارة صحيحة عن التكاليف الثابتة؟',o:['لا يتغير مجموعها مع حجم النشاط ضمن مدى معين، ونصيب الوحدة منها يتناقص مع زيادة الإنتاج','يتغير مجموعها طردياً مع حجم النشاط، وهي ثابتة للوحدة','لا يتغير مجموعها ولا نصيب الوحدة منها مهما تغير الإنتاج','تزيد بزيادة الإنتاج وتنقص بنقصانه'],a:0,
+     why:'الثابتة ثابتة بمجموعها فقط، أما نصيب الوحدة الواحدة منها فيتناقص مع زيادة الإنتاج.',
+     bad:['هذا وصف التكاليف المتغيرة.','نصيب الوحدة يتناقص مع زيادة الإنتاج.','هذا سلوك التكاليف المتغيرة.']},
+    {ch:'OPL',q:'شركة تبيع ٣٠,٠٠٠ وحدة بسعر ريالين، تكلفتها المتغيرة ريال، وتكاليفها الثابتة ٢٠,٠٠٠. إذا زادت المبيعات ١٠٪ فإن صافي الدخل قبل الفوائد والضرائب يزيد بنسبة:',o:['30%','10%','20%','13%'],a:0,
+     why:'الدخل الحالي ١٠,٠٠٠، وبعد الزيادة ١٣,٠٠٠، و<span class="frac"><span class="fn"><bdi dir="ltr">١٣,٠٠٠ − ١٠,٠٠٠</bdi></span><span class="fd"><bdi dir="ltr">١٠,٠٠٠</bdi></span></span> = ٣٠٪.',
+     bad:['١٠٪ هي نسبة تغير المبيعات لا الأرباح.','٢٠٪ ليست ناتج أي خطوة صحيحة.','١٣,٠٠٠ هو الدخل الجديد بالريال، لا نسبة الزيادة.']},
+    {ch:'OPL',q:'سعر بيع الوحدة ٢ ريال، التكلفة المتغيرة ٠.٥٠ ريال، التكاليف الثابتة ٣٧,٥٠٠ ريال. وحدات التعادل تساوي:',o:['25,000 وحدة','20,000 وحدة','18,750 وحدة','75,000 وحدة'],a:0,
+     why:'ع = <span class="frac"><span class="fn"><bdi dir="ltr">٣٧,٥٠٠</bdi></span><span class="fd"><bdi dir="ltr">٢ − ٠.٥</bdi></span></span> = <span class="frac"><span class="fn"><bdi dir="ltr">٣٧,٥٠٠</bdi></span><span class="fd"><bdi dir="ltr">١.٥</bdi></span></span> = ٢٥,٠٠٠ وحدة.',
+     bad:['٢٠,٠٠٠ نقطة التعادل قبل الميكنة (<span class="frac"><span class="fn"><bdi dir="ltr">٢٠,٠٠٠</bdi></span><span class="fd"><bdi dir="ltr">١</bdi></span></span>).','١٨,٧٥٠ ناتج القسمة على السعر ٢ بدل هامش المساهمة ١.٥.','٧٥,٠٠٠ ناتج القسمة على التكلفة المتغيرة ٠.٥ وحدها.']},
+    {ch:'OPL',q:'مبيعات شركة المتوقعة ٦٠,٠٠٠ ريال ومبيعاتها عند التعادل ٤٠,٠٠٠ ريال. نسبة هامش الأمان تساوي:',o:['33%','67%','50%','16.7%'],a:0,
+     why:'<span class="frac"><span class="fn"><bdi dir="ltr">٦٠,٠٠٠ − ٤٠,٠٠٠</bdi></span><span class="fd"><bdi dir="ltr">٦٠,٠٠٠</bdi></span></span> = <span class="frac"><span class="fn"><bdi dir="ltr">٢٠,٠٠٠</bdi></span><span class="fd"><bdi dir="ltr">٦٠,٠٠٠</bdi></span></span> = ٣٣٪.',
+     bad:['٦٧٪ هي نسبة مبيعات التعادل إلى المتوقعة، لا هامش الأمان.','٥٠٪ ناتج القسمة على مبيعات التعادل بدل المتوقعة.','١٦.٧٪ هامش الأمان بعد الميكنة (تعادل ٥٠,٠٠٠ ريال) لا في هذه الحالة.']},
+    {ch:'FNL',q:'شركتان استثمارات كل منهما ١,٠٠٠,٠٠٠ ريال وعائدهما قبل الفوائد والضرائب ١٥٪ والضريبة ٥٠٪. الشركة ب مولت النصف بأموال مقترضة بفائدة ١٠٪. عائد حملة الأسهم في الشركة ب:',o:['10%','7.5%','15%','5%'],a:0,
+     why:'الفوائد ٥٠,٠٠٠، الأرباح قبل الضرائب ١٠٠,٠٠٠، الضرائب ٥٠,٠٠٠، صافي الدخل ٥٠,٠٠٠ على أموال ملاك ٥٠٠,٠٠٠ = ١٠٪.',
+     bad:['٧.٥٪ عائد الشركة أ الممولة بالملكية فقط (<span class="frac"><span class="fn"><bdi dir="ltr">٧٥,٠٠٠</bdi></span><span class="fd"><bdi dir="ltr">١,٠٠٠,٠٠٠</bdi></span></span>).','١٥٪ هو العائد قبل الفوائد والضرائب على الاستثمارات لا عائد حملة الأسهم.','٥٪ ناتج قسمة صافي الدخل ٥٠,٠٠٠ على كامل الاستثمارات بدل أموال الملاك.']},
+    {ch:'FNL',q:'يعتمد نجاح الشركة في رفع معدل العائد على حقوق المالكين باستخدام الدين على:',o:['قدرتها على استثمار الأموال المقترضة وتحقيق عائد يفوق تكلفتها','خفض التكاليف الثابتة إلى الصفر','أن تكون تكلفة الدين متغيرة مع مستوى الأرباح','رفع نقطة التعادل'],a:0,
+     why:'مثال الموضوع: عائد ١٤٪ وتكلفة اقتراض ١٢٪، فالفرق يعود إلى حملة الأسهم.',
+     bad:['الفوائد نفسها تكلفة ثابتة، والرفع المالي لا يلغي الثابتة.','تكلفة التمويل بالدين ثابتة بغض النظر عن الأرباح، وهذا أساس الفكرة.','رفع نقطة التعادل نتيجة سلبية للرفع لا شرط نجاحه.']},
+    {ch:'FNL',q:'شركة سعر بيع وحدتها ٥ ريال وتكلفتها المتغيرة ٣ ريال وتكاليفها الثابتة ٥٠,٠٠٠ ريال، مولت جزءاً من أصولها بسندات ودفعت فوائد ٢٠,٠٠٠ ريال. نقطة التعادل الجديدة:',o:['35,000 وحدة','25,000 وحدة','14,000 وحدة','10,000 وحدة'],a:0,
+     why:'الفوائد تكلفة ثابتة: <span class="frac"><span class="fn"><bdi dir="ltr">٥٠,٠٠٠ + ٢٠,٠٠٠</bdi></span><span class="fd"><bdi dir="ltr">٥ − ٣</bdi></span></span> = ٣٥,٠٠٠ وحدة.',
+     bad:['٢٥,٠٠٠ نقطة التعادل قبل إضافة الفوائد.','١٤,٠٠٠ ناتج القسمة على السعر ٥ بدل هامش المساهمة ٢.','١٠,٠٠٠ هي زيادة وحدات التعادل بسبب الفوائد لا نقطة التعادل نفسها.']}
+  ];
+  let qi=0,score=0,weak=[];
+  function shuffle(arr){const a=arr.map((x,i)=>({x,i}));for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]];}return a;}
+  function renderQ(){
+    if(qi>=Q.length){return renderResult();}
+    const q=Q[qi];const opts=shuffle(q.o);
+    $('qCount').textContent=`سؤال ${qi+1} من ${Q.length}`;$('qScore').textContent=`النتيجة: ${score}`;$('qBar').style.width=(qi/Q.length*100)+'%';
+    $('qBody').innerHTML=`<h3 style="font-size:17px;line-height:1.6">${q.q}</h3><div class="q-opts">${opts.map(o=>`<button data-i="${o.i}">${o.x}</button>`).join('')}</div><div class="explain" id="qEx"></div><div style="text-align:center;margin-top:10px"><button class="btn" id="qNext" hidden>السؤال التالي</button></div>`;
+    $('qBody').querySelectorAll('.q-opts button').forEach(b=>b.addEventListener('click',()=>answer(+b.dataset.i,b)));
+    $('qNext').addEventListener('click',()=>{qi++;renderQ();window.scrollTo({top:$('quiz').offsetTop-70,behavior:'smooth'});});
+    setChar($('quizChar'),q.ch,'neutral');$('quizSay').textContent='هذا سؤالي';
+  }
+  function answer(i,btn){
+    const q=Q[qi];const btns=[...$('qBody').querySelectorAll('.q-opts button')];
+    btns.forEach(b=>{b.disabled=true;if(+b.dataset.i===q.a)b.classList.add('correct');});
+    const ok=i===q.a; if(ok)score++; else{btn.classList.add('wrong');weak.push(q.q);}
+    const wrongs=q.o.map((o,k)=>k===q.a?null:`<li><strong>${o.length>70?o.slice(0,70)+'…':o}</strong>: ${q.bad[k>q.a?k-1:k]}</li>`).filter(Boolean).join('');
+    $('qEx').innerHTML=`<div style="font-weight:700;color:${ok?'var(--ok)':'var(--bad)'}">${ok?'صحيح.':'غلط.'}</div><div style="margin-top:4px"><strong>لماذا الصحيح صحيح:</strong> ${q.why}</div><div style="margin-top:6px"><strong>لماذا البقية غلط:</strong><ul>${wrongs}</ul></div>`;
+    $('qEx').classList.add('show');$('qScore').textContent=`النتيجة: ${score}`;$('qNext').hidden=false;
+    setChar($('quizChar'),q.ch,ok?'happy':'sad');$('quizSay').textContent=ok?'أحسنت!':'اقرأ التعليل';
+  }
+  function renderResult(){
+    $('qBar').style.width='100%';$('qCount').textContent='انتهى';
+    const pct=Math.round(score/Q.length*100);
+    let msg=pct>=90?'جاهز لهذا الموضوع. راجع البطاقات مرة صباح الاختبار فقط.':pct>=70?'الأساس ثابت. النقاط تحت تحتاج قراءة ثانية.':'ارجع إلى المحطات ٢ و٣ و٤ ثم أعد الاختبار.';
+    $('qBody').innerHTML=`<div class="result"><div class="big">${score}/${Q.length}</div><p>${msg}</p>${weak.length?`<div class="callout bad" style="text-align:right"><strong>أسئلة أُجيب عنها خطأ:</strong><ol class="steps" style="margin-top:6px">${weak.map(w=>`<li>${w}</li>`).join('')}</ol></div>`:''}<div style="margin-top:14px"><button class="btn" id="qAgain">أعد الاختبار</button></div></div>`;
+    $('qAgain').addEventListener('click',()=>{qi=0;score=0;weak=[];renderQ();});
+    setChar($('quizChar'),'SYS',pct>=70?'happy':'sad');$('quizSay').textContent=pct>=70?'موجة ناجحة':'نعيدها؟';
+  }
+  renderQ();
+
+  /* ================= dock ================= */
+  const DOCK={
+    s0:['SYS','neutral','من أين تأتي المخاطر؟ امشِ معي'],
+    s1:['UNS','neutral','نوّع تتخلص مني، أما الموجة فلا'],
+    s3:['MKT','neutral','خمسة مصادر، ثلاثة نظامية واثنان غير نظامية'],
+    s4:['OPL','happy','التكاليف الثابتة تضاعف كل شيء'],
+    s5:['FNL','happy','الفوائد ثابتة، والفرق للملاك'],
+    s6:['MKT','neutral','وكل تغير في الربح أنقله للسهم'],
+    s8:['INT','neutral','كل معادلة في سطر'],
+    s9:['PPR','happy','أجب قبل أن تقلب'],
+    s10:null
+  };
+  let dockOff=false;try{dockOff=localStorage.getItem('rk-dock-off')==='1';}catch(e){}
+  const dock=$('dock');
+  function showDock(id){if(dockOff)return;const d=DOCK[id];if(!d){dock.hidden=true;return;}dock.hidden=false;setChar($('dockChar'),d[0],d[1]);$('dockSay').textContent=d[2];}
+  $('dockX').addEventListener('click',()=>{dockOff=true;dock.hidden=true;try{localStorage.setItem('rk-dock-off','1');}catch(e){}});
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)showDock(e.target.id);});},{rootMargin:'-40% 0px -50% 0px'});
+    document.querySelectorAll('section[id]').forEach(s=>io.observe(s));
+  }
+})();
+</script>
+
+</body></html>

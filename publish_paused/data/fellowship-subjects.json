@@ -1,0 +1,14 @@
+[
+ {
+  "id": "business-environment",
+  "title": "بيئة الأعمال",
+  "status": "active",
+  "href": "business-environment.html",
+  "gate": true,
+  "counters": {
+   "parts": 3,
+   "chapters": 32,
+   "questions": 630
+  }
+ }
+]

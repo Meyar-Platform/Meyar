@@ -1,0 +1,265 @@
+[
+ {
+  "id": "C0",
+  "name": "الأعداد: 647 = 462 + 185 · الأجزاء 52 و69 و526 · 624 اختيارياً و23 بطاقة · MF.C14 تسعة مواضيع",
+  "pass": true,
+  "detail": {
+   "loaded": 647,
+   "by_part": {
+    "IT": 52,
+    "EC": 69,
+    "MF": 526
+   },
+   "mcq": 624,
+   "cards": 23,
+   "mf14": {
+    "topics": [
+     "F1",
+     "F2",
+     "F3",
+     "F4",
+     "F5a",
+     "F5b",
+     "F6a",
+     "F6b",
+     "F6c"
+    ],
+    "loaded": 171,
+    "bank": 168
+   },
+   "displayed_after_exclusion": {
+    "parts": 3,
+    "chapters": 32,
+    "sections": 130,
+    "topics": 18,
+    "loaded": 647,
+    "visible": 630,
+    "quiz": 621,
+    "cards": 9,
+    "bank": 462,
+    "exam": 168,
+    "excluded": 17
+   }
+  }
+ },
+ {
+  "id": "3",
+  "name": "البنية 3 أجزاء و32 فصلاً و130 مبحثاً مطابقة لملف البنية",
+  "pass": true,
+  "detail": {
+   "parts": 3,
+   "chapters": 32,
+   "sections": 130
+  }
+ },
+ {
+  "id": "4",
+  "name": "ترتيب مواضيع الإدارة المالية مطابق لحقل order",
+  "pass": true,
+  "detail": [
+   "T11",
+   "T12",
+   "T13",
+   "T14",
+   "R1",
+   "R2",
+   "R3",
+   "R4",
+   "R5",
+   "F1",
+   "F2",
+   "F3",
+   "F4",
+   "F5a",
+   "F5b",
+   "F6a",
+   "F6b",
+   "F6c"
+  ]
+ },
+ {
+  "id": "5",
+  "name": "لا سؤال بلا أربعة خيارات داخل محرك الاختبار، والبطاقات خارجه",
+  "pass": true,
+  "detail": {
+   "engine": 621,
+   "cards": 9
+  }
+ },
+ {
+  "id": "6",
+  "name": "17 سؤالاً needs_owner خارج الاختبار والبطاقات والعدّادات",
+  "pass": true,
+  "detail": {
+   "needs_owner": [
+    "P1-11",
+    "P2-15",
+    "P2-17",
+    "P2-21",
+    "P2-27",
+    "P2-31",
+    "P3-09",
+    "P3-14",
+    "P3-22",
+    "P3-26",
+    "P3-29",
+    "P3-30",
+    "P3-35",
+    "P3-36",
+    "P3-37",
+    "P3-40",
+    "P3-43"
+   ],
+   "visible": 630
+  }
+ },
+ {
+  "id": "7s",
+  "name": "الفصول الفارغة الأربعة في البيانات بعدّاد صفر ولم يُحذف فصل",
+  "pass": true,
+  "detail": [
+   "MF.C2",
+   "MF.C3",
+   "MF.C10",
+   "MF.C12"
+  ]
+ },
+ {
+  "id": "D7",
+  "name": "عدّاد MF.C13 من ملفات البيانات وحدها (4 أسئلة دورات، بلا أسئلة الرحلتين وبطاقاتهما)",
+  "pass": true,
+  "detail": {
+   "loaded": 4,
+   "visible": 4,
+   "quiz": 4,
+   "cards": 0,
+   "bank": 0,
+   "exam": 4
+  }
+ },
+ {
+  "id": "S",
+  "name": "الملخصات: S-FA-FORMULAS فارغ من نوع text، و S-MF-C13 صفحة",
+  "pass": true,
+  "detail": [
+   {
+    "id": "S-FA-FORMULAS",
+    "chapter": null,
+    "title": "ملخص معادلات التحليل المالي",
+    "kind": "text",
+    "body": ""
+   },
+   {
+    "id": "S-MF-C13",
+    "chapter": "MF.C13",
+    "title": "هيكل رأس المال",
+    "kind": "page",
+    "href": "capital-structure.html"
+   }
+  ]
+ },
+ {
+  "id": "A1",
+  "name": "لا ملف من الموقع المنشور (جذر المستودع) تغيّر، مقارنة بـ _baseline_md5.txt",
+  "pass": true,
+  "detail": {
+   "files": 21,
+   "changed": []
+  }
+ },
+ {
+  "id": "A5",
+  "name": "CACHE مرفوع إصداراً واحداً، و ASSETS تشمل الصفحات الجديدة وبياناتها وصفحتي الإيقاف",
+  "pass": true,
+  "detail": {
+   "live": "ifrs-guide-v46",
+   "new": "ifrs-guide-v47"
+  }
+ },
+ {
+  "id": "SM",
+  "name": "الخريطة فيها الصفحات الثلاث الجديدة وليس فيها صفحتا القطاعين",
+  "pass": true,
+  "detail": null
+ },
+ {
+  "id": "14",
+  "name": "لا رقم صفحة ولا إحالة لملف مصدر ولا حقل داخلي في الصفحات المبنية والبيانات المعروضة",
+  "pass": true,
+  "detail": {
+   "hits": {},
+   "bad_keys": [],
+   "source_leak": []
+  }
+ },
+ {
+  "id": "14i",
+  "name": "بنود تعليلها يقول \"ورد في المصدر\" بمعنى ورقة الاختبار الأصلية (للقرار)",
+  "pass": true,
+  "detail": [
+   "P1-14",
+   "P1-42",
+   "P1-44",
+   "P1-45",
+   "P2-28",
+   "P2-51"
+  ],
+  "info": true
+ },
+ {
+  "id": "15",
+  "name": "كل عدد معروض مشتق من البيانات، ولا رقم عدّاد مكتوب في القوالب",
+  "pass": true,
+  "detail": {
+   "numbers_in_templates": [],
+   "door": "مادة واحدة · 630 سؤالاً"
+  }
+ },
+ {
+  "id": "17",
+  "name": "Tajawal محلي في كل صفحة جديدة، والألوان مقروءة من ملفات المنصة",
+  "pass": true,
+  "detail": {
+   "google": [],
+   "tokens": {
+    "primary": "#364C63",
+    "gold": "#F0AE14",
+    "paper": "#EDF1F5"
+   },
+   "sources": {
+    "primary": "index.html :root --primary",
+    "heading": "index.html :root --heading",
+    "line": "index.html :root --line",
+    "gold": "assets/logo.svg rect fill",
+    "paper": "manifest.webmanifest background_color"
+   }
+  }
+ },
+ {
+  "id": "E2",
+  "name": "لا «» ولا شرطة داخل جملة عربية في النص الجديد، ولا ذكر لأداة أو ذكاء اصطناعي",
+  "pass": true,
+  "detail": {}
+ },
+ {
+  "id": "CL",
+  "name": "لا console.log في الإنتاج",
+  "pass": true,
+  "detail": []
+ },
+ {
+  "id": "E1s",
+  "name": "المفاتيح المكتوبة في الشيفرة من الجدول وحده، ولا تخزين في صفحات القطاعين والرئيسية",
+  "pass": true,
+  "detail": {
+   "keys": [
+    "bizenv-access",
+    "bizenv-dock-cs",
+    "bizenv-dock-rk",
+    "bizenv-pending-signups",
+    "bizenv-subject-id"
+   ],
+   "std": []
+  }
+ }
+]

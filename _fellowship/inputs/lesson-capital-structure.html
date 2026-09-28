@@ -1,0 +1,1085 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>رحلة هيكل رأس المال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-ui:"Tajawal","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --bg:#F6F3EC; --surface:#FFFDF8; --surface-2:#EFEADF; --line:#DCD4C3; --paper:#FFFEFA;
+  --ink:#1F2733; --ink-2:#4E5766; --muted:#7A8290;
+  --gold:#9A7426; --gold-soft:#F1E7CF;
+  --equity:#3D6FA6; --equity-soft:#DCE7F4;
+  --debt:#B4494B; --debt-soft:#F3DCDC;
+  --wacc:#2E3B4A;
+  --ok:#2F7D5B; --ok-soft:#DDEFE5; --bad:#A63D3D; --bad-soft:#F4DADA;
+  --shadow:0 1px 2px rgba(31,39,51,.06),0 6px 20px rgba(31,39,51,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#15181D; --surface:#1D2128; --surface-2:#252A33; --line:#343B47; --paper:#22272F;
+    --ink:#ECE7DC; --ink-2:#C2BBAE; --muted:#8A9099;
+    --gold:#D6B466; --gold-soft:#3A3121;
+    --equity:#7FA8DA; --equity-soft:#23344A;
+    --debt:#E08284; --debt-soft:#442527;
+    --wacc:#D9DEE6;
+    --ok:#6FC29A; --ok-soft:#1F3A2E; --bad:#E58A8A; --bad-soft:#442222;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#15181D; --surface:#1D2128; --surface-2:#252A33; --line:#343B47; --paper:#22272F;
+  --ink:#ECE7DC; --ink-2:#C2BBAE; --muted:#8A9099;
+  --gold:#D6B466; --gold-soft:#3A3121;
+  --equity:#7FA8DA; --equity-soft:#23344A;
+  --debt:#E08284; --debt-soft:#442527;
+  --wacc:#D9DEE6;
+  --ok:#6FC29A; --ok-soft:#1F3A2E; --bad:#E58A8A; --bad-soft:#442222;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-ui);font-weight:500;font-size:17px;line-height:1.75;direction:rtl}
+.wrap{width:100%;max-width:1400px;margin:0 auto;padding-inline:clamp(16px,3vw,40px);padding-block:0 120px}
+h1,h2,h3,h4,strong,th,.b{font-weight:700}
+h1{font-size:clamp(28px,3.4vw,40px);line-height:1.3;margin:0 0 6px;text-wrap:balance;color:var(--gold)}
+h2{font-size:clamp(22px,2.2vw,28px);line-height:1.35;margin:0 0 10px;text-wrap:balance}
+h3{font-size:18px;margin:0 0 6px}
+p{margin:0 0 12px}
+.lead{max-width:70ch}
+.eyebrow{font-size:13px;letter-spacing:.02em;color:var(--muted);margin-bottom:4px}
+.header{padding-block:28px 10px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.header p{color:var(--ink-2)}
+.header .crowd{display:flex;flex-wrap:wrap;gap:4px;align-items:flex-end;max-width:100%;min-width:0}
+.header .crowd .ch{width:clamp(34px,9vw,46px)!important}
+@media (max-width:700px){.header{grid-template-columns:1fr}.header .crowd{justify-content:center}}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:8px;margin-inline:calc(-1 * clamp(16px,3vw,40px));padding-inline:clamp(16px,3vw,40px);display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:0 0 auto;font-size:14px;font-weight:700;color:var(--ink-2);text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 12px;white-space:nowrap}
+.nav a:hover,.nav a:focus-visible{border-color:var(--gold);color:var(--gold);outline:none}
+section{padding-block:32px 8px;scroll-margin-top:64px}
+.stop{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.stop .n{width:34px;height:34px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex:0 0 auto}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:relative}
+.stack{display:flex;flex-direction:column;gap:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.side{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:820px){.side{grid-template-columns:1fr}}
+.callout{border-radius:12px;padding:12px 14px;background:var(--gold-soft);border-right:4px solid var(--gold)}
+.callout.equity{background:var(--equity-soft);border-color:var(--equity)}
+.callout.debt{background:var(--debt-soft);border-color:var(--debt)}
+.callout.ok{background:var(--ok-soft);border-color:var(--ok)}
+.callout.bad{background:var(--bad-soft);border-color:var(--bad)}
+.tag{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--surface-2);color:var(--ink-2);vertical-align:middle}
+.tag.eq{background:var(--equity-soft);color:var(--equity)}
+.tag.dt{background:var(--debt-soft);color:var(--debt)}
+.tag.gd{background:var(--gold-soft);color:var(--gold)}
+ol.steps{padding-inline-start:22px;margin:0}
+ol.steps li{margin-bottom:8px}
+ul.clean{padding-inline-start:20px;margin:0}
+ul.clean li{margin-bottom:6px}
+.num{font-variant-numeric:tabular-nums}
+.small{font-size:14px;color:var(--muted)}
+/* split bar */
+.split{height:38px;border-radius:10px;overflow:hidden;display:flex;border:1px solid var(--line)}
+.split .eq{background:var(--equity);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;transition:flex-basis .15s}
+.split .dt{background:var(--debt);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;transition:flex-basis .15s}
+input[type=range]{width:100%;accent-color:var(--gold);margin:10px 0 4px}
+label{font-weight:700;font-size:15px}
+input[type=number]{font:inherit;font-weight:500;width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=number]:focus-visible,button:focus-visible,.tabs button:focus-visible,.fc:focus-visible,.walker:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+/* nested boxes */
+.nest{background:var(--surface-2);border-radius:12px;padding:12px;border:1px dashed var(--line)}
+.nest .lbl{font-weight:700;font-size:14px;color:var(--ink-2);margin-bottom:8px}
+.nest .short{background:var(--debt);color:#fff;border-radius:8px;padding:8px 10px;font-weight:700;font-size:14px;margin-bottom:8px;opacity:.9}
+.nest .inner{background:var(--surface);border:2px solid var(--wacc);border-radius:10px;padding:10px}
+.nest .inner .lbl{color:var(--ink)}
+.nest .row{display:flex;gap:8px}
+.nest .row div{flex:1;border-radius:8px;padding:10px 8px;color:#fff;font-weight:700;text-align:center;font-size:14px}
+/* determinants row */
+.det{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.det{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}}
+.det .card{padding:12px}
+.det .ic{font-size:26px;line-height:1;margin-bottom:6px;color:var(--gold)}
+.det h4{margin:0 0 4px;font-size:15.5px}
+.det p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.55}
+/* timeline as cards */
+.theories{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px}
+.theory{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:start}
+.theory .who{font-size:13px;color:var(--muted)}
+.theory .verdict{margin-top:4px;font-size:15.5px}
+/* stage */
+.stage{position:relative;height:190px;background:linear-gradient(to top,var(--surface-2) 0 26%,transparent 26%);border:1px solid var(--line);border-radius:14px;overflow:hidden;direction:ltr;margin-top:10px}
+.stage .floor{position:absolute;left:0;right:0;bottom:26%;height:2px;background:var(--line)}
+.walker{position:absolute;bottom:14px;width:74px;left:var(--x);animation:stroll var(--dur) ease-in-out infinite alternate;animation-delay:var(--delay);cursor:pointer;text-align:center;background:none;border:none;padding:0;font:inherit;color:var(--ink-2)}
+.walker .waddle{animation:waddle 1.1s ease-in-out infinite;transform-origin:50% 100%}
+.walker .nm{font-size:12px;font-weight:700;display:block;margin-top:-2px;direction:rtl;white-space:nowrap}
+.walker.sel .nm{color:var(--gold)}
+.walker.sel::after{content:"";position:absolute;inset:-6px -4px 14px;border:2px solid var(--gold);border-radius:14px;pointer-events:none}
+@keyframes stroll{from{transform:translateX(0)}to{transform:translateX(var(--dist))}}
+@keyframes waddle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+/* characters */
+.ch{display:inline-block;vertical-align:bottom;line-height:0}
+.ch svg{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 4px rgba(0,0,0,.18))}
+.ch.m-happy svg{animation:hop 1.6s ease-in-out infinite}
+.ch.m-sad svg{animation:droop 2.4s ease-in-out infinite}
+.ch.m-angry svg{animation:shake .7s ease-in-out infinite}
+.ch.m-neutral svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes hop{0%,100%{transform:translateY(0) scale(1)}30%{transform:translateY(-14px) scale(1.04,.96)}55%{transform:translateY(0) scale(.97,1.03)}70%{transform:translateY(0) scale(1)}}
+@keyframes droop{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(6px) rotate(-5deg)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px) rotate(-3deg)}40%{transform:translateX(4px) rotate(3deg)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+.reacts{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:-4px 0 10px}
+.react{display:flex;align-items:center;gap:6px}
+.react .ch{width:46px;flex:0 0 auto}
+.bubble{display:inline-block;font-size:12.5px;font-weight:700;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:3px 8px;color:var(--ink-2);line-height:1.4}
+@media (prefers-reduced-motion:reduce){.ch svg,.walker,.walker .waddle,.fc .in,.split .eq,.split .dt{animation:none!important;transition:none}}
+/* mini statements */
+.stmt{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px 12px;box-shadow:2px 3px 0 var(--line),var(--shadow);font-size:14px;position:relative;transform:rotate(-.6deg);max-width:100%}
+.stmt.r{transform:rotate(.6deg)}
+.stmt::before{content:"";position:absolute;top:-1px;left:-1px;width:18px;height:18px;background:linear-gradient(135deg,var(--bg) 50%,var(--surface-2) 50%);border-bottom-right-radius:4px;border:1px solid var(--line);border-top:none;border-left:none}
+.stmt .sh{font-weight:700;text-align:center;border-bottom:2px solid var(--ink);padding-bottom:4px;margin-bottom:6px;font-size:14px}
+.stmt .sr{display:grid;grid-template-columns:1fr auto minmax(22px,auto);gap:6px;align-items:center;padding:3px 0;border-bottom:1px dashed var(--line)}
+.stmt .sr:last-child{border-bottom:none}
+.stmt .sr.total{font-weight:700;border-top:2px solid var(--ink);border-bottom:none;margin-top:3px;padding-top:5px}
+.stmt .sr.sub{color:var(--ink-2)}
+.stmt .v{font-variant-numeric:tabular-nums;font-weight:700;direction:ltr;text-align:right}
+.stmt .ar{font-weight:700;font-size:15px;text-align:center}
+.stmt .ar.up{color:var(--ok)}.stmt .ar.dn{color:var(--bad)}.stmt .ar.up.bad{color:var(--bad)}.stmt .ar.dn.good{color:var(--ok)}
+.stmt .hi{background:var(--gold-soft);border-radius:4px;padding-inline:4px}
+.stmt .hi-eq{background:var(--equity-soft);border-radius:4px;padding-inline:4px}
+.stmt .hi-dt{background:var(--debt-soft);border-radius:4px;padding-inline:4px}
+.stmt .box{border:2px solid var(--wacc);border-radius:6px;padding:4px 6px;margin-top:4px}
+.stmt .cols{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stmt .cols>div{border:1px solid var(--line);border-radius:6px;padding:6px}
+.stmt .cols .ch-t{font-weight:700;text-align:center;font-size:13px;margin-bottom:4px;color:var(--ink-2)}
+.stmt-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.stmt-pair{grid-template-columns:1fr}}
+.stmt-note{font-size:13px;color:var(--muted);margin-top:8px}
+/* stacked value bars */
+.vbars{display:flex;align-items:flex-end;gap:14px;height:170px;direction:ltr;padding:0 6px}
+.vbars .vb{flex:1;display:flex;flex-direction:column;justify-content:flex-end;text-align:center;font-size:12px;font-weight:700;color:#fff;min-width:0}
+.vbars .bars{display:flex;flex-direction:column-reverse}
+.vbars .bars span{display:block;border-radius:4px;padding:1px;overflow:hidden;white-space:nowrap;line-height:1.3}
+.vbars .lab{color:var(--ink-2);direction:rtl;margin-top:4px;font-size:12px;font-weight:700}
+/* tabs + chart */
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;font:inherit;font-weight:700;font-size:14px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:#fff}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:10px;direction:ltr;margin-top:10px}
+@media (max-width:560px){.charts{grid-template-columns:1fr}}
+.charts figure{margin:0;background:var(--surface-2);border-radius:10px;padding:8px}
+.charts figcaption{direction:rtl;font-size:13px;font-weight:700;color:var(--ink-2);text-align:right;margin-bottom:4px}
+.charts svg{width:100%;height:auto;display:block;max-width:100%}
+.readout{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.readout div{background:var(--surface-2);border-radius:10px;padding:8px 6px;text-align:center}
+.readout .k{font-size:12px;color:var(--muted);font-weight:700}
+.readout .v{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin-top:8px}
+.legend span::before{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;margin-inline-end:5px;vertical-align:middle;background:var(--c)}
+.thnote{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center}
+/* formulas */
+.formula{direction:ltr;text-align:center;font-size:20px;font-weight:700;background:var(--surface-2);border-radius:10px;padding:10px;font-variant-numeric:tabular-nums;font-family:"Cambria Math","Times New Roman",serif}
+.formula sub{font-size:.65em}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}
+th{background:var(--surface-2);font-size:14px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+td .ch{width:40px;margin-inline-start:6px;vertical-align:middle}
+/* flashcards */
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.fc{perspective:900px;cursor:pointer;min-height:130px}
+.fc .in{position:relative;width:100%;height:100%;min-height:130px;transition:transform .45s;transform-style:preserve-3d}
+.fc.flip .in{transform:rotateY(180deg)}
+.fc .f,.fc .bk{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:14px;display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.fc .f{background:var(--surface);font-weight:700;font-size:16px}
+.fc .bk{background:var(--gold-soft);transform:rotateY(180deg);font-size:14.5px;line-height:1.6}
+/* quiz */
+.q-opts{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.q-opts button{font:inherit;font-weight:500;text-align:right;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;line-height:1.55}
+.q-opts button:hover{border-color:var(--gold)}
+.q-opts button.correct{background:var(--ok-soft);border-color:var(--ok)}
+.q-opts button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.q-opts button:disabled{cursor:default}
+.explain{display:none;border-radius:12px;padding:12px 14px;background:var(--surface-2);font-size:15px}
+.explain.show{display:block}
+.explain ul{margin:6px 0 0;padding-inline-start:18px}
+.btn{font:inherit;font-weight:700;padding:10px 18px;border-radius:999px;border:none;background:var(--gold);color:#fff;cursor:pointer;font-size:15px}
+.q-head{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted);font-weight:700}
+.bar{height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden;margin:6px 0 12px}
+.bar i{display:block;height:100%;background:var(--gold);width:0}
+.result{text-align:center}
+.result .big{font-size:44px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
+.quizwrap{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:12px;align-items:end}
+@media (max-width:560px){.quizwrap{grid-template-columns:1fr}.quizwrap .qchar{display:none}}
+/* dock */
+#dock{position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:9;display:flex;align-items:flex-end;gap:8px;direction:rtl;pointer-events:none}
+#dock .ch{width:72px;pointer-events:auto}
+#dock .say{pointer-events:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 10px;font-size:13.5px;font-weight:700;max-width:220px;box-shadow:var(--shadow);position:relative}
+#dock .say::after{content:"";position:absolute;bottom:8px;left:-7px;border:7px solid transparent;border-right-color:var(--surface);border-left:none}
+#dock .x{position:absolute;top:-8px;right:-8px;width:20px;height:20px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:12px;line-height:1;cursor:pointer;color:var(--muted)}
+
+/* clarity additions */
+.kv{margin:6px 0 0;display:flex;flex-direction:column;gap:10px}
+.kv>div{display:grid;grid-template-columns:118px minmax(0,1fr);gap:10px;align-items:start;border-top:1px solid var(--line);padding-top:8px}
+.kv>div:first-child{border-top:none;padding-top:0}
+.kv dt{font-weight:700;color:var(--gold);font-size:14.5px;line-height:1.5;padding-top:2px}
+.kv dd{margin:0;font-size:15.5px}
+.kv .crit dt{color:var(--bad)}
+.kv .crit dd{background:var(--bad-soft);border-radius:10px;padding:8px 10px}
+.kv ul.clean li{margin-bottom:5px}
+@media (max-width:480px){.kv>div{grid-template-columns:1fr;gap:4px}}
+.eqlist{display:flex;flex-direction:column;gap:8px;margin:8px 0 4px}
+.formula.ar{direction:rtl;font-family:var(--font-ui);font-size:16px;text-align:right;line-height:1.7;padding:10px 12px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 5px;line-height:1.3;font-variant-numeric:tabular-nums}
+.frac .fn{padding:0 6px 1px;border-bottom:2px solid currentColor}
+.frac .fd{padding:1px 6px 0}
+.theory{grid-template-columns:84px 1fr}
+@media (max-width:480px){.theory{grid-template-columns:1fr}.theory>.ch{width:70px}}
+</style>
+<div class="wrap">
+<header class="header">
+  <div>
+    <h1>رحلة هيكل رأس المال</h1>
+    <p class="lead">سؤال واحد يدور حوله الفصل كله: <strong>هل تتغير القيمة السوقية للمؤسسة وتكلفة أموالها إذا غيّرنا نسبة الديون إلى الأموال الخاصة؟</strong> كل نظرية أجابت بطريقتها، وسنعرضها بالترتيب مع نقد كل واحدة. تسع شخصيات ستمشي معك في الصفحة، كل واحدة تمثل نظرية.</p>
+  </div>
+  <div class="crowd" id="crowd"></div>
+</header>
+
+<nav class="nav" aria-label="المحطات">
+  <a href="#s0">القصة</a><a href="#s1">المصادر والمفاهيم</a><a href="#s3">النظريات</a><a href="#s4">الحديثة M&amp;M</a><a href="#s5">الإفلاس والتسوية</a><a href="#s6">السلوك</a><a href="#s7">مثال</a><a href="#s8">المعادلات</a><a href="#s9">بطاقات</a><a href="#s10">اختبار</a>
+</nav>
+
+<!-- ============ 0 القصة ============ -->
+<section id="s0">
+  <div class="stop"><div class="n">٠</div><h2>القصة التي تحمل الفصل كله</h2></div>
+  <div class="side">
+    <div class="card">
+      <p>تخيّل مقهى يحتاج <strong>مليون ريال</strong> ليفتح فرعه الجديد. أمام صاحبته طريقان:</p>
+      <ol class="steps">
+        <li><span class="tag eq">أموال خاصة (حقوق ملكية)</span> تدفع من جيبها أو تُدخل شركاء. لا أحد يطالبها بمبلغ ثابت، لكن الشركاء يأخذون ما تبقى من الربح بعد الجميع، فمخاطرتهم أعلى ويتوقعون عائداً أعلى.</li>
+        <li><span class="tag dt">ديون</span> تقترض من البنك بفائدة. الفائدة أقل من عائد الشركاء، لكنها التزام ثابت واجب السداد في موعده مهما كان الشهر.</li>
+      </ol>
+      <p style="margin-top:10px">حرّك المزيج وشاهد كيف يتغير شكل التمويل. هذا المزيج هو ما يُسمى <strong>هيكل رأس المال</strong>، والسؤال هل يوجد مزيج "أمثل" تكون عنده تكلفة الأموال في أدنى قيمة لها.</p>
+      <label for="mix">نسبة الديون من التمويل: <span id="mixv" class="num">40%</span></label>
+      <input type="range" id="mix" min="0" max="100" value="40" step="5">
+      <div class="split" aria-hidden="true"><div class="eq" id="mixEq" style="flex-basis:60%">أموال خاصة 60%</div><div class="dt" id="mixDt" style="flex-basis:40%">ديون 40%</div></div>
+      <p class="small" style="margin-top:8px" id="mixNote"></p>
+    </div>
+    <div class="stack">
+      <div class="callout">
+        <strong>الفكرة التي تتكرر في كل محطة:</strong> الدين <span class="tag dt">أرخص</span> لكنه يرفع <span class="tag dt">الخطر المالي</span>. النظريات تختلف في سؤال واحد، هل يبقى الدين رخيصاً كلما زدناه، أم أن الخطر يأكل الفرق في النهاية.
+      </div>
+      <div class="stmt">
+        <div class="sh">قائمة المركز المالي للمقهى (مصغرة)</div>
+        <div class="cols">
+          <div><div class="ch-t">الأصول</div><div class="sr"><span>معدات وفرع جديد</span><span class="v" id="bsA">1,000</span><span></span></div></div>
+          <div><div class="ch-t">الالتزامات وحقوق الملكية</div>
+            <div class="sr"><span class="hi-dt">قرض البنك (ديون)</span><span class="v" id="bsD">400</span><span class="ar" id="bsDa"></span></div>
+            <div class="sr"><span class="hi-eq">الأموال الخاصة</span><span class="v" id="bsE">600</span><span class="ar" id="bsEa"></span></div>
+          </div>
+        </div>
+        <div class="stmt-note">الجانب الأيسر ثابت (مليون ريال أصول). كل ما تحرّكه في الشريط هو توزيع الجانب الأيمن بين ديون وأموال خاصة.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1 المصادر والمفاهيم والمحددات ============ -->
+<section id="s1">
+  <div class="stop"><div class="n">١</div><h2>مصادر التمويل، الهيكلان، والمحددات الخمسة</h2></div>
+
+  <div class="card">
+    <h3>أولاً: مصادر التمويل ثلاثة أنواع</h3>
+    <p>المشاريع تحتاج تمويلاً إما لعمليات التشغيل (شراء المواد الخام وتغطية المصروفات التشغيلية) أو لشراء المعدات والآلات والبناء والأصول الثابتة. وهي <strong>ثلاثة</strong> أنواع أساسية:</p>
+    <div class="grid3">
+      <div class="callout debt"><strong>١. قصيرة الأجل</strong><br>أموال من الغير تلتزم الشركة بردها خلال فترة لا تزيد عادة على سنة، وتُصنف ضمن الالتزامات المتداولة. أمثلتها القروض المصرفية قصيرة الأجل والموردون (القروض التجارية).</div>
+      <div class="callout debt"><strong>٢. طويلة ومتوسطة الأجل</strong><br>القروض المتوسطة والطويلة الأجل، أي السندات والقروض المصرفية متوسطة وطويلة الأجل.</div>
+      <div class="callout equity"><strong>٣. التمويل الذاتي</strong><br>يدخل ضمن المصادر طويلة الأجل. أهمه الأرباح المحتجزة (الفائض المعاد استثماره)، ومنه ما ينشأ من بيع أصول غير مستخدمة أو تخفيض عناصر الأصول المتداولة، ويشمل رأس المال والاستثمارات الإضافية (إصدار الأسهم العادية أو الممتازة، الأرباح المحتجزة والاحتياطيات).</div>
+    </div>
+  </div>
+
+  <div class="side" style="margin-top:12px">
+    <div class="card">
+      <h3>ثانياً: الصندوق الكبير والصندوق الصغير</h3>
+      <p>الهيكل التمويلي وهيكل رأس المال كلاهما مرتبط بمصادر الأموال، والفرق بينهما في المدى.</p>
+      <div class="nest">
+        <div class="lbl">الهيكل التمويلي = جميع العناصر في قسم الالتزامات وحقوق الملكية بقائمة المركز المالي، قصيرة وطويلة الأجل. مزيج الديون وحقوق الملكية الذي تموّل به الشركة عملياتها وأصولها.</div>
+        <div class="short">مصادر قصيرة الأجل (حسابات مستحقة الدفع، قروض قصيرة الأجل)</div>
+        <div class="inner">
+          <div class="lbl">هيكل رأس المال = جزء من الهيكل التمويلي يعكس المصادر طويلة الأجل فقط</div>
+          <div class="row"><div style="background:var(--debt)">ديون طويلة الأجل وسندات</div><div style="background:var(--equity)">حقوق الملكية</div></div>
+        </div>
+      </div>
+      <div class="tablewrap" style="margin-top:12px"><table>
+        <thead><tr><th>أساس المقارنة</th><th>هيكل رأس المال</th><th>الهيكل التمويلي</th></tr></thead>
+        <tbody>
+          <tr><td>المفهوم</td><td>مزيج مصادر الأموال طويلة الأجل</td><td>مزيج مصادر التمويل طويل الأجل وقصير الأجل</td></tr>
+          <tr><td>قائمة المركز المالي</td><td>حقوق الملكية والالتزامات غير المتداولة</td><td>جانب الالتزامات وحقوق الملكية كاملاً</td></tr>
+          <tr><td>العناصر</td><td>رأس المال، الأرباح المحتجزة، السندات، القروض طويلة الأجل</td><td>كل ما سبق، إضافة إلى الحسابات المستحقة الدفع والقروض قصيرة الأجل</td></tr>
+          <tr><td>العلاقة</td><td>جزء من الهيكل التمويلي</td><td>يشمل هيكل رأس المال</td></tr>
+        </tbody></table></div>
+      <div class="callout" style="margin-top:12px"><strong>هيكل رأس المال الأمثل</strong> بالتعريف المعتمد: تركيبة رأس المال (الأموال الخاصة والديون طويلة الأجل) التي تكون عندها <strong>التكلفة المتوسطة المرجحة لرأس المال في أدنى قيمة لها</strong>. والسؤال الذي تدور حوله كل النظريات: هل توجد هذه التركيبة أصلاً؟</div>
+    </div>
+    <div class="stack">
+      <div class="stmt r">
+        <div class="sh">قائمة المركز المالي، الجانب الأيمن</div>
+        <div class="sr"><span class="hi-dt">التزامات متداولة (موردون، قروض قصيرة)</span><span class="v">خارج</span><span class="ar dn">↓</span></div>
+        <div class="box">
+          <div class="sr sub"><span>هيكل رأس المال يبدأ هنا</span><span></span><span></span></div>
+          <div class="sr"><span class="hi-dt">التزامات غير متداولة (قروض طويلة، سندات)</span><span class="v">داخل</span><span class="ar up">✓</span></div>
+          <div class="sr"><span class="hi-eq">حقوق الملكية (رأس مال، احتياطيات، أرباح محتجزة)</span><span class="v">داخل</span><span class="ar up">✓</span></div>
+        </div>
+        <div class="sr total"><span>الهيكل التمويلي = كل ما فوق</span><span></span><span></span></div>
+        <div class="stmt-note">"خارج" و"داخل" بالنسبة لهيكل رأس المال. الهيكل التمويلي يأخذ الجانب كله.</div>
+      </div>
+      <div class="card">
+        <h3>ثالثاً: كيف يُقيَّم الهيكل التمويلي؟</h3>
+        <ol class="steps">
+          <li>لا بد من مزيج مناسب بين حقوق الملكية والاقتراض، وتناسب بين التمويل قصير الأجل وطويل الأجل.</li>
+          <li>للحكم على قدرة الشركة على الوفاء بالتزاماتها طويلة الأجل تُطبَّق <strong>نسب المديونية</strong>، وهي تقيس المدى الذي ذهبت إليه الشركة في الاعتماد على الديون، أي مدى مساهمة كل من الملاك والدائنين في تمويلها.</li>
+          <li>هذه النسب من أكثر أدوات المراقبة أهمية، وتقيّم الهيكل التمويلي في تاريخ معين من حيث درجة الاعتماد على مصادر التمويل، داخلية كانت أم خارجية.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:22px">رابعاً: المحددات الخمسة لاختيار هيكل رأس المال</h3>
+  <p class="lead">ما الذي يجعل مؤسسة تتحمل ديوناً أكثر من غيرها؟ خمسة أشياء، جنباً إلى جنب:</p>
+  <div class="det">
+    <div class="card"><div class="ic">🏢</div><h4>حجم المؤسسة</h4><p>الكبيرة تحصل على القروض بسهولة وبتكلفة أقل من الصغيرة والمتوسطة، لأن لديها ضمانات في أصولها الثابتة.</p></div>
+    <div class="card"><div class="ic">📈</div><h4>نمو واستقرار المبيعات</h4><p>المبيعات المستقرة أو المتزايدة تسهّل الاقتراض، لأن المؤسسة تستطيع الوفاء بالالتزامات الثابتة للديون (الفوائد).</p></div>
+    <div class="card"><div class="ic">⚖️</div><h4>تكلفة المصادر</h4><p>القروض أقل المصادر تكلفة مقارنة بالأسهم العادية، ومع ذلك لا يُسرف فيها لأنها تزيد مخاطر العسر المالي.</p></div>
+    <div class="card"><div class="ic">🔀</div><h4>المرونة</h4><p>قدرة المؤسسة على تعديل هيكلها أو تكييفه مع الظروف. مثلاً، إذا انخفضت فوائد القروض المصرفية، تتحول من السندات إلى القروض المصرفية.</p></div>
+    <div class="card"><div class="ic">🧩</div><h4>الملاءمة</h4><p>الأصول الثابتة تُموّل بديون طويلة الأجل أو حقوق ملكية، والأصول المتداولة مثل المخزون تُموّل بديون قصيرة الأجل.</p></div>
+  </div>
+</section>
+
+<!-- ============ 2 رحلة النظريات ============ -->
+<section id="s3">
+  <div class="stop"><div class="n">٢</div><h2>رحلة النظريات، ست محطات ونقد لكل واحدة</h2></div>
+  <p class="lead">النظريات نوعان: بعضها يرى أن هناك تركيبة من الأموال الخاصة والقروض تكون عندها تكلفة التمويل في أدنى مستوى (هيكل أمثل)، وبعضها يرى أن تكلفة رأس المال ثابتة ومستقلة عن التركيبة. كل نظرية هنا شخصية لها رأي. اقرأ الشخصيات أولاً، ثم حرّك المخطط تحتها. اضغط على أي شخصية في المسرح لتختار نظريتها وترى ردة فعل البقية.</p>
+
+  <div class="stage" id="stage" aria-label="مسرح الشخصيات"><div class="floor"></div></div>
+
+  <div class="theories" style="margin-top:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr))">
+    <div class="card theory" data-th="NI"><div class="ch" data-char="NI" data-mood="happy"></div><div><h3>١. نظرية الربح الصافي</h3><div class="who">الحماسي، المتحمس للدين</div><dl class="kv"><div><dt>الأساس</dt><dd>رسملة صافي الربح، أي إضافة كامل الربح الصافي إلى رأس المال (الأموال الخاصة).</dd></div><div><dt>الافتراضات</dt><dd><ul class="clean"><li>القروض لا تغيّر إدراك المقرضين والمستثمرين للخطر، فمعدل الفائدة وتكلفة الملكية مستقلان عن نسبة الاستدانة.</li><li>تكلفة الدين أقل من تكلفة حقوق الملكية، لأن الملاك يأخذون ما تبقى من الربح بعد سداد الفوائد فمخاطرتهم أكبر.</li></ul></dd></div><div><dt>النتيجة</dt><dd><ul class="clean"><li>كلما زادت نسبة الدين انخفضت تكلفة رأس المال.</li><li>الهيكل الأمثل: رأس مال مكوّن من الديون فقط.</li><li>عندها القيمة السوقية للمؤسسة = القيمة السوقية للديون.</li></ul></dd></div><div class="crit"><dt>النقد</dt><dd><ul class="clean"><li>أهملت المخاطر المالية المترتبة على استخدام الدين.</li><li>مع زيادة الاقتراض يطالب الدائنون والملاك بعائد أعلى، فتنخفض القيمة السوقية.</li><li>لم تنتبه إلى أن مخاطر الفشل المالي تظهر مع زيادة الدين فيرفع المقرضون الفائدة.</li><li>تكلفة التمويل لا يمكن أن تأخذ الشكل الذي تفترضه.</li></ul></dd></div></dl></div></div>
+    <div class="card theory" data-th="NOI"><div class="ch" data-char="NOI" data-mood="neutral"></div><div><h3>٢. نظرية صافي الربح التشغيلي</h3><div class="who">الهادي، اللامبالي</div><dl class="kv"><div><dt>الأساس</dt><dd>رسملة صافي الربح التشغيلي (ربح الاستغلال قبل الفوائد).</dd></div><div><dt>الافتراضات</dt><dd><ul class="clean"><li>معدل الفائدة على القروض ثابت، ولا توجد ضريبة على الأرباح.</li><li>الدين الأرخص يزيد المخاطر المالية على حملة الأسهم فترتفع تكلفة أموال الملكية، وتضيع ميزة الدين الرخيص بمطالبة الملاك بعائد أعلى.</li><li>معدل خصم صافي ربح العمليات يتحدد بدرجة مخاطر الأعمال، فإذا ثبتت ثبتت تكلفة الأموال المرجحة.</li><li>قيمة المؤسسة = خصم صافي ربح العمليات بتكلفة الأموال المتوسطة المرجحة، فلا يهم كيف تُقسَّم بين الدائنين والملاك.</li></ul></dd></div><div><dt>النتيجة</dt><dd>لا يوجد هيكل رأس مال أمثل، فالتكلفة المرجحة ثابتة مهما تغير المزيج.</dd></div><div class="crit"><dt>النقد</dt><dd><ul class="clean"><li>تعتبر كل الهياكل التمويلية مقبولة ما دامت تكلفة التمويل ثابتة، وهذا تأويل لا يمكن قبوله.</li><li>أغفلت المخاطر المالية.</li><li>لا تقدم أي عون للمديرين عند اتخاذ القرارات للاستفادة من التغيرات المالية.</li></ul></dd></div></dl></div></div>
+    <div class="card theory" data-th="TRAD"><div class="ch" data-char="TRAD" data-mood="happy"></div><div><h3>٣. النظرية التقليدية (هيكل رأس المال الأمثل)</h3><div class="who">المتزن، الحل الوسط</div><dl class="kv"><div><dt>الأساس</dt><dd>نظرية وسط بين السابقتين: تكلفة التمويل لن تبقى ثابتة مع زيادة الدين، بل تتفاعل معه عبر ثلاث مراحل.</dd></div><div><dt>المرحلة الأولى</dt><dd><ul class="clean"><li>نسبة الاستدانة ضعيفة.</li><li>تكلفة الأموال الخاصة ثابتة أو ترتفع قليلاً، لأن المساهمين يفضلون الاقتراض على إصدار أسهم جديدة.</li><li>تكلفة القروض صغيرة جداً، لأن أموال الدائنين مضمونة بالأموال الخاصة ومخاطر العسر غائبة، فيقرضون بمعدل قريب من معدل خالي المخاطر.</li><li>المؤسسة تستفيد من الوفر الضريبي.</li></ul></dd></div><div><dt>المرحلة الثانية</dt><dd><ul class="clean"><li>بعد حد معين يبدأ الخطر المالي للديون بالظهور.</li><li>المساهمون يوازنون بين مزايا القروض (فائدة منخفضة + وفر ضريبي) وخطورتها (العسر المالي).</li><li>هنا تبلغ تكلفة رأس المال أدنى قيمة لها: هيكل رأس المال الأمثل.</li></ul></dd></div><div><dt>المرحلة الثالثة</dt><dd><ul class="clean"><li>الاستدانة تفوق الحدود المعقولة فتفقد مزايا الاقتراض أهميتها.</li><li>الدائنون يرفعون الفائدة لأن الأموال الخاصة لم تعد تكفي ضماناً.</li><li>المساهمون يخشون استيلاء الدائنين على الأرباح وحتى على أموالهم، فيطالبون بعائد أعلى.</li><li>النتيجة ارتفاع تكلفة رأس المال المتوسطة المرجحة.</li></ul></dd></div><div class="crit"><dt>النقد</dt><dd>بديهية في مفاهيمها، قامت أساساً على ملاحظات عامة عن سلوك رأس المال في السوق.</dd></div></dl></div></div>
+    <div class="card theory" data-th="MM0"><div class="ch" data-char="MM0" data-mood="neutral"></div><div><h3>٤. النظرية المالية الحديثة، مودلياني وميلر بلا ضريبة</h3><div class="who">البروفيسور، في المختبر</div><dl class="kv"><div><dt>الأساس</dt><dd>تنفي وجود هيكل أمثل: التكلفة المتوسطة المرجحة لرأس المال ثابتة ومستقلة عن نسبة القروض في رأس المال الكلي.</dd></div><div><dt>النموذجان</dt><dd><ul class="clean"><li>الأول سنة 1958، مقالة "تكلفة رأس المال ونظرية الاستثمار" في مجلة American Economic Review.</li><li>الثاني سنة 1963، مقالة "الضرائب، دخل المؤسسة، وتكلفة رأس المال: تصحيح"، بعد انتقاد إهمال الضريبة على الأرباح.</li></ul></dd></div><div><dt>في غياب الضريبة<br>وتكلفة الإفلاس<br>وتكلفة الوكالة</dt><dd><ul class="clean"><li>تكلفة رأس المال ثابتة لكل فئة من المؤسسات لها نفس درجة المخاطر، ومستقلة عن هيكلها الرأسمالي.</li><li>مؤسستان متماثلتان في كل شيء إلا التمويل: زيادة استدانة الثانية ترفع العائد المطلوب من مساهميها.</li><li>تكلفة الاستدانة منخفضة (فائدة منخفضة + وفر ضريبي)، فتعوّض ارتفاع تكلفة الأموال الخاصة، وتبقى تكلفة رأس المال ثابتة.</li></ul></dd></div><div><dt>النتيجة</dt><dd>القيمة السوقية مستقلة عن الهيكل. التفصيل والانتقادات الأربعة في المحطة ٣.</dd></div></dl></div></div>
+    <div class="card theory" data-th="MMT"><div class="ch" data-char="MMT" data-mood="happy"></div><div><h3>٥. مودلياني وميلر مع الضريبة</h3><div class="who">حامل الدرع</div><dl class="kv"><div><dt>الأساس</dt><dd>النموذج الثاني يصحح إهمال الضريبة: الفائدة تخلق وفراً ضريبياً يضاف إلى قيمة المؤسسة.</dd></div><div><dt>ماذا يحدث</dt><dd><ul class="clean"><li>تكلفة الديون بعد الضريبة i × (1 − T) لا تتأثر بالرفع المالي.</li><li>التكلفة المتوسطة المرجحة تتناقص كلما زادت الديون.</li><li>قيمة المؤسسة تصل إلى أعلى حد لها عندما تصل نسبة القروض إلى 100%.</li></ul></dd></div><div><dt>تعليق</dt><dd>النتيجة متفقة مع فروض النظرية، لكنها ليست ملحوظة في الواقع، فلا يوجد هيكل تمويلي بقروض 100%.</dd></div><div><dt>اقتراح ميلر 1977</dt><dd>بإسقاط افتراض عدم وجود ضرائب على الأشخاص، يتلاشى الوفر الضريبي للمؤسسة بالضرائب التي يدفعها حملة الأسهم والسندات، فلا هيكل أمثل على مستوى المؤسسة.</dd></div></dl></div></div>
+    <div class="card theory" data-th="TO"><div class="ch" data-char="TO" data-mood="happy"></div><div><h3>٦. نظرية التسوية (الوفر الضريبي / تكلفة الإفلاس)</h3><div class="who">الحكيم، الحل الوسط الحديث</div><dl class="kv"><div><dt>الأساس</dt><dd>تُعرف أيضاً بنظرية الحل الوسط. العلاقة بين تكاليف الإفلاس والوفورات الضريبية هي التي تحدد الهيكل الأمثل.</dd></div><div><dt>أثران للديون<br>في وقت واحد</dt><dd><ul class="clean"><li>إيجابي: القيمة الحالية للوفورات الضريبية تخلق قيمة، بشرط أن تكون المردودية الاقتصادية أكبر من معدل الفائدة على القروض.</li><li>سلبي: القيمة الحالية لتكاليف الإفلاس تقلص قيمة المؤسسة عبر تخفيض القيمة الحالية للوفورات.</li></ul></dd></div><div><dt>النتيجة</dt><dd><ul class="clean"><li>الهيكل الأمثل لا يتحقق إلا عند التوازن بين المتغيرين.</li><li>القرار الأمثل للاقتراض هو محصلة التوازن بين الأثر الإيجابي والأثر السلبي.</li></ul></dd></div></dl></div></div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3>المخطط الحي: حرّك الرافعة وشاهد كل نظرية</h3>
+    <p class="small">الأرقام توضيحية لشكل المنحنيات فقط. المهم أن تحفظ <strong>شكل</strong> كل خط ثابت، صاعد، أم منحنٍ. الرموز: K<sub>CP</sub> تكلفة الأموال الخاصة، K<sub>D</sub> تكلفة الاستدانة، CMPC التكلفة المتوسطة المرجحة.</p>
+    <div class="tabs" role="tablist" id="thTabs">
+      <button role="tab" aria-selected="true" data-t="NI">الربح الصافي</button>
+      <button role="tab" aria-selected="false" data-t="NOI">صافي الربح التشغيلي</button>
+      <button role="tab" aria-selected="false" data-t="TRAD">التقليدية</button>
+      <button role="tab" aria-selected="false" data-t="MM0">الحديثة بلا ضريبة</button>
+      <button role="tab" aria-selected="false" data-t="MMT">الحديثة مع الضريبة</button>
+      <button role="tab" aria-selected="false" data-t="TO">التسوية</button>
+    </div>
+    <label for="lev" style="display:block;margin-top:10px">الرفع المالي (نسبة الاستدانة): <span id="levv" class="num">30%</span></label>
+    <input type="range" id="lev" min="0" max="95" value="30" step="5">
+    <div class="charts">
+      <figure><figcaption>تكلفة الأموال</figcaption><svg id="svgCost" viewBox="0 0 340 210" role="img" aria-label="منحنيات تكلفة الأموال، المحور الأفقي الرفع المالي والمحور الرأسي التكلفة بالنسبة المئوية"></svg></figure>
+      <figure><figcaption>قيمة المؤسسة</figcaption><svg id="svgVal" viewBox="0 0 340 210" role="img" aria-label="منحنى قيمة المؤسسة، المحور الأفقي الرفع المالي والمحور الرأسي قيمة المؤسسة"></svg></figure>
+    </div>
+    <div class="legend"><span style="--c:var(--equity)">تكلفة الأموال الخاصة K<sub>CP</sub></span><span style="--c:var(--debt)">تكلفة الاستدانة K<sub>D</sub></span><span style="--c:var(--wacc)">التكلفة المرجحة CMPC</span><span style="--c:var(--gold)">قيمة المؤسسة</span></div>
+    <div class="readout">
+      <div><div class="k">K<sub>CP</sub></div><div class="v" id="rKe">–</div></div>
+      <div><div class="k">K<sub>D</sub></div><div class="v" id="rKd">–</div></div>
+      <div><div class="k">CMPC</div><div class="v" id="rKo">–</div></div>
+      <div><div class="k">القيمة</div><div class="v" id="rV">–</div></div>
+    </div>
+    <div class="callout thnote" style="margin-top:12px"><div class="ch" id="thChar"></div><div id="thNote"></div></div>
+  </div>
+</section>
+
+<!-- ============ 3 النظرية الحديثة بالتفصيل ============ -->
+<section id="s4">
+  <div class="stop"><div class="n">٣</div><h2>النظرية المالية الحديثة بالتفصيل</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="MM0" data-mood="happy"></div><span class="bubble">في عالمي المثالي الهيكل لا يفرق</span></div></div>
+      <h3>أولاً: النموذج الأول، بلا ضريبة ولا تكلفة إفلاس ولا تكلفة وكالة</h3>
+      <dl class="kv">
+        <div><dt>الاقتراح الأول</dt><dd><ul class="clean">
+          <li>القيمة السوقية للمؤسسة مستقلة تماماً عن هيكل رأس المال فيها.</li>
+          <li>تتوقف على صافي الربح التشغيلي، لا على تشكيلة رأس المال.</li>
+          <li>القيمة انعكاس لقرارات الاستثمار (الإيرادات وتوزيع الأموال بين الاستثمارات الثابتة والمتداولة)، لا لكيفية تمويلها.</li>
+        </ul>
+        <div class="eqlist">
+          <div class="formula ar ">القيمة السوقية للمؤسسة = القيمة السوقية لحقوق الملكية + القيمة السوقية للقروض</div>
+          <div class="formula ar ">القيمة السوقية لمؤسسة مستدينة = القيمة السوقية لمؤسسة غير مستدينة</div>
+          <div class="formula ar ">القيمة السوقية للمؤسسة = <span class="frac"><span class="fn">ربح العمليات الصافي</span><span class="fd">معدل الخصم</span></span></div>
+          <div class="formula ar ">معدل الخصم = معدل العائد المطلوب على الاستثمار في المؤسسات ذات الخطر نفسه</div>
+        </div></dd></div>
+        <div><dt>الاقتراح الثاني</dt><dd><ul class="clean">
+          <li>تكلفة التمويل المرجحة ثابتة مهما تغيرت مكونات الهيكل.</li>
+          <li>وتساوي العائد المطلوب من الملاك في مؤسسة مماثلة من شريحة الخطر نفسها لا تعتمد على الاقتراض.</li>
+          <li>العائد المطلوب من ملاك مؤسسة مقترضة = عائد ملاك مؤسسة غير مقترضة من الشريحة نفسها + عائد إضافي لتعويض المخاطر المالية.</li>
+          <li>العائد الإضافي = (الفرق بين تكلفة التمويل للمؤسسة غير المقترضة وتكلفة التمويل المقترض) × (نسبة الاقتراض إلى حق الملكية).</li>
+        </ul>
+        <div class="eqlist">
+          <div class="formula">K<sub>CP</sub> = K<sub>o</sub> + (K<sub>o</sub> − K<sub>D</sub>) × <span class="frac"><span class="fn">D</span><span class="fd">E</span></span></div>
+        </div></dd></div>
+        <div><dt>التفسير بالمراجحة</dt><dd><ul class="clean">
+          <li>المستثمر في المؤسسة ذات القيمة السوقية الأعلى يبيع حصته فيها.</li>
+          <li>يستثمر في المؤسسة ذات القيمة الأقل، ويزيد استثماره بالقروض أو الأموال الشخصية (رفع مالي شخصي بنفس نسبة الاقتراض).</li>
+          <li>يحقق العائد نفسه باستثمار أقل، أو عائداً أكبر بالاستثمار نفسه، ودرجة مخاطره لا تختلف.</li>
+          <li>معظم المستثمرين سيفعلون ذلك حتى تتعادل القيمتان.</li>
+        </ul></dd></div>
+      </dl>
+      <div class="stmt" style="margin-top:8px">
+        <div class="sh">أثر زيادة الدين في النموذج الأول</div>
+        <div class="sr"><span>تكلفة الاستدانة K<sub>D</sub></span><span class="v">ثابتة</span><span class="ar">→</span></div>
+        <div class="sr"><span>تكلفة الأموال الخاصة K<sub>CP</sub></span><span class="v">ترتفع</span><span class="ar up bad">↑</span></div>
+        <div class="sr"><span>التكلفة المرجحة CMPC</span><span class="v">ثابتة</span><span class="ar">→</span></div>
+        <div class="sr total"><span>القيمة السوقية للمؤسسة</span><span class="v">ثابتة</span><span class="ar">→</span></div>
+      </div>
+      <div class="callout bad" style="margin-top:10px"><strong>نقد النموذج الأول، أربعة بنود:</strong>
+        <ol class="steps" style="margin-top:6px;font-size:15px">
+          <li>افتراض أن الأفراد والمؤسسات يقترضون بنفس الفائدة غير صحيح، فحجم المؤسسات وأصولها تتيح لها فائدة أقل من الأفراد.</li>
+          <li>الرفع الشخصي ليس بديلاً لرفع المؤسسة: إذا اقتربت المؤسسة من الإفلاس يخسر المستثمرون جزءاً من ثروتهم فيها فقط، أما إفلاس الفرد المقترض فقد يمتد إلى ثروته الشخصية.</li>
+          <li>المستثمر يتحمل تكاليف معاملات أثناء المراجحة قد تطيح بأي مزايا منها.</li>
+          <li>إهمال الضريبة على الأرباح غير واقعي، لأنها تجعل تكلفة الاقتراض أقل من المعدل الفعلي للفائدة بسبب الوفورات الضريبية.</li>
+        </ol></div>
+    </div>
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="MMT" data-mood="happy"></div><span class="bubble">الضريبة غيّرت كل شيء</span></div><div class="react"><div class="ch" data-char="NI" data-mood="happy"></div><span class="bubble">قلت لكم، ديون فقط</span></div><div class="react"><div class="ch" data-char="MM0" data-mood="sad"></div><span class="bubble">خرجنا من المختبر</span></div></div>
+      <h3>ثانياً: النموذج الثاني، في ظل وجود الضريبة</h3>
+      <p><strong>الاقتراح الأول:</strong> القيمة السوقية لمؤسسة مقترضة = القيمة السوقية لمؤسسة غير مقترضة + القيمة الحالية للوفر الضريبي.</p>
+      <div class="formula">V<sub>L</sub> = V<sub>U</sub> + T × D</div>
+      <div class="eqlist"><div class="formula ar ">القيمة الحالية للوفر الضريبي = مقدار القرض × سعر الفائدة × معدل الضريبة</div></div>
+      <dl class="kv"><div><dt>تكلفة حقوق الملكية<br>للمؤسسة المقترضة</dt><dd><ul class="clean">
+        <li>تساوي تكلفة حقوق الملكية لمؤسسة غير مقترضة + مكافأة عن المخاطر المالية.</li>
+        <li>المكافأة تتحدد بالفرق بين تكلفة حقوق الملكية غير المقترضة وتكلفة الاقتراض (الثابتة لكافة المؤسسات بافتراضهما).</li>
+        <li>وتتحدد أيضاً بمعدل الضريبة على أرباح المؤسسات، وبنسبة الأموال المقترضة إلى حقوق الملكية.</li>
+      </ul></dd></div></dl>
+      <p class="small" style="margin-top:8px">جرّب بنفسك:</p>
+      <div class="grid2">
+        <div><label for="vu">قيمة المؤسسة غير المقترضة V<sub>U</sub></label><input type="number" id="vu" value="200" min="0"></div>
+        <div><label for="tc">معدل الضريبة T (%)</label><input type="number" id="tc" value="20" min="0" max="100"></div>
+        <div><label for="dd">مقدار القرض D</label><input type="number" id="dd" value="50" min="0"></div>
+        <div><label>قيمة المؤسسة المقترضة V<sub>L</sub></label><div class="formula" id="vlOut" style="font-size:22px;color:var(--gold)">210</div></div>
+      </div>
+      <p class="small" style="margin-top:8px" id="vlText"></p>
+      <div class="callout debt" style="margin-top:10px">لأن CMPC تتناقص كلما زادت الديون، تصل القيمة أعلاها عند قروض 100%. هذه النتيجة متفقة مع فروض النظرية لكنها <strong>ليست ملحوظة في الواقع</strong>.</div>
+      <div class="callout" style="margin-top:10px"><strong>الاقتراح الثاني (ميلر 1977):</strong> عند إسقاط افتراض عدم وجود ضرائب على الأشخاص، لن يكون هناك هيكل مالي أمثل على مستوى المؤسسة، لأن الوفر الضريبي الذي تحققه المؤسسة يتلاشى بالضرائب التي يدفعها حملة الأسهم والسندات.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3>من أين يأتي الوفر الضريبي؟ قائمتا دخل جنباً إلى جنب</h3>
+    <p class="small">مؤسستان متطابقتان في ربح العمليات، الفرق الوحيد أن الثانية عندها دين. غيّر الأرقام وراقب السطر الأخير. معدل الضريبة هو الذي كتبته في الحاسبة فوق.</p>
+    <div class="grid3" style="margin-bottom:10px">
+      <div><label for="ebit">ربح العمليات قبل الفوائد والضريبة</label><input type="number" id="ebit" value="100" min="0"></div>
+      <div><label for="intr">الفائدة السنوية على الدين</label><input type="number" id="intr" value="20" min="0"></div>
+    </div>
+    <div class="stmt-pair">
+      <div class="stmt"><div class="sh">قائمة الدخل، مؤسسة غير مستدينة</div>
+        <div class="sr"><span>ربح العمليات قبل الفوائد والضريبة</span><span class="v" id="uE">100</span><span></span></div>
+        <div class="sr"><span>ناقص الفوائد</span><span class="v">0</span><span></span></div>
+        <div class="sr"><span>الربح الخاضع للضريبة</span><span class="v" id="uT">100</span><span></span></div>
+        <div class="sr"><span>ناقص الضريبة</span><span class="v" id="uX">20</span><span></span></div>
+        <div class="sr total"><span>صافي الربح للملاك</span><span class="v" id="uN">80</span><span></span></div>
+        <div class="sr sub"><span>ما يصل للممولين (ملاك + دائنين)</span><span class="v" id="uAll">80</span><span></span></div>
+      </div>
+      <div class="stmt r"><div class="sh">قائمة الدخل، مؤسسة مستدينة</div>
+        <div class="sr"><span>ربح العمليات قبل الفوائد والضريبة</span><span class="v" id="lE">100</span><span class="ar">=</span></div>
+        <div class="sr"><span class="hi-dt">ناقص الفوائد</span><span class="v" id="lI">20</span><span class="ar up bad">↑</span></div>
+        <div class="sr"><span>الربح الخاضع للضريبة</span><span class="v" id="lT">80</span><span class="ar dn">↓</span></div>
+        <div class="sr"><span class="hi">ناقص الضريبة</span><span class="v" id="lX">16</span><span class="ar dn good">↓</span></div>
+        <div class="sr total"><span>صافي الربح للملاك</span><span class="v" id="lN">64</span><span class="ar dn">↓</span></div>
+        <div class="sr sub"><span>ما يصل للممولين (ملاك + دائنين)</span><span class="v" id="lAll">84</span><span class="ar up">↑</span></div>
+      </div>
+    </div>
+    <div class="callout ok" style="margin-top:12px" id="shieldText"></div>
+  </div>
+
+  <div class="tablewrap" style="margin-top:14px"><table>
+    <thead><tr><th colspan="2">مقارنة بين المدخلين</th><th>النتيجة</th></tr></thead>
+    <tbody>
+      <tr><td colspan="2"><span class="ch" data-char="TRAD" data-mood="neutral"></span>المدخل التقليدي</td><td>يوجد هيكل رأس مال أمثل يجعل تكلفة رأس المال أدنى ما يمكن، وبالتالي يعظم قيمة المؤسسة.</td></tr>
+      <tr><td rowspan="2" style="vertical-align:middle">المدخل الحديث</td><td><span class="ch" data-char="MM0" data-mood="neutral"></span>غياب الضريبة</td><td>لا يوجد هيكل رأس مال أمثل.</td></tr>
+      <tr><td><span class="ch" data-char="MMT" data-mood="neutral"></span>وجود الضريبة</td><td>قيمة المؤسسة المستدينة تفوق قيمة غير المستدينة. لا يوجد حد أدنى لتكلفة رأس المال، لكن يمكن وضع حد أعلى للاستدانة.</td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- ============ 4 الإفلاس والتسوية ============ -->
+<section id="s5">
+  <div class="stop"><div class="n">٤</div><h2>تكلفة الإفلاس ونظرية التسوية</h2></div>
+  <div class="side">
+    <div class="stack">
+      <div class="card">
+        <h3>هيكل رأس المال في ظل وجود تكلفة الإفلاس</h3>
+        <p><strong>الإفلاس</strong> آلية قانونية تسمح للدائنين بالاستيلاء على أصول المؤسسة عندما تعجز عن الوفاء بالتزاماتها المالية الثابتة تجاههم (الفوائد وأقساط القروض)، أي عندما تقع في العسر والفشل المالي.</p>
+        <div class="grid2">
+          <div class="callout bad"><strong>التكاليف المباشرة</strong><br>المصاريف الإدارية والقانونية لعملية الإفلاس، تكاليف إعادة الهيكلة، تكاليف الإنابة، تكاليف البيع الإجباري والمستعجل للأصول، والتكاليف الاجتماعية (<strong>تدهور معنويات العمال</strong>).</div>
+          <div class="callout bad"><strong>التكاليف غير المباشرة</strong><br>تكاليف تضر صورة المؤسسة: تدهور المصداقية المالية والتجارية، انخفاض كفاءة التشغيل، ارتفاع فوائد الاقتراض، وتكاليف ضياع الفرص التجارية.</div>
+        </div>
+        <div class="eqlist" style="margin-top:10px"><div class="formula ar ">قيمة المؤسسة = القيمة الحالية للمؤسسة − القيمة الحالية لتكلفة الإفلاس</div><div class="formula ar ">القيمة الحالية لتكلفة الإفلاس = <span class="frac"><span class="fn">تكلفة الإفلاس</span><span class="fd">سعر الفائدة</span></span></div><div class="formula ar ">تكلفة الإفلاس = قسط التأمين بعد الضرائب × احتمال الإفلاس</div></div>
+        <ol class="steps" style="margin-top:10px">
+          <li>المؤسسات ذات الإيرادات الأكثر تقلباً أكثر تعرضاً للإفلاس (مع ثبات المتغيرات الأخرى)، فتقلل القروض مقارنة بالمؤسسات المستقرة. والمؤسسات ذات الرافعة التشغيلية العالية (مخاطر نشاط عالية) تخفض رافعتها المالية.</li>
+          <li>تكاليف الإفلاس لا تحفز على التوسع في القروض، لأن الدائنين يشترطون فائدة أعلى، والملاك لا يستطيعون التخلص من هذه المخاطر فيطالبون بعائد أعلى. النتيجة ارتفاع CMPC وانخفاض القيمة السوقية.</li>
+          <li>وبما أن العلاقة عكسية بين CMPC والقيمة السوقية، أكد مودلياني وميلر أن قيمة المؤسسة المقترضة تنخفض <strong>بمقدار القيمة الحالية لتكلفة الإفلاس</strong>، فكلما زادت القروض زادت تكلفة الإفلاس واستمر انخفاض القيمة.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="reacts"><div class="react"><div class="ch" data-char="TO" data-mood="happy"></div><span class="bubble">الأثران معاً في وقت واحد</span></div><div class="react"><div class="ch" data-char="TRAD" data-mood="happy"></div><span class="bubble">حل وسط، مثلما قلت</span></div><div class="react"><div class="ch" data-char="MMT" data-mood="sad"></div><span class="bubble">ودرعي؟</span></div></div>
+        <h3>نظرية التسوية (الوفر الضريبي / تكلفة الإفلاس)</h3>
+        <ol class="steps">
+          <li><strong>الأثر الإيجابي</strong> مرتبط بالوفورات الضريبية: الديون تخلق قيمة عبر القيمة الحالية للوفورات، <strong>بشرط</strong> أن تكون المردودية الاقتصادية أكبر من معدل الفائدة على القروض.</li>
+          <li><strong>الأثر السلبي</strong> مرتبط بتكاليف الإفلاس: قيمتها الحالية تقلص قيمة المؤسسة عبر تخفيض القيمة الحالية للوفورات الضريبية.</li>
+          <li>في السوق غير الكاملة يحدث الأثران في وقت واحد، والهيكل الأمثل لا يتحقق إلا عند <strong>التوازن</strong> بينهما. القرار الأمثل للاقتراض هو محصلة هذا التوازن.</li>
+        </ol>
+        <div class="eqlist"><div class="formula ar ">قيمة المؤسسة المستدينة = قيمة مؤسسة غير مستدينة + القيمة الحالية للوفورات الضريبية − القيمة الحالية لتكلفة الإفلاس</div></div>
+      </div>
+    </div>
+    <div class="stmt">
+      <div class="sh">كيف تتكوّن قيمة المؤسسة عند ثلاث نسب دين</div>
+      <div class="vbars" id="vbars"></div>
+      <div class="sr" style="margin-top:8px"><span>قيمة مؤسسة غير مستدينة</span><span class="v" style="color:var(--equity)">■</span><span></span></div>
+      <div class="sr"><span>+ القيمة الحالية للوفورات الضريبية</span><span class="v" style="color:var(--ok)">■</span><span class="ar up">↑</span></div>
+      <div class="sr"><span>− القيمة الحالية لتكلفة الإفلاس</span><span class="v" style="color:var(--bad)">■</span><span class="ar dn">↓</span></div>
+      <div class="stmt-note">دين قليل: وفورات صغيرة وتكاليف شبه معدومة. دين متوسط: الوفورات كبرت والتكاليف ما زالت صغيرة، فالصافي في قمته (الرفع المالي الأمثل). دين ثقيل: تكلفة الإفلاس أكلت الوفورات. الأرقام توضيحية.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 السلوك ============ -->
+<section id="s6">
+  <div class="stop"><div class="n">٥</div><h2>ثلاث نظريات عن سلوك الإدارة والمعلومات</h2></div>
+  <p class="lead">النظريات السابقة نظرت للأرقام. هذه الثلاث تنظر <strong>للبشر</strong>: الملاك والمديرون والمقرضون والمستثمرون، وما يعرفه كل طرف.</p>
+  <div class="grid3">
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="AG" data-mood="happy"></div><span class="bubble">الدين يضبط الإدارة</span></div></div>
+      <h3>١. نظرية تكاليف الوكالة</h3>
+      <p><strong>المشكلة:</strong> تناقض المصالح بين الملاك والمديرين. المديرون قد يتخذون قرارات تعظم ثروتهم ومكانتهم ولا تفيد الملاك أو تضرهم، فيتحمل الملاك تكاليف توكيل المديرين، وهي ثلاثة أنواع:</p>
+      <ol class="steps">
+        <li><strong>تكاليف الرقابة:</strong> لدفع المديرين للعمل لمصلحة الملاك، مثل تعويضات أعضاء مجلس الإدارة وحوافز المديرين.</li>
+        <li><strong>تكاليف التبرير:</strong> ما ينفقه المديرون ليبرهنوا على حسن إدارتهم وعملهم لمصلحة الملاك.</li>
+        <li><strong>التكاليف الباقية:</strong> تنتج عن استحالة رقابة الملاك التامة على المديرين.</li>
+      </ol>
+      <dl class="kv"><div><dt>دور الاستدانة البنكية</dt><dd>أداة فعالة لتخفيض تكاليف الوكالة لثلاثة أسباب:<ul class="clean">
+  <li>تزيد من مراقبة البنك للمديرين.</li>
+  <li>دفع الفوائد وأقساط الدين يقلص احتمال قيام المديرين باستثمارات غير مجدية.</li>
+  <li>قد تؤدي إلى فقدان المدير منصبه إذا صُفّيت المؤسسة استجابة لطلب البنك.</li>
+</ul></dd></div></dl>
+      <div class="callout" style="font-size:14.5px"><strong>لكن</strong> الاقتراض يخلق نوعاً آخر من الوكالة، بين الملاك والمقرضين: المقرض قد يضع شروطاً على قدرة المؤسسة على الاقتراض مستقبلاً أو محددات على توزيعات الأرباح، وكلما زادت هذه الشروط حصلت المؤسسة على فائدة أقل على ديونها.</div>
+      <div class="stmt" style="margin-top:10px"><div class="sh">قائمة التدفقات النقدية (مصغرة)</div>
+        <div class="sr"><span>نقد من التشغيل</span><span class="v">100</span><span></span></div>
+        <div class="sr"><span class="hi-dt">فوائد وأقساط ملزمة</span><span class="v">(40)</span><span class="ar up bad">↑</span></div>
+        <div class="sr"><span>نقد حر بيد الإدارة</span><span class="v">60</span><span class="ar dn good">↓</span></div>
+        <div class="sr total"><span>مساحة الاستثمارات غير المجدية</span><span class="v">أضيق</span><span class="ar dn good">↓</span></div>
+        <div class="stmt-note">الأرقام توضيحية. الالتزام الثابت يضيّق حرية الإدارة في الإنفاق.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="SG" data-mood="happy"></div><span class="bubble">كل قرار تمويل رسالة</span></div></div>
+      <h3>٢. نظرية الإشارة</h3>
+      <p>افترض مودلياني وميلر أن لدى المستثمرين المعلومات نفسها التي لدى المديرين عن توقعات المؤسسة (<strong>معلومات متماثلة</strong>). في الحقيقة المديرون يعرفون أكثر (<strong>معلومات غير متماثلة</strong>)، وهذا يؤثر على الهيكل الأمثل.</p>
+      <ol class="steps">
+        <li>المؤسسات ذات التوقعات الجيدة تفضل <strong>التمويل الذاتي</strong> من الأرباح المحتجزة بدل الاقتراض أو إصدار أسهم، لعدم رغبتها في تقاسم النمو المحتمل.</li>
+        <li>المؤسسات ذات التوقعات الضعيفة تفضل مساهمين جدد ليشاركوا في تحمل الصعوبات.</li>
+      </ol>
+      <div class="callout bad" style="margin-bottom:8px"><strong>إصدار أسهم جديدة يثير قلق المستثمرين.</strong> يُقرأ كإشارة إلى أن التوقعات المستقبلية ليست جيدة، فيقللون تقديرهم لقيمة المؤسسة.</div>
+      <div class="callout ok"><strong>طلب الاستدانة إشارة إيجابية.</strong> يؤدي إلى ارتفاع القيمة السوقية للمؤسسة.</div>
+      <div class="stmt r" style="margin-top:10px"><div class="sh">لوحة السوق (كيف يقرأ المستثمر القرار)</div>
+        <div class="sr"><span class="hi-eq">المؤسسة تصدر أسهماً جديدة</span><span class="v">تقدير القيمة</span><span class="ar dn">↓</span></div>
+        <div class="sr"><span class="hi-dt">المؤسسة تطلب استدانة</span><span class="v">القيمة السوقية</span><span class="ar up">↑</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="reacts"><div class="react"><div class="ch" data-char="PO" data-mood="happy"></div><span class="bubble">الأقرب أولاً</span></div></div>
+      <h3>٣. نظرية الالتقاط التدريجي (Pecking Order)</h3>
+      <p>عندما تريد المؤسسة تمويل استثمار، يكون لديها <strong>تفضيلات مرتبة</strong> في استخدام المصادر:</p>
+      <ol class="steps">
+        <li><span class="tag gd">التفضيل الأول</span> مصدر التمويل الداخلي، أي الأرباح المحتجزة.</li>
+        <li><span class="tag dt">عند عدم كفايته</span> مصدر التمويل الخارجي المتمثل في الديون.</li>
+        <li><span class="tag eq">الملجأ الأخير</span> إصدار أسهم عادية جديدة، عندما تصبح المؤسسة غير قادرة على الحصول على ديون جديدة.</li>
+      </ol>
+      <div class="stmt" style="margin-top:10px"><div class="sh">قائمة المركز المالي: من أين نأخذ التمويل أولاً؟</div>
+        <div class="sr"><span class="hi">الأرباح المحتجزة (داخل حقوق الملكية)</span><span class="v">١</span><span class="ar up">✓</span></div>
+        <div class="sr"><span class="hi-dt">الديون</span><span class="v">٢</span><span class="ar">→</span></div>
+        <div class="sr"><span class="hi-eq">أسهم عادية جديدة</span><span class="v">٣</span><span class="ar dn">آخراً</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 مثال ============ -->
+<section id="s7">
+  <div class="stop"><div class="n">٦</div><h2>المثال التطبيقي: تقييم الهيكل التمويلي لشركة الاستشاريون</h2></div>
+  <div class="side">
+    <div class="card">
+      <p>البيانات الافتراضية لشركة الاستشاريون في 31 ديسمبر 2020 (بالمليون ريال). غيّر أي رقم وشاهد الخطوات الثلاث تتحرك.</p>
+      <div class="grid2">
+        <div><label for="cap">رأس المال</label><input type="number" id="cap" value="10" min="0"></div>
+        <div><label for="res">احتياطيات</label><input type="number" id="res" value="2" min="0"></div>
+        <div><label for="ret">أرباح مبقاة</label><input type="number" id="ret" value="3" min="0"></div>
+        <div><label for="stl">التزامات قصيرة الأجل</label><input type="number" id="stl" value="4" min="0"></div>
+        <div><label for="ltl">التزامات طويلة الأجل</label><input type="number" id="ltl" value="7" min="0"></div>
+      </div>
+      <ol class="steps" style="margin-top:14px" id="exSteps"></ol>
+      <div class="split" style="margin-top:10px" aria-hidden="true"><div class="eq" id="exEq">حقوق ملكية</div><div class="dt" id="exDt">التزامات</div></div>
+      <div class="callout" style="margin-top:10px" id="exDecision"></div>
+      <p class="small" style="margin-top:8px">ملاحظة: المثال يقيّم <strong>الهيكل التمويلي</strong> (شمل الالتزامات قصيرة الأجل). لو طُلب <strong>هيكل رأس المال</strong> فقط، تُستبعد القصيرة الأجل من المقام.</p>
+    </div>
+    <div class="stmt r">
+      <div class="sh">قائمة المركز المالي في 31 ديسمبر 2020 (الجانب الأيمن)</div>
+      <div class="sr"><span class="hi-dt">التزامات قصيرة الأجل</span><span class="v" id="bs1">4</span><span></span></div>
+      <div class="sr"><span class="hi-dt">التزامات طويلة الأجل</span><span class="v" id="bs2">7</span><span></span></div>
+      <div class="sr sub"><span>مجموع الالتزامات</span><span class="v" id="bs3">11</span><span class="ar" style="color:var(--debt)" id="bs3p">42.3%</span></div>
+      <div class="sr"><span class="hi-eq">رأس المال</span><span class="v" id="bs4">10</span><span></span></div>
+      <div class="sr"><span class="hi-eq">احتياطيات</span><span class="v" id="bs5">2</span><span></span></div>
+      <div class="sr"><span class="hi-eq">أرباح مبقاة</span><span class="v" id="bs6">3</span><span></span></div>
+      <div class="sr sub"><span>مجموع حقوق الملكية</span><span class="v" id="bs7">15</span><span class="ar" style="color:var(--equity)" id="bs7p">57.7%</span></div>
+      <div class="sr total"><span>مجموع مصادر التمويل</span><span class="v" id="bs8">26</span><span class="ar">100%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 المعادلات ============ -->
+<section id="s8">
+  <div class="stop"><div class="n">٧</div><h2>ملخص المعادلات والنتائج</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>المعادلات، كل معادلة في سطر</h3>
+      <h4 style="margin:10px 0 4px">تقييم الهيكل التمويلي</h4>
+      <div class="eqlist">
+        <div class="formula ar ">الوزن النسبي لحقوق الملكية = <span class="frac"><span class="fn">مجموع حقوق الملكية</span><span class="fd">مجموع مصادر التمويل</span></span></div>
+        <div class="formula ar ">الوزن النسبي للالتزامات = <span class="frac"><span class="fn">مجموع الالتزامات</span><span class="fd">مجموع مصادر التمويل</span></span></div>
+        <div class="formula ar ">حقوق الملكية مقارنة بالالتزامات (بالمرات) = <span class="frac"><span class="fn">مجموع حقوق الملكية</span><span class="fd">مجموع الالتزامات</span></span></div>
+      </div>
+      <h4 style="margin:14px 0 4px">النظرية الحديثة بلا ضريبة</h4>
+      <div class="eqlist">
+        <div class="formula ar ">القيمة السوقية للمؤسسة = القيمة السوقية لحقوق الملكية + القيمة السوقية للقروض</div>
+        <div class="formula ar ">القيمة السوقية لمؤسسة مستدينة = القيمة السوقية لمؤسسة غير مستدينة</div>
+        <div class="formula ar ">القيمة السوقية للمؤسسة = <span class="frac"><span class="fn">ربح العمليات الصافي</span><span class="fd">معدل الخصم</span></span></div>
+        <div class="formula">K<sub>CP</sub> = K<sub>o</sub> + (K<sub>o</sub> − K<sub>D</sub>) × <span class="frac"><span class="fn">D</span><span class="fd">E</span></span></div>
+      </div>
+      <h4 style="margin:14px 0 4px">النظرية الحديثة مع الضريبة</h4>
+      <div class="eqlist">
+        <div class="formula">V<sub>L</sub> = V<sub>U</sub> + T × D</div>
+        <div class="formula ar ">القيمة الحالية للوفر الضريبي = مقدار القرض × سعر الفائدة × معدل الضريبة</div>
+      </div>
+      <h4 style="margin:14px 0 4px">تكلفة الإفلاس</h4>
+      <div class="eqlist">
+        <div class="formula ar ">تكلفة الإفلاس = قسط التأمين بعد الضرائب × احتمال الإفلاس</div>
+        <div class="formula ar ">القيمة الحالية لتكلفة الإفلاس = <span class="frac"><span class="fn">تكلفة الإفلاس</span><span class="fd">سعر الفائدة</span></span></div>
+        <div class="formula ar ">قيمة المؤسسة = القيمة الحالية للمؤسسة − القيمة الحالية لتكلفة الإفلاس</div>
+      </div>
+      <h4 style="margin:14px 0 4px">نظرية التسوية</h4>
+      <div class="eqlist">
+        <div class="formula ar ">قيمة المؤسسة المستدينة = قيمة مؤسسة غير مستدينة + القيمة الحالية للوفورات الضريبية − القيمة الحالية لتكلفة الإفلاس</div>
+      </div>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>النظرية</th><th>هل يوجد هيكل أمثل؟</th><th>أين؟</th><th>مَن يتفق معها في النتيجة</th></tr></thead>
+      <tbody>
+        <tr><td><span class="ch" data-char="NI" data-mood="neutral"></span>الربح الصافي</td><td>نعم</td><td>رأس مال من الديون فقط</td><td><span class="ch" data-char="MMT" data-mood="happy"></span> الحديثة مع الضريبة (نظرياً)</td></tr>
+        <tr><td><span class="ch" data-char="NOI" data-mood="neutral"></span>صافي الربح التشغيلي</td><td>لا</td><td>لا يوجد</td><td><span class="ch" data-char="MM0" data-mood="happy"></span> الحديثة بلا ضريبة</td></tr>
+        <tr><td><span class="ch" data-char="TRAD" data-mood="neutral"></span>التقليدية</td><td>نعم</td><td>نقطة الاقتراض المثلى (أدنى CMPC)</td><td><span class="ch" data-char="TO" data-mood="happy"></span> التسوية</td></tr>
+        <tr><td><span class="ch" data-char="MM0" data-mood="neutral"></span>الحديثة بلا ضريبة</td><td>لا</td><td>CMPC ثابتة</td><td><span class="ch" data-char="NOI" data-mood="happy"></span> صافي الربح التشغيلي</td></tr>
+        <tr><td><span class="ch" data-char="MMT" data-mood="neutral"></span>الحديثة مع الضريبة</td><td>لا حد أدنى للتكلفة</td><td>القيمة تزيد بالدين، ويمكن وضع حد أعلى للاستدانة</td><td><span class="ch" data-char="NI" data-mood="happy"></span> الربح الصافي</td></tr>
+        <tr><td><span class="ch" data-char="TO" data-mood="neutral"></span>التسوية</td><td>نعم</td><td>التوازن بين الوفر الضريبي وتكلفة الإفلاس</td><td><span class="ch" data-char="TRAD" data-mood="happy"></span> التقليدية</td></tr>
+        <tr><td><span class="ch" data-char="PO" data-mood="neutral"></span>الالتقاط التدريجي</td><td>ترتيب تفضيلات</td><td>داخلي، ثم ديون، ثم أسهم</td><td><span class="ch" data-char="SG" data-mood="neutral"></span> الإشارة (كلاهما عن سلوك الإدارة)</td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<!-- ============ 8 بطاقات ============ -->
+<section id="s9">
+  <div class="stop"><div class="n">٨</div><h2>بطاقات الحفظ السريع</h2></div>
+  <p class="small">اضغط البطاقة لقلبها. أجب في رأسك قبل القلب.</p>
+  <div class="fc-grid" id="fcGrid"></div>
+</section>
+
+<!-- ============ 9 اختبار ============ -->
+<section id="s10">
+  <div class="stop"><div class="n">٩</div><h2>اختبار المحطة الأخيرة</h2></div>
+  <div class="quizwrap">
+    <div class="card" id="quiz">
+      <div class="q-head"><span id="qCount">سؤال 1 من 20</span><span id="qScore">النتيجة: 0</span></div>
+      <div class="bar"><i id="qBar"></i></div>
+      <div id="qBody"></div>
+    </div>
+    <div class="qchar"><div class="ch" id="quizChar"></div><div class="bubble" id="quizSay" style="display:block;text-align:center;margin-top:4px">جاهز؟</div></div>
+  </div>
+</section>
+
+<footer style="margin-top:36px;border-top:1px solid var(--line);padding-top:16px;font-size:13.5px;color:var(--muted);line-height:1.8">
+  <p style="text-align:center;font-weight:700;color:var(--ink-2);margin-bottom:6px">جميع الحقوق محفوظة لمنصة معيار © 2026</p>
+  <p><strong>إخلاء مسؤولية:</strong> هذا المحتوى تعليمي أُعد لأغراض المذاكرة والمراجعة فقط، ولا يغني عن الرجوع إلى المصادر العلمية المعتمدة. لا يُعد استشارة مالية أو استثمارية أو محاسبية أو مهنية من أي نوع. الأرقام الواردة في المخططات الحية والقوائم المصغرة توضيحية لغرض الشرح ولا تمثل بيانات فعلية. الشخصيات والأسماء المستخدمة رمزية للمساعدة على الحفظ. لا تتحمل منصة معيار أي مسؤولية عن أي قرار يُتخذ أو نتيجة تترتب على استخدام هذا المحتوى.</p>
+</footer>
+</div>
+
+<div id="dock" hidden><div class="ch" id="dockChar"></div><div class="say"><span id="dockSay"></span><button class="x" id="dockX" aria-label="إخفاء">×</button></div></div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const fmt=n=>Number.isInteger(n)?String(n):n.toFixed(1);
+  const fm=n=>n.toLocaleString('en-US',{maximumFractionDigits:1});
+
+  /* ================= characters ================= */
+  const CH={
+    NI:{name:'الحماسي',th:'نظرية الربح الصافي',c:'#E8622A',d:'#B1441A',l:'#FFA57A',shape:'flame',fy:82},
+    NOI:{name:'الهادي',th:'نظرية صافي الربح التشغيلي',c:'#7F9296',d:'#55666A',l:'#B9C9CC',shape:'blob',fy:86},
+    TRAD:{name:'المتزن',th:'النظرية التقليدية',c:'#4C9A6A',d:'#2C6A46',l:'#93D6AE',shape:'box',fy:80},
+    MM0:{name:'البروفيسور',th:'الحديثة بلا ضريبة',c:'#4A78B8',d:'#2A5088',l:'#97BBEA',shape:'capsule',fy:70,acc:'glasses'},
+    MMT:{name:'حامل الدرع',th:'الحديثة مع الضريبة',c:'#3A66A6',d:'#213F72',l:'#8AAEE0',shape:'capsule',fy:66,acc:'shield'},
+    TO:{name:'الحكيم',th:'نظرية التسوية',c:'#C99A2E',d:'#8A6410',l:'#F3D07C',shape:'pear',fy:86,acc:'scale'},
+    AG:{name:'الرقيب',th:'تكاليف الوكالة',c:'#7B5EA7',d:'#4E3878',l:'#BCA1DE',shape:'hex',fy:74,acc:'tie'},
+    SG:{name:'المذيع',th:'نظرية الإشارة',c:'#D65C8E',d:'#9B3462',l:'#F5A3C4',shape:'drop',fy:86,acc:'antenna'},
+    PO:{name:'المنظّم',th:'الالتقاط التدريجي',c:'#2A9D8F',d:'#186B62',l:'#7FD6C9',shape:'steps',fy:90}
+  };
+  const SHAPES={
+    flame:'M60 8 C76 30 96 48 96 84 C96 110 80 128 60 128 C40 128 24 110 24 84 C24 48 44 30 60 8 Z',
+    blob:'M60 40 C88 40 106 60 106 88 C106 112 86 128 60 128 C34 128 14 112 14 88 C14 60 32 40 60 40 Z',
+    box:'M44 36 H76 Q98 36 98 58 V106 Q98 128 76 128 H44 Q22 128 22 106 V58 Q22 36 44 36 Z',
+    capsule:'M60 20 C78 20 90 32 90 50 V100 C90 118 78 128 60 128 C42 128 30 118 30 100 V50 C30 32 42 20 60 20 Z',
+    pear:'M60 22 C72 22 78 34 80 48 C84 66 100 80 100 98 C100 118 82 128 60 128 C38 128 20 118 20 98 C20 80 36 66 40 48 C42 34 48 22 60 22 Z',
+    hex:'M60 22 L98 44 V106 L60 128 L22 106 V44 Z',
+    drop:'M60 14 C60 14 100 60 100 92 C100 114 82 128 60 128 C38 128 20 114 20 92 C20 60 60 14 60 14 Z',
+    steps:'M42 30 H78 V54 H92 V82 H104 V128 H16 V82 H28 V54 H42 Z'
+  };
+  let gid=0;
+  function face(fy,mood,k){
+    const dk='#2A2320';
+    let s='';
+    [48,72].forEach((x,i)=>{
+      s+=`<ellipse cx="${x}" cy="${fy}" rx="9" ry="${mood==='angry'?7:10}" fill="#fff"/>`;
+      const px=x+(mood==='sad'?(i?-1:1):0), py=fy+(mood==='sad'?2:mood==='happy'?-1:0);
+      s+=`<circle cx="${px}" cy="${py}" r="${mood==='angry'?3.4:4.6}" fill="${dk}"/><circle cx="${px-1.6}" cy="${py-1.8}" r="1.5" fill="#fff"/>`;
+    });
+    if(k==='NOI'&&mood!=='angry'){s+=`<path d="M39 ${fy-4} h18" stroke="${dk}" stroke-width="2.2" stroke-linecap="round"/><path d="M63 ${fy-4} h18" stroke="${dk}" stroke-width="2.2" stroke-linecap="round"/>`;}
+    if(mood==='happy') s+=`<path d="M39 ${fy-17} q9 -7 18 0 M63 ${fy-17} q9 -7 18 0" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round"/>`;
+    else if(mood==='sad') s+=`<path d="M40 ${fy-14} l16 -6 M64 ${fy-20} l16 6" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round"/>`;
+    else if(mood==='angry') s+=`<path d="M40 ${fy-22} l17 8 M63 ${fy-14} l17 -8" fill="none" stroke="${dk}" stroke-width="3.6" stroke-linecap="round"/>`;
+    else s+=`<path d="M40 ${fy-16} h16 M64 ${fy-16} h16" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round"/>`;
+    if(mood==='happy') s+=`<path d="M45 ${fy+12} Q60 ${fy+34} 75 ${fy+12} Z" fill="#6B2A2A"/><path d="M52 ${fy+22} Q60 ${fy+30} 68 ${fy+22} Q60 ${fy+26} 52 ${fy+22} Z" fill="#E88A8A"/><circle cx="36" cy="${fy+9}" r="5" fill="#F08A80" opacity=".55"/><circle cx="84" cy="${fy+9}" r="5" fill="#F08A80" opacity=".55"/>`;
+    else if(mood==='sad') s+=`<path d="M47 ${fy+24} q13 -13 26 0" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round"/><path d="M78 ${fy+10} c0 6 -5 10 -5 15 a5 5 0 0 0 10 0 c0 -5 -5 -9 -5 -15z" fill="#5DA9E9"/>`;
+    else if(mood==='angry') s+=`<path d="M46 ${fy+20} l7 -5 l7 5 l7 -5 l7 5" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="60" cy="${fy-30}" rx="22" ry="9" fill="#E0392B" opacity=".28"/><path d="M96 ${fy-40} q4 -6 0 -12 M104 ${fy-36} q4 -6 0 -12" fill="none" stroke="#9B9B9B" stroke-width="2.5" stroke-linecap="round"/>`;
+    else s+=`<path d="M50 ${fy+17} h20" fill="none" stroke="${dk}" stroke-width="3" stroke-linecap="round"/>`;
+    return s;
+  }
+  function acc(k,fy){
+    const dk='#2A2320';
+    switch(CH[k].acc){
+      case 'glasses': return `<circle cx="48" cy="${fy}" r="12.5" fill="none" stroke="${dk}" stroke-width="2.6"/><circle cx="72" cy="${fy}" r="12.5" fill="none" stroke="${dk}" stroke-width="2.6"/><path d="M60.5 ${fy} h-0.5" stroke="${dk}" stroke-width="2.6"/><path d="M35.5 ${fy-2} l-8 -4 M84.5 ${fy-2} l8 -4" stroke="${dk}" stroke-width="2.6" stroke-linecap="round"/>`;
+      case 'shield': return `<path d="M60 ${fy+30} l16 6 v12 c0 9 -7 15 -16 19 c-9 -4 -16 -10 -16 -19 v-12 z" fill="#E3B44C" stroke="#8A6410" stroke-width="2"/><text x="60" y="${fy+56}" font-size="12" font-weight="700" text-anchor="middle" fill="#5B3F05" font-family="Tajawal,sans-serif">T</text>`;
+      case 'scale': return `<path d="M60 22 v-10" stroke="${dk}" stroke-width="2.5"/><path d="M40 12 h40" stroke="${dk}" stroke-width="2.5" stroke-linecap="round"/><path d="M40 12 l-6 12 h12 z M80 12 l-6 12 h12 z" fill="#E3B44C" stroke="${dk}" stroke-width="1.5"/>`;
+      case 'tie': return `<path d="M60 ${fy+28} l-6 6 l6 22 l6 -22 z" fill="#2F2A55"/><path d="M60 ${fy+28} l-5 -6 h10 z" fill="#2F2A55"/>`;
+      case 'antenna': return `<path d="M60 16 v-10" stroke="${dk}" stroke-width="2.5"/><circle cx="60" cy="4" r="3.5" fill="#E3B44C"/><path d="M50 6 a10 10 0 0 1 0 -4 M70 6 a10 10 0 0 0 0 -4 M46 9 a14 14 0 0 1 0 -10 M74 9 a14 14 0 0 0 0 -10" fill="none" stroke="${dk}" stroke-width="1.8" stroke-linecap="round"/>`;
+      default: return '';
+    }
+  }
+  function charSVG(k,mood){
+    const c=CH[k];const id='g'+(++gid);const fy=c.fy;
+    return `<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-label="${c.name}، شخصية ${c.th}"><defs><radialGradient id="${id}" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="${c.l}"/><stop offset=".45" stop-color="${c.c}"/><stop offset="1" stop-color="${c.d}"/></radialGradient></defs>
+      <ellipse cx="60" cy="134" rx="30" ry="5" fill="rgba(0,0,0,.18)"/>
+      <ellipse cx="46" cy="128" rx="9" ry="5" fill="${c.d}"/><ellipse cx="74" cy="128" rx="9" ry="5" fill="${c.d}"/>
+      <path d="${SHAPES[c.shape]}" fill="url(#${id})"/>
+      <ellipse cx="44" cy="${fy-34}" rx="11" ry="6" fill="#fff" opacity=".32" transform="rotate(-25 44 ${fy-34})"/>
+      ${acc(k,fy)}${face(fy,mood,k)}</svg>`;
+  }
+  function setChar(el,k,mood){
+    el.innerHTML=charSVG(k,mood);el.dataset.char=k;el.dataset.mood=mood;
+    el.className=el.className.replace(/\bm-\w+/g,'').trim()+' m-'+mood;
+    if(!/\bch\b/.test(el.className))el.className+=' ch';
+  }
+  document.querySelectorAll('.ch[data-char]').forEach(el=>setChar(el,el.dataset.char,el.dataset.mood||'neutral'));
+  $('crowd').innerHTML=Object.keys(CH).map(k=>`<div class="ch m-neutral" style="width:46px;animation-delay:${Math.random()*2}s">${charSVG(k,'neutral')}</div>`).join('');
+  setInterval(()=>{const els=$('crowd').children;const i=Math.floor(Math.random()*els.length);const el=els[i];const k=Object.keys(CH)[i];const m=['happy','happy','neutral','sad','angry'][Math.floor(Math.random()*5)];setChar(el,k,m);setTimeout(()=>setChar(el,k,'neutral'),2200);},2600);
+
+  /* ================= 0: mix ================= */
+  const mix=$('mix');
+  function drawMix(){
+    const d=+mix.value, e=100-d;
+    $('mixv').textContent=d+'%';
+    $('mixEq').style.flexBasis=e+'%'; $('mixEq').textContent=e>16?('أموال خاصة '+e+'%'):'';
+    $('mixDt').style.flexBasis=d+'%'; $('mixDt').textContent=d>12?('ديون '+d+'%'):'';
+    $('bsD').textContent=fm(d*10);$('bsE').textContent=fm(e*10);
+    const prev=drawMix.prev??40;$('bsDa').textContent=d>prev?'↑':d<prev?'↓':'';$('bsDa').className='ar '+(d>prev?'up bad':'dn good');$('bsEa').textContent=d>prev?'↓':d<prev?'↑':'';$('bsEa').className='ar '+(d>prev?'dn':'up');drawMix.prev=d;
+    let note;
+    if(d===0) note='بلا ديون. لا خطر مالي، لكن التمويل كله بأغلى مصدر، ولا وفر ضريبي.';
+    else if(d<35) note='استدانة ضعيفة. في النظرية التقليدية هذه المرحلة الأولى: الدائنون مطمئنون لأن الأموال الخاصة تضمنهم.';
+    else if(d<65) note='منطقة الوسط. هنا تبحث التقليدية عن نقطة الاقتراض المثلى، والتسوية عن التوازن بين الوفر الضريبي وتكلفة الإفلاس.';
+    else if(d<100) note='استدانة ثقيلة. المرحلة الثالثة عند التقليدية: الدائنون يرفعون الفائدة والمساهمون يطالبون بعائد أعلى.';
+    else note='ديون 100%. نتيجة نظرية الربح الصافي والحديثة مع الضريبة نظرياً، وهي نتيجة غير ملحوظة في الواقع.';
+    $('mixNote').textContent=note;
+  }
+  mix.addEventListener('input',drawMix); drawMix();
+
+  /* ================= 2: theories + stage + charts ================= */
+  const TH={
+    NI:{f(L){const kd=6,ke=12,ko=ke*(1-L)+kd*L;return{kd,ke,ko,v:1000/ko}},
+        note:'<strong>الربح الصافي:</strong> تكلفة الأموال الخاصة وتكلفة الاستدانة خطان ثابتان، لأن الافتراض أن الدين لا يغيّر إدراك الخطر. الدين الأرخص يسحب التكلفة المرجحة للأسفل بلا توقف، فتصعد القيمة حتى تصبح مساوية للقيمة السوقية للديون عند 100%.',
+        react:{NI:'happy',NOI:'angry',TRAD:'sad'}},
+    NOI:{f(L){const ko=10,kd=6,x=Math.min(L,.95),ke=ko+(ko-kd)*x/(1-x);return{kd,ke,ko,v:1000/ko}},
+        note:'<strong>صافي الربح التشغيلي:</strong> التكلفة المرجحة خط ثابت لأن معدل الخصم يتحدد بمخاطر الأعمال لا بالتمويل. كل ما يوفره الدين الرخيص يذهب لارتفاع تكلفة الأموال الخاصة. القيمة لا تتحرك، ولا يهم كيف تُقسم بين الدائنين والملاك.',
+        react:{NOI:'happy',NI:'angry',MM0:'happy'}},
+    TRAD:{f(L){const a=Math.max(0,L-.45);const kd=6+30*a*a;const ke=10+3*L+80*a*a;const ko=ke*(1-L)+kd*L;return{kd,ke,ko,v:1000/ko}},
+        note:'<strong>التقليدية:</strong> مرحلة ١ التكلفة المرجحة تنخفض، مرحلة ٢ تبلغ أدنى قيمة لها عند نقطة الاقتراض المثلى والقيمة في قمتها، مرحلة ٣ تقفز تكلفة الأموال الخاصة وتكلفة الاستدانة معاً فترتفع التكلفة المرجحة.',
+        react:{TRAD:'happy',NI:'sad',NOI:'sad',TO:'happy'}},
+    MM0:{f(L){const ko=10,kd=6,x=Math.min(L,.95),ke=ko+(ko-kd)*x/(1-x);return{kd,ke,ko,v:1000/ko}},
+        note:'<strong>الحديثة بلا ضريبة:</strong> الصورة نفسها التي عند صافي الربح التشغيلي، لكن بتفسير المراجحة: ارتفاع عائد الملاك مع الاستدانة يعوّض رخص الدين، فتبقى CMPC = R<sub>actif</sub> ثابتة (الاقتراح الثاني) والقيمة مستقلة عن الهيكل (الاقتراح الأول).',
+        react:{MM0:'happy',NOI:'happy',TRAD:'angry',NI:'sad'}},
+    MMT:{f(L){const tc=.25,kd=6,x=Math.min(L,.95);const ko=10*(1-tc*L);const ke=10+(10-kd)*(1-tc)*x/(1-x);return{kd,ke,ko,v:1000/ko}},
+        note:'<strong>الحديثة مع الضريبة:</strong> تكلفة الديون بعد الضريبة i×(1−T) لا تتأثر بالرفع، فتتناقص CMPC كلما زادت الديون، والقيمة خط صاعد فوق قيمة المؤسسة غير المقترضة بمقدار القيمة الحالية للوفر الضريبي. القمة عند 100%، وهي نتيجة غير ملحوظة في الواقع.',
+        react:{MMT:'happy',NI:'happy',MM0:'sad',NOI:'angry'}},
+    TO:{f(L){const v=100+25*L-60*L*L*L;const ko=1000/v;const kd=6+20*L*L*L;const x=Math.min(L,.95);const ke=(ko-kd*x)/(1-x);return{kd,ke,ko,v}},
+        note:'<strong>التسوية:</strong> الأثر الإيجابي للوفورات الضريبية يرفع القيمة أولاً، ثم يهيمن الأثر السلبي لتكلفة الإفلاس فتنكسر وتهبط. القمة هي الرفع المالي الأمثل حيث يتوازن الأثران.',
+        react:{TO:'happy',TRAD:'happy',MMT:'sad',NI:'angry'}}
+  };
+  let cur='NI';
+  const lev=$('lev');
+  const W=340,H=210,P={l:44,r:12,t:12,b:40};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  function sx(L){return P.l+(W-P.l-P.r)*L}
+  function mkPath(fn,ymin,ymax){let d='';for(let i=0;i<=95;i+=1){const L=i/100;const y=fn(L);const yy=H-P.b-(H-P.t-P.b)*Math.min(1,Math.max(0,(y-ymin)/(ymax-ymin)));d+=(i?'L':'M')+sx(L).toFixed(1)+' '+yy.toFixed(1)+' ';}return d;}
+  function axes(ymin,ymax,unit,xname,yname){
+    const ink=css('--muted'),line=css('--line'),txt=css('--ink-2');
+    let s=`<line x1="${P.l}" y1="${P.t}" x2="${P.l}" y2="${H-P.b}" stroke="${line}"/><line x1="${P.l}" y1="${H-P.b}" x2="${W-P.r}" y2="${H-P.b}" stroke="${line}"/>`;
+    for(const L of [0,.25,.5,.75,.95]){s+=`<text x="${sx(L)}" y="${H-P.b+13}" font-size="10" text-anchor="middle" fill="${ink}" font-family="Tajawal,sans-serif">${Math.round(L*100)}%</text>`;}
+    for(let k=0;k<=4;k++){const yv=ymin+(ymax-ymin)*k/4;const yy=H-P.b-(H-P.t-P.b)*k/4;s+=`<line x1="${P.l}" y1="${yy}" x2="${W-P.r}" y2="${yy}" stroke="${line}" stroke-dasharray="2 4"/><text x="${P.l-4}" y="${yy+3}" font-size="10" text-anchor="end" fill="${ink}" font-family="Tajawal,sans-serif">${Math.round(yv)}${unit}</text>`;}
+    s+=`<text x="${(P.l+W-P.r)/2}" y="${H-6}" font-size="11.5" font-weight="700" text-anchor="middle" fill="${txt}" font-family="Tajawal,sans-serif" direction="rtl">${xname}</text>`;
+    s+=`<text transform="translate(11 ${(P.t+H-P.b)/2}) rotate(-90)" font-size="11.5" font-weight="700" text-anchor="middle" fill="${txt}" font-family="Tajawal,sans-serif" direction="rtl">${yname}</text>`;
+    return s;
+  }
+  function draw(){
+    const L=+lev.value/100; $('levv').textContent=Math.round(L*100)+'%';
+    const t=TH[cur]; const r=t.f(L);
+    const eq=css('--equity'),dt=css('--debt'),wc=css('--wacc'),gd=css('--gold');
+    let s=axes(0,40,'','x: الرفع المالي (نسبة الاستدانة)','y: التكلفة %');
+    s+=`<path d="${mkPath(x=>t.f(x).ke,0,40)}" fill="none" stroke="${eq}" stroke-width="2.5"/>`;
+    s+=`<path d="${mkPath(x=>t.f(x).kd,0,40)}" fill="none" stroke="${dt}" stroke-width="2.5"/>`;
+    s+=`<path d="${mkPath(x=>t.f(x).ko,0,40)}" fill="none" stroke="${wc}" stroke-width="3"/>`;
+    s+=`<line x1="${sx(L)}" y1="${P.t}" x2="${sx(L)}" y2="${H-P.b}" stroke="${gd}" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+    $('svgCost').innerHTML=s;
+    const vmin=50,vmax=170;
+    let s2=axes(vmin,vmax,'','x: الرفع المالي (نسبة الاستدانة)','y: قيمة المؤسسة');
+    s2+=`<path d="${mkPath(x=>t.f(x).v,vmin,vmax)}" fill="none" stroke="${gd}" stroke-width="3"/>`;
+    s2+=`<line x1="${sx(L)}" y1="${P.t}" x2="${sx(L)}" y2="${H-P.b}" stroke="${gd}" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+    const vy=H-P.b-(H-P.t-P.b)*Math.min(1,Math.max(0,(r.v-vmin)/(vmax-vmin)));
+    s2+=`<circle cx="${sx(L)}" cy="${vy}" r="5" fill="${gd}"/>`;
+    $('svgVal').innerHTML=s2;
+    $('rKe').textContent=fmt(Math.min(r.ke,99))+'%'; $('rKd').textContent=fmt(r.kd)+'%'; $('rKo').textContent=fmt(r.ko)+'%'; $('rV').textContent=fmt(r.v);
+    $('thNote').innerHTML=t.note;
+    setChar($('thChar'),cur,'happy');
+  }
+  const stage=$('stage');
+  const order=['NI','NOI','TRAD','MM0','MMT','TO'];
+  order.forEach((k,i)=>{
+    const b=document.createElement('button');b.className='walker';b.dataset.k=k;
+    b.style.setProperty('--x',(4+i*15)+'%');b.style.setProperty('--dist',(20+((i*37)%40))+'px');b.style.setProperty('--dur',(3.5+i*.6)+'s');b.style.setProperty('--delay',(-i*1.3)+'s');
+    b.innerHTML=`<div class="waddle"><div class="ch m-neutral" data-char="${k}">${charSVG(k,'neutral')}</div></div><span class="nm">${CH[k].name}</span>`;
+    b.title=CH[k].th;
+    b.addEventListener('click',()=>selectTheory(k));
+    stage.appendChild(b);
+  });
+  function react(k){const r=TH[k].react||{};stage.querySelectorAll('.walker').forEach(w=>{const kk=w.dataset.k;setChar(w.querySelector('.ch'),kk,r[kk]||'neutral');w.classList.toggle('sel',kk===k);});}
+  function selectTheory(k){cur=k;[...$('thTabs').children].forEach(x=>x.setAttribute('aria-selected',x.dataset.t===k));draw();react(k);}
+  lev.addEventListener('input',draw);
+  $('thTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;selectTheory(b.dataset.t);});
+  selectTheory('NI');
+  if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);}
+
+  /* ================= 3: VL + income statements ================= */
+  function calcVL(){
+    const vu=+$('vu').value||0,tc=(+$('tc').value||0)/100,d=+$('dd').value||0;
+    const vl=vu+tc*d;
+    $('vlOut').textContent=fmt(vl);
+    $('vlText').textContent=`الوفر الضريبي = ${fmt(tc*100)}% × ${fmt(d)} = ${fmt(tc*d)}. إذن قيمة المؤسسة المقترضة = ${fmt(vu)} + ${fmt(tc*d)} = ${fmt(vl)}.`;
+    calcIS();
+  }
+  function calcIS(){
+    const E=+$('ebit').value||0,I=Math.min(+$('intr').value||0,E),tc=(+$('tc').value||0)/100;
+    const uX=E*tc,uN=E-uX;const lT=E-I,lX=lT*tc,lN=lT-lX,lAll=lN+I;
+    $('uE').textContent=fm(E);$('uT').textContent=fm(E);$('uX').textContent=fm(uX);$('uN').textContent=fm(uN);$('uAll').textContent=fm(uN);
+    $('lE').textContent=fm(E);$('lI').textContent=fm(I);$('lT').textContent=fm(lT);$('lX').textContent=fm(lX);$('lN').textContent=fm(lN);$('lAll').textContent=fm(lAll);
+    $('shieldText').innerHTML=`<strong>الوفر الضريبي هذه السنة = ${fm(uX)} − ${fm(lX)} = ${fm(uX-lX)}</strong>، وهو نفسه معدل الضريبة × الفائدة = ${fmt(tc*100)}% × ${fm(I)}. المؤسسة المستدينة دفعت ضريبة أقل، فوصل للممولين مجتمعين ${fm(lAll)} بدل ${fm(uN)}. هذا الفارق، مخصوماً لكل السنوات القادمة، هو "القيمة الحالية للوفر الضريبي" التي ترفع قيمة المؤسسة المقترضة فوق غير المقترضة. وهو أيضاً سبب أن تكلفة الاقتراض الفعلية تصبح i×(1−T) لا i.`;
+  }
+  ['vu','tc','dd'].forEach(id=>$(id).addEventListener('input',calcVL));
+  ['ebit','intr'].forEach(id=>$(id).addEventListener('input',calcIS));
+  calcVL();
+
+  /* ================= 4: value bars ================= */
+  (function(){
+    const eq=css('--equity'),ok=css('--ok'),bad=css('--bad');
+    const data=[{lab:'دين قليل',vu:100,sh:6,dc:1},{lab:'دين متوسط',vu:100,sh:16,dc:5},{lab:'دين ثقيل',vu:100,sh:26,dc:34}];
+    const max=175;
+    $('vbars').innerHTML=data.map(d=>{const net=d.vu+d.sh-d.dc;const h=v=>Math.round(v/max*110);return `<div class="vb"><div class="bars"><span style="height:${h(d.vu)}px;background:${eq}">${d.vu}</span><span style="height:${h(d.sh)}px;background:${ok}">+${d.sh}</span><span style="height:${h(d.dc)}px;background:${bad};opacity:.9">−${d.dc}</span></div><div class="lab">${d.lab}<br>الصافي ${net}</div></div>`}).join('');
+  })();
+
+  /* ================= 6: example ================= */
+  function calcEx(){
+    const c=+$('cap').value||0,r=+$('res').value||0,t=+$('ret').value||0,s=+$('stl').value||0,l=+$('ltl').value||0;
+    const E=c+r+t,D=s+l,T=E+D;
+    const we=T?E/T*100:0,wd=T?D/T*100:0,x=D?E/D:0;
+    const L=v=>/^\d/.test(String(v))?`<bdi dir="ltr">${v}</bdi>`:v;const fr=(n,d)=>`<span class="frac"><span class="fn">${L(n)}</span><span class="fd">${L(d)}</span></span>`;
+    $('exSteps').innerHTML=`<li><strong>الوزن النسبي لحقوق الملكية في الهيكل التمويلي</strong><div class="formula ar">${fr('مجموع حقوق الملكية','مجموع مصادر التمويل')} = ${fr(fmt(c)+' + '+fmt(r)+' + '+fmt(t),fmt(T))} = ${fr(fmt(E),fmt(T))} = <span style="color:var(--equity)">${we.toFixed(1)}%</span></div></li>
+      <li><strong>الوزن النسبي للالتزامات في مصادر التمويل</strong><div class="formula ar">${fr('مجموع الالتزامات','مجموع مصادر التمويل')} = ${fr(fmt(s)+' + '+fmt(l),fmt(T))} = ${fr(fmt(D),fmt(T))} = <span style="color:var(--debt)">${wd.toFixed(1)}%</span></div></li>
+      <li><strong>حقوق الملكية بالمقارنة مع إجمالي الالتزامات</strong><div class="formula ar">${fr('مجموع حقوق الملكية','مجموع الالتزامات')} = ${fr(fmt(E),fmt(D))} = <span style="white-space:nowrap">${x.toFixed(2)} مرة</span></div></li>`;
+    $('exEq').style.flexBasis=we+'%'; $('exEq').textContent=we>18?('حقوق ملكية '+we.toFixed(1)+'%'):'';
+    $('exDt').style.flexBasis=wd+'%'; $('exDt').textContent=wd>15?('التزامات '+wd.toFixed(1)+'%'):'';
+    const lead=we>=wd?'حقوق الملكية':'الالتزامات';
+    $('exDecision').innerHTML=`<strong>القرار:</strong> الشركة تعتمد على نسبة ${wd>=40?'كبيرة':'محدودة'} من الالتزامات تصل إلى ${Math.round(wd)}%، و${lead} تشكل القدر الأكبر من مصادر التمويل${x?`، وكل ريال التزامات يقابله ${x.toFixed(2)} ريال حقوق ملكية`:''}.`;
+    $('bs1').textContent=fmt(s);$('bs2').textContent=fmt(l);$('bs3').textContent=fmt(D);$('bs3p').textContent=wd.toFixed(1)+'%';
+    $('bs4').textContent=fmt(c);$('bs5').textContent=fmt(r);$('bs6').textContent=fmt(t);$('bs7').textContent=fmt(E);$('bs7p').textContent=we.toFixed(1)+'%';$('bs8').textContent=fmt(T);
+  }
+  ['cap','res','ret','stl','ltl'].forEach(id=>$(id).addEventListener('input',calcEx)); calcEx();
+
+  /* ================= 8: flashcards ================= */
+  const cards=[
+    ['أنواع مصادر التمويل الثلاثة؟','قصيرة الأجل (تُرد خلال سنة، التزامات متداولة)، طويلة ومتوسطة الأجل (سندات وقروض مصرفية)، والتمويل الذاتي (أرباح محتجزة، بيع أصول غير مستخدمة، تخفيض الأصول المتداولة، إصدار أسهم).'],
+    ['الهيكل التمويلي مقابل هيكل رأس المال في قائمة المركز المالي؟','التمويلي = جانب الالتزامات وحقوق الملكية كاملاً. رأس المال = حقوق الملكية والالتزامات غير المتداولة فقط، وهو جزء من التمويلي.'],
+    ['تعريف هيكل رأس المال الأمثل؟','تركيبة رأس المال (الأموال الخاصة والديون طويلة الأجل) التي تكون عندها التكلفة المتوسطة المرجحة لرأس المال في أدنى قيمة لها.'],
+    ['ماذا تقيس نسب المديونية؟','المدى الذي ذهبت إليه الشركة في الاعتماد على الديون، أي مدى مساهمة كل من الملاك والدائنين في تمويلها. من أهم أدوات المراقبة.'],
+    ['المحددات الخمسة؟','حجم المؤسسة، نمو واستقرار المبيعات، تكلفة المصادر، المرونة، الملاءمة.'],
+    ['نظرية الربح الصافي: على ماذا تقوم وما نتيجتها؟','رسملة صافي الربح. الدين لا يغيّر إدراك الخطر فالتكلفتان ثابتتان، والدين أرخص. الأمثل رأس مال من الديون فقط. نقدها: أهملت المخاطر المالية.'],
+    ['نظرية صافي الربح التشغيلي: بم يتحدد معدل الخصم؟','بدرجة مخاطر الأعمال لا بمزيج التمويل، فتبقى تكلفة الأموال المرجحة ثابتة ولا يهم تقسيم القيمة بين الدائنين والملاك. نقدها: أغفلت المخاطر المالية ولا تعين المديرين.'],
+    ['المراحل الثلاث في النظرية التقليدية؟','١ استدانة ضعيفة، الدائنون يقرضون قرب معدل خالي المخاطر. ٢ يظهر الخطر المالي وتبلغ تكلفة رأس المال أدناها (الأمثل). ٣ فوق الحد المعقول ترتفع الفائدة وعائد المساهمين فترتفع التكلفة المرجحة. نقدها: بديهية.'],
+    ['نموذجا مودلياني وميلر؟','الأول 1958 (تكلفة رأس المال ونظرية الاستثمار). الثاني 1963 (الضرائب، دخل المؤسسة، وتكلفة رأس المال: تصحيح) بعد انتقاد إهمال الضريبة.'],
+    ['الاقتراحان في الحديثة بلا ضريبة؟','الأول: القيمة السوقية مستقلة عن الهيكل، تتوقف على صافي الربح التشغيلي، قيمة المستدينة = غير المستدينة. الثاني: التكلفة المتوسطة المرجحة لرأس المال ثابتة، وعائد ملاك المقترضة = عائد غير المقترضة + (الفرق × نسبة الاقتراض إلى الملكية).'],
+    ['الانتقادات الأربعة لمودلياني وميلر الأولى؟','الأفراد لا يقترضون بفائدة المؤسسات. الرفع الشخصي ليس بديلاً (إفلاس الفرد يطال ثروته). تكاليف معاملات المراجحة. إهمال الضريبة غير واقعي.'],
+    ['الحديثة مع الضريبة وميلر 1977؟','قيمة المؤسسة المقترضة = قيمة المؤسسة غير المقترضة + (معدل الضريبة × مقدار القرض)، والقمة عند 100% دين لكنها غير ملحوظة في الواقع. ميلر 1977: مع ضرائب الأشخاص يتلاشى الوفر فلا هيكل أمثل على مستوى المؤسسة.'],
+    ['تكاليف الإفلاس المباشرة وغير المباشرة؟','مباشرة: إدارية وقانونية، إعادة هيكلة، إنابة، بيع إجباري، اجتماعية (تدهور معنويات العمال). غير مباشرة: تدهور المصداقية، انخفاض كفاءة التشغيل، ارتفاع فوائد الاقتراض، ضياع الفرص.'],
+    ['معادلات تكلفة الإفلاس؟','القيمة الحالية لتكلفة الإفلاس = تكلفة الإفلاس ÷ سعر الفائدة. تكلفة الإفلاس = قسط التأمين بعد الضرائب × احتمال الإفلاس. قيمة المؤسسة = القيمة الحالية − القيمة الحالية لتكلفة الإفلاس.'],
+    ['نظرية التسوية: الأثران والشرط؟','إيجابي عبر الوفورات الضريبية بشرط أن تكون المردودية الاقتصادية أكبر من معدل الفائدة. سلبي عبر تكلفة الإفلاس. الأمثل عند التوازن بينهما.'],
+    ['أنواع تكاليف الوكالة الثلاثة؟','الرقابة (تعويضات مجلس الإدارة وحوافز المديرين)، التبرير (ما ينفقه المديرون لإثبات حسن إدارتهم)، الباقية (استحالة الرقابة التامة).'],
+    ['كيف تخفض الاستدانة البنكية تكاليف الوكالة؟','تزيد مراقبة البنك، ودفع الفوائد والأقساط يقلص الاستثمارات غير المجدية، وقد يفقد المدير منصبه عند التصفية. لكنها تخلق وكالة بين الملاك والمقرضين (شروط ومحددات توزيعات).'],
+    ['نظرية الإشارة في جملة؟','المعلومات غير متماثلة. إصدار أسهم جديدة يقلق المستثمرين (إشارة أن التوقعات ليست جيدة) فيقللون تقديرهم، وطلب الاستدانة إشارة إيجابية ترفع القيمة السوقية.'],
+    ['ترتيب الالتقاط التدريجي؟','الأرباح المحتجزة، ثم الديون، ثم إصدار أسهم عادية جديدة كملجأ أخير عندما تعجز عن الحصول على ديون جديدة.']
+  ];
+  $('fcGrid').innerHTML=cards.map((c,i)=>`<div class="fc" tabindex="0" role="button" aria-label="بطاقة ${i+1}"><div class="in"><div class="f">${c[0]}</div><div class="bk">${c[1]}</div></div></div>`).join('');
+  $('fcGrid').addEventListener('click',e=>{const f=e.target.closest('.fc');if(f)f.classList.toggle('flip');});
+  $('fcGrid').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const f=e.target.closest('.fc');if(f){e.preventDefault();f.classList.toggle('flip');}}});
+
+  /* ================= 9: quiz ================= */
+  const Q=[
+    {ch:'PO',q:'أي مما يلي يُصنَّف ضمن مصادر التمويل الذاتي؟',o:['بيع أصول غير مستخدمة وتخفيض عناصر الأصول المتداولة','السندات والقروض المصرفية طويلة الأجل','القروض المصرفية قصيرة الأجل','الموردون (القروض التجارية)'],a:0,
+     why:'التمويل الذاتي يشمل الأرباح المحتجزة، وما ينشأ من بيع أصول غير مستخدمة أو تخفيض الأصول المتداولة، وإصدار الأسهم.',
+     bad:['هذه مصادر طويلة ومتوسطة الأجل من الغير.','مصدر قصير الأجل من الغير.','مصدر قصير الأجل من الغير.']},
+    {ch:'NOI',q:'في جدول مقارنة الهيكلين، ماذا يشمل هيكل رأس المال من قائمة المركز المالي؟',o:['حقوق الملكية والالتزامات غير المتداولة','جانب الالتزامات وحقوق الملكية كاملاً','الالتزامات المتداولة وغير المتداولة','الأصول طويلة الأجل'],a:0,
+     why:'هيكل رأس المال يعكس المصادر طويلة الأجل فقط، أي حقوق الملكية والالتزامات غير المتداولة.',
+     bad:['هذا الهيكل التمويلي.','يستبعد حقوق الملكية ويدخل المتداولة، عكس المطلوب.','الهيكلان في جانب التمويل لا الأصول.']},
+    {ch:'TRAD',q:'رأس مال 10، احتياطيات 2، أرباح مبقاة 3، التزامات قصيرة 4، طويلة 7 (بالمليون). حقوق الملكية بالمقارنة مع إجمالي الالتزامات تساوي:',o:['1.36 مرة','0.73 مرة','2.14 مرة','1.15 مرة'],a:0,
+     why:'حقوق الملكية = 15، الالتزامات = 11، 15 ÷ 11 = 1.36 مرة.',
+     bad:['0.73 هو المقلوب (11 ÷ 15).','2.14 تنتج لو قُسم على الالتزامات الطويلة وحدها (15 ÷ 7).','1.15 ليست ناتج أي قسمة صحيحة من البيانات.']},
+    {ch:'TRAD',q:'هيكل رأس المال الأمثل بالتعريف المعتمد هو التركيبة التي:',o:['تكون عندها التكلفة المتوسطة المرجحة لرأس المال في أدنى قيمة لها','تكون فيها الديون مساوية لحقوق الملكية','تنعدم فيها الديون','تكون عندها تكلفة الاستدانة في أدنى قيمة لها'],a:0,
+     why:'التعريف: تركيبة الأموال الخاصة والديون طويلة الأجل التي تكون عندها CMPC في أدنى قيمة لها.',
+     bad:['لا توجد نسبة محددة في التعريف.','بلا ديون تضيع مزايا الاقتراض.','المعيار التكلفة المرجحة الكلية لا تكلفة الدين وحدها.']},
+    {ch:'NI',q:'الخلل الأول في نظرية الربح الصافي هو أنها:',o:['أهملت المخاطر المالية المترتبة على استخدام الدين','أهملت الوفر الضريبي','افترضت ثبات مخاطر الأعمال','تجاهلت تكاليف الوكالة'],a:0,
+     why:'مع زيادة الاقتراض ترتفع المخاطر على الدائنين والملاك فيطالبون بعائد أعلى، وهذا ما لم تنتبه له النظرية.',
+     bad:['ليس من نقدها.','ثبات مخاطر الأعمال افتراض نظرية صافي الربح التشغيلي.','تكاليف الوكالة نُوقشت في مكان آخر من الفصل.']},
+    {ch:'NOI',q:'وفق نظرية صافي الربح التشغيلي، يتحدد معدل خصم صافي ربح العمليات بـ:',o:['درجة مخاطر الأعمال','نسبة الديون إلى حقوق الملكية','معدل الفائدة على القروض','معدل الضريبة'],a:0,
+     why:'ما دامت مخاطر الأعمال ثابتة يبقى معدل الخصم (تكلفة الأموال المرجحة) ثابتاً، لذلك لا يهم مزيج التمويل.',
+     bad:['المزيج لا يؤثر في هذه النظرية.','الفائدة ثابتة بالافتراض وليست هي المحدد.','لا ضريبة على الأرباح بافتراض النظرية.']},
+    {ch:'NOI',q:'ما النقد لنظرية صافي الدخل التشغيلي؟',o:['أغفلت المخاطر المالية ولا تقدم أي عون للمديرين عند اتخاذ القرارات','بديهية قامت على ملاحظات عامة عن السوق','افترضت اقتراض الأفراد بنفس فائدة المؤسسات','أهملت تكلفة الإفلاس فقط'],a:0,
+     why:'اعتبارها كل الهياكل مقبولة تأويل غير مقبول، لأنه أغفل المخاطر المالية ولا يعين المديرين على الاستفادة من التغيرات المالية.',
+     bad:['هذا نقد النظرية التقليدية.','هذا من نقد مودلياني وميلر الأولى.','لم يرد بهذه الصيغة.']},
+    {ch:'TRAD',q:'في المرحلة الأولى من النظرية التقليدية، لماذا يقرض الدائنون بمعدل قريب من معدل خالي المخاطر؟',o:['لأن أموالهم مضمونة بالأموال الخاصة التي تشكل النسبة الأكبر ومخاطر العسر غائبة','لأن الضريبة تخفض تكلفة الفائدة','لأن المساهمين يطالبون بعائد منخفض','لأن الرافعة التشغيلية منخفضة'],a:0,
+     why:'الاستدانة ضعيفة، فالأموال الخاصة تضمن الدائنين ومخاطر العسر المالي غائبة.',
+     bad:['الوفر الضريبي ميزة للمؤسسة لا سبباً لانخفاض معدل الدائنين.','عائد المساهمين لا يحدد معدل الدائنين.','الرافعة التشغيلية نوقشت في تكلفة الإفلاس لا هنا.']},
+    {ch:'TRAD',q:'النقد للنظرية التقليدية هو أنها:',o:['بديهية في مفاهيمها وقامت على ملاحظات عامة عن سلوك رأس المال في السوق','أهملت المخاطر المالية','افترضت ثبات تكلفة الأموال الخاصة','تجاهلت الوفر الضريبي'],a:0,
+     why:'هذا هو النقد الموجه لها.',
+     bad:['هذا نقد نظرية الربح الصافي.','التقليدية تجعل تكلفة الأموال الخاصة ترتفع في المرحلتين الثانية والثالثة.','التقليدية ذكرت الوفر الضريبي صراحة في المرحلتين الأولى والثانية.']},
+    {ch:'MM0',q:'ظهر النموذج الثاني لمودلياني وميلر سنة 1963 بعد انتقاد النموذج الأول في ما يخص:',o:['إهمال الضريبة على الأرباح','إهمال تكلفة الوكالة','إهمال المخاطر التشغيلية','افتراض تماثل المعلومات'],a:0,
+     why:'عنوان المقالة الثانية "الضرائب، دخل المؤسسة، وتكلفة رأس المال: تصحيح"، وجاءت بعد الانتقادات وخاصة إهمال الضريبة.',
+     bad:['الوكالة نظرية لاحقة منفصلة.','لم يرد.','تماثل المعلومات موضوع نظرية الإشارة.']},
+    {ch:'MM0',q:'لماذا يُعد الرفع الشخصي ليس بديلاً للرفع المالي للمؤسسة؟',o:['إذا أفلس الفرد المقترض قد يمتد الأثر إلى ثروته الشخصية، بينما مستثمر المؤسسة يخسر جزءاً من ثروته فيها فقط','لأن الأفراد لا يستطيعون الاقتراض إطلاقاً','لأن المؤسسات لا تدفع ضرائب','لأن المراجحة ممنوعة قانوناً'],a:0,
+     why:'هذا البند الثاني من الانتقادات الأربعة للنموذج الأول.',
+     bad:['يستطيعون لكن بفائدة أعلى (البند الأول).','المؤسسات تدفع ضرائب، وإهمالها هو البند الرابع.','لم يرد.']},
+    {ch:'MMT',q:'مؤسسة غير مقترضة قيمتها 200 مليون، اقترضت 50 مليون، ومعدل الضريبة 20%. قيمة المؤسسة المقترضة وفق النموذج الثاني:',o:['210 مليون','250 مليون','200 مليون','240 مليون'],a:0,
+     why:'VL = VU + T×D = 200 + 0.20 × 50 = 210.',
+     bad:['250 خطأ: جُمع القرض كاملاً بدل الوفر الضريبي فقط.','200 هي نتيجة النموذج الأول بلا ضريبة.','240 خطأ: 40 ليست 20% من 50.']},
+    {ch:'MMT',q:'اقتراح ميلر سنة 1977 ينص على أنه:',o:['لن يكون هناك هيكل مالي أمثل على مستوى المؤسسة لأن وفرها الضريبي يتلاشى بضرائب حملة الأسهم والسندات','يوجد هيكل أمثل عند 100% دين','تكلفة الإفلاس تلغي الوفر الضريبي','الأفراد يقترضون بفائدة أعلى من المؤسسات'],a:0,
+     why:'بإسقاط افتراض عدم وجود ضرائب على الأشخاص، تتلاشى ميزة الوفر الضريبي للمؤسسة.',
+     bad:['هذه نتيجة الاقتراح الأول مع الضريبة لا اقتراح 1977.','هذه فكرة نظرية التسوية.','هذا من نقد النموذج الأول.']},
+    {ch:'MMT',q:'في مقارنة المدخلين، المدخل الحديث في وجود الضريبة يقول:',o:['لا يوجد حد أدنى لتكلفة رأس المال، لكن يمكن وضع حد أعلى للاستدانة','يوجد هيكل أمثل يجعل تكلفة رأس المال أدنى ما يمكن','لا يوجد هيكل رأس مال أمثل والقيمة مستقلة','قيمة المؤسسة المستدينة أقل من غير المستدينة'],a:0,
+     why:'قيمة المستدينة تفوق غير المستدينة، ولا حد أدنى للتكلفة، لكن يمكن وضع حد أعلى للاستدانة.',
+     bad:['هذا المدخل التقليدي.','هذا المدخل الحديث في غياب الضريبة.','العكس، المستدينة أعلى قيمة.']},
+    {ch:'TO',q:'أين يُصنَّف "تدهور معنويات العمال" ضمن تكاليف الإفلاس؟',o:['ضمن التكاليف المباشرة (التكاليف الاجتماعية)','ضمن التكاليف غير المباشرة','ليس من تكاليف الإفلاس','ضمن تكاليف الوكالة'],a:0,
+     why:'التكاليف الاجتماعية (تدهور معنويات العمال) تُذكر صراحة داخل التكاليف المباشرة.',
+     bad:['غير المباشرة هي تدهور المصداقية وانخفاض كفاءة التشغيل وارتفاع فوائد الاقتراض وضياع الفرص.','مذكورة نصاً.','لا علاقة لها بالوكالة.']},
+    {ch:'TO',q:'تكلفة الإفلاس تساوي:',o:['قسط التأمين بعد الضرائب × احتمال الإفلاس','تكلفة الإفلاس ÷ سعر الفائدة','القيمة الحالية للمؤسسة − القيمة الحالية لتكلفة الإفلاس','معدل الضريبة × مقدار القرض'],a:0,
+     why:'هذه معادلة تكلفة الإفلاس. أما القسمة على سعر الفائدة فتعطي قيمتها الحالية.',
+     bad:['هذه القيمة الحالية لتكلفة الإفلاس.','هذه قيمة المؤسسة.','هذه القيمة الحالية للوفر الضريبي.']},
+    {ch:'TO',q:'في نظرية التسوية، الأثر الإيجابي للديون يتحقق بشرط أن:',o:['تكون المردودية الاقتصادية أكبر من معدل الفائدة على القروض','تكون نسبة الديون أقل من 50%','ينعدم احتمال الإفلاس','تكون المعلومات متماثلة'],a:0,
+     why:'الديون تخلق قيمة عبر الوفورات الضريبية بشرط أن تكون المردودية الاقتصادية أكبر من معدل الفائدة.',
+     bad:['لا نسبة محددة في النظرية.','الأثران يحدثان معاً في السوق غير الكاملة.','تماثل المعلومات من نظرية الإشارة.']},
+    {ch:'AG',q:'وفق نظرية تكاليف الوكالة، كلما زادت الشروط التي يضعها المقرض (مثل محددات توزيعات الأرباح):',o:['استطاعت المؤسسة الحصول على أسعار فائدة أقل على ديونها','ارتفعت أسعار الفائدة على ديونها','انخفضت مراقبة البنك للمديرين','زادت تكاليف التبرير'],a:0,
+     why:'الشروط تقلل خطر المقرض، فتحصل المؤسسة على فائدة أقل.',
+     bad:['العكس تماماً.','الشروط تزيد المراقبة لا تنقصها.','تكاليف التبرير تخص علاقة المديرين بالملاك.']},
+    {ch:'SG',q:'وفق نظرية الإشارة، لماذا تفضل المؤسسات ذات التوقعات المستقبلية الجيدة التمويل الذاتي؟',o:['لعدم الرغبة في تقاسم النمو المحتمل مع مساهمين جدد','لأن الأرباح المحتجزة أغلى مصادر التمويل','لأن البنوك ترفض إقراضها','لأن الديون تعطي إشارة سلبية'],a:0,
+     why:'من يتوقع نمواً لا يريد اقتسامه، بينما ذات التوقعات الضعيفة تفضل مساهمين جدد ليشاركوا في تحمل الصعوبات.',
+     bad:['الأرباح المحتجزة داخلية ولا تحمل تكلفة إصدار.','لم يرد.','الاستدانة إشارة إيجابية في هذه النظرية.']},
+    {ch:'PO',q:'وفق نظرية الالتقاط التدريجي، متى تُصدر المؤسسة أسهماً عادية جديدة؟',o:['كملجأ أخير عندما تصبح غير قادرة على الحصول على ديون جديدة','أولاً، قبل الأرباح المحتجزة','بالتوازي مع الديون دائماً','عندما تكون التوقعات المستقبلية جيدة'],a:0,
+     why:'الترتيب: الأرباح المحتجزة، ثم الديون، ثم الأسهم الجديدة كملجأ أخير.',
+     bad:['الداخلي هو التفضيل الأول.','لا تزامن في التسلسل.','التوقعات الجيدة تدفع للتمويل الذاتي (نظرية الإشارة).']}
+  ];
+  let qi=0,score=0,weak=[];
+  function shuffle(arr){const a=arr.map((x,i)=>({x,i}));for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]];}return a;}
+  function renderQ(){
+    if(qi>=Q.length){return renderResult();}
+    const q=Q[qi];const opts=shuffle(q.o);
+    $('qCount').textContent=`سؤال ${qi+1} من ${Q.length}`;$('qScore').textContent=`النتيجة: ${score}`;$('qBar').style.width=(qi/Q.length*100)+'%';
+    $('qBody').innerHTML=`<h3 style="font-size:17px;line-height:1.6">${q.q}</h3><div class="q-opts">${opts.map(o=>`<button data-i="${o.i}">${o.x}</button>`).join('')}</div><div class="explain" id="qEx"></div><div style="text-align:center;margin-top:10px"><button class="btn" id="qNext" hidden>السؤال التالي</button></div>`;
+    $('qBody').querySelectorAll('.q-opts button').forEach(b=>b.addEventListener('click',()=>answer(+b.dataset.i,b)));
+    $('qNext').addEventListener('click',()=>{qi++;renderQ();window.scrollTo({top:$('quiz').offsetTop-70,behavior:'smooth'});});
+    setChar($('quizChar'),q.ch,'neutral');$('quizSay').textContent='هذا سؤالي';
+  }
+  function answer(i,btn){
+    const q=Q[qi];const btns=[...$('qBody').querySelectorAll('.q-opts button')];
+    btns.forEach(b=>{b.disabled=true;if(+b.dataset.i===q.a)b.classList.add('correct');});
+    const ok=i===q.a; if(ok)score++; else{btn.classList.add('wrong');weak.push(q.q);}
+    const wrongs=q.o.map((o,k)=>k===q.a?null:`<li><strong>${o.length>60?o.slice(0,60)+'…':o}</strong>: ${q.bad[k>q.a?k-1:k]}</li>`).filter(Boolean).join('');
+    $('qEx').innerHTML=`<div style="font-weight:700;color:${ok?'var(--ok)':'var(--bad)'}">${ok?'صحيح.':'غلط.'}</div><div style="margin-top:4px"><strong>لماذا الصحيح صحيح:</strong> ${q.why}</div><div style="margin-top:6px"><strong>لماذا البقية غلط:</strong><ul>${wrongs}</ul></div>`;
+    $('qEx').classList.add('show');$('qScore').textContent=`النتيجة: ${score}`;$('qNext').hidden=false;
+    setChar($('quizChar'),q.ch,ok?'happy':'sad');$('quizSay').textContent=ok?'أحسنت!':'اقرأ التعليل';
+  }
+  function renderResult(){
+    $('qBar').style.width='100%';$('qCount').textContent='انتهى';
+    const pct=Math.round(score/Q.length*100);
+    let msg=pct>=90?'جاهز لهذا الموضوع. راجع البطاقات مرة صباح الاختبار فقط.':pct>=70?'الأساس ثابت. النقاط تحت هي اللي تحتاج قراءة ثانية.':'ارجع للمحطات ٢ و٣ و٤ ثم أعد الاختبار.';
+    $('qBody').innerHTML=`<div class="result"><div class="big">${score}/${Q.length}</div><p>${msg}</p>${weak.length?`<div class="callout bad" style="text-align:right"><strong>أسئلة أُجيب عنها خطأ:</strong><ol class="steps" style="margin-top:6px">${weak.map(w=>`<li>${w}</li>`).join('')}</ol></div>`:''}<div style="margin-top:14px"><button class="btn" id="qAgain">أعد الاختبار</button></div></div>`;
+    $('qAgain').addEventListener('click',()=>{qi=0;score=0;weak=[];renderQ();});
+    setChar($('quizChar'),'TO',pct>=70?'happy':'sad');$('quizSay').textContent=pct>=70?'توازن ممتاز':'نعيدها؟';
+  }
+  renderQ();
+
+  /* ================= dock ================= */
+  const DOCK={
+    s0:['TO','neutral','السؤال الكبير قادم، امشِ معي'],
+    s1:['NOI','neutral','ثلاثة مصادر، وصندوقان'],
+    s3:null,
+    s4:['MM0','happy','في عالمي المثالي الهيكل لا يفرق'],
+    s5:['TO','happy','الوفر الضريبي وتكلفة الإفلاس معاً'],
+    s6:['AG','happy','الدين يضبط الإدارة'],
+    s7:['TRAD','neutral','ثلاث خطوات ثم القرار'],
+    s8:['PO','neutral','داخلي، ثم ديون، ثم أسهم'],
+    s9:['SG','happy','أجب قبل أن تقلب'],
+    s10:null
+  };
+  let dockOff=false;try{dockOff=localStorage.getItem('cs-dock-off')==='1';}catch(e){}
+  const dock=$('dock');
+  function showDock(id){if(dockOff)return;const d=DOCK[id];if(!d){dock.hidden=true;return;}dock.hidden=false;setChar($('dockChar'),d[0],d[1]);$('dockSay').textContent=d[2];}
+  $('dockX').addEventListener('click',()=>{dockOff=true;dock.hidden=true;try{localStorage.setItem('cs-dock-off','1');}catch(e){}});
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)showDock(e.target.id);});},{rootMargin:'-40% 0px -50% 0px'});
+    document.querySelectorAll('section[id]').forEach(s=>io.observe(s));
+  }
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,42 @@
+%%HEAD%%
+<body>
+<div class="m-wrap">
+%%BRAND%%
+<h1 class="m-title">التحضير لزمالة SOCPA</h1>
+<main class="f-grid" id="subjects" aria-live="polite"></main>
+%%FOOTER%%
+</div>
+<script>
+(function () {
+  "use strict";
+  var grid = document.getElementById("subjects");
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var W = { p: ["جزء", "جزآن", "أجزاء", "جزءاً"], ch: ["فصل", "فصلان", "فصول", "فصلاً"], q: ["سؤال", "سؤالان", "أسئلة", "سؤالاً"] };
+  function num(n, w) { w = W[w]; if (n === 1) return w[0] + " واحد"; if (n === 2) return w[1]; if (n >= 3 && n <= 10) return n + " " + w[2]; return n + " " + w[3]; }
+  function counters(c) {
+    var out = [];
+    if (c.parts) out.push(num(c.parts, "p"));
+    if (c.chapters) out.push(num(c.chapters, "ch"));
+    if (c.questions) out.push(num(c.questions, "q"));
+    return out.join(" · ");
+  }
+  fetch("data/fellowship-subjects.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (list) {
+    grid.innerHTML = "";
+    list.forEach(function (s) {
+      var active = s.status === "active";
+      var el = document.createElement(active ? "a" : "div");
+      el.className = "f-card" + (active ? "" : " soon");
+      if (active) el.href = s.href; else el.setAttribute("aria-disabled", "true");
+      el.innerHTML = (active ? "" : "<span class='f-badge'>قريباً</span>") +
+        "<span class='t'>" + esc(s.title) + "</span>" +
+        "<span class='c'>" + esc(counters(s.counters || {})) + "</span>";
+      grid.appendChild(el);
+    });
+  }).catch(function () {
+    grid.innerHTML = "<div class='f-card soon'>تعذّر تحميل المواد. تحقق من الاتصال ثم أعد تحميل الصفحة.</div>";
+  });
+})();
+</script>
+%%SW%%
+</body>
+</html>

@@ -1,0 +1,194 @@
+{
+ "paused": {
+  "base_files": [
+   "404.html",
+   "CNAME",
+   "assets/logo-white.svg",
+   "assets/logo.svg",
+   "assets/share.jpg",
+   "fonts/tajawal-arabic-400-normal.woff2",
+   "fonts/tajawal-arabic-500-normal.woff2",
+   "fonts/tajawal-arabic-700-normal.woff2",
+   "fonts/tajawal-latin-400-normal.woff2",
+   "fonts/tajawal-latin-500-normal.woff2",
+   "fonts/tajawal-latin-700-normal.woff2",
+   "icons/apple-touch-icon.png",
+   "icons/icon-192.png",
+   "icons/icon-512.png",
+   "icons/icon-maskable-512.png",
+   "index.html",
+   "manifest.webmanifest",
+   "private-sector.html",
+   "robots.txt",
+   "sitemap.xml",
+   "sw.js"
+  ]
+ },
+ "bizenv": {
+  "loaded_bank": 462,
+  "loaded_exam": 185,
+  "loaded_total": 647,
+  "excluded_needs_owner": [
+   "P1-11",
+   "P2-15",
+   "P2-17",
+   "P2-21",
+   "P2-27",
+   "P2-31",
+   "P3-09",
+   "P3-14",
+   "P3-22",
+   "P3-26",
+   "P3-29",
+   "P3-30",
+   "P3-35",
+   "P3-36",
+   "P3-37",
+   "P3-40",
+   "P3-43"
+  ],
+  "totals": {
+   "parts": 3,
+   "chapters": 32,
+   "sections": 130,
+   "topics": 18,
+   "loaded": 647,
+   "visible": 630,
+   "quiz": 621,
+   "cards": 9,
+   "bank": 462,
+   "exam": 168,
+   "excluded": 17
+  },
+  "loaded_by_part": {
+   "IT": 52,
+   "EC": 69,
+   "MF": 526
+  },
+  "visible_by_part": {
+   "IT": 51,
+   "EC": 65,
+   "MF": 514
+  },
+  "loaded_mcq": 624,
+  "loaded_cards": 23,
+  "mf_c14": {
+   "topics": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5a",
+    "F5b",
+    "F6a",
+    "F6b",
+    "F6c"
+   ],
+   "loaded": 171,
+   "bank": 168
+  },
+  "zero_visible_nonempty": [
+   "MF.C16"
+  ],
+  "structure_counter_mismatch": []
+ },
+ "capital": {
+  "sections": {
+   "cs": [
+    "s0",
+    "s1",
+    "s7",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s8",
+    "s9",
+    "s10"
+   ],
+   "rk": [
+    "s0",
+    "s1",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s8",
+    "s9",
+    "s10"
+   ]
+  },
+  "eval_group_moved": true,
+  "bytes": 297604
+ },
+ "fellowship": {
+  "subjects": [
+   {
+    "id": "business-environment",
+    "title": "بيئة الأعمال",
+    "status": "active",
+    "href": "business-environment.html",
+    "gate": true,
+    "counters": {
+     "parts": 3,
+     "chapters": 32,
+     "questions": 630
+    }
+   }
+  ],
+  "door_counters": "مادة واحدة · 630 سؤالاً"
+ },
+ "finalize": {
+  "cache_old": "ifrs-guide-v46",
+  "cache_new": "ifrs-guide-v47",
+  "assets": [
+   "./",
+   "./index.html",
+   "./private-sector.html",
+   "./manifest.webmanifest",
+   "./icons/icon-192.png",
+   "./icons/icon-512.png",
+   "./icons/icon-maskable-512.png",
+   "./icons/apple-touch-icon.png",
+   "./assets/logo.svg",
+   "./assets/share.jpg",
+   "./fonts/tajawal-arabic-400-normal.woff2",
+   "./fonts/tajawal-arabic-500-normal.woff2",
+   "./fonts/tajawal-arabic-700-normal.woff2",
+   "./fonts/tajawal-latin-400-normal.woff2",
+   "./fonts/tajawal-latin-500-normal.woff2",
+   "./fonts/tajawal-latin-700-normal.woff2",
+   "./public-sector.html",
+   "./fellowship.html",
+   "./business-environment.html",
+   "./capital-structure.html",
+   "./access.js",
+   "./data/fellowship-subjects.json",
+   "./data/bizenv-outline.json",
+   "./data/bizenv-questions.json",
+   "./data/bizenv-summaries.json",
+   "./assets/logo-white.svg"
+  ],
+  "sitemap": [
+   "https://meyarplatform.com/",
+   "https://meyarplatform.com/fellowship.html",
+   "https://meyarplatform.com/business-environment.html",
+   "https://meyarplatform.com/capital-structure.html"
+  ]
+ },
+ "tokens": {
+  "primary": "#364C63",
+  "heading": "#1C2733",
+  "line": "#E3E8EE",
+  "gold": "#F0AE14",
+  "paper": "#EDF1F5",
+  "theme": "#364C63",
+  "_sources": {
+   "primary": "index.html :root --primary",
+   "heading": "index.html :root --heading",
+   "line": "index.html :root --line",
+   "gold": "assets/logo.svg rect fill",
+   "paper": "manifest.webmanifest background_color"
+  }
+ }
+}

@@ -1,0 +1,684 @@
+[
+ {
+  "id": "A3",
+  "name": "بطاقتا القطاعين معطلتان والباب الثالث يعمل",
+  "pass": true,
+  "detail": {
+   "paused": [
+    {
+     "tag": "DIV",
+     "href": null,
+     "dis": "true",
+     "badge": "متوقفة مؤقتاً Temporarily paused",
+     "op": "0.55"
+    },
+    {
+     "tag": "DIV",
+     "href": null,
+     "dis": "true",
+     "badge": "متوقفة مؤقتاً Temporarily paused",
+     "op": "0.55"
+    }
+   ],
+   "door": "التحضير لزمالة SOCPA",
+   "doorEn": "SOCPA fellowship preparation",
+   "counters": "مادة واحدة · 630 سؤالاً",
+   "noindex": false
+  }
+ },
+ {
+  "id": "A3b",
+  "name": "الباب الثالث يفتح fellowship.html",
+  "pass": true,
+  "detail": "http://localhost:8791/fellowship.html"
+ },
+ {
+  "id": "A4",
+  "name": "صفحتا الإيقاف بالإشعار و noindex وخارج الخريطة، والمرساة القديمة تصل",
+  "pass": true,
+  "detail": {
+   "private-sector.html": {
+    "h1": "هذا القسم متوقف مؤقتاً",
+    "p": "نعمل على تحديثه، وسيعود للعمل قريباً.",
+    "back": "index.html",
+    "noindex": true,
+    "len": 329,
+    "status": 200
+   },
+   "public-sector.html": {
+    "h1": "هذا القسم متوقف مؤقتاً",
+    "p": "نعمل على تحديثه، وسيعود للعمل قريباً.",
+    "back": "index.html",
+    "noindex": true,
+    "len": 329,
+    "status": 200
+   },
+   "private-sector.html#IAS16": {
+    "h1": "هذا القسم متوقف مؤقتاً",
+    "p": "نعمل على تحديثه، وسيعود للعمل قريباً.",
+    "back": "index.html",
+    "noindex": true,
+    "len": 329,
+    "status": 200
+   }
+  }
+ },
+ {
+  "id": "B1",
+  "name": "الحاوية عربية فقط",
+  "pass": true,
+  "detail": {
+   "lang": "ar",
+   "dir": "rtl",
+   "title": "التحضير لزمالة SOCPA",
+   "latin": [
+    "SOCPA"
+   ],
+   "gate": false,
+   "cards": [
+    {
+     "href": "business-environment.html",
+     "t": "بيئة الأعمال",
+     "c": "3 أجزاء · 32 فصلاً · 630 سؤالاً"
+    }
+   ],
+   "hasL": false,
+   "hasLangEn": false,
+   "switcher": false
+  }
+ },
+ {
+  "id": "B2",
+  "name": "بطاقات المواد من fellowship-subjects.json وعدّاداتها مشتقة",
+  "pass": true,
+  "detail": {
+   "cards": [
+    {
+     "href": "business-environment.html",
+     "t": "بيئة الأعمال",
+     "c": "3 أجزاء · 32 فصلاً · 630 سؤالاً"
+    }
+   ],
+   "counters": {
+    "parts": 3,
+    "chapters": 32,
+    "questions": 630
+   }
+  }
+ },
+ {
+  "id": "C1",
+  "name": "البوابة عند مدخل المادة مرة واحدة، والحاوية حرة",
+  "pass": true,
+  "detail": {
+   "before": {
+    "gate": true,
+    "appHidden": true,
+    "title": "للدخول إلى مادة بيئة الأعمال",
+    "free": "صفحة التحضير لزمالة SOCPA متاحة بلا تسجيل."
+   },
+   "invalid": {
+    "still": true,
+    "err": "اكتب بريداً إلكترونياً صحيحاً."
+   },
+   "again": false,
+   "cs": {
+    "gate": false,
+    "main": true
+   },
+   "fellowshipGate": false
+  }
+ },
+ {
+  "id": "C2a",
+  "name": "الطابور المحلي مع ACCESS_ENDPOINT فارغ، بشكل السجل الثابت",
+  "pass": true,
+  "detail": {
+   "v": 1,
+   "subject_id": "e87fcff7-241e-4a7e-b31b-37572680c50f",
+   "email": "tester@example.com",
+   "ts": "2026-09-28T10:32:08.725Z",
+   "section": "business-environment",
+   "entry": "business-environment",
+   "consent": true,
+   "source": "meyarplatform.com"
+  }
+ },
+ {
+  "id": "12",
+  "name": "التقدم يُحفظ ويُستعاد تحت bizenv-progress-<subject_id>",
+  "pass": true,
+  "detail": {
+   "key": "bizenv-progress-e87fcff7-241e-4a7e-b31b-37572680c50f",
+   "answered": 2,
+   "idx": 1,
+   "pos": "السؤال 2 من 6"
+  }
+ },
+ {
+  "id": "C2b",
+  "name": "عند ضبط النقطة يُرسل الطابور كله عند أول فتح، و entry = capital-structure",
+  "pass": true,
+  "detail": {
+   "gateOnCs": {
+    "gate": true,
+    "hidden": true
+   },
+   "queued": 1,
+   "entry": "capital-structure",
+   "posted": 1,
+   "left": 0
+  }
+ },
+ {
+  "id": "8",
+  "name": "خلط الخيارات بين عرضين، والصحيح يُرصد صحيحاً",
+  "pass": true,
+  "detail": {
+   "orders": [
+    "0123",
+    "2103",
+    "3012",
+    "1230",
+    "1023",
+    "1320",
+    "1230",
+    "3210"
+   ],
+   "judged": [
+    {
+     "pos": 3,
+     "ok": true,
+     "msg": "صحيح."
+    },
+    {
+     "pos": 1,
+     "ok": true,
+     "msg": "صحيح."
+    }
+   ]
+  }
+ },
+ {
+  "id": "9",
+  "name": "لا يظهر بند وبديله في نموذج واحد",
+  "pass": true,
+  "detail": {
+   "pairsInSameUnit": [
+    "P1-17/P3-47",
+    "P1-23/P3-19",
+    "P1-40/P1-30",
+    "P2-14/P2-72",
+    "P2-23/P2-70",
+    "P2-40/P3-10",
+    "P2-41/P3-12",
+    "P2-58/P2-45",
+    "P2-59/P2-35",
+    "P2-60/P2-11",
+    "P2-61/P2-37",
+    "P2-62/P2-33",
+    "P2-68/P2-90",
+    "P2-75/P2-67",
+    "P2-89/P3-02",
+    "P3-18/P1-29",
+    "P3-23/P2-30",
+    "P3-24/P1-32",
+    "P3-39/P3-38"
+   ],
+   "runs": 475,
+   "violations": 0
+  }
+ },
+ {
+  "id": "7",
+  "name": "الفصول الفارغة تظهر بمباحثها وبعدّاد صفر وغير قابلة للضغط",
+  "pass": true,
+  "detail": {
+   "parts": [
+    "تقنية المعلومات",
+    "مبادئ الاقتصاد، التحليل والمفاهيم",
+    "الإدارة المالية"
+   ],
+   "chapters": 32,
+   "off": [
+    {
+     "t": "منهجية التحليل المالي",
+     "tag": "DIV",
+     "dis": "true",
+     "soon": true,
+     "secs": 4
+    },
+    {
+     "t": "معايير التحليل المالي",
+     "tag": "DIV",
+     "dis": "true",
+     "soon": true,
+     "secs": 2
+    },
+    {
+     "t": "تقييم الشركات التي لم تصل لمرحلة الربحية",
+     "tag": "DIV",
+     "dis": "true",
+     "soon": true,
+     "secs": 5
+    },
+    {
+     "t": "ميزان المدفوعات",
+     "tag": "DIV",
+     "dis": "true",
+     "soon": true,
+     "secs": 4
+    },
+    {
+     "t": "إدارة التدفق النقدي",
+     "tag": "DIV",
+     "dis": "true",
+     "soon": true,
+     "secs": 8
+    }
+   ]
+  }
+ },
+ {
+  "id": "D1",
+  "name": "كل مقطع من المصدرين مرة واحدة ونصه مطابق حرفياً (والمجموعة المنقولة في موضعها الجديد)",
+  "pass": true,
+  "detail": {
+   "sections": 19,
+   "detail": [
+    "cs-s0 ok",
+    "cs-s1 ok",
+    "cs-s3 ok",
+    "cs-s4 ok",
+    "cs-s5 ok",
+    "cs-s6 ok",
+    "cs-s7 ok",
+    "cs-s8 ok",
+    "cs-s9 ok",
+    "cs-s10 ok",
+    "rk-s0 ok",
+    "rk-s1 ok",
+    "rk-s3 ok",
+    "rk-s4 ok",
+    "rk-s5 ok",
+    "rk-s6 ok",
+    "rk-s8 ok",
+    "rk-s9 ok",
+    "rk-s10 ok"
+   ],
+   "evalGroupMatches": true
+  }
+ },
+ {
+  "id": "D2",
+  "name": "لا معرّف مكرر في capital-structure.html",
+  "pass": true,
+  "detail": {
+   "n": 333,
+   "dup": []
+  }
+ },
+ {
+  "id": "D5",
+  "name": "التبويبات الأربعة بأسمائها وترتيبها، والمرساة والعميقة ولوحة المفاتيح",
+  "pass": true,
+  "detail": {
+   "tabs": [
+    "محددات اختيار هيكل رأس المال",
+    "نظريات هيكل رأس المال",
+    "أنواع مخاطر الاستثمار",
+    "الرافعة التشغيلية والرافعة المالية"
+   ],
+   "route": {
+    "#theories": {
+     "sel": "theories",
+     "visible": null,
+     "y": 0
+    },
+    "#risk-types": {
+     "sel": "risk-types",
+     "visible": null,
+     "y": 0
+    },
+    "#leverage": {
+     "sel": "leverage",
+     "visible": null,
+     "y": 0
+    },
+    "#determinants": {
+     "sel": "determinants",
+     "visible": null,
+     "y": 0
+    },
+    "#theories/cs-s4": {
+     "sel": "theories",
+     "visible": true,
+     "y": 7941
+    },
+    "#leverage/rk-s8": {
+     "sel": "leverage",
+     "visible": true,
+     "y": 14262
+    }
+   },
+   "default": "determinants",
+   "keyboard": {
+    "sel": "theories",
+    "focus": "tab-theories"
+   },
+   "navJump": {
+    "sel": "theories",
+    "top": 125
+   }
+  }
+ },
+ {
+  "id": "D4",
+  "name": "الرسمان يُرسمان عند تفعيل التبويب المخفي ويُعاد رسمهما عند تغيير الحجم",
+  "pass": true,
+  "detail": {
+   "hiddenAtLoad": {
+    "th": true,
+    "lv": true
+   },
+   "charts": {
+    "theories": {
+     "cost": 6339,
+     "val": 3774,
+     "w": 308,
+     "redrawsOnResize": 2
+    },
+    "leverage": {
+     "cost": 5263,
+     "val": 3465,
+     "w": 308,
+     "redrawsOnResize": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "D3",
+  "name": "التفاعلات تعمل داخل كل تبويب، ومساعد رحلة واحدة فقط يظهر",
+  "pass": true,
+  "detail": {
+   "per": {
+    "determinants": true,
+    "theories": true,
+    "risk-types": true,
+    "leverage": true
+   },
+   "inter": {
+    "determinants": {
+     "ranges": [
+      {
+       "id": "cs-mix",
+       "changed": true
+      }
+     ],
+     "numbers": [
+      {
+       "id": "cs-cap",
+       "changed": true
+      },
+      {
+       "id": "cs-res",
+       "changed": true
+      },
+      {
+       "id": "cs-ret",
+       "changed": true
+      },
+      {
+       "id": "cs-stl",
+       "changed": true
+      },
+      {
+       "id": "cs-ltl",
+       "changed": true
+      }
+     ],
+     "walkers": [],
+     "thTabs": null,
+     "theoryCards": null,
+     "flip": null,
+     "quiz": null,
+     "dock": {
+      "cs": true,
+      "rk": false
+     }
+    },
+    "theories": {
+     "ranges": [
+      {
+       "id": "cs-lev",
+       "changed": true
+      }
+     ],
+     "numbers": [
+      {
+       "id": "cs-vu",
+       "changed": true
+      },
+      {
+       "id": "cs-tc",
+       "changed": true
+      },
+      {
+       "id": "cs-dd",
+       "changed": true
+      },
+      {
+       "id": "cs-ebit",
+       "changed": true
+      },
+      {
+       "id": "cs-intr",
+       "changed": true
+      }
+     ],
+     "walkers": [
+      true,
+      true
+     ],
+     "thTabs": true,
+     "theoryCards": false,
+     "flip": true,
+     "quiz": {
+      "done": true,
+      "text": "5/20",
+      "answered": 20
+     },
+     "dock": {
+      "cs": false,
+      "rk": false
+     }
+    },
+    "risk-types": {
+     "ranges": [
+      {
+       "id": "rk-mix",
+       "changed": true
+      }
+     ],
+     "numbers": [],
+     "walkers": [
+      true,
+      true
+     ],
+     "thTabs": null,
+     "theoryCards": true,
+     "flip": null,
+     "quiz": null,
+     "dock": {
+      "cs": false,
+      "rk": true
+     }
+    },
+    "leverage": {
+     "ranges": [
+      {
+       "id": "rk-lev",
+       "changed": true
+      }
+     ],
+     "numbers": [
+      {
+       "id": "rk-exP",
+       "changed": true
+      },
+      {
+       "id": "rk-exV",
+       "changed": true
+      },
+      {
+       "id": "rk-exF",
+       "changed": true
+      },
+      {
+       "id": "rk-exU",
+       "changed": true
+      },
+      {
+       "id": "rk-exC",
+       "changed": true
+      },
+      {
+       "id": "rk-mV",
+       "changed": true
+      },
+      {
+       "id": "rk-mF",
+       "changed": true
+      },
+      {
+       "id": "rk-fI",
+       "changed": true
+      },
+      {
+       "id": "rk-fD",
+       "changed": true
+      },
+      {
+       "id": "rk-fR",
+       "changed": true
+      },
+      {
+       "id": "rk-fE",
+       "changed": true
+      },
+      {
+       "id": "rk-fT",
+       "changed": true
+      },
+      {
+       "id": "rk-gP",
+       "changed": true
+      },
+      {
+       "id": "rk-gV",
+       "changed": true
+      },
+      {
+       "id": "rk-gF",
+       "changed": true
+      },
+      {
+       "id": "rk-gI",
+       "changed": true
+      }
+     ],
+     "walkers": [],
+     "thTabs": true,
+     "theoryCards": null,
+     "flip": true,
+     "quiz": {
+      "done": true,
+      "text": "5/20",
+      "answered": 20
+     },
+     "dock": {
+      "cs": false,
+      "rk": false
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "E1",
+  "name": "لا مفتاح تخزين خارج الجدول، ولا تخزين في صفحات المعايير",
+  "pass": true,
+  "detail": [
+   "bizenv-access",
+   "bizenv-subject-id",
+   "bizenv-dock-cs",
+   "bizenv-pending-signups"
+  ]
+ },
+ {
+  "id": "16",
+  "name": "تعمل بلا اتصال بعد أول فتح، وقابلة للتثبيت",
+  "pass": true,
+  "detail": {
+   "offline": {
+    "fellowship.html": {
+     "title": "التحضير لزمالة SOCPA | منصة معيار",
+     "ok": true
+    },
+    "business-environment.html#/c/EC.C1": {
+     "title": "بيئة الأعمال | منصة معيار",
+     "ok": true
+    },
+    "capital-structure.html": {
+     "title": "هيكل رأس المال | منصة معيار",
+     "ok": true
+    },
+    "private-sector.html": {
+     "title": "القطاع الخاص | منصة معيار",
+     "ok": true
+    },
+    "index.html": {
+     "title": "منصة معيار",
+     "ok": true
+    }
+   },
+   "manifest": {
+    "display": "standalone",
+    "icons": 3
+   }
+  }
+ },
+ {
+  "id": "M390",
+  "name": "كل صفحة عند عرض 390 بكسل بلا تمرير أفقي",
+  "pass": true,
+  "detail": {
+   "index.html": 390,
+   "fellowship.html": 390,
+   "private-sector.html": 390,
+   "business-environment.html": 390,
+   "business-environment.html#/c/MF.C7": 390,
+   "business-environment.html#/k/MF.C7": 390,
+   "capital-structure.html#determinants": 390,
+   "capital-structure.html#theories": 390,
+   "capital-structure.html#risk-types": 390,
+   "capital-structure.html#leverage": 390,
+   "quiz": 390
+  }
+ },
+ {
+  "id": "D6",
+  "name": "لا طلب شبكة إلى googleapis أو gstatic، ولا أي طلب خارجي عدا نقطة الاختبار الوهمية",
+  "pass": true,
+  "detail": [
+   "https://hook.invalid/exec"
+  ]
+ },
+ {
+  "id": "console",
+  "name": "لا أخطاء ولا تحذيرات في الكونسول",
+  "pass": true,
+  "detail": []
+ }
+]

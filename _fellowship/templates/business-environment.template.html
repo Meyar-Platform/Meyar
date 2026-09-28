@@ -1,0 +1,388 @@
+%%HEAD%%
+<body>
+<div class="m-wrap">
+%%BRAND%%
+<main id="app" hidden>
+  <div id="vHome">
+    <h1 class="m-title">بيئة الأعمال</h1>
+    <div id="summary" class="b-panel"></div>
+    <div id="parts"></div>
+  </div>
+
+  <div id="vChapter" hidden>
+    <button class="b-back" id="chBack" type="button">كل الفصول</button>
+    <div class="b-eyebrow" id="chPart"></div>
+    <h2 class="b-chtitle" id="chTitle"></h2>
+    <div class="b-block" id="chSections"></div>
+    <div class="b-block" id="chSummary" hidden></div>
+    <div class="b-block" id="chQuiz" hidden></div>
+    <div class="b-block" id="chCards" hidden></div>
+  </div>
+
+  <div id="vQuiz" hidden>
+    <div class="b-meta"><span id="qPos"></span><span class="b-tag" id="qUnit"></span></div>
+    <div class="b-bar"><i id="qBar"></i></div>
+    <div class="b-card">
+      <div id="qSrc"></div>
+      <div class="b-q" id="qText"></div>
+      <div class="b-opts" id="qOpts"></div>
+      <div class="b-exp" id="qExp"></div>
+      <div class="b-row">
+        <button class="m-btn m-ghost" id="qPrev" type="button">السابق</button>
+        <button class="m-btn m-ghost" id="qPause" type="button">إيقاف مؤقت</button>
+        <button class="m-btn" id="qNext" type="button" disabled>التالي</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="vResult" hidden>
+    <div class="b-card">
+      <h2 class="b-restitle" id="rTitle"></h2>
+      <div class="b-score" id="rScore"></div>
+      <div class="b-sub" id="rSub"></div>
+      <div class="b-row">
+        <button class="m-btn" id="rWrong" type="button">أعد الأخطاء فقط</button>
+        <button class="m-btn m-ghost" id="rBack" type="button">الرجوع للفصل</button>
+      </div>
+    </div>
+    <div id="rReview"></div>
+  </div>
+
+  <div id="vCards" hidden>
+    <button class="b-back" id="kBack" type="button">الرجوع للفصل</button>
+    <h2 class="b-chtitle" id="kTitle"></h2>
+    <div class="b-sub" id="kSub"></div>
+    <div id="kList" class="b-cards"></div>
+  </div>
+</main>
+<div id="loadErr" class="b-card" hidden>تعذّر تحميل البيانات. تحقق من الاتصال ثم أعد تحميل الصفحة.</div>
+%%FOOTER%%
+</div>
+<script src="access.js"></script>
+<script>
+/* ترتيب عرض الأجزاء. غيّره هنا وحده لتقديم جزء على آخر. */
+const PART_ORDER = ["IT", "EC", "MF"];
+
+(function () {
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const VIEWS = ["vHome", "vChapter", "vQuiz", "vResult", "vCards"];
+  const LETTERS = ["أ", "ب", "ج", "د"];
+  let OUT = null, QS = [], QBY = {}, SUMS = [], PAIR = {}, UNITS = {}, CH = {}, PARTS = {};
+  let store = { v: 2, units: {} };
+  let cur = null, order = [], idx = 0, answers = {}, perm = [], curChapter = null;
+
+  function show(id) { VIEWS.forEach(v => { $(v).hidden = v !== id; }); window.scrollTo({ top: 0 }); }
+  function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  const W = { q: ["سؤال", "سؤالان", "أسئلة", "سؤالاً"], k: ["بطاقة", "بطاقتان", "بطاقات", "بطاقة"], ch: ["فصل", "فصلان", "فصول", "فصلاً"], t: ["اختبار", "اختباران", "اختبارات", "اختباراً"] };
+  /* تمييز العدد: واحد، اثنان، من ثلاثة إلى عشرة، وما فوقها */
+  function num(n, w) { w = W[w]; if (n === 1) return w[0] + (w === W.k ? " واحدة" : " واحد"); if (n === 2) return w[1]; if (n >= 3 && n <= 10) return n + " " + w[2]; return n + " " + w[3]; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+  /* ---------- progress, stored under bizenv-progress-<subject_id> ---------- */
+  function pkey() { return window.MeyarAccess.progressKey(); }
+  function load() {
+    try { const v = JSON.parse(localStorage.getItem(pkey()) || "null"); if (v && v.units) store = v; } catch (e) {}
+    if (!store.units) store = { v: 2, units: {} };
+  }
+  function persist() { try { localStorage.setItem(pkey(), JSON.stringify(store)); } catch (e) {} }
+  function save() { if (!cur) return; store.units[cur] = { order, idx, answers }; persist(); }
+
+  /* ---------- units ---------- */
+  function buildUnits() {
+    OUT.parts.forEach(p => {
+      PARTS[p.id] = p;
+      p.chapters.forEach(c => {
+        CH[c.id] = c; c.part = p.id; c.units = []; c.cards = [];
+        (c.topics || []).forEach(t => {
+          const ids = QS.filter(q => q.t === t.id && !q.card).map(q => q.id);
+          if (ids.length) { const u = { id: "T:" + t.id, title: t.title, chapter: c.id, ids }; UNITS[u.id] = u; c.units.push(u); }
+        });
+        const ex = QS.filter(q => q.src === "exam" && q.ch === c.id && !q.card).map(q => q.id);
+        if (ex.length) {
+          const u = { id: "X:" + c.id, title: c.units.length ? "أسئلة من دورات سابقة" : "اختبار الفصل", chapter: c.id, ids: ex };
+          UNITS[u.id] = u; c.units.push(u);
+        }
+        c.cards = QS.filter(q => q.card && q.ch === c.id);
+      });
+    });
+  }
+  /* لا يجتمع بند وبديله الموسوم duplicate_of في نموذج واحد */
+  function pickSet(ids) {
+    const out = [], taken = new Set();
+    shuffle(ids.slice()).forEach(id => { const p = PAIR[id]; if (p && taken.has(p)) return; taken.add(id); out.push(id); });
+    return out;
+  }
+  function stat(uid) {
+    const u = UNITS[uid], s = store.units[uid];
+    const done = s ? Object.keys(s.answers).length : 0;
+    const total = s ? s.order.length : pickSize(u);
+    const wrong = s ? Object.entries(s.answers).filter(([id, a]) => QBY[id] && QBY[id].a !== a).length : 0;
+    return { s, done, total, wrong, ok: done - wrong, full: !!s && done >= s.order.length };
+  }
+  function pickSize(u) { let n = 0; const seen = new Set(); u.ids.forEach(id => { if (PAIR[id] && seen.has(PAIR[id])) return; seen.add(id); n++; }); return n; }
+
+  /* ---------- home ---------- */
+  function renderSummary() {
+    const ks = Object.keys(UNITS);
+    let full = 0, mid = 0, fresh = 0, ans = 0, ok = 0;
+    ks.forEach(k => { const t = stat(k); ans += t.done; ok += t.ok; if (t.full) full++; else if (t.done > 0) mid++; else fresh++; });
+    const pct = ans ? Math.round(ok / ans * 100) : 0;
+    $("summary").innerHTML =
+      "<h3>أين وصلت</h3>" +
+      "<div class='b-meta'><span>" + full + " مكتمل · " + mid + " قيد الحل · " + fresh + " لم يبدأ</span><span class='b-tag'>" + num(ks.length, "t") + "</span></div>" +
+      "<div class='b-bar'><i style='width:" + (ks.length ? Math.round(full / ks.length * 100) : 0) + "%'></i></div>" +
+      "<div class='b-nums'><div><div class='k'>اختبارات مكتملة</div><div class='v'>" + full + "</div></div>" +
+      "<div><div class='k'>أسئلة أُجيب عنها</div><div class='v'>" + ans + "</div></div>" +
+      "<div><div class='k'>نسبة الصحيح</div><div class='v'>" + (ans ? pct + "%" : "–") + "</div></div></div>" +
+      "<div class='b-row'><button class='m-btn m-ghost' id='xCopy' type='button'>انسخ تقدمي</button><button class='m-btn m-ghost' id='xOpen' type='button'>انقل تقدماً</button></div>" +
+      "<div id='xfer' hidden><textarea id='xText' aria-label='نص نقل التقدم' placeholder='الصق هنا النص الذي نسخته من الجهاز الآخر'></textarea>" +
+      "<div class='b-row'><button class='m-btn' id='xApply' type='button'>طبّق</button></div></div>" +
+      "<div class='b-msg' id='xMsg'>التقدم محفوظ في هذا المتصفح وحده، بلا تسجيل دخول. لنقله إلى جهاز آخر انسخه من هنا والصقه هناك.</div>";
+    $("xCopy").onclick = () => {
+      const t = "MEYAR2:" + JSON.stringify(store);
+      $("xfer").hidden = false; $("xText").value = t; $("xText").select();
+      try { navigator.clipboard.writeText(t).then(() => { $("xMsg").textContent = "نُسخ النص. الصقه في نفس الصفحة على الجهاز الآخر ثم اضغط طبّق."; }, () => { $("xMsg").textContent = "انسخ النص أعلاه يدوياً ثم الصقه على الجهاز الآخر."; }); }
+      catch (e) { $("xMsg").textContent = "انسخ النص أعلاه يدوياً ثم الصقه على الجهاز الآخر."; }
+    };
+    $("xOpen").onclick = () => { $("xfer").hidden = !$("xfer").hidden; $("xText").value = ""; };
+    $("xApply").onclick = () => {
+      const v = ($("xText").value || "").trim();
+      try {
+        let next = null;
+        if (v.indexOf("MEYAR2:") === 0) {
+          const o = JSON.parse(v.slice(7)); if (!o || typeof o !== "object" || !o.units) throw 0; next = { v: 2, units: o.units };
+        } else if (v.indexOf("MEYAR1:") === 0) {
+          next = fromLegacy(JSON.parse(v.slice(7)));
+        } else { $("xMsg").textContent = "النص غير صحيح، لا بد أن يبدأ بـ MEYAR2: أو MEYAR1:"; return; }
+        Object.keys(next.units).forEach(k => { if (!UNITS[k]) delete next.units[k]; });
+        store = next; persist(); $("xfer").hidden = true; renderHome();
+        $("xMsg").textContent = "طُبّق التقدم المنقول.";
+      } catch (e) { $("xMsg").textContent = "تعذّرت قراءة النص، تأكد من نسخه كاملاً."; }
+    };
+  }
+  /* نص صفحة الاختبارات السابقة: فهارس أسئلة البنك بترتيبها الأصلي */
+  function fromLegacy(o) {
+    if (!o || typeof o !== "object") throw 0;
+    const bid = i => "B-" + String(+i + 1).padStart(4, "0");
+    const units = {};
+    Object.entries(o).forEach(([k, s]) => {
+      if (!s || !Array.isArray(s.order) || !UNITS["T:" + k]) return;
+      const ans = {}; Object.entries(s.answers || {}).forEach(([i, a]) => { ans[bid(i)] = a; });
+      units["T:" + k] = { order: s.order.map(bid).filter(id => QBY[id]), idx: s.idx || 0, answers: ans };
+    });
+    return { v: 2, units };
+  }
+
+  function renderHome() {
+    load(); renderSummary();
+    const root = $("parts"); root.innerHTML = "";
+    const parts = OUT.parts.slice().sort((a, b) => PART_ORDER.indexOf(a.id) - PART_ORDER.indexOf(b.id));
+    parts.forEach(p => {
+      const sec = document.createElement("section"); sec.className = "b-part";
+      sec.innerHTML = "<h2>" + esc(p.title) + "</h2><div class='b-meta'><span>" + num(p.chapters.length, "ch") + " · " + num(p.counts.quiz, "q") + (p.counts.cards ? " · " + num(p.counts.cards, "k") : "") + "</span></div>";
+      const grid = document.createElement("div"); grid.className = "b-grid";
+      p.chapters.forEach(c => grid.appendChild(chapterCard(c)));
+      sec.appendChild(grid); root.appendChild(sec);
+    });
+  }
+  function chapterCard(c) {
+    const off = c.counts.visible === 0;
+    const el = document.createElement(off ? "div" : "button");
+    el.className = "m-card b-ch" + (off ? " off" : "");
+    if (off) { el.setAttribute("aria-disabled", "true"); } else { el.type = "button"; el.onclick = () => go("#/c/" + c.id); }
+    let prog = "";
+    if (!off) {
+      let done = 0, total = 0; c.units.forEach(u => { const t = stat(u.id); done += t.done; total += t.total; });
+      if (done) prog = "<span class='b-st'>" + Math.round(done / total * 100) + "%</span>";
+    }
+    const counts = off ? "<span>" + num(0, "q") + "</span>" :
+      "<span>" + num(c.counts.quiz, "q") + (c.counts.cards ? " · " + num(c.counts.cards, "k") : "") + (c.summary ? " · ملخص" : "") + "</span>";
+    el.innerHTML = "<div class='b-chn'>الفصل " + c.n + prog + "</div><h3>" + esc(c.title) + "</h3>" +
+      (off ? "<div class='b-soon'>هذا الفصل قيد الإعداد.</div>" : "") +
+      "<div class='b-meta'>" + counts + "</div>" +
+      "<div class='b-secs'>" + c.sections.map(s => esc(s.title)).join("، ") + "</div>";
+    (c.refs || []).filter(r => r.kind === "topic").forEach(r => {
+      const d = document.createElement("div"); d.className = "b-ref";
+      d.innerHTML = "يغطي مباحث هذا الفصل موضوع \"" + esc(r.title) + "\" في <a href='#/c/" + r.chapter + "'>الفصل " + CH[r.chapter].n + "</a>.";
+      el.appendChild(d);
+    });
+    return el;
+  }
+
+  /* ---------- chapter ---------- */
+  function renderChapter(cid) {
+    const c = CH[cid]; if (!c || c.counts.visible === 0) { go("#/"); return; }
+    curChapter = cid; load();
+    $("chPart").textContent = PARTS[c.part].title + " · الفصل " + c.n;
+    $("chTitle").textContent = c.title;
+    const secRefs = {}; (c.refs || []).filter(r => r.kind === "page").forEach(r => { (secRefs[r.section] = secRefs[r.section] || []).push(r); });
+    $("chSections").innerHTML = "<h3>المباحث</h3><ol class='b-seclist'>" + c.sections.map(s =>
+      "<li><span>" + esc(s.title) + "</span>" + (s.q ? "<span class='b-n'>" + num(s.q, "q") + "</span>" : "") +
+      (secRefs[s.title] || []).map(r => "<div class='b-ref'><a href='" + r.href + "'>" + esc(r.text) + "</a></div>").join("") + "</li>").join("") + "</ol>";
+
+    const sm = $("chSummary");
+    if (c.summary) {
+      sm.hidden = false;
+      sm.innerHTML = "<div class='b-bh'><h3>الملخص</h3><span class='b-tag'>1</span></div><div class='m-card b-unit'><h4>" + esc(c.summary.title) + "</h4><div class='b-row'><a class='m-btn' href='" + c.summary.href + "'>افتح الملخص</a></div></div>";
+    } else { sm.hidden = true; sm.innerHTML = ""; }
+
+    const qz = $("chQuiz");
+    if (c.units.length) {
+      qz.hidden = false;
+      qz.innerHTML = "<div class='b-bh'><h3>الاختبار</h3><span class='b-tag'>" + num(c.counts.quiz, "q") + "</span></div>";
+      c.units.forEach(u => qz.appendChild(unitCard(u)));
+    } else { qz.hidden = true; qz.innerHTML = ""; }
+
+    const kd = $("chCards");
+    if (c.cards.length) {
+      kd.hidden = false;
+      kd.innerHTML = "<div class='b-bh'><h3>بطاقات المراجعة</h3><span class='b-tag'>" + num(c.cards.length, "k") + "</span></div>" +
+        "<div class='m-card b-unit'><div class='b-meta'><span>سؤال وجواب بلا خيارات</span></div><div class='b-row'><button class='m-btn' type='button' id='openCards'>افتح البطاقات</button></div></div>";
+      $("openCards").onclick = () => go("#/k/" + c.id);
+    } else { kd.hidden = true; kd.innerHTML = ""; }
+    show("vChapter");
+  }
+  function unitCard(u) {
+    const t = stat(u.id);
+    const d = document.createElement("div"); d.className = "m-card b-unit" + (t.full ? " isdone" : "");
+    let meta = num(t.total, "q");
+    if (t.done) meta += " · تم " + t.done + " من " + t.s.order.length + " · صحيح " + t.ok;
+    const st = !t.s || t.done === 0 ? "<span class='b-st new'>لم يبدأ</span>" : t.full ? "<span class='b-st done'>محلول</span>" : "<span class='b-st mid'>قيد الحل</span>";
+    d.innerHTML = "<h4><span>" + esc(u.title) + "</span>" + st + "</h4><div class='b-meta'><span>" + meta + "</span></div>";
+    const row = document.createElement("div"); row.className = "b-row";
+    const b1 = document.createElement("button"); b1.type = "button"; b1.className = "m-btn"; b1.textContent = t.done ? "ابدأ من جديد" : "ابدأ الاختبار";
+    b1.onclick = () => start(u.id, pickSet(u.ids)); row.appendChild(b1);
+    if (t.s && t.done > 0 && !t.full && t.s.idx < t.s.order.length) {
+      const b2 = document.createElement("button"); b2.type = "button"; b2.className = "m-btn m-ghost"; b2.textContent = "أكمل";
+      b2.onclick = () => { cur = u.id; order = t.s.order.filter(id => QBY[id]); idx = Math.min(t.s.idx, order.length - 1); answers = t.s.answers; go("#/q/" + u.id); };
+      row.appendChild(b2);
+    }
+    if (t.wrong > 0) {
+      const b3 = document.createElement("button"); b3.type = "button"; b3.className = "m-btn m-ghost"; b3.textContent = "الأخطاء (" + t.wrong + ")";
+      b3.onclick = () => start(u.id, shuffle(Object.entries(t.s.answers).filter(([id, a]) => QBY[id] && QBY[id].a !== a).map(([id]) => id)));
+      row.appendChild(b3);
+    }
+    d.appendChild(row); return d;
+  }
+
+  /* ---------- quiz ---------- */
+  function start(uid, list) { cur = uid; order = list; idx = 0; answers = {}; save(); go("#/q/" + uid); }
+  function renderQ() {
+    const q = QBY[order[idx]];
+    $("qPos").textContent = "السؤال " + (idx + 1) + " من " + order.length;
+    $("qUnit").textContent = UNITS[cur].title;
+    $("qBar").style.width = (idx / order.length * 100) + "%";
+    $("qSrc").innerHTML = q.src === "exam" ? "<span class='b-badge'>من دورة سابقة</span>" : "";
+    $("qText").innerHTML = q.q;
+    perm = shuffle([0, 1, 2, 3].slice(0, q.o.length));
+    const o = $("qOpts"); o.innerHTML = "";
+    perm.forEach((orig, pos) => {
+      const b = document.createElement("button"); b.type = "button"; b.className = "b-opt"; b.dataset.o = orig;
+      b.innerHTML = '<span class="k">' + LETTERS[pos] + '</span><span class="t">' + q.o[orig] + '</span>';
+      b.onclick = () => choose(orig); o.appendChild(b);
+    });
+    const e = $("qExp"); e.className = "b-exp"; e.innerHTML = "";
+    $("qPrev").disabled = idx === 0; $("qNext").disabled = true;
+    $("qNext").textContent = idx === order.length - 1 ? "عرض النتيجة" : "التالي";
+    if (answers[order[idx]] !== undefined) reveal(answers[order[idx]]);
+  }
+  function choose(orig) { const id = order[idx]; if (answers[id] !== undefined) return; answers[id] = orig; save(); reveal(orig); }
+  function reveal(pick) {
+    const q = QBY[order[idx]];
+    [...$("qOpts").children].forEach(b => {
+      const j = +b.dataset.o; b.disabled = true;
+      if (j === q.a) b.classList.add("ok"); else if (j === pick) b.classList.add("bad");
+      if (q.why && j !== q.a && q.why[j]) { const w = document.createElement("span"); w.className = "why"; w.innerHTML = q.why[j]; b.querySelector(".t").appendChild(w); }
+    });
+    const e = $("qExp"); e.className = "b-exp show" + (pick === q.a ? "" : " wrong");
+    e.innerHTML = (pick === q.a ? "<strong>صحيح.</strong> " : "<strong>غير صحيح.</strong> الإجابة: " + q.o[q.a] + "<br>") + q.e;
+    $("qNext").disabled = false;
+  }
+  function next() { if (idx < order.length - 1) { idx++; save(); renderQ(); window.scrollTo({ top: 0 }); } else { save(); finish(); } }
+  function finish() {
+    history.replaceState(null, "", "#/r/" + cur);
+    show("vResult"); const tot = order.length; let ok = 0;
+    order.forEach(id => { if (answers[id] === QBY[id].a) ok++; });
+    $("rTitle").textContent = "النتيجة: " + UNITS[cur].title;
+    $("rScore").textContent = ok + " / " + tot;
+    $("rSub").textContent = Math.round(ok / tot * 100) + "%" + (tot - ok ? " · تحتاج المراجعة: " + num(tot - ok, "q") : " · كل الأسئلة صحيحة");
+    $("rWrong").disabled = ok === tot;
+    const r = $("rReview"); r.innerHTML = "";
+    const wrong = order.filter(id => answers[id] !== QBY[id].a);
+    if (wrong.length) {
+      const t = document.createElement("h3"); t.textContent = "الأسئلة التي أخطأت فيها"; r.appendChild(t);
+      wrong.forEach(id => {
+        const q = QBY[id]; const d = document.createElement("div"); d.className = "b-card";
+        d.innerHTML = (q.src === "exam" ? "<span class='b-badge'>من دورة سابقة</span>" : "") +
+          "<div class='b-q' style='font-size:16px'>" + q.q + "</div>" +
+          (answers[id] !== undefined ? "<div class='b-yours'>إجابتك: " + q.o[answers[id]] + "</div>" : "<div class='b-yours'>لم تُجب</div>") +
+          "<div class='b-right'>الصحيح: " + q.o[q.a] + "</div><div class='b-exp show'>" + q.e + "</div>";
+        r.appendChild(d);
+      });
+    }
+  }
+
+  /* ---------- review cards ---------- */
+  function renderCards(cid) {
+    const c = CH[cid]; if (!c || !c.cards.length) { go("#/"); return; }
+    curChapter = cid;
+    $("kTitle").textContent = "بطاقات المراجعة · " + c.title;
+    $("kSub").textContent = num(c.cards.length, "k") + ". اضغط البطاقة لإظهار الجواب.";
+    const L = $("kList"); L.innerHTML = "";
+    c.cards.forEach((q, i) => {
+      const d = document.createElement("button"); d.type = "button"; d.className = "b-flash"; d.setAttribute("aria-expanded", "false");
+      d.innerHTML = (q.src === "exam" ? "<span class='b-badge'>من دورة سابقة</span>" : "") + "<div class='fq'>" + q.q + "</div><div class='fa' hidden>" + q.e + "</div><div class='fh'>اضغط لإظهار الجواب</div>";
+      d.onclick = () => { const open = d.getAttribute("aria-expanded") === "true"; d.setAttribute("aria-expanded", open ? "false" : "true"); d.querySelector(".fa").hidden = open; d.querySelector(".fh").textContent = open ? "اضغط لإظهار الجواب" : "اضغط لإخفاء الجواب"; };
+      L.appendChild(d);
+    });
+    show("vCards");
+  }
+
+  /* ---------- routing ---------- */
+  function go(h) { if (location.hash === h) route(); else location.hash = h; }
+  function route() {
+    const h = location.hash || "#/";
+    let m;
+    if ((m = h.match(/^#\/c\/(.+)$/))) return renderChapter(decodeURIComponent(m[1]));
+    if ((m = h.match(/^#\/k\/(.+)$/))) return renderCards(decodeURIComponent(m[1]));
+    if ((m = h.match(/^#\/q\/(.+)$/))) {
+      const uid = decodeURIComponent(m[1]);
+      if (!UNITS[uid]) return go("#/");
+      if (cur !== uid || !order.length) {
+        load(); const s = store.units[uid];
+        if (!s || !s.order.length) return go("#/c/" + UNITS[uid].chapter);
+        cur = uid; order = s.order.filter(id => QBY[id]); idx = Math.min(s.idx, order.length - 1); answers = s.answers;
+      }
+      curChapter = UNITS[uid].chapter; show("vQuiz"); renderQ(); return;
+    }
+    if ((m = h.match(/^#\/r\/(.+)$/))) { const uid = decodeURIComponent(m[1]); return go(UNITS[uid] ? "#/c/" + UNITS[uid].chapter : "#/"); }
+    curChapter = null; renderHome(); show("vHome");
+  }
+
+  $("qNext").onclick = next;
+  $("qPrev").onclick = () => { if (idx > 0) { idx--; save(); renderQ(); } };
+  $("qPause").onclick = () => { save(); go("#/c/" + UNITS[cur].chapter); };
+  $("rWrong").onclick = () => { const w = order.filter(id => answers[id] !== QBY[id].a); start(cur, shuffle(w)); };
+  $("rBack").onclick = () => go("#/c/" + UNITS[cur].chapter);
+  $("chBack").onclick = () => go("#/");
+  $("kBack").onclick = () => go("#/c/" + curChapter);
+  window.addEventListener("hashchange", route);
+
+  window.ensureAccess("business-environment").then(ok => {
+    if (!ok) return;
+    const get = u => fetch(u, { cache: "no-cache" }).then(r => { if (!r.ok) throw new Error(u); return r.json(); });
+    Promise.all([get("data/bizenv-outline.json"), get("data/bizenv-questions.json"), get("data/bizenv-summaries.json")]).then(([o, q, s]) => {
+      OUT = o; QS = q.questions; SUMS = s.summaries;
+      QS.forEach(x => { QBY[x.id] = x; });
+      QS.forEach(x => { if (x.dup && QBY[x.dup]) { PAIR[x.id] = x.dup; PAIR[x.dup] = x.id; } });
+      buildUnits();
+      $("app").hidden = false;
+      route();
+    }).catch(() => { $("loadErr").hidden = false; });
+  });
+})();
+</script>
+%%SW%%
+</body>
+</html>
