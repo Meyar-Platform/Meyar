@@ -107,6 +107,41 @@ def notfound_html(t):
 """
 
 
+# Owner decision (28 Sep 2026): the fellowship section is paused like the two sectors.
+# Set to False and rebuild to publish it again; nothing else needs to change.
+PAUSE_FELLOWSHIP = True
+
+FELLOWSHIP_PAGES = [("fellowship.html", "التحضير لزمالة SOCPA"), ("business-environment.html", "بيئة الأعمال"),
+                    ("capital-structure.html", "هيكل رأس المال")]
+FELLOWSHIP_FILES = ["access.js", "data/fellowship-subjects.json", "data/bizenv-outline.json",
+                    "data/bizenv-questions.json", "data/bizenv-summaries.json"]
+
+PAUSED_DOOR = """<div class="h-card paused" role="link" aria-disabled="true">
+    <span class="h-badge"><span>متوقفة مؤقتاً</span><span class="en" lang="en">Temporarily paused</span></span>
+    <span class="t">التحضير لزمالة SOCPA</span>
+    <span class="e" lang="en">SOCPA fellowship preparation</span>
+  </div>"""
+
+
+def pause_fellowship():
+    """Replace the fellowship pages with the paused notice and drop their data from the site."""
+    t = platform_tokens()
+    for page, title in FELLOWSHIP_PAGES:
+        write(os.path.join(OUT, page), paused_html(t, title))
+    for f in FELLOWSHIP_FILES:
+        p = os.path.join(OUT, f)
+        if os.path.exists(p):
+            os.remove(p)
+    d = os.path.join(OUT, "data")
+    if os.path.isdir(d) and not os.listdir(d):
+        os.rmdir(d)
+    idx_path = os.path.join(OUT, "index.html")
+    idx = read(idx_path)
+    door = re.search(r'<a class="h-card" href="fellowship.html".*?</a>', idx, re.S).group(0)
+    write(idx_path, idx.replace(door, PAUSED_DOOR))
+    return {"paused_pages": [p for p, _ in FELLOWSHIP_PAGES], "removed": FELLOWSHIP_FILES}
+
+
 def prepare():
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
@@ -155,14 +190,12 @@ def finalize():
     am = re.search(r"const ASSETS = \[(.*?)\];", sw, re.S)
     existing = re.findall(r"'([^']+)'", am.group(1))
     assets = existing + [a for a in NEW_ASSETS if a not in existing]
-    for a in assets:
-        p = a[2:] or "index.html"
-        assert os.path.exists(os.path.join(OUT, p)), a
+    assets = [a for a in assets if os.path.exists(os.path.join(OUT, a[2:] or "index.html"))]
     block = "const ASSETS = [\n" + ",\n".join("  '%s'" % a for a in assets) + "\n];"
     sw = sw.replace(am.group(0), block)
     write(os.path.join(OUT, "sw.js"), sw)
 
-    urls = ["", "fellowship.html", "business-environment.html", "capital-structure.html"]
+    urls = [""] if PAUSE_FELLOWSHIP else ["", "fellowship.html", "business-environment.html", "capital-structure.html"]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
         sm += ["  <url>", "    <loc>%s%s</loc>" % (SITE, u), "    <lastmod>%s</lastmod>" % TODAY, "  </url>"]

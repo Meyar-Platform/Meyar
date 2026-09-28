@@ -148,10 +148,24 @@
   ],
   "door_counters": "مادة واحدة · 624 سؤالاً"
  },
+ "paused_fellowship": {
+  "paused_pages": [
+   "fellowship.html",
+   "business-environment.html",
+   "capital-structure.html"
+  ],
+  "removed": [
+   "access.js",
+   "data/fellowship-subjects.json",
+   "data/bizenv-outline.json",
+   "data/bizenv-questions.json",
+   "data/bizenv-summaries.json"
+  ]
+ },
  "finalize": {
   "cache_src": "origin/main:sw.js",
-  "cache_old": "ifrs-guide-v48",
-  "cache_new": "ifrs-guide-v49",
+  "cache_old": "ifrs-guide-v49",
+  "cache_new": "ifrs-guide-v50",
   "assets": [
    "./",
    "./index.html",
@@ -173,18 +187,10 @@
    "./fellowship.html",
    "./business-environment.html",
    "./capital-structure.html",
-   "./access.js",
-   "./data/fellowship-subjects.json",
-   "./data/bizenv-outline.json",
-   "./data/bizenv-questions.json",
-   "./data/bizenv-summaries.json",
    "./assets/logo-white.svg"
   ],
   "sitemap": [
-   "https://meyarplatform.com/",
-   "https://meyarplatform.com/fellowship.html",
-   "https://meyarplatform.com/business-environment.html",
-   "https://meyarplatform.com/capital-structure.html"
+   "https://meyarplatform.com/"
   ]
  },
  "tokens": {

@@ -1,4 +1,4 @@
-const CACHE = 'ifrs-guide-v49';
+const CACHE = 'ifrs-guide-v50';
 
 const ASSETS = [
   './',
@@ -21,11 +21,6 @@ const ASSETS = [
   './fellowship.html',
   './business-environment.html',
   './capital-structure.html',
-  './access.js',
-  './data/fellowship-subjects.json',
-  './data/bizenv-outline.json',
-  './data/bizenv-questions.json',
-  './data/bizenv-summaries.json',
   './assets/logo-white.svg'
 ];
 

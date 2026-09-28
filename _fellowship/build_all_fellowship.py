@@ -23,6 +23,8 @@ def main():
     state["bizenv"] = build_bizenv.build()
     state["capital"] = build_capital_structure.build()
     state["fellowship"] = build_fellowship.build()
+    if build_paused.PAUSE_FELLOWSHIP:
+        state["paused_fellowship"] = build_paused.pause_fellowship()
     state["finalize"] = build_paused.finalize()
     tokens = state["bizenv"].pop("tokens")
     state["tokens"] = tokens
