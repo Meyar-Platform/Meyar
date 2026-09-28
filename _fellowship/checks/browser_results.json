@@ -115,7 +115,8 @@
     "gate": true,
     "appHidden": true,
     "title": "للدخول إلى مادة بيئة الأعمال",
-    "free": "صفحة التحضير لزمالة SOCPA متاحة بلا تسجيل."
+    "free": "لا تتم مشاركة البريد الإلكتروني مع أي جهة.",
+    "lead": "اكتب بريدك الإلكتروني للمتابعة."
    },
    "invalid": {
     "still": true,
@@ -135,9 +136,9 @@
   "pass": true,
   "detail": {
    "v": 1,
-   "subject_id": "38973a8a-88f7-4145-b0d4-bc09cf72fb0f",
+   "subject_id": "0b61eb96-25f0-46e2-bbc6-5f918617b131",
    "email": "tester@example.com",
-   "ts": "2026-09-28T11:57:32.273Z",
+   "ts": "2026-09-28T12:00:03.952Z",
    "section": "business-environment",
    "entry": "business-environment",
    "consent": true,
@@ -149,7 +150,7 @@
   "name": "التقدم يُحفظ ويُستعاد تحت bizenv-progress-<subject_id>",
   "pass": true,
   "detail": {
-   "key": "bizenv-progress-38973a8a-88f7-4145-b0d4-bc09cf72fb0f",
+   "key": "bizenv-progress-0b61eb96-25f0-46e2-bbc6-5f918617b131",
    "answered": 2,
    "idx": 1,
    "pos": "السؤال 2 من 6"
@@ -176,18 +177,18 @@
   "pass": true,
   "detail": {
    "orders": [
-    "2130",
-    "1032",
-    "2013",
-    "3012",
-    "1230",
-    "1302",
-    "2013",
-    "2031"
+    "0132",
+    "2310",
+    "2310",
+    "0312",
+    "0312",
+    "0321",
+    "0123",
+    "1230"
    ],
    "judged": [
     {
-     "pos": 0,
+     "pos": 3,
      "ok": true,
      "msg": "صحيح."
     },
@@ -620,7 +621,7 @@
      "flip": true,
      "quiz": {
       "done": true,
-      "text": "4/20",
+      "text": "7/20",
       "answered": 20
      },
      "dock": {

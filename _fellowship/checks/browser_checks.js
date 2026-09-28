@@ -113,7 +113,7 @@ const norm = s => (s || '').replace(/\s+/g, ' ').trim();
     {
       const ctx = await newCtx(browser); const p = await ctx.newPage();
       await p.goto(BASE + 'business-environment.html');
-      const before = await p.evaluate(() => ({ gate: !!document.querySelector('.m-gate'), appHidden: document.getElementById('app').hidden, title: document.getElementById('m-gate-title').textContent, free: document.querySelector('.m-gate-free').textContent }));
+      const before = await p.evaluate(() => ({ gate: !!document.querySelector('.m-gate'), appHidden: document.getElementById('app').hidden, title: document.getElementById('m-gate-title').textContent, free: document.querySelector('.m-gate-free').textContent, lead: document.querySelector('.m-gate-box p').textContent }));
       await p.fill('#m-gate-email', 'not-an-email'); await p.click('.m-gate-box button[type=submit]');
       const invalid = await p.evaluate(() => ({ still: !!document.querySelector('.m-gate'), err: document.getElementById('m-gate-err').textContent }));
       await p.fill('#m-gate-email', 'tester@example.com'); await p.click('.m-gate-box button[type=submit]');
@@ -128,7 +128,7 @@ const norm = s => (s || '').replace(/\s+/g, ' ').trim();
       const q = JSON.parse(store['bizenv-pending-signups'] || '[]');
       const recd = q[0] || {};
       const keysOk = JSON.stringify(Object.keys(recd)) === JSON.stringify(['v', 'subject_id', 'email', 'ts', 'section', 'entry', 'consent', 'source']);
-      rec('C1', 'البوابة عند مدخل المادة مرة واحدة، والحاوية حرة', before.gate && before.appHidden && before.title === 'للدخول إلى مادة بيئة الأعمال' && before.free === 'صفحة التحضير لزمالة SOCPA متاحة بلا تسجيل.'
+      rec('C1', 'البوابة عند مدخل المادة مرة واحدة، والحاوية حرة', before.gate && before.appHidden && before.title === 'للدخول إلى مادة بيئة الأعمال' && before.free === 'لا تتم مشاركة البريد الإلكتروني مع أي جهة.' && before.lead === 'اكتب بريدك الإلكتروني للمتابعة.'
         && invalid.still && invalid.err && !again && !cs.gate && cs.main && !fe, { before, invalid, again, cs, fellowshipGate: fe });
       rec('C2a', 'الطابور المحلي مع ACCESS_ENDPOINT فارغ، بشكل السجل الثابت', q.length === 1 && keysOk && recd.v === 1 && recd.section === 'business-environment' && recd.entry === 'business-environment'
         && recd.consent === true && recd.source === 'meyarplatform.com' && recd.subject_id === store['bizenv-subject-id'] && !isNaN(Date.parse(recd.ts)), recd);

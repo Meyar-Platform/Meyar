@@ -150,8 +150,8 @@
  },
  "finalize": {
   "cache_src": "origin/main:sw.js",
-  "cache_old": "ifrs-guide-v47",
-  "cache_new": "ifrs-guide-v48",
+  "cache_old": "ifrs-guide-v48",
+  "cache_new": "ifrs-guide-v49",
   "assets": [
    "./",
    "./index.html",

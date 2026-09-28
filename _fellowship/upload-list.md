@@ -12,13 +12,13 @@
 | `manifest.webmanifest` | `613d76b81f1ae000dbf4d6fba5165e5f` |
 | `private-sector.html` | `c1a0c66993836dd6c883cba7d411535a` |
 | `sitemap.xml` | `6b30a7ae254a3126556fada1d5bf3bbb` |
-| `sw.js` | `326f821429b5a176b7d46530218d53f9` |
+| `sw.js` | `ba0dffd1479787ed15dd8622864a83b1` |
 
 ## ملفات جديدة (9)
 
 | المسار في المستودع | md5 |
 |---|---|
-| `access.js` | `1867e3943812abfd2f1cd5cac44d66d2` |
+| `access.js` | `4fe1d84835e11f23122e352d039332f1` |
 | `business-environment.html` | `705534d68e3e388e851d5f1557224840` |
 | `capital-structure.html` | `405094cf46dfbffca27a76cd4bb21e99` |
 | `data/bizenv-outline.json` | `9ec462528dbdfb6a41f1f37c2dd489f2` |

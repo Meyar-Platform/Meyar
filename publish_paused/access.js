@@ -129,13 +129,13 @@
     wrap.innerHTML =
       '<form class="m-gate-box" novalidate>' +
       '<h2 id="m-gate-title">للدخول إلى مادة بيئة الأعمال</h2>' +
-      '<p>اكتب بريدك الإلكتروني للمتابعة. نستخدمه لمعرفة من يستفيد من المنصة وللتواصل بشأن التحديثات، ولا يُشارك مع أي جهة.</p>' +
+      '<p>اكتب بريدك الإلكتروني للمتابعة.</p>' +
       '<div class="m-gate-row">' +
       '<input type="email" id="m-gate-email" name="email" autocomplete="email" inputmode="email" required aria-label="البريد الإلكتروني" placeholder="البريد الإلكتروني">' +
       '<button type="submit" class="m-btn">متابعة</button>' +
       '</div>' +
       '<div class="m-gate-err" id="m-gate-err" role="alert"></div>' +
-      '<div class="m-gate-free"><a href="fellowship.html">صفحة التحضير لزمالة SOCPA</a> متاحة بلا تسجيل.</div>' +
+      '<div class="m-gate-free">لا تتم مشاركة البريد الإلكتروني مع أي جهة.</div>' +
       '</form>';
     document.body.appendChild(wrap);
     var form = wrap.querySelector("form");
