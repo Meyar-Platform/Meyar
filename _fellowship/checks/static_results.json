@@ -30,6 +30,7 @@
    "displayed_after_exclusion": {
     "parts": 3,
     "chapters": 32,
+    "chapters_shown": 31,
     "sections": 130,
     "topics": 18,
     "loaded": 647,
@@ -140,16 +141,9 @@
  },
  {
   "id": "S",
-  "name": "الملخصات: S-FA-FORMULAS فارغ من نوع text، و S-MF-C13 صفحة",
+  "name": "لا ملخص معادلات، والملخص الوحيد S-MF-C13 صفحة",
   "pass": true,
   "detail": [
-   {
-    "id": "S-FA-FORMULAS",
-    "chapter": null,
-    "title": "ملخص معادلات التحليل المالي",
-    "kind": "text",
-    "body": ""
-   },
    {
     "id": "S-MF-C13",
     "chapter": "MF.C13",
@@ -158,6 +152,17 @@
     "href": "capital-structure.html"
    }
   ]
+ },
+ {
+  "id": "H",
+  "name": "الفصل الذي لا محتوى معروض له (وليس من الأربعة الفارغة) مخفي، ويُحسب تلقائياً",
+  "pass": true,
+  "detail": {
+   "hidden": [
+    "MF.C16"
+   ],
+   "shown": 31
+  }
  },
  {
   "id": "A1",
@@ -173,8 +178,8 @@
   "name": "CACHE مرفوع إصداراً واحداً، و ASSETS تشمل الصفحات الجديدة وبياناتها وصفحتي الإيقاف",
   "pass": true,
   "detail": {
-   "live": "ifrs-guide-v46",
-   "new": "ifrs-guide-v47"
+   "live": "ifrs-guide-v47",
+   "new": "ifrs-guide-v48"
   }
  },
  {

@@ -12,19 +12,19 @@
 | `manifest.webmanifest` | `613d76b81f1ae000dbf4d6fba5165e5f` |
 | `private-sector.html` | `c1a0c66993836dd6c883cba7d411535a` |
 | `sitemap.xml` | `6b30a7ae254a3126556fada1d5bf3bbb` |
-| `sw.js` | `0e369bd820ee66c3878b76b833bd3d6e` |
+| `sw.js` | `326f821429b5a176b7d46530218d53f9` |
 
 ## ملفات جديدة (9)
 
 | المسار في المستودع | md5 |
 |---|---|
 | `access.js` | `1867e3943812abfd2f1cd5cac44d66d2` |
-| `business-environment.html` | `ace9f2f4bffc2234912eb25ce292cc4b` |
+| `business-environment.html` | `705534d68e3e388e851d5f1557224840` |
 | `capital-structure.html` | `405094cf46dfbffca27a76cd4bb21e99` |
-| `data/bizenv-outline.json` | `0ade933f18129ac2f239632372d5dc11` |
+| `data/bizenv-outline.json` | `9ec462528dbdfb6a41f1f37c2dd489f2` |
 | `data/bizenv-questions.json` | `05cb5cb2234a9df6ee3e99122f0ab7f4` |
-| `data/bizenv-summaries.json` | `ba28ac68cffb4686908d932ad9e29b14` |
-| `data/fellowship-subjects.json` | `7179f18af094e8e8f6bcae2ab9565139` |
+| `data/bizenv-summaries.json` | `d6e606c4c4d7b7d6e60c51521f39baf3` |
+| `data/fellowship-subjects.json` | `49be52775cba53c58b5a6258b42fdbe9` |
 | `fellowship.html` | `4fba5744db6adec9687c604d6add39ec` |
 | `public-sector.html` | `9c60b8db09d3576718af849dd744abd0` |
 

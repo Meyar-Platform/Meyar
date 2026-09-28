@@ -215,6 +215,21 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
 </script>"""
 
 
+def live_sw():
+    """sw.js as currently published on origin/main (falls back to the repo root copy).
+    CACHE must be bumped from the live value, not from this branch's copy."""
+    import subprocess
+    try:
+        subprocess.run(["git", "-C", ROOT, "fetch", "-q", "origin", "main"], check=False, timeout=60,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        out = subprocess.run(["git", "-C", ROOT, "show", "origin/main:sw.js"], capture_output=True, timeout=30)
+        if out.returncode == 0:
+            return out.stdout.decode("utf-8"), "origin/main:sw.js"
+    except Exception:
+        pass
+    return read(os.path.join(ROOT, "sw.js")), "sw.js (repo root)"
+
+
 def base_files():
     """All files of the currently published site (repo root minus build dirs)."""
     out = []

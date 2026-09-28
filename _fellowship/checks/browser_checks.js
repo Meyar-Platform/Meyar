@@ -105,7 +105,7 @@ const norm = s => (s || '').replace(/\s+/g, ' ').trim();
       const subjects = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/fellowship-subjects.json')));
       rec('B1', 'الحاوية عربية فقط', r.lang === 'ar' && r.dir === 'rtl' && r.title === 'التحضير لزمالة SOCPA' && r.latin.every(w => w === 'SOCPA') && !r.hasL && !r.hasLangEn && !r.switcher && !r.gate, r);
       rec('B2', 'بطاقات المواد من fellowship-subjects.json وعدّاداتها مشتقة', r.cards.length === subjects.length && r.cards[0].t === subjects[0].title && r.cards[0].href === subjects[0].href
-        && subjects[0].counters.questions === OUTL.totals.visible && subjects[0].counters.chapters === OUTL.totals.chapters && subjects[0].counters.parts === OUTL.totals.parts, { cards: r.cards, counters: subjects[0].counters });
+        && subjects[0].counters.questions === OUTL.totals.visible && subjects[0].counters.chapters === OUTL.totals.chapters_shown && subjects[0].counters.parts === OUTL.totals.parts, { cards: r.cards, counters: subjects[0].counters });
       await ctx.close();
     }
 
@@ -223,11 +223,11 @@ const norm = s => (s || '').replace(/\s+/g, ' ').trim();
         const cards = [...document.querySelectorAll('.b-ch')];
         return {
           parts: [...document.querySelectorAll('.b-part > h2')].map(h => h.textContent),
-          chapters: cards.length,
+          chapters: cards.length, all: cards.map(c => c.querySelector('h3').textContent),
           off: cards.filter(c => c.classList.contains('off')).map(c => ({ t: c.querySelector('h3').textContent, tag: c.tagName, dis: c.getAttribute('aria-disabled'), soon: !!c.querySelector('.b-soon'), secs: c.querySelector('.b-secs').textContent.split('، ').length }))
         };
       });
-      rec('7', 'الفصول الفارغة تظهر بمباحثها وبعدّاد صفر وغير قابلة للضغط', ui.chapters === 32 && ui.off.filter(o => o.tag === 'DIV' && o.dis === 'true' && o.soon).length === ui.off.length && ui.off.length >= 4, ui);
+      rec('7', 'الفصول الفارغة الأربعة تظهر بمباحثها وبعدّاد صفر وغير قابلة للضغط، وإدارة التدفق النقدي مخفي', ui.chapters === OUTL.totals.chapters_shown && ui.off.length === 4 && ui.off.every(o => o.tag === 'DIV' && o.dis === 'true' && o.soon) && !ui.off.some(o => o.t === 'إدارة التدفق النقدي') && !ui.all.includes('إدارة التدفق النقدي'), ui);
       await ctx.close();
     }
 

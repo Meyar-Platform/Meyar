@@ -30,9 +30,7 @@ PUBLIC_EXAM_FIELDS = ("q", "o", "a", "e", "why")
 OWNER_EXCLUDED = ["P1-14", "P1-42", "P1-44", "P1-45", "P2-28", "P2-51"]
 
 SUMMARIES = [
-    # Reserved, content not provided yet. Never invent it.
-    OrderedDict([("id", "S-FA-FORMULAS"), ("chapter", None), ("title", "ملخص معادلات التحليل المالي"),
-                 ("kind", "text"), ("body", "")]),
+    # S-FA-FORMULAS removed by owner decision (28 Sep 2026): no formulas summary.
     OrderedDict([("id", "S-MF-C13"), ("chapter", "MF.C13"), ("title", "هيكل رأس المال"),
                  ("kind", "page"), ("href", "capital-structure.html")]),
 ]
@@ -218,6 +216,9 @@ def build():
                 ("refs", refs),
                 ("summary", {"id": sm["id"], "title": sm["title"], "href": sm["href"]} if sm else None),
                 ("empty", c["empty"]),
+                # a chapter the structure lists as having content, but whose content is all
+                # excluded (e.g. pending items) is hidden until something visible is added
+                ("hidden", (not c["empty"]) and vis_by_ch[c["id"]] == 0),
                 ("counts", OrderedDict([("loaded", loaded_by_ch[c["id"]]), ("visible", vis_by_ch[c["id"]]),
                                         ("quiz", quiz_by_ch[c["id"]]), ("cards", cards_by_ch[c["id"]]),
                                         ("bank", bank_by_ch[c["id"]]), ("exam", exam_by_ch[c["id"]])])),
@@ -228,6 +229,7 @@ def build():
     totals = OrderedDict([
         ("parts", len(parts)),
         ("chapters", sum(len(p["chapters"]) for p in parts)),
+        ("chapters_shown", sum(1 for p in parts for c in p["chapters"] if not c["hidden"])),
         ("sections", sum(len(c["sections"]) for p in parts for c in p["chapters"])),
         ("topics", len(S["topics"])),
         ("loaded", report["loaded_total"]),

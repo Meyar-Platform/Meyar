@@ -58,6 +58,7 @@
   "totals": {
    "parts": 3,
    "chapters": 32,
+   "chapters_shown": 31,
    "sections": 130,
    "topics": 18,
    "loaded": 647,
@@ -140,7 +141,7 @@
     "gate": true,
     "counters": {
      "parts": 3,
-     "chapters": 32,
+     "chapters": 31,
      "questions": 624
     }
    }
@@ -148,8 +149,9 @@
   "door_counters": "مادة واحدة · 624 سؤالاً"
  },
  "finalize": {
-  "cache_old": "ifrs-guide-v46",
-  "cache_new": "ifrs-guide-v47",
+  "cache_src": "origin/main:sw.js",
+  "cache_old": "ifrs-guide-v47",
+  "cache_new": "ifrs-guide-v48",
   "assets": [
    "./",
    "./index.html",

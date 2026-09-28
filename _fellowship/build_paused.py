@@ -11,7 +11,7 @@ import os
 import re
 import shutil
 
-from common import (OUT, ROOT, SW_REGISTER, base_files, brand_bar, footer, head, platform_tokens, read, write)
+from common import (live_sw, OUT, ROOT, SW_REGISTER, base_files, brand_bar, footer, head, platform_tokens, read, write)
 
 TODAY = "2026-09-28"
 SITE = "https://meyarplatform.com/"
@@ -147,7 +147,7 @@ NEW_ASSETS = [
 
 
 def finalize():
-    sw = read(os.path.join(ROOT, "sw.js"))  # the live file, not memory
+    sw, sw_src = live_sw()  # the live file, not memory
     m = re.search(r"const CACHE = '([\w-]*?)(\d+)';", sw)
     old = m.group(1) + m.group(2)
     new = m.group(1) + str(int(m.group(2)) + 1)
@@ -168,7 +168,7 @@ def finalize():
         sm += ["  <url>", "    <loc>%s%s</loc>" % (SITE, u), "    <lastmod>%s</lastmod>" % TODAY, "  </url>"]
     sm.append("</urlset>")
     write(os.path.join(OUT, "sitemap.xml"), "\n".join(sm) + "\n")
-    return {"cache_old": old, "cache_new": new, "assets": assets, "sitemap": [SITE + u for u in urls]}
+    return {"cache_src": sw_src, "cache_old": old, "cache_new": new, "assets": assets, "sitemap": [SITE + u for u in urls]}
 
 
 if __name__ == "__main__":

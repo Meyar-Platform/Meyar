@@ -48,7 +48,7 @@ def build():
         rec = OrderedDict((k, v) for k, v in s.items() if k != "outline")
         if s["status"] == "active":
             o = load_json(os.path.join(DATA_OUT, s["outline"]))
-            rec["counters"] = OrderedDict([("parts", o["totals"]["parts"]), ("chapters", o["totals"]["chapters"]),
+            rec["counters"] = OrderedDict([("parts", o["totals"]["parts"]), ("chapters", o["totals"]["chapters_shown"]),
                                            ("questions", o["totals"]["visible"])])
             total_q += o["totals"]["visible"]
         else:

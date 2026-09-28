@@ -339,9 +339,10 @@ const PART_ORDER = ["IT", "EC", "MF"];
     const parts = OUT.parts.slice().sort((a, b) => PART_ORDER.indexOf(a.id) - PART_ORDER.indexOf(b.id));
     parts.forEach(p => {
       const sec = document.createElement("section"); sec.className = "b-part";
-      sec.innerHTML = "<h2>" + esc(p.title) + "</h2><div class='b-meta'><span>" + num(p.chapters.length, "ch") + " · " + num(p.counts.quiz, "q") + (p.counts.cards ? " · " + num(p.counts.cards, "k") : "") + "</span></div>";
+      const shown = p.chapters.filter(c => !c.hidden);
+      sec.innerHTML = "<h2>" + esc(p.title) + "</h2><div class='b-meta'><span>" + num(shown.length, "ch") + " · " + num(p.counts.quiz, "q") + (p.counts.cards ? " · " + num(p.counts.cards, "k") : "") + "</span></div>";
       const grid = document.createElement("div"); grid.className = "b-grid";
-      p.chapters.forEach(c => grid.appendChild(chapterCard(c)));
+      shown.forEach(c => grid.appendChild(chapterCard(c)));
       sec.appendChild(grid); root.appendChild(sec);
     });
   }
@@ -371,7 +372,7 @@ const PART_ORDER = ["IT", "EC", "MF"];
 
   /* ---------- chapter ---------- */
   function renderChapter(cid) {
-    const c = CH[cid]; if (!c || c.counts.visible === 0) { go("#/"); return; }
+    const c = CH[cid]; if (!c || c.hidden || c.counts.visible === 0) { go("#/"); return; }
     curChapter = cid; load();
     $("chPart").textContent = PARTS[c.part].title + " · الفصل " + c.n;
     $("chTitle").textContent = c.title;

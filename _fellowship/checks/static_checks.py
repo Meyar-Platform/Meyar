@@ -83,8 +83,9 @@ c13 = [c for p in O["parts"] for c in p["chapters"] if c["id"] == "MF.C13"][0]
 rec("D7", "عدّاد MF.C13 من ملفات البيانات وحدها (أسئلة الدورات وحدها، بلا أسئلة الرحلتين وبطاقاتهما)", c13["counts"]["visible"] == c13["counts"]["exam"] == sum(1 for q in Q if q["ch"] == "MF.C13") and c13["summary"]["href"] == "capital-structure.html", c13["counts"])
 
 # ---- summaries ----
-rec("S", "الملخصات: S-FA-FORMULAS فارغ من نوع text، و S-MF-C13 صفحة", SUM[0]["id"] == "S-FA-FORMULAS" and SUM[0]["kind"] == "text" and SUM[0]["body"] == ""
-    and SUM[1] == {"id": "S-MF-C13", "chapter": "MF.C13", "title": "هيكل رأس المال", "kind": "page", "href": "capital-structure.html"}, SUM)
+rec("S", "لا ملخص معادلات، والملخص الوحيد S-MF-C13 صفحة", SUM == [{"id": "S-MF-C13", "chapter": "MF.C13", "title": "هيكل رأس المال", "kind": "page", "href": "capital-structure.html"}], SUM)
+hid = [c["id"] for p in O["parts"] for c in p["chapters"] if c["hidden"]]
+rec("H", "الفصل الذي لا محتوى معروض له (وليس من الأربعة الفارغة) مخفي، ويُحسب تلقائياً", hid == ["MF.C16"] and O["totals"]["chapters_shown"] == 32 - len(hid), {"hidden": hid, "shown": O["totals"]["chapters_shown"]})
 
 # ---- A1 isolation: repo-root published files unchanged ----
 base = {}
@@ -96,7 +97,8 @@ rec("A1", "لا ملف من الموقع المنشور (جذر المستودع
 
 # ---- A5 sw.js ----
 sw = read(os.path.join(OUT, "sw.js"))
-live = re.search(r"const CACHE = '([^']+)'", read(os.path.join(ROOT, "sw.js"))).group(1)
+from common import live_sw  # noqa: E402
+live = re.search(r"const CACHE = '([^']+)'", live_sw()[0]).group(1)
 new = re.search(r"const CACHE = '([^']+)'", sw).group(1)
 need = ["./fellowship.html", "./business-environment.html", "./capital-structure.html", "./access.js", "./private-sector.html",
         "./public-sector.html", "./data/bizenv-outline.json", "./data/bizenv-questions.json", "./data/bizenv-summaries.json", "./data/fellowship-subjects.json"]
